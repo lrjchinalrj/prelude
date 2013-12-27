@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width">
+    <link rel="stylesheet" href="../../css/prelude.css">
+    <link rel="stylesheet" href="../css/highlighting//github.css">
+    <style type="text/css">
+
+    body {
+        padding: 40px;
+    }
+
+    form > div {
+        margin-bottom: 15px;
+    }
+
+    label {
+        display: block;
+        margin-bottom: .33rem;
+        letter-spacing: normal;
+    }
+    </style>
+</head>
+<body>
+    <section>
+        <h2>Forms</h2>
+        <section>
+            <h3>Basic</h3>
+            <div class="row">
+                <div class="span-6">
+                    <h4>HTML</h4>
+                    <pre><code data-language="html">&lt;form&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;label&gt;Text&nbsp;Field&lt;/label&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;input&nbsp;type=&quot;text&quot;&nbsp;/&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;label&gt;Placeholder&lt;/label&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;input&nbsp;type=&quot;text&quot;&nbsp;placeholder=&quot;Placeholder&nbsp;Text&quot;&nbsp;/&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;label&gt;Select&nbsp;List&lt;/label&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;select&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;option&nbsp;value=&quot;Option&nbsp;1&quot;&gt;Option&nbsp;1&lt;/option&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;option&nbsp;value=&quot;Option&nbsp;2&quot;&gt;Option&nbsp;2&lt;/option&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;option&nbsp;value=&quot;Option&nbsp;3&quot;&gt;Option&nbsp;3&lt;/option&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;option&nbsp;value=&quot;Option&nbsp;4&quot;&gt;Option&nbsp;4&lt;/option&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/select&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;label&gt;Checkboxes&lt;/label&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;label&nbsp;for=&quot;regularCheckbox&quot;&gt;&lt;input&nbsp;type=&quot;checkbox&quot;&nbsp;value=&quot;checkbox&nbsp;1&quot;&nbsp;id=&quot;regularCheckbox&quot;&nbsp;/&gt;&lt;span&gt;Regular&nbsp;Checkbox&lt;/span&gt;&lt;/label&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;label&nbsp;for=&quot;secondRegularCheckbox&quot;&gt;&lt;input&nbsp;type=&quot;checkbox&quot;&nbsp;value=&quot;checkbox&nbsp;2&quot;&nbsp;id=&quot;secondRegularCheckbox&quot;&nbsp;/&gt;&lt;span&gt;Regular&nbsp;Checkbox&lt;/span&gt;&lt;/label&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;label&gt;Radio&nbsp;Buttons&lt;/label&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;label&nbsp;for=&quot;regularRadio&quot;&gt;&lt;input&nbsp;type=&quot;radio&quot;&nbsp;value=&quot;radio&nbsp;1&quot;&nbsp;id=&quot;regularRadio&quot;&nbsp;name=&quot;radios&quot;&nbsp;/&gt;&lt;span&gt;Regular&nbsp;Radio&lt;/span&gt;&lt;/label&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;label&nbsp;for=&quot;secondRegularRadio&quot;&gt;&lt;input&nbsp;type=&quot;radio&quot;&nbsp;value=&quot;radio&nbsp;2&quot;&nbsp;id=&quot;secondRegularRadio&quot;&nbsp;name=&quot;radios&quot;&nbsp;/&gt;&lt;span&gt;Regular&nbsp;Radio&lt;/span&gt;&lt;/label&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;label&gt;File&nbsp;Field&lt;/label&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;input&nbsp;type=&quot;file&quot;&nbsp;/&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;label&gt;Regular&nbsp;Textarea&lt;/label&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;textarea&gt;&lt;/textarea&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;input&nbsp;type=&quot;submit&quot;&nbsp;value=&quot;Submit&quot;&nbsp;/&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;
+&lt;/form&gt;</code></pre>
+                </div>
+                <div class="span-6">
+                    <h4>RENDERED HTML</h4>
+                    <form>
+                        <div>
+                            <label>Text Field</label>
+                            <input type="text" />
+                        </div>
+                        <div>
+                            <label>Placeholder</label>
+                            <input type="text" placeholder="Placeholder Text" />
+                        </div>
+                        <div>
+                            <label>Select List</label>
+                            <select>
+                                <option value="Option 1">Option 1</option>
+                                <option value="Option 2">Option 2</option>
+                                <option value="Option 3">Option 3</option>
+                                <option value="Option 4">Option 4</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label>Checkboxes</label>
+                            <label for="regularCheckbox"><input type="checkbox" value="checkbox 1" id="regularCheckbox" /><span>Regular Checkbox</span></label>
+                            <label for="secondRegularCheckbox"><input type="checkbox" value="checkbox 2" id="secondRegularCheckbox" /><span>Regular Checkbox</span></label>
+                        </div>
+                        <div>
+                            <label>Radio Buttons</label>
+                            <label for="regularRadio"><input type="radio" value="radio 1" id="regularRadio" name="radios" /><span>Regular Radio</span></label>
+                            <label for="secondRegularRadio"><input type="radio" value="radio 2" id="secondRegularRadio" name="radios" /><span>Regular Radio</span></label>
+                        </div>
+                        <div>
+                            <label>File Field</label>
+                            <input type="file" />
+                        </div>
+                        <div>
+                            <label>Regular Textarea</label>
+                            <textarea></textarea>
+                        </div>
+                        <div>
+                            <input type="submit" value="Submit" />
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+        <hr>
+        <section>
+            <h3>Fieldset</h3>
+            <div class="row">
+                <div class="span-6">
+                    <h4>HTML</h4>
+                    <pre><code data-language="html">&lt;form&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;fieldset&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;legend&gt;Fieldset&nbsp;Legend&lt;/legend&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;label&gt;Input&nbsp;Label&lt;/label&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;input&nbsp;type=&quot;text&quot;&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;/fieldset&gt;
+&lt;/form&gt;</code></pre>
+                </div>
+                <div class="span-6">
+                    <h4>RENDERED HTML</h4>
+                    <form>
+                        <fieldset>
+                            <legend>Fieldset Legend</legend>
+                            <label>Input Label</label>
+                            <input type="text">
+                        </fieldset>
+                    </form>
+                </div>
+            </div>
+        </section>
+        <hr>
+        <section>
+            <h3>Disabled states</h3>
+            <div class="row">
+                <div class="span-6">
+                    <h4>HTML</h4>
+                    <pre><code data-language="html">&lt;form&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;label&nbsp;for=&quot;textfield&quot;&gt;Text&nbsp;Field(focus)&lt;/label&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;input&nbsp;type=&quot;text&quot;&nbsp;/&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;label&nbsp;class=&quot;disabled&quot;&nbsp;for=&quot;disabledField&quot;&gt;Disabled&nbsp;Field&lt;/label&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;input&nbsp;type=&quot;text&quot;&nbsp;disabled=&quot;disabled&quot;&nbsp;class=&quot;input_disabled&quot;&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;
+&lt;/form&gt;</code></pre>
+                </div>
+                <div class="span-6">
+                    <h4>RENDERED HTML</h4>
+                    <form>
+                        <div>
+                            <label class="disabled">Disabled Field</label>
+                            <input type="text" disabled>
+                        </div>
+                         <div>
+                            <label>Disabled Checkboxes</label>
+                            <label><input type="checkbox" disabled value="checkbox 1" /><span>Regular Checkbox</span></label>
+                            <label><input type="checkbox" disabled value="checkbox 2" /><span>Regular Checkbox</span></label>
+                        </div>
+                        <div>
+                            <label>Disabled Radio Buttons</label>
+                            <label><input type="radio" value="radio 1" disabled name="radios" /><span>Regular Radio</span></label>
+                            <label><input type="radio" value="radio 2" disabled name="radios" /><span>Regular Radio</span></label>
+                        </div>
+                        <div>
+                            <label class="disabled">Disabled Select</label>
+                            <select disabled>
+                                <option>Option 01</option>
+                                <option>Option 02</option>
+                            </select>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+        <hr>
+        <section>
+            <h3>Selects</h3>
+            <div class="row">
+                <div class="span-6">
+                    <h4>HTML</h4>
+                    <pre><code data-language="html">&lt;form&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;input&nbsp;type=&quot;submit&quot;&nbsp;value=&quot;Submit&quot;&nbsp;/&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;input&nbsp;type=&quot;submit&quot;&nbsp;value=&quot;Reset&quot;&nbsp;/&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;input&nbsp;type=&quot;button&quot;&nbsp;value=&quot;Button&quot;&nbsp;/&gt;
+&lt;/form&gt;</code></pre>
+                </div>
+                <div class="span-6">
+                    <h4>RENDERED HTML</h4>
+                    <form>
+                        <div>
+                            <select>
+                              <option>Option 1</option>
+                              <option>Option 2</option>
+                              <option>Option 3</option>
+                              <option>Option 4</option>
+                              <option>Option 5</option>
+                            </select>
+                        </div>
+                         <div>
+                            <select multiple>
+                              <option>Option 1</option>
+                              <option>Option 2</option>
+                              <option>Option 3</option>
+                              <option>Option 4</option>
+                              <option>Option 5</option>
+                            </select>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </section>
+
+    <script type="text/javascript" src="../js/highlighting/rainbow.min.js"></script>
+    <script type="text/javascript" src="../js/highlighting/html.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+</body>
+</html>

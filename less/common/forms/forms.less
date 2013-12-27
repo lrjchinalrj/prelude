@@ -1,0 +1,77 @@
+form {
+	margin: 0;
+}
+
+// Form element
+// ==========================================================================
+input[type="text"],
+input[type="password"],
+input[type="email"],
+input[type="file"],
+input[type="datetime"],
+input[type="datetime-local"],
+input[type="date"],
+input[type="month"],
+input[type="time"],
+input[type="week"],
+input[type="number"],
+input[type="url"],
+input[type="search"],
+input[type="tel"],
+input[type="color"],
+textarea,
+select {
+	max-width: 100%;
+	.unit('padding', @form-spacing/2);
+	.font-size (@base-fontSize *.78);
+	border: 1px solid @form-borderColor;
+	color: @form-textColor;
+	background: @form-bgColor;
+	.box-sizing(border-box);
+	.hook-form;
+
+    &:focus {
+    	border-color: @form-focus-borderColor;
+		color: @form-focus-textColor;
+		background: @form-focus-bgColor;
+		outline: none;
+
+		.hook-form-focus;
+    }
+
+    &[disabled] {
+        border-color: @form-disabled-borderColor;
+        background-color: @form-disabled-bgColor;
+        color: @form-disabled-textColor;
+        .hook-form-disabled;
+    }
+}
+
+// Placeholder
+// ==========================================================================
+:-ms-input-placeholder { color: @form-placeholder-textColor !important; } /* 1. */
+::-moz-placeholder { color: @form-placeholder-textColor; }
+::-webkit-input-placeholder { color: @form-placeholder-textColor; }
+
+:disabled:-ms-input-placeholder { color: @form-disabled-textColor !important; } /* 1. */
+:disabled::-moz-placeholder { color: @form-disabled-textColor; }
+:disabled::-webkit-input-placeholder { color: @form-disabled-textColor; }
+
+
+// Fieldset
+// ==========================================================================
+fieldset {
+	margin: 0;
+	border: @fieldset-borderWidth @fieldset-borderStyle @fieldset-borderColor;
+	.unit('margin-top', @fieldset-marginTop);
+	.unit('margin-bottom', @fieldset-marginBottom);
+	.unit('padding', @fieldset-padding);
+	legend {
+		.unit('padding', @legend-padding);
+		font-weight: bold;
+	}
+}
+
+// Hook
+// ==========================================================================
+.hook-form-misc;

@@ -1,0 +1,46 @@
+.prelude-panels (@use) when (@use = true) {
+    .panel-bgColor (@panel-bgColor) when not (@panel-bgColor = inherit) {
+        background-color: @panel-bgColor;
+    }
+    .panel {
+        border: 1px solid @panel-bdColor;
+        .panel-bgColor(@panel-bgColor);
+        .border-radius (@panel-borderRadius);
+
+        > *:last-child,
+        > *:last-child > *:last-child,
+        > *:last-child > *:last-child > *:last-child {
+            margin-bottom: 0;
+        }
+    }
+
+    .panel-header {
+        .unit('padding', @base-fontSize*.625);
+        background-color: @panel-header-bgColor;
+        border-bottom: 1px solid @panel-bdColor;
+        .border-top-right-radius (@base-borderRadius);
+        .border-top-left-radius (@base-borderRadius);
+    }
+
+    .panel-title {
+        margin: 0;
+        color: @panel-title-textColor;
+        .font-size(@panel-title-fontSize);
+    }
+
+    .panel-body {
+        .unit('padding', @base-fontSize*.8);
+        color: @panel-body-textColor;
+    }
+
+    .panel-footer {
+        .unit('padding', @base-fontSize*.625);
+        color: @panel-footer-textColor;
+        background-color: @panel-header-bgColor;
+        border-top: 1px solid @panel-bdColor;
+        .border-bottom-right-radius (@base-borderRadius);
+        .border-bottom-left-radius (@base-borderRadius);
+    }
+}
+
+.prelude-panels (@use-panels);

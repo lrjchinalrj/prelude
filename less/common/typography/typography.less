@@ -1,0 +1,157 @@
+// Body reset
+// ==========================================================================
+html {
+	font-size: 100%;
+}
+body {
+	font-family: @base-fontFamily;
+	.font-size(@base-fontSize);
+	line-height: @base-lineHeight;
+	color: @base-textColor;
+}
+
+// Paragraph
+// ==========================================================================
+p {
+	margin: 0;
+	.unit('margin-bottom', @base-fontSize);
+	font-family: inherit;
+	font-size: @base-fontSize;
+}
+
+// Links
+// ==========================================================================
+
+a {
+	color: @anchorColor;
+	outline: none;
+	text-decoration: @anchorTextDecoration;
+
+	&:focus {
+		outline: none;
+	}
+	&:active {
+		outline: none;
+	}
+	&:hover {
+		color: @hover-anchorColor;
+		text-decoration: underline;
+	}
+}
+
+// text-level semantics
+// ==========================================================================
+
+small {
+	.font-size(@base-fontSize*0.85);
+}
+strong, b {
+	font-weight: bold;
+}
+cite {
+	font-style: normal;
+}
+code {
+	padding: 2px 3px;
+	color: @code-textColor;
+	.font-size(@base-fontSize*0.9);
+	background: @code-bgColor;
+	border: 1px solid @code-borderColor;
+}
+
+kbd {
+	background: @kbd-bgColor;
+	border: 1px solid @kbd-borderColor;
+	.border-radius(@base-borderRadius);
+	font-weight: normal;
+	padding: 0;
+	.unit('padding-right', @base-fontSize*.5);
+	.unit('padding-left', @base-fontSize*.5);
+	white-space: nowrap;
+}
+abbr[title],
+dfn[title] {
+	cursor: help;
+	border-bottom: 1px dotted @abbr-borderColor;
+}
+dfn[title] {
+	font-style: normal;
+}
+
+// Addresses
+address {
+	display: block;
+	.unit('margin-bottom', @base-fontSize * 1.5);
+	font-style: normal;
+}
+
+// Headings
+// ==========================================================================
+
+h1, h2, h3, h4, h5, h6 {
+	margin: 0;
+	font-family: @header-fontFamily;
+	font-weight: normal;
+	text-rendering: optimizelegibility; 
+	small {
+		font-weight: normal;
+		line-height: 1;
+	}
+}
+
+h1 {
+	.font-size(@h1-fontSize);
+	.unit('margin-bottom', @base-fontSize*.2);
+}
+h2 { 
+	.font-size(@h2-fontSize);
+	.unit('margin-bottom', @base-fontSize*.33);
+}
+h3 { 
+	.font-size(@h3-fontSize);
+	.unit('margin-bottom', @base-fontSize*.5);
+}
+h4 { 
+	.font-size(@h4-fontSize);
+	.unit('margin-bottom', @base-fontSize*.5);
+}
+h5 { 
+	.font-size(@h5-fontSize);
+	.unit('margin-bottom', @base-fontSize*.5);
+}
+h6 { 
+	.font-size(@h6-fontSize);
+	.unit('margin-bottom', @base-fontSize*.5);
+}
+
+// Horizontal rules
+// ==========================================================================
+
+hr {
+	.px-to-rem('margin-top', @base-fontSize);
+	.px-to-rem('margin-bottom', @base-fontSize);
+	border: 0;
+	border-top: 1px solid @hr-borderTopColor;
+	border-bottom: 1px solid @hr-borderBottomColor;
+}
+
+// Blockquotes
+// ==========================================================================
+
+blockquote {
+	.unit('padding-left', @base-fontSize);
+	margin: 0;
+	.unit('margin-bottom', @base-fontSize * 1.5);
+	border-left: 5px solid @blockquote-borderColor;
+	p {
+		margin-bottom: 0;
+		#font > .shorthand(16px,300,@base-lineHeight);
+	}
+	small {
+		display: block;
+		color: @blockquote-small-textColor;
+		&:before {
+			content: '\2014 \00A0';
+		}
+	}
+}

@@ -1,0 +1,290 @@
+// ==========================================================================
+// Typography mixins
+// ==========================================================================
+
+// Fonts
+// ==========================================================================
+#font {
+  #family {
+    .serif() {
+      font-family: @fontFamily-serif;
+    }
+    .sans-serif() {
+      font-family: @fontFamily-sans;
+    }
+    .monospace() {
+      font-family: @fontFamily-mono;
+    }
+  }
+  .shorthand(@size: @base-fontSize, @weight: normal, @lineHeight: @base-lineHeight) {
+    font-size: @size;
+    font-weight: @weight;
+    line-height: @lineHeight;
+  }
+  .serif(@size: @base-fontSize, @weight: normal, @lineHeight: @base-lineHeight) {
+    #font > #family > .serif;
+    #font > .shorthand(@size, @weight, @lineHeight);
+  }
+  .sans-serif(@size: @base-fontSize, @weight: normal, @lineHeight: @base-lineHeight) {
+    #font > #family > .sans-serif;
+    #font > .shorthand(@size, @weight, @lineHeight);
+  }
+  .monospace(@size: @base-fontSize, @weight: normal, @lineHeight: @base-lineHeight) {
+    #font > #family > .monospace;
+    #font > .shorthand(@size, @weight, @lineHeight);
+  }
+}
+
+
+// Typography related mixins
+// ==========================================================================
+.px-to-rem(@property, @size, @base-size: 16) when not (isunit(@size, "px")){
+  @px-value: @size;
+  
+  ._px-to-rem(@px-value) when (@property = 'margin-top') {
+    margin-top: @size;
+  }
+
+  ._px-to-rem(@px-value) when (@property = 'margin-left') {
+    margin-left: @size;
+  }
+
+  ._px-to-rem(@px-value) when (@property = 'margin-bottom') {
+    margin-bottom: @size;
+  }
+
+  ._px-to-rem(@px-value) when (@property = 'margin-right') {
+    margin-right: @size;
+  }
+
+  ._px-to-rem(@px-value) when (@property = 'margin') {
+    margin: @size;
+  }
+
+  ._px-to-rem(@px-value) when (@property = 'padding-top') {
+    padding-top: @size;
+  }
+
+  ._px-to-rem(@px-value) when (@property = 'padding-left') {
+    padding-left: @size;
+  }
+
+  ._px-to-rem(@px-value) when (@property = 'padding-bottom') {
+    padding-bottom: @size;
+  }
+
+  ._px-to-rem(@px-value) when (@property = 'padding-right') {
+    padding-right: @size;
+  }
+
+  ._px-to-rem(@px-value) when (@property = 'padding') {
+    padding: @size;
+  }
+  ._px-to-rem(@px-value);
+}
+.px-to-rem (@property, @size, @base-size: 16) when (isunit(@size, "px")){
+  @rem-value: unit(@size)/@base-size;
+
+  ._px-to-rem(@rem-value) when (@property = 'margin-top') {
+    margin-top: @size;
+    margin-top: ~"@{rem-value}rem"; 
+  }
+
+  ._px-to-rem(@rem-value) when (@property = 'margin-left') {
+    margin-left: @size;
+    margin-left: ~"@{rem-value}rem"; 
+  }
+
+  ._px-to-rem(@rem-value) when (@property = 'margin-bottom') {
+    margin-bottom: @size;
+    margin-bottom: ~"@{rem-value}rem"; 
+  }
+
+  ._px-to-rem(@rem-value) when (@property = 'margin-right') {
+    margin-right: @size;
+    margin-right: ~"@{rem-value}rem"; 
+  }
+
+  ._px-to-rem(@rem-value) when (@property = 'margin') {
+    margin: @size;
+    margin: ~"@{rem-value}rem"; 
+  }
+
+  ._px-to-rem(@rem-value) when (@property = 'padding-top') {
+    padding-top: @size;
+    padding-top: ~"@{rem-value}rem"; 
+  }
+
+  ._px-to-rem(@rem-value) when (@property = 'padding-left') {
+    padding-left: @size;
+    padding-left: ~"@{rem-value}rem"; 
+  }
+
+  ._px-to-rem(@rem-value) when (@property = 'padding-bottom') {
+    padding-bottom: @size;
+    padding-bottom: ~"@{rem-value}rem"; 
+  }
+
+  ._px-to-rem(@rem-value) when (@property = 'padding-right') {
+    padding-right: @size;
+    padding-right: ~"@{rem-value}rem"; 
+  }
+
+  ._px-to-rem(@rem-value) when (@property = 'padding') {
+    padding: @size;
+    padding: ~"@{rem-value}rem"; 
+  }
+  ._px-to-rem(@rem-value);
+}
+.unit (@property, @size, @base-size: 16) when not (isunit(@size, "rem")){
+  @px-value: @size;
+  
+  ._unit(@px-value) when (@property = 'margin-top') {
+    margin-top: @size;
+  }
+
+  ._unit(@px-value) when (@property = 'margin-left') {
+    margin-left: @size;
+  }
+
+  ._unit(@px-value) when (@property = 'margin-bottom') {
+    margin-bottom: @size;
+  }
+
+  ._unit(@px-value) when (@property = 'margin-right') {
+    margin-right: @size;
+  }
+
+  ._unit(@px-value) when (@property = 'margin') {
+    margin: @size;
+  }
+
+  ._unit(@px-value) when (@property = 'padding-top') {
+    padding-top: @size;
+  }
+
+  ._unit(@px-value) when (@property = 'padding-left') {
+    padding-left: @size;
+  }
+
+  ._unit(@px-value) when (@property = 'padding-bottom') {
+    padding-bottom: @size;
+  }
+
+  ._unit(@px-value) when (@property = 'padding-right') {
+    padding-right: @size;
+  }
+
+  ._unit(@px-value) when (@property = 'padding') {
+    padding: @size;
+  }
+  ._unit(@px-value);
+}
+.unit (@property, @size, @base-size: 16) when (isunit(@size, "rem")){
+  @px-value: unit(@size)*@base-size;
+
+  ._unit(@px-value) when (@property = 'margin-top') {
+    margin-top: ~"@{px-value}px"; 
+    margin-top: @size;
+  }
+
+  ._unit(@px-value) when (@property = 'margin-left') {
+    margin-left: ~"@{px-value}px"; 
+    margin-left: @size;
+  }
+
+  ._unit(@px-value) when (@property = 'margin-bottom') {
+    margin-bottom: ~"@{px-value}px"; 
+    margin-bottom: @size;
+  }
+
+  ._unit(@px-value) when (@property = 'margin-right') {
+    margin-right: ~"@{px-value}px"; 
+    margin-right: @size;
+  }
+
+  ._unit(@px-value) when (@property = 'margin') {
+    margin: ~"@{px-value}px"; 
+    margin: @size;
+  }
+
+  ._unit(@px-value) when (@property = 'padding-top') {
+    padding-top: ~"@{px-value}px"; 
+    padding-top: @size;
+  }
+
+  ._unit(@px-value) when (@property = 'padding-left') {
+    padding-left: ~"@{px-value}px"; 
+    padding-left: @size;
+  }
+
+  ._unit(@px-value) when (@property = 'padding-bottom') {
+    padding-bottom: ~"@{px-value}px"; 
+    padding-bottom: @size;
+  }
+
+  ._unit(@px-value) when (@property = 'padding-right') {
+    padding-right: ~"@{px-value}px"; 
+    padding-right: @size;
+  }
+
+  ._unit(@px-value) when (@property = 'padding') {
+    padding: ~"@{px-value}px"; 
+    padding: @size;
+  }
+  ._unit(@px-value);
+}
+
+// Font Sizes (REMs with PX fallback for older browsers)
+.font-size (@size, @base-size: 16) when not (isunit(@size, "rem")){
+  font-size: @size;
+}
+.font-size (@size, @base-size: 16) when (isunit(@size, "rem")){
+  @px-value: unit(@size)*@base-size;
+  font-size: ~"@{px-value}px";
+  font-size: @size;
+}
+
+// Line Height Sizes (REMs with PX fallback for older browsers)
+.line-height (@size, @base-size: 16) when not (isunit(@size, "rem")){
+  line-height: @size;
+}
+.line-height (@size, @base-size: 16) when (isunit(@size, "rem")){
+  @px-value: unit(@size)*@base-size;
+  line-height: ~"@{px-value}px";
+  line-height: @size;
+}
+
+
+.font-size-ems(@target-px-value, @context-px-value:@base-font-size) {
+  font-size: (@target-px-value / @context-px-value) * 1em;
+}
+
+
+// Wrap words
+.wrap-words() {
+  -ms-word-break: break-all;
+  word-break: break-all;
+  word-break: break-word;
+  -webkit-hyphens: auto;
+  -moz-hyphens: auto;
+  hyphens: auto;
+}
+
+// Requires inline-block or block for proper styling
+.text-overflow() {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+// Optional hyphenation
+// Sets how to split words to improve the layout of paragraphs
+.hyphens(@mode: auto) {
+  word-wrap: break-word;
+  -webkit-hyphens: @mode;
+     -moz-hyphens: @mode;
+      -ms-hyphens: @mode;
+       -o-hyphens: @mode;
+          hyphens: @mode;
+}

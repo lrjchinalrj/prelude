@@ -1,0 +1,90 @@
+.prelude-tables (@use) when (@use = true) {
+    .table {
+        max-width: 100%;
+        width: 100%;
+        .unit('margin-bottom', @base-fontSize);
+        background-color: @table-bgColor;
+        // Cells
+        th,
+        td {
+            .unit('padding', @base-fontSize*.5);
+            text-align: left;
+            vertical-align: top;
+            line-height: @base-lineHeight;
+            border-top: 1px solid @table-borderColor;
+        }
+
+        th {
+            font-weight: bold;
+        }
+
+        // Bottom align for column headings
+        thead th {
+            vertical-align: bottom;
+        }
+
+        // Remove top border from thead by default
+        caption + thead tr:first-child th,
+        caption + thead tr:first-child td,
+        colgroup + thead tr:first-child th,
+        colgroup + thead tr:first-child td,
+        thead:first-child tr:first-child th,
+        thead:first-child tr:first-child td {
+            border-top: 0;
+        }
+        // Account for multiple tbody instances
+        tbody + tbody {
+            border-top: 2px solid @table-borderColor;
+        }
+    }
+
+
+    // Zebra-stripe
+    .table_striped {
+        tbody {
+            tr:nth-child(odd) td,
+            tr:nth-child(odd) th {
+                background-color: @table-striped-bgColor;
+            }
+        }
+    }
+
+    // BORDERED VERSION
+    // ----------------
+
+    .table_bordered {
+        border: 1px solid @table-borderColor;
+        border-collapse: separate; // Done so we can round those corners!
+        // *border-collapse: collapse; // IE7 can't round corners anyway
+        border-left: 0;
+        th,
+        td {
+            border-left: 1px solid @table-borderColor;
+        }
+        // Prevent a double border
+        caption + thead tr:first-child th,
+        caption + tbody tr:first-child th,
+        caption + tbody tr:first-child td,
+        colgroup + thead tr:first-child th,
+        colgroup + tbody tr:first-child th,
+        colgroup + tbody tr:first-child td,
+        thead:first-child tr:first-child th,
+        tbody:first-child tr:first-child th,
+        tbody:first-child tr:first-child td {
+            border-top: 0;
+        }
+    }
+
+    // Hover effect
+
+    .table_hover {
+        tbody {
+            tr:hover td,
+            tr:hover th {
+                background-color: @table-hover-bgColor;
+            }
+        }
+    }
+}
+
+.prelude-tables (@use-tables);
