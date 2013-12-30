@@ -7,7 +7,7 @@ body {
 	font-family: @base-fontFamily;
 	.font-size(@base-fontSize);
 	line-height: @base-lineHeight;
-	color: @base-textColor;
+	color: @base-color;
 }
 
 // Paragraph
@@ -53,7 +53,7 @@ cite {
 }
 code {
 	padding: 2px 3px;
-	color: @code-textColor;
+	color: @code-color;
 	.font-size(@base-fontSize*0.9);
 	background: @code-bgColor;
 	border: 1px solid @code-borderColor;
@@ -149,7 +149,7 @@ blockquote {
 	}
 	small {
 		display: block;
-		color: @blockquote-small-textColor;
+		color: @blockquote-small-color;
 		&:before {
 			content: '\2014 \00A0';
 		}

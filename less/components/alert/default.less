@@ -1,21 +1,47 @@
-@alert-bdColor:             #333;
+@alert-padding-top:           @base-fontSize * .5;
+@alert-padding-right:         @base-fontSize;
+@alert-padding-bottom:        @base-fontSize * .5;
+@alert-padding-left:          @base-fontSize;
+@alert-margin-bottom:         @base-fontSize * .5;
+@alert-fontSize:              @base-fontSize;
+@alert-bgColor:               #f0f0f0;
+@alert-borderColor:           #eee;
 
-@alert-close-color:         #333;
+@alert-borderRadius:          @base-borderRadius;
+@alert-round:                 1000px;
 
-@alert-warning-color:       #c09853;
-@alert-warning-bgColor:     #fcf8e3;
-@alert-warning-borderColor: darken(spin(@alert-warning-bgColor, -10), 3%);
+// close
+@alert-close-margin-top:      -@base-fontSize;
+@alert-close-color:           #333;
+@alert-close-fontSize:        @base-fontSize * 1.222;
 
-@alert-error-color:         #b94a48;
-@alert-error-bgColor:       #f2dede;
-@alert-error-borderColor:   darken(spin(@alert-error-bgColor, -10), 3%);
+// warning
+@alert-warning-color:         #c09853;
+@alert-warning-bgColor:       #fcf8e3;
+@alert-warning-borderColor:   darken(spin(@alert-warning-bgColor, -10), 3%);
 
-@alert-success-color:       #468847;
-@alert-success-bgColor:     #dff0d8;
-@alert-success-borderColor: darken(spin(@alert-success-bgColor, -10), 5%);
+// error
+@alert-error-color:           #b94a48;
+@alert-error-bgColor:         #f2dede;
+@alert-error-borderColor:     darken(spin(@alert-error-bgColor, -10), 3%);
 
-@alert-info-color:          #3a87ad;
-@alert-info-bgColor:        #d9edf7;
-@alert-info-borderColor:    darken(spin(@alert-info-bgColor, -10), 7%);
+// success
+@alert-success-color:         #468847;
+@alert-success-bgColor:       #dff0d8;
+@alert-success-borderColor:   darken(spin(@alert-success-bgColor, -10), 5%);
 
-@alert-round:               1000px;
+// info
+@alert-info-color:            #3a87ad;
+@alert-info-bgColor:          #d9edf7;
+@alert-info-borderColor:      darken(spin(@alert-info-bgColor, -10), 7%);
+
+
+// Hooks
+// ==========================================================================
+.hook-alert() {}
+.hook-alert-close() {}
+.hook-alert-warning() {}
+.hook-alert-error() {}
+.hook-alert-success() {}
+.hook-alert-info() {}
+.hook-alert-misc() {}

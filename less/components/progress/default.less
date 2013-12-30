@@ -1,5 +1,16 @@
-@progress-bgColor:                    darken(#fff, 3%);
-@progress-bdColor:                    darken(#eee, 13%);
+@progress-margin-bottom:              @base-fontSize * .625;
+@progress-padding:                    @base-fontSize * .1;
+@progress-bgColor:                    #f7f7f7;
+@progress-borderColor:                #cdcdcd;
 @progress-meter-bgColor:              #5bc0de;
 
+@progress-radius:                     @base-borderRadius;
 @progress-round:                      1000px;
+
+// Hooks
+// ==========================================================================
+.hook-progress() {}
+.hook-progress-meter() {}
+.hook-progress-striped() {}
+.hook-progress-meter-striped() {}
+.hook-progress-misc() {}

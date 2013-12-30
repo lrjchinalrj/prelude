@@ -15,7 +15,8 @@
         body {
             padding: 40px;
         }
-        * + .button {
+        * + .button,
+        * + button {
             margin-bottom: 10px;
         }
     </style>
@@ -128,7 +129,7 @@
             <div class="row">
                 <div class="span-6">
                     <h4>HTML</h4>
-                    <pre><code data-language="html">&lt;div&nbsp;class=&quot;button_group&nbsp;button_large&quot;&gt;
+                    <pre><code data-language="html">&lt;div&nbsp;class=&quot;buttons&nbsp;button_large&quot;&gt;
 &nbsp;&nbsp;&nbsp;&nbsp;&lt;button&nbsp;class=&quot;button&quot;&gt;One&lt;/button&gt;
 &nbsp;&nbsp;&nbsp;&nbsp;&lt;button&nbsp;class=&quot;button&quot;&gt;Two&lt;/button&gt;
 &nbsp;&nbsp;&nbsp;&nbsp;&lt;button&nbsp;class=&quot;button&quot;&gt;Three&lt;/button&gt;
@@ -136,18 +137,18 @@
                 </div>
                 <div class="span-6">
                     <h4>RENDERED HTML</h4>
-                    <div class="button_group">
+                    <div class="buttons">
                         <button class="button">One</button>
                         <button class="button">Two</button>
                         <button class="button">Three</button>
                     </div>
-                    <div class="button_group">
+                    <div class="buttons">
                         <button class="button"><i class="icon icon-align-left"></i></button>
                         <button class="button"><i class="icon icon-align-center"></i></button>
                         <button class="button"><i class="icon icon-align-right"></i></button>
                         <button class="button"><i class="icon icon-align-justify"></i></button>
                     </div>
-                    <div class="button_group button_large">
+                    <div class="buttons button_large">
                         <button class="button">Cancle</button>
                         <span class="or">or</span>
                         <button class="button">Save</button>

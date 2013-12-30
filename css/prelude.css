@@ -509,6 +509,26 @@ blockquote small:before {
 }
 form {
   margin: 0;
+  /* 1. */
+  /* 1. */
+}
+form :-ms-input-placeholder {
+  color: #666 !important;
+}
+form ::-moz-placeholder {
+  color: #666;
+}
+form ::-webkit-input-placeholder {
+  color: #666;
+}
+form :disabled:-ms-input-placeholder {
+  color: #999 !important;
+}
+form :disabled::-moz-placeholder {
+  color: #999;
+}
+form :disabled::-webkit-input-placeholder {
+  color: #999;
 }
 input[type="text"],
 input[type="password"],
@@ -581,26 +601,6 @@ select[disabled] {
   color: #999;
   background-color: #eee;
   border-color: #ccc;
-}
-:-ms-input-placeholder {
-  color: #666 !important;
-}
-/* 1. */
-::-moz-placeholder {
-  color: #666;
-}
-::-webkit-input-placeholder {
-  color: #666;
-}
-:disabled:-ms-input-placeholder {
-  color: #999 !important;
-}
-/* 1. */
-:disabled::-moz-placeholder {
-  color: #999;
-}
-:disabled::-webkit-input-placeholder {
-  color: #999;
 }
 fieldset {
   padding: 16px;
@@ -2300,7 +2300,8 @@ fieldset legend {
   margin-bottom: 8px;
   margin-bottom: .5rem;
   font-size: 1rem;
-  border: 1px solid #333;
+  background-color: #f0f0f0;
+  border: 1px solid #eee;
 }
 .alert .close {
   position: absolute;
@@ -2315,7 +2316,6 @@ fieldset legend {
   color: rgba(51, 51, 51, .3);
 }
 .alert .close:hover {
-  color: #333;
   color: rgba(51, 51, 51, .6);
   text-decoration: none;
 }
@@ -2343,7 +2343,6 @@ fieldset legend {
   border-color: #fbeed5;
 }
 .alert_warning:hover {
-  color: #c09853;
   color: #a47e3c;
 }
 .alert_error {
@@ -2352,7 +2351,6 @@ fieldset legend {
   border-color: #eed3d7;
 }
 .alert_error:hover {
-  color: #b94a48;
   color: #953b39;
 }
 .alert_success {
@@ -2361,7 +2359,6 @@ fieldset legend {
   border-color: #d6e9c6;
 }
 .alert_success:hover {
-  color: #468847;
   color: #356635;
 }
 .alert_info {
@@ -2370,9 +2367,9 @@ fieldset legend {
   border-color: #bce8f1;
 }
 .alert_info:hover {
-  color: #3a87ad;
   color: #2d6987;
 }
+button,
 .button {
   display: inline-block;
   padding-top: 8px;
@@ -2384,95 +2381,74 @@ fieldset legend {
   padding-left: 20.8px;
   padding-left: 1.3rem;
   line-height: 1;
-  color: #333;
+  color: #fff;
   text-align: center;
-  text-shadow: 0 1px 1px rgba(255, 255, 255, .75);
   vertical-align: middle;
   cursor: pointer;
   -webkit-user-select: none;
      -moz-user-select: none;
       -ms-user-select: none;
           user-select: none;
-  background-image:    -moz-linear-gradient(top, rgba(0, 0, 0, 0), rgba(0, 0, 0, .05));
-  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(rgba(0, 0, 0, 0)), to(rgba(0, 0, 0, .05)));
-  background-image: -webkit-linear-gradient(top, rgba(0, 0, 0, 0), rgba(0, 0, 0, .05));
-  background-image:      -o-linear-gradient(top, rgba(0, 0, 0, 0), rgba(0, 0, 0, .05));
-  background-image:         linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, .05));
-  background-repeat: repeat-x;
+  background-color: #428bca;
+  background-image: none;
   -webkit-background-clip: padding-box;
      -moz-background-clip: padding;
           background-clip: padding-box;
-  /* Darken IE7 buttons by default so they stand out more given they won't have borders */
-  border: 1px solid #bbb;
-  border-color: rgba(0, 0, 0, .05) rgba(0, 0, 0, .05) rgba(0, 0, 0, .05);
-  border-color: rgba(0, 0, 0, .1) rgba(0, 0, 0, .1) rgba(0, 0, 0, .25);
-  border-bottom-color: #a2a2a2;
+  border: 1px solid transparent;
           border-radius: 3px;
-  -webkit-box-shadow: inset 0 1px 0 rgba(255,255,255,.2), 0 1px 2px rgba(0,0,0,.05);
-     -moz-box-shadow: inset 0 1px 0 rgba(255,255,255,.2), 0 1px 2px rgba(0,0,0,.05);
-          box-shadow: inset 0 1px 0 rgba(255,255,255,.2), 0 1px 2px rgba(0,0,0,.05);
+  outline: none;
 
-  *background-color: rgba(0, 0, 0, .05);
   -webkit-border-radius: 3px;
      -moz-border-radius: 3px;
 }
+.ie7 button,
 .ie7 .button {
   display: inline;
   zoom: 1;
 }
+button:hover,
 .button:hover,
-.button:active,
-.button.active,
-.button.disabled,
-.button[disabled] {
-  color: #333;
-  background-color: rgba(0, 0, 0, .05);
-
-  *background-color: rgba(0, 0, 0, .05);
-}
-.button:active,
-.button.active {
-  background-color: rgba(0, 0, 0, .05) \9;
-}
-.button:hover {
-  color: #333;
+button:focus,
+.button:focus {
+  color: #fff;
   text-decoration: none;
-  background-color: #e6e6e6;
+  background-color: #3276b1;
+  outline: none;
   -webkit-transition: background-position .1s linear;
      -moz-transition: background-position .1s linear;
        -o-transition: background-position .1s linear;
           transition: background-position .1s linear;
 }
+button.button_active,
 .button.button_active,
+button:active,
 .button:active {
-  background-color: #e6e6e6;
+  background-color: #3276b1;
   background-image: none;
-  -webkit-box-shadow: inset 0 2px 4px rgba(0,0,0,.15), 0 1px 2px rgba(0,0,0,.05);
-     -moz-box-shadow: inset 0 2px 4px rgba(0,0,0,.15), 0 1px 2px rgba(0,0,0,.05);
-          box-shadow: inset 0 2px 4px rgba(0,0,0,.15), 0 1px 2px rgba(0,0,0,.05);
+  outline: none;
 }
+button.button_disabled,
 .button.button_disabled,
+button[disabled],
 .button[disabled] {
   cursor: default;
   background-color: #e6e6e6;
-  background-image: none;
-  -webkit-box-shadow: none;
-     -moz-box-shadow: none;
-          box-shadow: none;
           opacity: .6;
 
   -webkit-opacity: .6;
      -moz-opacity: .6;
 }
+button.button_radius,
 .button.button_radius {
   -webkit-background-clip: padding-box;
      -moz-background-clip: padding;
           background-clip: padding-box;
-          border-radius: 3px;
+          border-radius: 6px;
 
-  -webkit-border-radius: 3px;
-     -moz-border-radius: 3px;
+  -webkit-border-radius: 6px;
+     -moz-border-radius: 6px;
 }
+button.button_round,
 .button.button_round {
   -webkit-background-clip: padding-box;
      -moz-background-clip: padding;
@@ -2482,9 +2458,11 @@ fieldset legend {
   -webkit-border-radius: 1000px;
      -moz-border-radius: 1000px;
 }
+button > .icon,
 .button > .icon {
-  color: #999;
+  color: #eee;
 }
+button.button_label,
 .button.button_label {
   position: relative;
   padding-right: 24px;
@@ -2492,6 +2470,7 @@ fieldset legend {
   padding-left: 64px;
   padding-left: 4rem;
 }
+button.button_label > .icon,
 .button.button_label > .icon {
   position: absolute;
   top: 0;
@@ -2499,45 +2478,33 @@ fieldset legend {
   width: 2.5em;
   height: 100%;
   line-height: 2;
-  background-color: rgba(0, 0, 0, .05);
-  -webkit-box-shadow: -1px 0 0 0 rgba(0, 0, 0, .1) inset;
-     -moz-box-shadow: -1px 0 0 0 rgba(0, 0, 0, .1) inset;
-          box-shadow: -1px 0 0 0 rgba(0, 0, 0, .1) inset;
-}
-.button {
-  outline: none;
-}
-.button:focus {
-  outline: none;
-}
-.button:active {
-  outline: none;
+  background-color: rgba(0, 0, 0, .15);
 }
 .button::-moz-focus-inner {
   padding: 0;
   border: 0;
   outline: 0;
 }
-.button_group {
+.buttons {
   position: relative;
   display: inline-block;
   margin-right: 5.28px;
   margin-right: .33rem;
   vertical-align: bottom;
 }
-.ie7 .button_group {
+.ie7 .buttons {
   display: inline;
   zoom: 1;
 }
-.button_group:after {
+.buttons:after {
   clear: both;
 }
-.button_group:before,
-.button_group:after {
+.buttons:before,
+.buttons:after {
   display: table;
   content: "";
 }
-.button_group > .button {
+.buttons > .button {
   -webkit-background-clip: padding-box;
      -moz-background-clip: padding;
           background-clip: padding-box;
@@ -2546,7 +2513,7 @@ fieldset legend {
   -webkit-border-radius: 0;
      -moz-border-radius: 0;
 }
-.button_group > .button:first-child {
+.buttons > .button:first-child {
   -webkit-background-clip: padding-box;
      -moz-background-clip: padding;
           background-clip: padding-box;
@@ -2555,7 +2522,7 @@ fieldset legend {
   -webkit-border-radius: 3px 0 0 3px;
      -moz-border-radius: 3px 0 0 3px;
 }
-.button_group > .button:last-child {
+.buttons > .button:last-child {
   -webkit-background-clip: padding-box;
      -moz-background-clip: padding;
           background-clip: padding-box;
@@ -2564,12 +2531,12 @@ fieldset legend {
   -webkit-border-radius: 0 3px 3px 0;
      -moz-border-radius: 0 3px 3px 0;
 }
-.button_group > .button,
-.button_group > input {
+.buttons > .button,
+.buttons > input {
   float: left;
   margin-left: -1px;
 }
-.button_group .or {
+.buttons .or {
   position: relative;
   float: left;
   width: .3em;
@@ -2578,7 +2545,7 @@ fieldset legend {
   margin-top: .5rem;
   color: transparent;
 }
-.button_group .or:before {
+.buttons .or:before {
   position: absolute;
   top: 0;
   left: 50%;
@@ -2594,15 +2561,13 @@ fieldset legend {
      -moz-background-clip: padding;
           background-clip: padding-box;
           border-radius: 100%;
-  -webkit-box-shadow: 0 0 0 1px rgba(0, 0, 0, .1);
-     -moz-box-shadow: 0 0 0 1px rgba(0, 0, 0, .1);
-          box-shadow: 0 0 0 1px rgba(0, 0, 0, .1);
 
   -webkit-border-radius: 100%;
      -moz-border-radius: 100%;
 }
+button.button_mini,
 .button.button_mini,
-.button_group.button_mini {
+.buttons.button_mini {
   padding-top: 6.4px;
   padding-top: .4rem;
   padding-bottom: 6.4px;
@@ -2610,38 +2575,45 @@ fieldset legend {
   font-size: 10px;
   font-size: .625rem;
 }
+button.button_tiny,
 .button.button_tiny,
-.button_group.button_tiny {
+.buttons.button_tiny {
   font-size: 12px;
   font-size: .75rem;
 }
+button.button_small,
 .button.button_small,
-.button_group.button_small {
+.buttons.button_small {
   font-size: 14px;
   font-size: .875rem;
 }
+button.button_medium,
 .button.button_medium,
-.button_group.button_medium {
+.buttons.button_medium {
   font-size: 16px;
   font-size: 1rem;
 }
+button.button_large,
 .button.button_large,
-.button_group.button_large {
+.buttons.button_large {
   font-size: 18px;
   font-size: 1.125rem;
 }
+button.button_big,
 .button.button_big,
-.button_group.button_big {
+.buttons.button_big {
   font-size: 20px;
   font-size: 1.25rem;
 }
+button.button_huge,
 .button.button_huge,
-.button_group.button_huge {
+.buttons.button_huge {
   font-size: 22px;
   font-size: 1.375rem;
 }
+button.button_massive,
 .button.button_massive,
-.button_group.button_massive {
+.buttons.button_massive {
   font-size: 24px;
   font-size: 1.5rem;
 }
@@ -2668,12 +2640,8 @@ fieldset legend {
 .divider.divider_icon {
   position: relative;
   height: auto;
-  margin-top: 16px;
-  margin-top: 1rem;
   margin-right: 24px;
   margin-right: 1.5rem;
-  margin-bottom: 16px;
-  margin-bottom: 1rem;
   margin-left: 24px;
   margin-left: 1.5rem;
   font-size: 14px;
@@ -2691,17 +2659,21 @@ fieldset legend {
   width: 50%;
   height: 0;
   content: '';
+  border-top: 1px solid #000;
   border-top: 1px solid rgba(0, 0, 0, .1);
+  border-bottom: 1px solid #fff;
   border-bottom: 1px solid rgba(255, 255, 255, .8);
 }
 .divider.divider_text:before,
 .divider.divider_icon:before {
   left: 0;
+  margin-left: -24px;
   margin-left: -1.5rem;
 }
 .divider.divider_text:after,
 .divider.divider_icon:after {
   right: 0;
+  margin-right: -24px;
   margin-right: -1.5rem;
 }
 .divider.divider_text {
@@ -2750,7 +2722,7 @@ fieldset legend {
 .icon_lg {
   font-size: 21.328px;
   font-size: 1.333rem;
-  line-height: .75;
+  line-height: .5rem;
   vertical-align: -15%;
 }
 .icon_2x {

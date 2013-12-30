@@ -1,66 +1,82 @@
 .prelude-buttons (@use) when (@use = true) {
+    button,
     .button {
         .inline-block();
-        .unit('padding-top', @base-fontSize*.5);
-        .unit('padding-right', @base-fontSize*1.3);
-        .unit('padding-bottom', @base-fontSize*.5);
-        .unit('padding-left', @base-fontSize*1.3);
+        .unit('padding-top', @button-padding-top);
+        .unit('padding-right', @button-padding-right);
+        .unit('padding-bottom', @button-padding-bottom);
+        .unit('padding-left', @button-padding-left);
         line-height: 1;
+        color: @button-color;
         text-align: center;
         vertical-align: middle;
-        .buttonBackground(@button-bgColor, @button-hightLight-bgColor, @button-textColor, 0 1px 1px rgba(255,255,255,.75));
-        border: 1px solid @button-borderColor;
-        border-bottom-color: darken(@button-borderColor, 10%);
+        background-color: @button-bgColor;
+        background-image: none;
+        border: 1px solid transparent;
         cursor: pointer;
-        .box-shadow(~"inset 0 1px 0 rgba(255,255,255,.2), 0 1px 2px rgba(0,0,0,.05)");
+        outline: none;
         .border-radius(@button-borderRadius);
         .user-select (none);
+        .hook-button;
 
-        // Hover state
-        &:hover {
-            color: @button-hover-textColor;
+        // Hover state && focus
+        // ======================================================================
+        &:hover,
+        &:focus {
+            color: @button-hover-color;
             text-decoration: none;
             background-color: @button-hover-bgColor;
+            outline: none;
 
             // transition is only when going to hover, otherwise the background
             // behind the gradient (there for IE<=9 fallback) gets mismatched
             .transition(background-position .1s linear);
+
+            .hook-button-hover;
         }
 
         // Active state
+        // ======================================================================
         &.button_active,
         &:active {
             background-color: @button-active-bgColor;
             background-image: none;
-            .box-shadow(~"inset 0 2px 4px rgba(0,0,0,.15), 0 1px 2px rgba(0,0,0,.05)");
+            outline: none;
+
+            .hook-button-active;
         }
 
         // Disabled state
+        // ======================================================================
         &.button_disabled,
         &[disabled] {
             cursor: default;
             background-color: @button-disable-bgColor;
-            background-image: none;
             .opacity(@button-disable-opacity);
-            .box-shadow(none);
+
+            .hook-button-disabled;
         }
 
-        //button types
+        // button types
+        // ======================================================================
         &.button_radius {
-            .border-radius(@button-borderRadius);
+            .border-radius(@button-radius);
         }
         &.button_round {
             .border-radius(@button-rounded);
         }
 
         // icon
+        // ======================================================================
         & > .icon {
-            color: @button-icon-textColor;
+            color: @button-icon-color;
+            .hook-button-icon;
         }
         &.button_label {
             position: relative;
-            .unit('padding-right', @base-fontSize*1.5);
-            .unit('padding-left', @base-fontSize*4);
+            .unit('padding-right', @button-label-padding-right);
+            .unit('padding-left', @button-label-padding-left);
+            .hook-button-label;
             & > .icon {
                 position: absolute;
                 top: 0;
@@ -68,20 +84,8 @@
                 height: 100%;
                 width: 2.5em;
                 line-height: 2;
-                background-color: fade(@button-icon-bgColor, 5%);
-                .box-shadow(-1px 0 0 0 rgba(0,0,0,0.1) inset);
+                background-color: fade(@button-icon-bgColor, 15%);
             }
-        }
-    }
-
-    //remove focus dashed
-    .button {
-        outline: none;
-        &:focus {
-            outline: none;
-        }
-        &:active {
-            outline: none;
         }
     }
 
@@ -91,12 +95,14 @@
         outline: 0;
     }
 
-    //Button groups
-    .button_group {
+    // Button groups
+    // ==========================================================================
+    .buttons {
         position: relative;
         .inline-block();
-        .unit('margin-right', @base-fontSize * 0.33);
+        .unit('margin-right', @buttons-margin-right);
         vertical-align: bottom;
+        .hook-buttons;
         &:after {
             clear: both;
         }
@@ -123,8 +129,9 @@
             float: left;
             width: .3em;
             height: 1em;
-            .unit('margin-top', @base-fontSize*.5);
+            .unit('margin-top', @button-or-mragin-top);
             color: transparent;
+            .hook-button-or;
             &:before {
                 position: absolute;
                 top: 0;
@@ -134,45 +141,50 @@
                 width: 1.5em;
                 margin-top: -.2em;
                 margin-left: -.75em;
-                color: @button-or-textColor;
+                color: @button-or-color;
                 text-align: center;
                 background-color: @button-or-bgColor;
                 .border-radius(100%);
-                .box-shadow(0 0 0 1px fade(#000, 10%));
             }
         }
     }
 
     // button size
+    // ==========================================================================
+    button,
     .button,
-    .button_group {
+    .buttons {
         &.button_mini {
-            .unit('padding-top', @base-fontSize*.4);
-            .unit('padding-bottom', @base-fontSize*.4);
-            .font-size(@base-fontSize * .625);
+            .unit('padding-top', @button-mini-padding-top);
+            .unit('padding-bottom', @button-mini-padding-bottom);
+            .font-size(@button-mini-fontSize);
         }
         &.button_tiny {
-            .font-size(@base-fontSize * .75);
+            .font-size(@button-tiny-fontSize);
         }
         &.button_small {
-            .font-size(@base-fontSize * .875);
+            .font-size(@button-small-fontSize);
         }
         &.button_medium {
-            .font-size(@base-fontSize);
+            .font-size(@button-medium-fontSize);
         }
         &.button_large {
-            .font-size(@base-fontSize * 1.125);
+            .font-size(@button-large-fontSize);
         }
         &.button_big {
-            .font-size(@base-fontSize * 1.25);
+            .font-size(@button-big-fontSize);
         }
         &.button_huge {
-            .font-size(@base-fontSize * 1.375);
+            .font-size(@button-huge-fontSize);
         }
         &.button_massive {
-            .font-size(@base-fontSize * 1.5);
+            .font-size(@button-massive-fontSize);
         }
     }
+
+    // Hook
+    // ==========================================================================
+    .hook-button-misc;
 }
 
 .prelude-buttons (@use-buttons);

@@ -1,104 +1,111 @@
 .prelude-icon (@use) when (@use = true) {
-  .icon {
-  	.inline-block();
-  	font-family: FontAwesome;
-  	font-style: normal;
-  	font-weight: normal;
-  	line-height: 1;
-  }
+    .icon {
+        .inline-block();
+        font-family: FontAwesome;
+        font-style: normal;
+        font-weight: normal;
+        line-height: 1;
+        .hook-icon;
+    }
 
-  // size
-  // ===========================
-  .icon_lg {
-    .font-size(@base-fontSize*1.333);
-  	line-height: @base-lineHeight*.5;
-  	vertical-align: -15%;
-  }
-  .icon_2x {
-  	.font-size(@base-fontSize*2);
-  }
-  .icon_3x {
-  	.font-size(@base-fontSize*3);
-  }
-  .icon_4x {
-  	.font-size(@base-fontSize*4);
-  }
-  .icon_5x {
-  	.font-size(@base-fontSize*5);
-  }
+    // size
+    // ==========================================================================
+    .icon_lg {
+        .font-size(@icon-lg-fontSize);
+        line-height: @icon-lg-lineHeight;
+        vertical-align: -15%;
+    }
+    .icon_2x {
+        .font-size(@icon-2x-fontSize);
+    }
+    .icon_3x {
+        .font-size(@icon-3x-fontSize);
+    }
+    .icon_4x {
+        .font-size(@icon-4x-fontSize);
+    }
+    .icon_5x {
+        .font-size(@icon-5x-fontSize);
+    }
 
-  // list
-  // ===========================
-  .icon-ul {
-    padding-left: 0;
-    .unit('margin-left', @base-fontSize*1.875);
-    list-style-type: none;
-  }
-  .icon-ul > li {
-    position: relative;
-  }
-  .icon-li {
-    position: absolute;
-    top: 5px;
-    top: .3125rem;
-    left: 30px;
-    left: -1.875rem;
-    width: 30px;
-    width: 1.875rem;
-    text-align: center;
-  }
-  .icon-li.icon_lg {
-    left: -26px;
-    left: -1.625rem;
-  }
+    // list
+    // ==========================================================================
+    .icon-ul {
+        padding-left: 0;
+        .unit('margin-left', @icon-ul-margin-left);
+        list-style-type: none;
 
-  // spinning
-  // ===========================
-  .icon-spin {
-    .animation(spin 2s infinite linear)
-  }
-  @-moz-keyframes spin {
-    0% {
-      -moz-transform: rotate(0deg);
+        > li {
+            position: relative;
+        }
     }
-    100% {
-      -moz-transform: rotate(359deg);
+    .icon-li {
+        position: absolute;
+        top: 5px;
+        top: .3125rem;
+        left: 30px;
+        left: -1.875rem;
+        width: 30px;
+        width: 1.875rem;
+        text-align: center;
+        .hook-icon-ul;
     }
-  }
-  @-webkit-keyframes spin {
-    0% {
-      -webkit-transform: rotate(0deg);
+    .icon-li.icon_lg {
+        left: -26px;
+        left: -1.625rem;
     }
-    100% {
-      -webkit-transform: rotate(359deg);
-    }
-  }
-  @keyframes spin {
-    0% {
-      transform: rotate(0deg);
-    }
-    100% {
-      transform: rotate(359deg);
-    }
-  }
 
-  // rotate
-  // ======================================
-  .icon-rotate-90 {
-    .rotate(90deg);
-  }
-  .icon-rotate-180 {
-    .rotate(180deg);
-  }
-  .icon-rotate-270 {
-    .rotate(270deg);
-  }
-  .icon-flip-horizontal {
-    .scale3d(-1, 1, 0);
-  }
-  .icon-flip-vertical {
-    .scale3d(1, -1, 0);
-  }
+    // spinning
+    // ==========================================================================
+    .icon-spin {
+        .animation(spin 2s infinite linear);
+    }
+    @-moz-keyframes spin {
+        0% {
+            -moz-transform: rotate(0deg);
+        }
+        100% {
+            -moz-transform: rotate(359deg);
+        }
+    }
+    @-webkit-keyframes spin {
+        0% {
+            -webkit-transform: rotate(0deg);
+        }
+        100% {
+            -webkit-transform: rotate(359deg);
+        }
+    }
+    @keyframes spin {
+        0% {
+            transform: rotate(0deg);
+        }
+        100% {
+            transform: rotate(359deg);
+        }
+    }
+
+    // rotate
+    // ==========================================================================
+    .icon-rotate-90 {
+        .rotate(90deg);
+    }
+    .icon-rotate-180 {
+        .rotate(180deg);
+    }
+    .icon-rotate-270 {
+        .rotate(270deg);
+    }
+    .icon-flip-horizontal {
+        .scale3d(-1, 1, 0);
+    }
+    .icon-flip-vertical {
+        .scale3d(1, -1, 0);
+    }
+
+    // Hook
+    // ==========================================================================
+    .hook-icon-misc;
 }
 
 .prelude-icon (@use-icon);

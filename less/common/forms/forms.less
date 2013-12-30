@@ -1,5 +1,15 @@
 form {
 	margin: 0;
+
+	// Placeholder
+	// ==========================================================================
+	:-ms-input-placeholder { color: @form-placeholder-color !important; } /* 1. */
+	::-moz-placeholder { color: @form-placeholder-color; }
+	::-webkit-input-placeholder { color: @form-placeholder-color; }
+
+	:disabled:-ms-input-placeholder { color: @form-disabled-color !important; } /* 1. */
+	:disabled::-moz-placeholder { color: @form-disabled-color; }
+	:disabled::-webkit-input-placeholder { color: @form-disabled-color; }
 }
 
 // Form element
@@ -25,14 +35,14 @@ select {
 	.unit('padding', @form-spacing/2);
 	.font-size (@base-fontSize *.78);
 	border: 1px solid @form-borderColor;
-	color: @form-textColor;
+	color: @form-color;
 	background: @form-bgColor;
 	.box-sizing(border-box);
 	.hook-form;
 
     &:focus {
     	border-color: @form-focus-borderColor;
-		color: @form-focus-textColor;
+		color: @form-focus-color;
 		background: @form-focus-bgColor;
 		outline: none;
 
@@ -42,20 +52,10 @@ select {
     &[disabled] {
         border-color: @form-disabled-borderColor;
         background-color: @form-disabled-bgColor;
-        color: @form-disabled-textColor;
+        color: @form-disabled-color;
         .hook-form-disabled;
     }
 }
-
-// Placeholder
-// ==========================================================================
-:-ms-input-placeholder { color: @form-placeholder-textColor !important; } /* 1. */
-::-moz-placeholder { color: @form-placeholder-textColor; }
-::-webkit-input-placeholder { color: @form-placeholder-textColor; }
-
-:disabled:-ms-input-placeholder { color: @form-disabled-textColor !important; } /* 1. */
-:disabled::-moz-placeholder { color: @form-disabled-textColor; }
-:disabled::-webkit-input-placeholder { color: @form-disabled-textColor; }
 
 
 // Fieldset

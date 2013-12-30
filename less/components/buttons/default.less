@@ -1,19 +1,57 @@
-@button-bgColor:                         rgba(0,0,0,0);
-@button-hightLight-bgColor:              rgba(0,0,0,0.05);
-@button-textColor:                       #333;
-@button-borderColor:                     #bbb;
+@button-padding-top:                 @base-fontSize * .5;
+@button-padding-right:               @base-fontSize * 1.3;
+@button-padding-bottom:              @base-fontSize * .5;
+@button-padding-left:                @base-fontSize * 1.3;
+@button-bgColor:                     #428BCA;
+@button-color:                       #fff;
+@button-borderRadius:                @base-borderRadius;
 
-@button-hover-textColor:                 #333;
-@button-hover-bgColor:                   darken(#fff, 10%);
-@button-active-bgColor:                  darken(#fff, 10%);
-@button-disable-bgColor:                 darken(#fff, 10%);
-@button-disable-opacity:                 .6;
+@button-radius:                      @base-borderRadius * 2;
+@button-rounded:                     1000px;
 
-@button-icon-textColor:                  #999;
-@button-icon-bgColor:                    #000;
+// state
+@button-hover-color:                 #fff;
+@button-hover-bgColor:               #3276B1;
+@button-active-bgColor:              #3276B1;
+@button-disable-bgColor:             #e6e6e6;
+@button-disable-opacity:             .6;
 
-@button-or-textColor:                    #aaa;
-@button-or-bgColor:                      #fdfdfd;
+// label
+@button-label-padding-right:         @base-fontSize * 1.5;
+@button-label-padding-left:          @base-fontSize * 4;
 
-@button-borderRadius:                    @base-borderRadius;
-@button-rounded:                         1000px;
+// icon
+@button-icon-color:                  #eee;
+@button-icon-bgColor:                #000;
+
+// buttons
+@buttons-margin-right:               @base-fontSize * .33;
+
+// or
+@button-or-mragin-top:               @base-fontSize * .5;
+@button-or-color:                    #aaa;
+@button-or-bgColor:                  #fdfdfd;
+
+// size
+@button-mini-padding-top:            @base-fontSize * .4;
+@button-mini-padding-bottom:         @base-fontSize * .4;
+@button-mini-fontSize:               @base-fontSize * .625;
+@button-tiny-fontSize:               @base-fontSize * .75;
+@button-small-fontSize:              @base-fontSize * .875;
+@button-medium-fontSize:             @base-fontSize;
+@button-large-fontSize:              @base-fontSize * 1.125;
+@button-big-fontSize:                @base-fontSize * 1.25;
+@button-huge-fontSize:               @base-fontSize * 1.375;
+@button-massive-fontSize:            @base-fontSize * 1.5;
+
+// Hooks
+// ==========================================================================
+.hook-button() {}
+.hook-button-hover() {}
+.hook-button-active() {}
+.hook-button-disabled() {}
+.hook-button-icon() {}
+.hook-button-label() {}
+.hook-button-or() {}
+.hook-buttons() {}
+.hook-button-misc() {}

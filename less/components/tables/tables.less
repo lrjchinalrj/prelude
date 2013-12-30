@@ -2,16 +2,19 @@
     .table {
         max-width: 100%;
         width: 100%;
-        .unit('margin-bottom', @base-fontSize);
+        .unit('margin-bottom', @table-margin-bottom);
         background-color: @table-bgColor;
+
         // Cells
+        // ======================================================================
         th,
         td {
-            .unit('padding', @base-fontSize*.5);
+            .unit('padding', @table-cell-padding);
             text-align: left;
             vertical-align: top;
-            line-height: @base-lineHeight;
+            line-height: @table-lineHeight;
             border-top: 1px solid @table-borderColor;
+            .hook-table;
         }
 
         th {
@@ -19,11 +22,13 @@
         }
 
         // Bottom align for column headings
+        // ======================================================================
         thead th {
             vertical-align: bottom;
         }
 
         // Remove top border from thead by default
+        // ======================================================================
         caption + thead tr:first-child th,
         caption + thead tr:first-child td,
         colgroup + thead tr:first-child th,
@@ -33,6 +38,7 @@
             border-top: 0;
         }
         // Account for multiple tbody instances
+        // ======================================================================
         tbody + tbody {
             border-top: 2px solid @table-borderColor;
         }
@@ -40,6 +46,7 @@
 
 
     // Zebra-stripe
+    // ==========================================================================
     .table_striped {
         tbody {
             tr:nth-child(odd) td,
@@ -50,7 +57,7 @@
     }
 
     // BORDERED VERSION
-    // ----------------
+    // ==========================================================================
 
     .table_bordered {
         border: 1px solid @table-borderColor;
@@ -76,6 +83,7 @@
     }
 
     // Hover effect
+    // ==========================================================================
 
     .table_hover {
         tbody {
@@ -85,6 +93,10 @@
             }
         }
     }
+
+    // Hook
+    // ==========================================================================
+    .hook-table-misc;
 }
 
 .prelude-tables (@use-tables);
