@@ -10,7 +10,7 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
     <link rel="stylesheet" href="../../css/prelude.css">
-    <link rel="stylesheet" href="../css/highlighting//github.css">
+    <link rel="stylesheet" href="../css/highlighting/github.css">
     <style>
         body {
             padding: 40px;
@@ -27,7 +27,7 @@
         <section>
             <h3>Defination</h3>
             <div class="row">
-                <div class="span-6">
+                <div class="column half">
                     <h4>HTML</h4>
                     <pre><code data-language="html">&lt;button&nbsp;class=&quot;button&nbsp;button_mini&quot;&gt;mini&lt;/button&gt;
 &lt;button&nbsp;class=&quot;button&nbsp;button_tiny&quot;&gt;tiny&lt;/button&gt;
@@ -38,7 +38,7 @@
 &lt;button&nbsp;class=&quot;button&nbsp;button_huge&quot;&gt;huge&lt;/button&gt;
 &lt;button&nbsp;class=&quot;button&nbsp;button_massive&quot;&gt;massive&lt;/button&gt;</code></pre>
                 </div>
-                <div class="span-6">
+                <div class="column half">
                     <h4>RENDERED HTML</h4>
                     <a class="button">link</a>
                     <button>tiny</button>
@@ -51,7 +51,7 @@
         <section>
             <h3>Sizes</h3>
             <div class="row">
-                <div class="span-6">
+                <div class="column half">
                     <h4>HTML</h4>
                     <pre><code data-language="html">&lt;button&nbsp;class=&quot;button&nbsp;button_mini&quot;&gt;mini&lt;/button&gt;
 &lt;button&nbsp;class=&quot;button&nbsp;button_tiny&quot;&gt;tiny&lt;/button&gt;
@@ -62,7 +62,7 @@
 &lt;button&nbsp;class=&quot;button&nbsp;button_huge&quot;&gt;huge&lt;/button&gt;
 &lt;button&nbsp;class=&quot;button&nbsp;button_massive&quot;&gt;massive&lt;/button&gt;</code></pre>
                 </div>
-                <div class="span-6">
+                <div class="column half">
                     <h4>RENDERED HTML</h4>
                     <button class="button button_mini">mini</button>
                     <button class="button button_tiny">tiny</button>
@@ -79,13 +79,13 @@
         <section>
             <h3>Types</h3>
             <div class="row">
-                <div class="span-6">
+                <div class="column half">
                     <h4>HTML</h4>
                     <pre><code data-language="html">&lt;button&nbsp;class=&quot;button&nbsp;button_disabled&quot;&gt;disabled&lt;/button&gt;
 &lt;button&nbsp;class=&quot;button&nbsp;button_radius&quot;&gt;radius&lt;/button&gt;
 &lt;button&nbsp;class=&quot;button&nbsp;button_round&quot;&gt;round&lt;/button&gt;</code></pre>
                 </div>
-                <div class="span-6">
+                <div class="column half">
                     <h4>RENDERED HTML</h4>
                     <button class="button button_disabled">disabled</button><br />
                     <button class="button button_radius">radius</button><br />
@@ -97,11 +97,11 @@
         <section>
             <h3>Icon</h3>
             <div class="row">
-                <div class="span-6">
+                <div class="column half">
                     <h4>HTML</h4>
                     <pre><code data-language="html">&lt;button&nbsp;class=&quot;button&quot;&gt;&lt;i&nbsp;class=&quot;icon&nbsp;icon-cloud&quot;&gt;&lt;/i&gt;&lt;/button&gt;</code></pre>
                 </div>
-                <div class="span-6">
+                <div class="column half">
                     <h4>RENDERED HTML</h4>
                     <button class="button"><i class="icon icon-cloud"></i></button>
                 </div>
@@ -111,12 +111,12 @@
         <section>
             <h3>Label</h3>
             <div class="row">
-                <div class="span-6">
+                <div class="column half">
                     <h4>HTML</h4>
                     <pre><code data-language="html">&lt;button&nbsp;class=&quot;button&nbsp;button_label&quot;&gt;&lt;i&nbsp;class=&quot;icon&nbsp;icon-pause&quot;&gt;&lt;/i&gt;Pause&lt;/button&gt;
 &lt;button&nbsp;class=&quot;button&nbsp;button_label&quot;&gt;&lt;i&nbsp;class=&quot;icon&nbsp;icon-play&quot;&gt;&lt;/i&gt;Play&lt;/button&gt;</code></pre>
                 </div>
-                <div class="span-6">
+                <div class="column half">
                     <h4>RENDERED HTML</h4>
                     <button class="button button_label"><i class="icon icon-pause"></i>Pause</button><br />
                     <button class="button button_label"><i class="icon icon-play"></i>Play</button>
@@ -127,7 +127,7 @@
         <section>
             <h3>Groups</h3>
             <div class="row">
-                <div class="span-6">
+                <div class="column half">
                     <h4>HTML</h4>
                     <pre><code data-language="html">&lt;div&nbsp;class=&quot;buttons&nbsp;button_large&quot;&gt;
 &nbsp;&nbsp;&nbsp;&nbsp;&lt;button&nbsp;class=&quot;button&quot;&gt;One&lt;/button&gt;
@@ -135,13 +135,19 @@
 &nbsp;&nbsp;&nbsp;&nbsp;&lt;button&nbsp;class=&quot;button&quot;&gt;Three&lt;/button&gt;
 &lt;/div&gt;</code></pre>
                 </div>
-                <div class="span-6">
+                <div class="column half">
                     <h4>RENDERED HTML</h4>
                     <div class="buttons">
                         <button class="button">One</button>
                         <button class="button">Two</button>
                         <button class="button">Three</button>
                     </div>
+                    <div class="buttons">
+                        <a class="button">One</a>
+                        <a class="button">Two</a>
+                        <a class="button">Three</a>
+                    </div>
+                    
                     <div class="buttons">
                         <button class="button"><i class="icon icon-align-left"></i></button>
                         <button class="button"><i class="icon icon-align-center"></i></button>

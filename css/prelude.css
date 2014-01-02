@@ -354,7 +354,6 @@ p {
   margin-bottom: 16px;
   margin-bottom: 1rem;
   font-family: inherit;
-  font-size: 1rem;
 }
 a {
   color: #08c;
@@ -496,9 +495,6 @@ blockquote {
 }
 blockquote p {
   margin-bottom: 0;
-  font-size: 16px;
-  font-weight: 300;
-  line-height: 1.5;
 }
 blockquote small {
   display: block;
@@ -2303,22 +2299,6 @@ fieldset legend {
   background-color: #f0f0f0;
   border: 1px solid #eee;
 }
-.alert .close {
-  position: absolute;
-  top: 50%;
-  right: 14px;
-  right: .875rem;
-  margin-top: -16px;
-  margin-top: -1rem;
-  font-size: 19.552px;
-  font-size: 1.222rem;
-  color: #333;
-  color: rgba(51, 51, 51, .3);
-}
-.alert .close:hover {
-  color: rgba(51, 51, 51, .6);
-  text-decoration: none;
-}
 .alert.alert_radius {
   -webkit-background-clip: padding-box;
      -moz-background-clip: padding;
@@ -2336,6 +2316,22 @@ fieldset legend {
 
   -webkit-border-radius: 1000px;
      -moz-border-radius: 1000px;
+}
+.alert-close {
+  position: absolute;
+  top: 50%;
+  right: 14px;
+  right: .875rem;
+  margin-top: -16px;
+  margin-top: -1rem;
+  font-size: 19.552px;
+  font-size: 1.222rem;
+  color: #333;
+  color: rgba(51, 51, 51, .3);
+}
+.alert-close:hover {
+  color: rgba(51, 51, 51, .6);
+  text-decoration: none;
 }
 .alert_warning {
   color: #c09853;
@@ -2383,11 +2379,7 @@ button,
       -ms-user-select: none;
           user-select: none;
   background-color: #428bca;
-  background-image: none;
-  -webkit-background-clip: padding-box;
-     -moz-background-clip: padding;
-          background-clip: padding-box;
-  border: 1px solid transparent;
+  border: 1px solid rgba(0, 0, 0, .1);
           border-radius: 3px;
   outline: none;
 
@@ -2424,47 +2416,32 @@ button.button_disabled,
 .button.button_disabled,
 button[disabled],
 .button[disabled] {
+  color: #999;
   cursor: default;
-  background-color: #e6e6e6;
+  background-color: #ddd;
           opacity: .6;
 
   -webkit-opacity: .6;
      -moz-opacity: .6;
 }
-button.button_radius,
-.button.button_radius {
-  -webkit-background-clip: padding-box;
-     -moz-background-clip: padding;
-          background-clip: padding-box;
-          border-radius: 6px;
-
-  -webkit-border-radius: 6px;
-     -moz-border-radius: 6px;
-}
-button.button_round,
-.button.button_round {
-  -webkit-background-clip: padding-box;
-     -moz-background-clip: padding;
-          background-clip: padding-box;
-          border-radius: 1000px;
-
-  -webkit-border-radius: 1000px;
-     -moz-border-radius: 1000px;
-}
 button > .icon,
 .button > .icon {
   color: #eee;
 }
-button.button_label,
-.button.button_label {
+button::-moz-focus-inner,
+.button::-moz-focus-inner {
+  padding: 0;
+  border: 0;
+  outline: 0;
+}
+.button_label {
   position: relative;
   padding-right: 24px;
   padding-right: 1.5rem;
   padding-left: 64px;
   padding-left: 4rem;
 }
-button.button_label > .icon,
-.button.button_label > .icon {
+.button_label > .icon {
   position: absolute;
   top: 0;
   left: 0;
@@ -2473,10 +2450,49 @@ button.button_label > .icon,
   line-height: 2;
   background-color: rgba(0, 0, 0, .1);
 }
-.button::-moz-focus-inner {
-  padding: 0;
-  border: 0;
-  outline: 0;
+.button_radius {
+          border-radius: 6px;
+
+  -webkit-border-radius: 6px;
+     -moz-border-radius: 6px;
+}
+.button_round {
+          border-radius: 1000px;
+
+  -webkit-border-radius: 1000px;
+     -moz-border-radius: 1000px;
+}
+.button_mini {
+  font-size: 10px;
+  font-size: .625rem;
+}
+.button_tiny {
+  font-size: 12px;
+  font-size: .75rem;
+}
+.button_small {
+  font-size: 14px;
+  font-size: .875rem;
+}
+.button_medium {
+  font-size: 16px;
+  font-size: 1rem;
+}
+.button_large {
+  font-size: 18px;
+  font-size: 1.125rem;
+}
+.button_big {
+  font-size: 20px;
+  font-size: 1.25rem;
+}
+.button_huge {
+  font-size: 22px;
+  font-size: 1.375rem;
+}
+.button_massive {
+  font-size: 24px;
+  font-size: 1.5rem;
 }
 .buttons {
   position: relative;
@@ -2489,51 +2505,45 @@ button.button_label > .icon,
   display: inline;
   zoom: 1;
 }
-.buttons:after {
-  clear: both;
-}
 .buttons:before,
 .buttons:after {
   display: table;
   content: "";
 }
-.buttons > .button {
-  -webkit-background-clip: padding-box;
-     -moz-background-clip: padding;
-          background-clip: padding-box;
+.buttons:after {
+  clear: both;
+}
+.ie6 .buttons,
+.ie7 .buttons {
+  zoom: 1;
+}
+.buttons > .button,
+.buttons > button {
+  float: left;
           border-radius: 0;
 
   -webkit-border-radius: 0;
      -moz-border-radius: 0;
 }
-.buttons > .button:first-child {
-  -webkit-background-clip: padding-box;
-     -moz-background-clip: padding;
-          background-clip: padding-box;
+.buttons > .button:first-child,
+.buttons > button:first-child {
           border-radius: 3px 0 0 3px;
 
   -webkit-border-radius: 3px 0 0 3px;
      -moz-border-radius: 3px 0 0 3px;
 }
-.buttons > .button:last-child {
-  -webkit-background-clip: padding-box;
-     -moz-background-clip: padding;
-          background-clip: padding-box;
+.buttons > .button:last-child,
+.buttons > button:last-child {
           border-radius: 0 3px 3px 0;
 
   -webkit-border-radius: 0 3px 3px 0;
      -moz-border-radius: 0 3px 3px 0;
 }
-.buttons > .button,
-.buttons > input {
-  float: left;
-  margin-left: -1px;
-}
-.buttons.buttons_or .button:last-child {
+.buttons_or .button:last-child {
   position: relative;
   margin-left: .4em;
 }
-.buttons.buttons_or .button:last-child:before {
+.buttons_or .button:last-child:before {
   position: absolute;
   top: 50%;
   left: 0;
@@ -2547,61 +2557,10 @@ button.button_label > .icon,
   text-align: center;
   content: 'or';
   background-color: #fdfdfd;
-  -webkit-background-clip: padding-box;
-     -moz-background-clip: padding;
-          background-clip: padding-box;
           border-radius: 100%;
 
   -webkit-border-radius: 100%;
      -moz-border-radius: 100%;
-}
-button.button_mini,
-.button.button_mini,
-.buttons.button_mini {
-  font-size: 10px;
-  font-size: .625rem;
-}
-button.button_tiny,
-.button.button_tiny,
-.buttons.button_tiny {
-  font-size: 12px;
-  font-size: .75rem;
-}
-button.button_small,
-.button.button_small,
-.buttons.button_small {
-  font-size: 14px;
-  font-size: .875rem;
-}
-button.button_medium,
-.button.button_medium,
-.buttons.button_medium {
-  font-size: 16px;
-  font-size: 1rem;
-}
-button.button_large,
-.button.button_large,
-.buttons.button_large {
-  font-size: 18px;
-  font-size: 1.125rem;
-}
-button.button_big,
-.button.button_big,
-.buttons.button_big {
-  font-size: 20px;
-  font-size: 1.25rem;
-}
-button.button_huge,
-.button.button_huge,
-.buttons.button_huge {
-  font-size: 22px;
-  font-size: 1.375rem;
-}
-button.button_massive,
-.button.button_massive,
-.buttons.button_massive {
-  font-size: 24px;
-  font-size: 1.5rem;
 }
 .divider {
   height: 0;
@@ -2622,8 +2581,8 @@ button.button_massive,
   border-bottom: 1px solid #fff;
   border-bottom: 1px solid rgba(255, 255, 255, .8);
 }
-.divider.divider_text,
-.divider.divider_icon {
+.divider_text,
+.divider_icon {
   position: relative;
   height: auto;
   margin-right: 24px;
@@ -2635,10 +2594,10 @@ button.button_massive,
   text-align: center;
   border: none;
 }
-.divider.divider_text:before,
-.divider.divider_icon:before,
-.divider.divider_text:after,
-.divider.divider_icon:after {
+.divider_text:before,
+.divider_icon:before,
+.divider_text:after,
+.divider_icon:after {
   position: absolute;
   top: 50%;
   z-index: 3;
@@ -2650,30 +2609,30 @@ button.button_massive,
   border-bottom: 1px solid #fff;
   border-bottom: 1px solid rgba(255, 255, 255, .8);
 }
-.divider.divider_text:before,
-.divider.divider_icon:before {
+.divider_text:before,
+.divider_icon:before {
   left: 0;
   margin-left: -24px;
   margin-left: -1.5rem;
 }
-.divider.divider_text:after,
-.divider.divider_icon:after {
+.divider_text:after,
+.divider_icon:after {
   right: 0;
   margin-right: -24px;
   margin-right: -1.5rem;
 }
-.divider.divider_text {
+.divider_text {
   font-weight: bold;
   color: #999;
   color: rgba(153, 153, 153, .8);
   text-transform: uppercase;
 }
-.divider.divider_icon > .icon {
+.divider_icon > .icon {
   position: relative;
   color: #999;
   color: rgba(153, 153, 153, .8);
 }
-.divider.divider_icon > .icon:after {
+.divider_icon > .icon:after {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -2838,14 +2797,22 @@ ul.list_unstyled,
 ol.list_unstyled {
   list-style: none;
 }
-ul.list_disc li ul,
-ol.list_disc li ul,
-ul.list_circle li ul,
-ol.list_circle li ul,
-ul.list_square li ul,
-ol.list_square li ul,
-ul.list_unstyled li ul,
-ol.list_unstyled li ul {
+ul.list_disc ul,
+ol.list_disc ul,
+ul.list_circle ul,
+ol.list_circle ul,
+ul.list_square ul,
+ol.list_square ul,
+ul.list_unstyled ul,
+ol.list_unstyled ul,
+ul.list_disc ol,
+ol.list_disc ol,
+ul.list_circle ol,
+ol.list_circle ol,
+ul.list_square ol,
+ol.list_square ol,
+ul.list_unstyled ol,
+ol.list_unstyled ol {
   list-style: inherit;
 }
 ul ul,
@@ -2886,8 +2853,7 @@ dd {
   margin-bottom: 0;
 }
 .panel-header {
-  padding: 10px;
-  padding: .625rem;
+  padding: .4em .8em;
   background-color: #f7f7f7;
   -webkit-background-clip: padding-box;
      -moz-background-clip: padding;
@@ -2908,13 +2874,11 @@ dd {
   color: #555;
 }
 .panel-body {
-  padding: 12.8px;
-  padding: .8rem;
+  padding: .8em;
   color: #000;
 }
 .panel-footer {
-  padding: 10px;
-  padding: .625rem;
+  padding: .4em .8em;
   color: #000;
   background-color: #f7f7f7;
   -webkit-background-clip: padding-box;
@@ -2930,8 +2894,8 @@ dd {
   -moz-border-radius-bottomleft: 3px;
 }
 .progress {
-  height: 20px;
-  height: 1.25rem;
+  height: 19.2px;
+  height: 1.2rem;
   padding: 1px;
   margin-bottom: 10px;
   margin-bottom: .625rem;
@@ -2944,7 +2908,7 @@ dd {
   height: 100%;
   background: #5bc0de;
 }
-.progress.progress_radius {
+.progress_radius {
   -webkit-background-clip: padding-box;
      -moz-background-clip: padding;
           background-clip: padding-box;
@@ -2953,7 +2917,7 @@ dd {
   -webkit-border-radius: 3px;
      -moz-border-radius: 3px;
 }
-.progress.progress_round {
+.progress_round {
   -webkit-background-clip: padding-box;
      -moz-background-clip: padding;
           background-clip: padding-box;
@@ -2962,8 +2926,8 @@ dd {
   -webkit-border-radius: 1000px;
      -moz-border-radius: 1000px;
 }
-.progress.progress_radius .meter,
-.progress.progress_round .meter {
+.progress_radius .meter,
+.progress_round .meter {
   -webkit-background-clip: padding-box;
      -moz-background-clip: padding;
           background-clip: padding-box;
@@ -2972,15 +2936,15 @@ dd {
   -webkit-border-radius: inherit;
      -moz-border-radius: inherit;
 }
-.progress.progress_small {
-  height: 8px;
-  height: .5rem;
+.progress_small {
+  height: 12.8px;
+  height: .8rem;
 }
-.progress.progress_large {
-  height: 32px;
-  height: 2rem;
+.progress_large {
+  height: 24px;
+  height: 1.5rem;
 }
-.progress.progress_striped .meter {
+.progress_striped .meter {
   background-image: -webkit-gradient(linear, 0 100%, 100% 0, color-stop(.25, rgba(255, 255, 255, .15)), color-stop(.25, transparent), color-stop(.5, transparent), color-stop(.5, rgba(255, 255, 255, .15)), color-stop(.75, rgba(255, 255, 255, .15)), color-stop(.75, transparent), to(transparent));
   background-image: -webkit-linear-gradient(45deg, rgba(255, 255, 255, .15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, .15) 50%, rgba(255, 255, 255, .15) 75%, transparent 75%, transparent);
   background-image:    -moz-linear-gradient(45deg, rgba(255, 255, 255, .15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, .15) 50%, rgba(255, 255, 255, .15) 75%, transparent 75%, transparent);
@@ -2997,12 +2961,11 @@ dd {
 }
 .table th,
 .table td {
-  padding: 8px;
-  padding: .5rem;
+  padding: .3em;
   line-height: 1.5;
   text-align: left;
   vertical-align: top;
-  border-top: 1px solid #ddd;
+  border-top: 1px solid #e0e0e0;
 }
 .table th {
   font-weight: bold;
@@ -3019,7 +2982,7 @@ dd {
   border-top: 0;
 }
 .table tbody + tbody {
-  border-top: 2px solid #ddd;
+  border-top: 2px solid #e0e0e0;
 }
 .table_striped tbody tr:nth-child(odd) td,
 .table_striped tbody tr:nth-child(odd) th {
@@ -3027,12 +2990,12 @@ dd {
 }
 .table_bordered {
   border-collapse: separate;
-  border: 1px solid #ddd;
+  border: 1px solid #e0e0e0;
   border-left: 0;
 }
 .table_bordered th,
 .table_bordered td {
-  border-left: 1px solid #ddd;
+  border-left: 1px solid #e0e0e0;
 }
 .table_bordered caption + thead tr:first-child th,
 .table_bordered caption + tbody tr:first-child th,

@@ -139,6 +139,10 @@
 .unit (@property, @size, @base-size: 16) when not (isunit(@size, "rem")){
   @px-value: @size;
   
+  ._unit(@px-value) when (@property = 'height') {
+    height: @size;
+  }
+
   ._unit(@px-value) when (@property = 'margin-top') {
     margin-top: @size;
   }
@@ -183,6 +187,11 @@
 .unit (@property, @size, @base-size: 16) when (isunit(@size, "rem")){
   @px-value: unit(@size)*@base-size;
 
+  ._unit(@px-value) when (@property = 'height') {
+    height: ~"@{px-value}px"; 
+    height: @size;
+  }
+  
   ._unit(@px-value) when (@property = 'margin-top') {
     margin-top: ~"@{px-value}px"; 
     margin-top: @size;

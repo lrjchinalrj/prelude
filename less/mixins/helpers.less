@@ -113,3 +113,32 @@
       width: auto;
   }
 }
+
+// border radius without background clip fix
+// LESS Hat adds background-clip: padding-box, because it fixes problem with older Safari. 
+// http://tumble.sneak.co.nz/post/928998513/fixing-the-background-bleed
+// ==========================================================================
+.clean-border-radius(...) {
+
+  @webkit_local: true;
+  @moz_local: true;
+  @w3c_local: true;
+
+  @process: ~`(function(value){value=value||"0";var numRegex=/\d/gi,numWithoutValue=/(?:\s|^)(\.?\d+\.?\d*)(?![^(]*\)|\w|%|\.)/gi;return/^[^, ]*,/.test(value)&&(value=value.replace(/(?:,)(?![^(]*\))/g,"")),numRegex.test(value)&&(value=value.replace(numWithoutValue,function(match){return match+"px"})),value})((function(){var args="@{arguments}";return args=args.replace(/^\[|\]$/g,"")})())`;
+
+  .result (@arguments, @signal, @boolean, @local_boolean) when (@boolean = true) and (@local_boolean = true) {
+    .inception (@signal, @arguments) when (@signal = 1) and (isstring(@process)) and not (iscolor(@process)) and not (isnumber(@process)) and not (iskeyword(@process)) and not (isurl(@process)) and not (ispixel(@process)) and not (ispercentage(@process)) and not (isem(@process)) { -webkit-border-radius: @process; }
+    .inception (@signal, @arguments) when (@signal = 1) and not (isstring(@process)) and not (iscolor(@process)) and not (isnumber(@process)) and not (iskeyword(@process)) and not (isurl(@process)) and not (ispixel(@process)) and not (ispercentage(@process)) and not (isem(@process)) {} 
+    .inception (@signal, @arguments) when (@signal = 2) and (isstring(@process)) and not (iscolor(@process)) and not (isnumber(@process)) and not (iskeyword(@process)) and not (isurl(@process)) and not (ispixel(@process)) and not (ispercentage(@process)) and not (isem(@process)) { -moz-border-radius: @process; }
+    .inception (@signal, @arguments) when (@signal = 2) and not (isstring(@process)) and not (iscolor(@process)) and not (isnumber(@process)) and not (iskeyword(@process)) and not (isurl(@process)) and not (ispixel(@process)) and not (ispercentage(@process)) and not (isem(@process)) {} 
+    .inception (@signal, @arguments) when (@signal = 3) and (isstring(@process)) and not (iscolor(@process)) and not (isnumber(@process)) and not (iskeyword(@process)) and not (isurl(@process)) and not (ispixel(@process)) and not (ispercentage(@process)) and not (isem(@process)) { border-radius: @process;  }
+    .inception (@signal, @arguments) when (@signal = 3) and not (isstring(@process)) and not (iscolor(@process)) and not (isnumber(@process)) and not (iskeyword(@process)) and not (isurl(@process)) and not (ispixel(@process)) and not (ispercentage(@process)) and not (isem(@process)) {} 
+    .inception(@signal, @arguments);
+  }
+  .result (@arguments, @signal, @boolean, @local_boolean) when not (@boolean = true), not (@local_boolean = true) {}
+
+  .result(@arguments, 1, @webkit, @webkit_local);
+  .result(@arguments, 2, @moz, @moz_local);
+  .result(@arguments, 3, @w3c, @w3c_local);
+
+}

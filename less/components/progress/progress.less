@@ -1,7 +1,6 @@
 .prelude-progress (@use) when (@use = true) {
 	.progress {
-		height: 20px;
-		height: 1.25rem;
+		.unit('height', @progress-height);
 		.unit('margin-bottom', @progress-margin-bottom);
 		.unit('padding', @progress-padding);
 		background-color: @progress-bgColor;
@@ -15,43 +14,41 @@
 			background: @progress-meter-bgColor;
 			.hook-progress-meter;
 		}
+	}
 
-		// type
-		// ======================================================================
-		&.progress_radius {
-			.border-radius(@progress-radius);
+	// type
+	// ======================================================================
+	.progress_radius {
+		.border-radius(@progress-radius);
+	}
+	.progress_round {
+		.border-radius(@progress-round);
+	}
+	.progress_radius,
+	.progress_round {
+		.meter {
+			.border-radius(inherit);
 		}
-		&.progress_round {
-			.border-radius(@progress-round);
-		}
-		&.progress_radius,
-		&.progress_round {
-			.meter {
-				.border-radius(inherit);
-			}
-		}
+	}
 
 
-		// size
-		// ======================================================================
-		&.progress_small {
-			height: 8px;
-			height: .5rem;
-		}
-		&.progress_large {
-			height: 32px;
-			height: 2rem;
-		}
+	// size
+	// ======================================================================
+	.progress_small {
+		.unit('height', @progress-small-height);
+	}
+	.progress_large {
+		.unit('height', @progress-large-height);
+	}
 
-		// striped
-		// ======================================================================
-		&.progress_striped {
-			.hook-progress-striped;
-			.meter {
-				#gradient > .striped;
-				background-size: 40px 40px;
-				.hook-progress-meter-striped;
-			}
+	// striped
+	// ======================================================================
+	.progress_striped {
+		.hook-progress-striped;
+		.meter {
+			#gradient > .striped;
+			background-size: 40px 40px;
+			.hook-progress-meter-striped;
 		}
 	}
 

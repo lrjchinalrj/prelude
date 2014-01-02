@@ -8,11 +8,11 @@
         text-align: center;
         vertical-align: middle;
         background-color: @button-bgColor;
-        background-image: none;
-        border: 1px solid transparent;
+        // background-image: none;
+        border: @button-borderWidth solid @button-borderColor;
         cursor: pointer;
         outline: none;
-        .border-radius(@button-borderRadius);
+        .clean-border-radius(@button-borderRadius);
         .user-select (none);
         .hook-button;
 
@@ -21,9 +21,10 @@
         &:hover,
         &:focus {
             color: @button-hover-color;
-            text-decoration: none;
             background-color: @button-hover-bgColor;
+
             outline: none;
+            text-decoration: none;
 
             // transition is only when going to hover, otherwise the background
             // behind the gradient (there for IE<=9 fallback) gets mismatched
@@ -39,7 +40,6 @@
             background-color: @button-active-bgColor;
             background-image: none;
             outline: none;
-
             .hook-button-active;
         }
 
@@ -49,47 +49,79 @@
         &[disabled] {
             cursor: default;
             background-color: @button-disable-bgColor;
+            color: @button-disable-color;
             .opacity(@button-disable-opacity);
-
             .hook-button-disabled;
         }
 
-        // button types
-        // ======================================================================
-        &.button_radius {
-            .border-radius(@button-radius);
-        }
-        &.button_round {
-            .border-radius(@button-rounded);
-        }
-
-        // icon
+        // Inner Icon
         // ======================================================================
         & > .icon {
             color: @button-icon-color;
             .hook-button-icon;
         }
-        &.button_label {
-            position: relative;
-            .unit('padding-right', @button-label-padding-right);
-            .unit('padding-left', @button-label-padding-left);
-            .hook-button-label;
-            & > .icon {
-                position: absolute;
-                top: 0;
-                left: 0;
-                height: 100%;
-                width: 2.5em;
-                line-height: 2;
-                background-color: fade(@button-icon-bgColor, 10%);
-            }
+        
+        // Misc
+        &::-moz-focus-inner {
+            border: 0;
+            padding: 0;
+            outline: 0;
         }
     }
 
-    .button::-moz-focus-inner {
-        border: 0;
-        padding: 0;
-        outline: 0;
+    // Button Label
+    // ======================================================================
+    .button_label {
+        position: relative;
+        .unit('padding-right', @button-label-padding-right);
+        .unit('padding-left', @button-label-padding-left);
+        .hook-button-label;
+
+        & > .icon {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 2.5em;
+            line-height: 2;
+            background-color: fade(@button-icon-bgColor, 10%);
+        }
+    }
+
+    // button types
+    // ======================================================================
+    .button_radius {
+        .clean-border-radius(@button-radius);
+    }
+    .button_round {
+        .clean-border-radius(@button-rounded);
+    }
+
+    // button size
+    // ==========================================================================
+    .button_mini {
+        .font-size(@button-mini-fontSize);
+    }
+    .button_tiny {
+        .font-size(@button-tiny-fontSize);
+    }
+    .button_small {
+        .font-size(@button-small-fontSize);
+    }
+    .button_medium {
+        .font-size(@button-medium-fontSize);
+    }
+    .button_large {
+        .font-size(@button-large-fontSize);
+    }
+    .button_big {
+        .font-size(@button-big-fontSize);
+    }
+    .button_huge {
+        .font-size(@button-huge-fontSize);
+    }
+    .button_massive {
+        .font-size(@button-massive-fontSize);
     }
 
     // Button groups
@@ -99,83 +131,46 @@
         .inline-block();
         .unit('margin-right', @buttons-margin-right);
         vertical-align: bottom;
+        .clearfix();
         .hook-buttons;
-        &:after {
-            clear: both;
-        }
-        &:before, &:after {
-            content: "";
-            display: table;
-        }
-        > .button {
-            .border-radius(0);
+
+        > .button, > button {
+            float: left;
+            .clean-border-radius(0);
+
             &:first-child {
-                .border-radius(@button-borderRadius 0 0 @button-borderRadius);
+                .clean-border-radius(@button-borderRadius 0 0 @button-borderRadius);
             }
             &:last-child {
-                .border-radius(0 @button-borderRadius @button-borderRadius 0);
-            }
-        }
-        > .button,
-        > input {
-            float: left;
-            margin-left: -1px;
-        }
-        &.buttons_or {
-            .button:last-child {
-                position: relative;
-                margin-left: .4em;
-
-                &:before {
-                    position: absolute;
-                    top: 50%;
-                    left: 0;
-                    content: 'or';
-                    height: 1.6em;
-                    width: 1.6em;
-                    line-height: 1.6em;
-                    font-size: .8em;
-                    margin-top: -.8em;
-                    margin-left: -1.15em;
-                    color: @button-or-color;
-                    text-align: center;
-                    background-color: @button-or-bgColor;
-                    .border-radius(100%);
-
-                    .hook-button-or;
-                }
+                .clean-border-radius(0 @button-borderRadius @button-borderRadius 0);
             }
         }
     }
 
-    // button size
-    // ==========================================================================
-    button,
-    .button,
-    .buttons {
-        &.button_mini {
-            .font-size(@button-mini-fontSize);
-        }
-        &.button_tiny {
-            .font-size(@button-tiny-fontSize);
-        }
-        &.button_small {
-            .font-size(@button-small-fontSize);
-        }
-        &.button_medium {
-            .font-size(@button-medium-fontSize);
-        }
-        &.button_large {
-            .font-size(@button-large-fontSize);
-        }
-        &.button_big {
-            .font-size(@button-big-fontSize);
-        }
-        &.button_huge {
-            .font-size(@button-huge-fontSize);
-        }
-        &.button_massive {
-            .font-size(@button-massive-fontSize);
+    // Buttons Or
+    // ======================================================================
+    .buttons_or {
+        .button:last-child {
+            position: relative;
+            margin-left: .4em;
+
+            &:before {
+                position: absolute;
+                top: 50%;
+                left: 0;
+                content: 'or';
+                height: 1.6em;
+                width: 1.6em;
+                line-height: 1.6em;
+                font-size: .8em;
+                margin-top: -.8em;
+                margin-left: -1.15em;
+                color: @button-or-color;
+                text-align: center;
+                background-color: @button-or-bgColor;
+                .clean-border-radius(100%);
+                .hook-button-or;
+            }
         }
     }
 
