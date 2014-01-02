@@ -2,10 +2,7 @@
     button,
     .button {
         .inline-block();
-        .unit('padding-top', @button-padding-top);
-        .unit('padding-right', @button-padding-right);
-        .unit('padding-bottom', @button-padding-bottom);
-        .unit('padding-left', @button-padding-left);
+        padding: @button-padding;
         line-height: 1;
         color: @button-color;
         text-align: center;
@@ -84,7 +81,7 @@
                 height: 100%;
                 width: 2.5em;
                 line-height: 2;
-                background-color: fade(@button-icon-bgColor, 15%);
+                background-color: fade(@button-icon-bgColor, 10%);
             }
         }
     }
@@ -124,27 +121,29 @@
             float: left;
             margin-left: -1px;
         }
-        .or {
-            position: relative;
-            float: left;
-            width: .3em;
-            height: 1em;
-            .unit('margin-top', @button-or-mragin-top);
-            color: transparent;
-            .hook-button-or;
-            &:before {
-                position: absolute;
-                top: 0;
-                left: 50%;
-                content: 'or';
-                height: 1.5em;
-                width: 1.5em;
-                margin-top: -.2em;
-                margin-left: -.75em;
-                color: @button-or-color;
-                text-align: center;
-                background-color: @button-or-bgColor;
-                .border-radius(100%);
+        &.buttons_or {
+            .button:last-child {
+                position: relative;
+                margin-left: .4em;
+
+                &:before {
+                    position: absolute;
+                    top: 50%;
+                    left: 0;
+                    content: 'or';
+                    height: 1.6em;
+                    width: 1.6em;
+                    line-height: 1.6em;
+                    font-size: .8em;
+                    margin-top: -.8em;
+                    margin-left: -1.15em;
+                    color: @button-or-color;
+                    text-align: center;
+                    background-color: @button-or-bgColor;
+                    .border-radius(100%);
+
+                    .hook-button-or;
+                }
             }
         }
     }
@@ -155,8 +154,6 @@
     .button,
     .buttons {
         &.button_mini {
-            .unit('padding-top', @button-mini-padding-top);
-            .unit('padding-bottom', @button-mini-padding-bottom);
             .font-size(@button-mini-fontSize);
         }
         &.button_tiny {

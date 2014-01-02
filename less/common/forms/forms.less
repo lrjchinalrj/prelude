@@ -1,15 +1,5 @@
 form {
 	margin: 0;
-
-	// Placeholder
-	// ==========================================================================
-	:-ms-input-placeholder { color: @form-placeholder-color !important; } /* 1. */
-	::-moz-placeholder { color: @form-placeholder-color; }
-	::-webkit-input-placeholder { color: @form-placeholder-color; }
-
-	:disabled:-ms-input-placeholder { color: @form-disabled-color !important; } /* 1. */
-	:disabled::-moz-placeholder { color: @form-disabled-color; }
-	:disabled::-webkit-input-placeholder { color: @form-disabled-color; }
 }
 
 // Form element
@@ -56,6 +46,16 @@ select {
         .hook-form-disabled;
     }
 }
+
+// Placeholder
+// ==========================================================================
+:-ms-input-placeholder { color: @form-placeholder-color !important; } /* 1. */
+::-moz-placeholder { color: @form-placeholder-color; }
+::-webkit-input-placeholder { color: @form-placeholder-color; }
+
+:disabled:-ms-input-placeholder { color: @form-disabled-color !important; } /* 1. */
+:disabled::-moz-placeholder { color: @form-disabled-color; }
+:disabled::-webkit-input-placeholder { color: @form-disabled-color; }
 
 
 // Fieldset

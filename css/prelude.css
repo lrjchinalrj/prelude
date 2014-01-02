@@ -509,26 +509,6 @@ blockquote small:before {
 }
 form {
   margin: 0;
-  /* 1. */
-  /* 1. */
-}
-form :-ms-input-placeholder {
-  color: #666 !important;
-}
-form ::-moz-placeholder {
-  color: #666;
-}
-form ::-webkit-input-placeholder {
-  color: #666;
-}
-form :disabled:-ms-input-placeholder {
-  color: #999 !important;
-}
-form :disabled::-moz-placeholder {
-  color: #999;
-}
-form :disabled::-webkit-input-placeholder {
-  color: #999;
 }
 input[type="text"],
 input[type="password"],
@@ -601,6 +581,26 @@ select[disabled] {
   color: #999;
   background-color: #eee;
   border-color: #ccc;
+}
+:-ms-input-placeholder {
+  color: #666 !important;
+}
+/* 1. */
+::-moz-placeholder {
+  color: #666;
+}
+::-webkit-input-placeholder {
+  color: #666;
+}
+:disabled:-ms-input-placeholder {
+  color: #999 !important;
+}
+/* 1. */
+:disabled::-moz-placeholder {
+  color: #999;
+}
+:disabled::-webkit-input-placeholder {
+  color: #999;
 }
 fieldset {
   padding: 16px;
@@ -2372,14 +2372,7 @@ fieldset legend {
 button,
 .button {
   display: inline-block;
-  padding-top: 8px;
-  padding-top: .5rem;
-  padding-right: 20.8px;
-  padding-right: 1.3rem;
-  padding-bottom: 8px;
-  padding-bottom: .5rem;
-  padding-left: 20.8px;
-  padding-left: 1.3rem;
+  padding: .5em 1.2em;
   line-height: 1;
   color: #fff;
   text-align: center;
@@ -2478,7 +2471,7 @@ button.button_label > .icon,
   width: 2.5em;
   height: 100%;
   line-height: 2;
-  background-color: rgba(0, 0, 0, .15);
+  background-color: rgba(0, 0, 0, .1);
 }
 .button::-moz-focus-inner {
   padding: 0;
@@ -2536,23 +2529,20 @@ button.button_label > .icon,
   float: left;
   margin-left: -1px;
 }
-.buttons .or {
+.buttons.buttons_or .button:last-child {
   position: relative;
-  float: left;
-  width: .3em;
-  height: 1em;
-  margin-top: 8px;
-  margin-top: .5rem;
-  color: transparent;
+  margin-left: .4em;
 }
-.buttons .or:before {
+.buttons.buttons_or .button:last-child:before {
   position: absolute;
-  top: 0;
-  left: 50%;
-  width: 1.5em;
-  height: 1.5em;
-  margin-top: -.2em;
-  margin-left: -.75em;
+  top: 50%;
+  left: 0;
+  width: 1.6em;
+  height: 1.6em;
+  margin-top: -.8em;
+  margin-left: -1.15em;
+  font-size: .8em;
+  line-height: 1.6em;
   color: #aaa;
   text-align: center;
   content: 'or';
@@ -2568,10 +2558,6 @@ button.button_label > .icon,
 button.button_mini,
 .button.button_mini,
 .buttons.button_mini {
-  padding-top: 6.4px;
-  padding-top: .4rem;
-  padding-bottom: 6.4px;
-  padding-bottom: .4rem;
   font-size: 10px;
   font-size: .625rem;
 }
@@ -2946,8 +2932,7 @@ dd {
 .progress {
   height: 20px;
   height: 1.25rem;
-  padding: 1.6px;
-  padding: .1rem;
+  padding: 1px;
   margin-bottom: 10px;
   margin-bottom: .625rem;
   overflow: hidden;
@@ -2958,14 +2943,6 @@ dd {
   display: block;
   height: 100%;
   background: #5bc0de;
-  -webkit-transition: width 1s ease-in-out 0s;
-     -moz-transition: width 1s ease-in-out 0s;
-       -o-transition: width 1s ease-in-out 0s;
-          transition: width 1s ease-in-out 0s;
-  -webkit-animation: finish 10s ease-in-out infinite;
-     -moz-animation: finish 10s ease-in-out infinite;
-       -o-animation: finish 10s ease-in-out infinite;
-          animation: finish 10s ease-in-out infinite;
 }
 .progress.progress_radius {
   -webkit-background-clip: padding-box;
@@ -3010,39 +2987,6 @@ dd {
   background-image:      -o-linear-gradient(45deg, rgba(255, 255, 255, .15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, .15) 50%, rgba(255, 255, 255, .15) 75%, transparent 75%, transparent);
   background-image:         linear-gradient(45deg, rgba(255, 255, 255, .15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, .15) 50%, rgba(255, 255, 255, .15) 75%, transparent 75%, transparent);
   background-size: 40px 40px;
-}
-@-moz-keyframes finish {
-  0% {
-    width: 0;
-  }
-  40% {
-    width: 100%;
-  }
-  100% {
-    width: 100%;
-  }
-}
-@-webkit-keyframes finish {
-  0% {
-    width: 0;
-  }
-  40% {
-    width: 100%;
-  }
-  100% {
-    width: 100%;
-  }
-}
-@keyframes finish {
-  0% {
-    width: 0;
-  }
-  40% {
-    width: 100%;
-  }
-  100% {
-    width: 100%;
-  }
 }
 .table {
   width: 100%;
