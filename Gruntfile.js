@@ -14,6 +14,25 @@ module.exports = function(grunt) {
     // Task configuration.
     // -- copy config ----------------------------------------------------------
     copy: {
+        fontAwesome: {
+            files: [{
+                    expand: true,
+                    cwd: 'bower_components/Font-Awesome/fonts/',
+                    src:  '**',
+                    dest: 'fonts/fontawesome/'
+                },
+                {
+                  flatten: true,
+                  src: 'bower_components/Font-Awesome/less/icons.less', 
+                  dest: 'fonts/fontawesome/icons.less'
+                },
+                {
+                  flatten: true,
+                  src: 'bower_components/Font-Awesome/less/variables.less', 
+                  dest: 'fonts/fontawesome/variables.less'
+                }
+            ]
+        },
         adaptGrid: {
             files: [{
                     expand: true,
