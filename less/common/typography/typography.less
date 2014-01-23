@@ -13,27 +13,31 @@ body {
 // Paragraph
 // ==========================================================================
 p {
-	margin: 0;
-	.unit('margin-bottom', @base-fontSize);
+	.margin-rem(0 0 @base-fontSize);
 	font-family: inherit;
 }
 
 // Links
 // ==========================================================================
 a {
-	color: @anchorColor;
+	color: @link-color;
 	outline: none;
-	text-decoration: @anchorTextDecoration;
+	text-decoration: @link-textDecoration;
 
-	&:focus {
-		outline: none;
-	}
-	&:active {
-		outline: none;
+	&:visited {
+		color: @link_visited-color;
 	}
 	&:hover {
-		color: @hover-anchorColor;
+		color: @link_hover-color;
 		text-decoration: underline;
+	}
+	&:active {
+		color: @link_active-color;
+		outline: none;
+	}
+	&:focus {
+		color: @link_focus-color;
+		outline: none;
 	}
 }
 
@@ -69,9 +73,7 @@ kbd {
 	border: 1px solid @kbd-borderColor;
 	.border-radius(@base-borderRadius);
 	font-weight: normal;
-	padding: 0;
-	.unit('padding-right', @base-fontSize*.5);
-	.unit('padding-left', @base-fontSize*.5);
+	.padding-rem(0 @base-fontSize*.5);
 	white-space: nowrap;
 }
 abbr[title],
@@ -86,7 +88,7 @@ dfn[title] {
 // Addresses
 address {
 	display: block;
-	.unit('margin-bottom', @base-fontSize * 1.5);
+	.margin-bottom-rem(@base-fontSize*1.5);
 	font-style: normal;
 }
 
@@ -103,36 +105,36 @@ h1, h2, h3, h4, h5, h6 {
 	}
 }
 
-h1 {
+h1, .alpha {
 	.font-size(@h1-fontSize);
-	.unit('margin-bottom', @base-fontSize*.2);
+	.margin-bottom-rem(@base-fontSize*.2);
 }
-h2 { 
+h2, .beta { 
 	.font-size(@h2-fontSize);
-	.unit('margin-bottom', @base-fontSize*.33);
+	.margin-bottom-rem(@base-fontSize*.33);
 }
-h3 { 
+h3, .gamma { 
 	.font-size(@h3-fontSize);
-	.unit('margin-bottom', @base-fontSize*.5);
+	.margin-bottom-rem(@base-fontSize*.5);
 }
-h4 { 
+h4, .delta { 
 	.font-size(@h4-fontSize);
-	.unit('margin-bottom', @base-fontSize*.5);
+	.margin-bottom-rem(@base-fontSize*.5);
 }
-h5 { 
+h5, .epsilon { 
 	.font-size(@h5-fontSize);
-	.unit('margin-bottom', @base-fontSize*.5);
+	.margin-bottom-rem(@base-fontSize*.5);
 }
-h6 { 
+h6, .zeta { 
 	.font-size(@h6-fontSize);
-	.unit('margin-bottom', @base-fontSize*.5);
+	.margin-bottom-rem(@base-fontSize*.5);
 }
 
 // Horizontal rules
 // ==========================================================================
 hr {
-	.px-to-rem('margin-top', @base-fontSize);
-	.px-to-rem('margin-bottom', @base-fontSize);
+	.margin-top-rem(@base-fontSize);
+	.margin-bottom-rem(@base-fontSize);
 	border: 0;
 	border-top: 1px solid @hr-borderTopColor;
 	border-bottom: 1px solid @hr-borderBottomColor;
@@ -141,9 +143,8 @@ hr {
 // Blockquotes
 // ==========================================================================
 blockquote {
-	.unit('padding-left', @base-fontSize);
-	margin: 0;
-	.unit('margin-bottom', @base-fontSize * 1.5);
+	.padding-left-rem(@base-fontSize);
+	.margin-rem(0 0 0 @base-fontSize*1.5);
 	border-left: 5px solid @blockquote-borderColor;
 	p {
 		margin-bottom: 0;
@@ -155,4 +156,11 @@ blockquote {
 			content: '\2014 \00A0';
 		}
 	}
+}
+
+// Remove `background` on images when selected
+// ==========================================================================
+img::-moz-selection,
+img::selection {
+	background: transparent;
 }

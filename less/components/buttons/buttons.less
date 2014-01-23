@@ -12,15 +12,15 @@
         border: @button-borderWidth solid @button-borderColor;
         cursor: pointer;
         outline: none;
-        .clean-border-radius(@button-borderRadius);
+        .border-radius(@button-borderRadius, false);
         .user-select (none);
         .hook-button;
 
         // Hover state
         // ======================================================================
         &:hover {
-            color: @button-hover-color;
-            background-color: @button-hover-bgColor;
+            color: @button_hover-color;
+            background-color: @button_hover-bgColor;
 
             outline: none;
             text-decoration: none;
@@ -36,7 +36,7 @@
         // ======================================================================
         &.button_active,
         &:active {
-            background-color: @button-active-bgColor;
+            background-color: @button_active-bgColor;
             background-image: none;
             outline: none;
             .hook-button-active;
@@ -47,9 +47,9 @@
         &.button_disabled,
         &[disabled] {
             cursor: default;
-            background-color: @button-disable-bgColor;
-            color: @button-disable-color;
-            .opacity(@button-disable-opacity);
+            background-color: @button_disable-bgColor;
+            color: @button_disable-color;
+            .opacity(@button_disable-opacity);
             .hook-button-disabled;
         }
 
@@ -72,8 +72,8 @@
     // ======================================================================
     .button_label {
         position: relative;
-        .unit('padding-right', @button-label-padding-right);
-        .unit('padding-left', @button-label-padding-left);
+        .padding-right-rem(@button-label-padding-right);
+        .padding-left-rem(@button-label-padding-left);
         .hook-button-label;
 
         & > .icon {
@@ -89,38 +89,45 @@
 
     // button types
     // ======================================================================
+    .button_square {
+        .border-radius(0, false);
+    }
     .button_radius {
-        .clean-border-radius(@button-radius);
+        .border-radius(@button-radius, false);
     }
     .button_round {
-        .clean-border-radius(@button-rounded);
+        .border-radius(@button-rounded, false);
+    }
+    .button_block {
+        display: block;
+        width: 100%;
     }
 
     // button size
     // ==========================================================================
     .button_mini {
-        .font-size(@button-mini-fontSize);
+        .font-size(@button_mini-fontSize);
     }
     .button_tiny {
-        .font-size(@button-tiny-fontSize);
+        .font-size(@button_tiny-fontSize);
     }
     .button_small {
-        .font-size(@button-small-fontSize);
+        .font-size(@button_small-fontSize);
     }
     .button_medium {
-        .font-size(@button-medium-fontSize);
+        .font-size(@button_medium-fontSize);
     }
     .button_large {
-        .font-size(@button-large-fontSize);
+        .font-size(@button_large-fontSize);
     }
     .button_big {
-        .font-size(@button-big-fontSize);
+        .font-size(@button_big-fontSize);
     }
     .button_huge {
-        .font-size(@button-huge-fontSize);
+        .font-size(@button_huge-fontSize);
     }
     .button_massive {
-        .font-size(@button-massive-fontSize);
+        .font-size(@button_massive-fontSize);
     }
 
     // Button groups
@@ -128,20 +135,20 @@
     .buttons {
         position: relative;
         .inline-block();
-        .unit('margin-right', @buttons-margin-right);
+        .margin-right-rem(@buttons-margin-right);
         vertical-align: bottom;
         .clearfix();
         .hook-buttons;
 
         > .button, > button {
             float: left;
-            .clean-border-radius(0);
+            .border-radius(0, false);
 
             &:first-child {
-                .clean-border-radius(@button-borderRadius 0 0 @button-borderRadius);
+                .border-radius(@button-borderRadius 0 0 @button-borderRadius, false);
             }
             &:last-child {
-                .clean-border-radius(0 @button-borderRadius @button-borderRadius 0);
+                .border-radius(0 @button-borderRadius @button-borderRadius 0, false);
             }
         }
     }
@@ -164,10 +171,10 @@
                 font-size: .8em;
                 margin-top: -.8em;
                 margin-left: -1.15em;
-                color: @button-or-color;
+                color: @button_or-color;
                 text-align: center;
-                background-color: @button-or-bgColor;
-                .clean-border-radius(100%);
+                background-color: @button_or-bgColor;
+                .border-radius(100%, false);
                 .hook-button-or;
             }
         }

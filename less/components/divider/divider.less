@@ -1,8 +1,8 @@
 .prelude-divider (@use) when (@use = true) {
 	.divider {
 		height: 0;
-		.unit('margin-top', @divider-margin-top);
-		.unit('margin-bottom', @divider-margin-bottom);
+		.margin-top-rem(@divider-margin-top);
+		.margin-bottom-rem(@divider-margin-bottom);
 		line-height: 1;
 		border-top: 1px solid @divider-borderTopColor;
 		border-top: 1px solid fade(@divider-borderTopColor, 10%);
@@ -19,8 +19,8 @@
 	.divider_icon {
 		position: relative;
 		height: auto;
-		.unit('margin-right', @divider-margin-right);
-		.unit('margin-left', @divider-margin-left);
+		.margin-right-rem(@divider-margin-right);
+		.margin-left-rem(@divider-margin-left);
 		.font-size(@divider-fontSize);
 		text-align: center;
 		border: none;
@@ -39,19 +39,19 @@
 		}
 		&:before {
 			left: 0;
-			.unit('margin-left', -@divider-margin-left);
+			.margin-left-rem(-@divider-margin-left);
 		}
 		&:after {
 			right: 0;
-			.unit('margin-right', -@divider-margin-right);
+			.margin-right-rem(-@divider-margin-right);
 		}
 	}
 
 	// text
 	// ==========================================================================
 	.divider_text {
-		color: @divider-text-color;
-		color: fade(@divider-text-color, 80%);
+		color: @divider_text-color;
+		color: fade(@divider_text-color, 80%);
 		font-weight: bold;
 		text-transform: uppercase;
 		.hook-divider-text;
@@ -64,8 +64,8 @@
 		
 		& > .icon {
 			position: relative;
-			color: @divider-icon-color;
-			color: fade(@divider-icon-color, 80%);
+			color: @divider_icon-color;
+			color: fade(@divider_icon-color, 80%);
 			&:after {
 				position: absolute;
 				left: 50%;

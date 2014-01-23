@@ -1,276 +1,258 @@
-// ==========================================================================
-// Typography mixins
-// ==========================================================================
+//TABLE OF MIXINS
+  // drop-cap
+  // ellipsis
+  // font-size
+  // fontface
+  // hyphens
+  // line-height
+  // rhythm
+  // smoothing
+  // text-hide
 
-// Fonts
-// ==========================================================================
-#font {
-  #family {
-    .serif() {
-      font-family: @fontFamily-serif;
+
+// ==========
+// Drop cap
+// ==========
+// .drop-cap用于段落元素首字下沉，.drop-cap-inline用于行内元素整个下沉
+//
+// Examples:
+// .drop-cap(2)
+// .drop-cap(32px)
+// .drop-cap(2em)
+// .drop-cap(200%)
+// .drop-cap(2, 3)
+// .drop-cap(2, 3, 10px)
+//
+// .drop-cap-inline(2)
+// .drop-cap-inline(32px)
+// .drop-cap-inline(2em)
+// .drop-cap-inline(200%)
+// .drop-cap-inline(32px, 3)
+// .drop-cap-inline(2, 3, 10px)
+// -----------------------------------------------
+
+
+// Drop cap
+// --------
+.drop-cap-inline(...) when (@support-old-ie) {
+    _display: inline;
+}
+.drop-cap-inline(@context-line-height) {
+    @lines: 2;
+    @margin-right: (1em / 2);
+    .drop-cap-inline(@context-line-height, @lines, @margin-right);
+}
+.drop-cap-inline(@context-line-height, @lines) {
+    @margin-right: (1em / @lines);
+    .drop-cap-inline(@context-line-height, @lines, @margin-right);
+}
+.drop-cap-inline(@context-line-height, @lines, @margin-right) {
+    float: left;
+    margin-right: @margin-right;
+    font-size: unit(@lines) * 1em;
+}
+// TODO isnumber 函数也可以通过 `1px` 这样的输入
+.drop-cap-inline(@context-line-height, @lines, @margin-right) when (isnumber(@context-line-height)) {
+    line-height: @context-line-height;
+}
+.drop-cap-inline(@context-line-height, @lines, @margin-right) when (ispercentage(@context-line-height)), (isem(@context-line-height)) {
+    line-height: @context-line-height;
+}
+.drop-cap-inline(@context-line-height, @lines, @margin-right) when (ispixel(@context-line-height)) {
+    line-height: @context-line-height * @lines;
+}
+
+.drop-cap(@line-height) {
+    @lines: 2;
+    @margin-right: (1em / 2);
+    .drop-cap(@line-height, @lines, @margin-right);
+}
+.drop-cap(@line-height, @lines) {
+    @margin-right: (1em / @lines);
+    .drop-cap(@line-height, @lines, @margin-right);
+}
+.drop-cap(@line-height, @lines, @margin-right) {
+    overflow: hidden;       // 不能使用after和before伪元素清除浮动
+    line-height: @line-height;
+    &:first-letter {
+        .drop-cap-inline(@line-height, @lines, @margin-right);
     }
-    .sans-serif() {
-      font-family: @fontFamily-sans;
+}
+.drop-cap(@line-height, @lines, @margin-right) when (@support-old-ie) {
+    _zoom: 1;
+}
+
+
+// =========
+// Ellipsis
+// =========
+// 省略号样式，当文字超过容器宽度时，超出部分文字隐藏并显示省略号。
+// 指定参数（行数）的功能只支持WebKit。
+//
+// Examples: 
+// .ellipsis();
+// .ellipsis(3);
+// -----------------------------------------------
+
+
+// Ellipsis
+// --------
+.ellipsis(...) {
+    overflow: hidden;
+}
+.ellipsis() {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.ellipsis(@line-number) {
+    display: -webkit-box;
+    -webkit-line-clamp: @line-number;
+    -webkit-box-orient: vertical;  
+}
+
+
+// ============
+// Font-size
+// ============
+// This mixin will enable using the CSS3 value `rem`, which lets you define
+// property-sizes based on the root-element's font-size.
+//
+// Note: Depending on the font-size of the root-element `rem` calculates a
+// property of a current element. The fallback solution excepts a
+// `default-font-size`-argument which is 16px by default.
+//
+// @link caniuse http://caniuse.com/rem
+// @link spec http://www.w3.org/TR/css3-values/#relative0
+//
+// Examples:
+// .rem(margin, 1rem 1.5rem);
+// .font-size(16px);
+// .font-size(1em, 16px, 20px);
+// .font-size-em(14);
+// .font-size-em(14, 18);
+// .font-size-em(14px);
+// .font-size-em(14px, 18px);
+// -----------------------------------------------
+
+
+// .rem
+// -------
+// property: margin | padding | width | height
+// value: rem
+.rem(@property, @value, @default-font-size: @default-font-size) {
+    @length: length(@value);
+    @default-value: unit(@default-font-size);
+
+    .inseption(@property, @value) when (@length = 1) {
+        @px-value: unit(unit(extract(@value, 1))*@default-value,px);
+    .property-inseption(@property, @px-value)
     }
-    .monospace() {
-      font-family: @fontFamily-mono;
+    .inseption(@property, @value) when (@length = 2) {
+        @px-value: unit(unit(extract(@value, 1))*@default-value,px) unit(unit(extract(@value, 2))*@default-value,px);
+    .property-inseption(@property, @px-value)
     }
+    .inseption(@property, @value) when (@length = 3) {
+        @px-value: unit(unit(extract(@value, 1))*@default-value,px) unit(unit(extract(@value, 2))*@default-value,px) unit(unit(extract(@value, 3))*@default-value,px);
+    .property-inseption(@property, @px-value)
+    }
+    .inseption(@property, @value) when (@length = 4) {
+        @px-value: unit(unit(extract(@value, 1))*@default-value,px) unit(unit(extract(@value, 2))*@default-value,px) unit(unit(extract(@value, 3))*@default-value,px) unit(unit(extract(@value, 4))*@default-value,px);
+    .property-inseption(@property, @px-value)
+    }
+
+    .property-inseption(@property, @px-value) {
+        @output: ~'0; @{property}: @{px-value}; @{property}: @{value}';
+        -pl-property: @output;
+    }
+    .inseption(@property, @value);
+}
+
+// Font size
+// -----------------
+// value: px | em | %
+.font-size(@size, @default-font-size: @default-font-size, @context-px-size: @default-font-size) {
+    .inception(@size) when (ispixel(@size)) {
+        @px-size: unit(@size);
+        @default-size: unit(@default-font-size);
+        @rem-size: (@px-size / @default-size);
+        font-size: ~"@{px-size}px";
+        font-size: ~"@{rem-size}rem";
+    }
+    .inception(@size) when (isem(@size)) {
+        @em-size: unit(@size);
+        @context-size: unit(@context-px-size);
+        @default-size: unit(@default-font-size);
+        @rem-size: (@em-size * @context-size / @default-size);
+        font-size: ~"@{em-size}em";
+        font-size: ~"@{rem-size}rem";
+    }
+    .inception(@size) when (ispercentage(@size)) {
+        font-size: @size;
+    }
+    .inception(@size);
+}
+
+// Font-size-em
+// ----------------
+// According to the context switching unit into em
+.font-size-em(@target-px-size, @context-px-size: @default-font-size) {
+    font-size: unit(unit(@target-px-size) / unit(@context-px-size), em);
+}
+
+
+// ===========
+// Font face
+// ===========
+// Examples:
+// .font-face(ubuntu, ~"../fonts/ubuntu");
+// .font-face(entypo, ~"../fonts/entypo", 400, normal, true);
+// -----------------------------------------------
+
+
+// Font face
+// ---------
+.font-face( @family-name, @font-path, @font-weight:normal, @font-style:normal, @include-svg:false ) when not (@include-svg) {
+  @font-face {
+      font-family: @family-name;
+      src: url('@{font-path}.eot');
+      src: url('@{font-path}.eot?#iefix') format('embedded-opentype'),
+           url('@{font-path}.woff') format('woff'),
+           url('@{font-path}.ttf') format('truetype');
+      font-weight: @font-weight;
+      font-style: @font-style;
   }
-  .shorthand(@size: @base-fontSize, @weight: normal, @lineHeight: @base-lineHeight) {
-    font-size: @size;
-    font-weight: @weight;
-    line-height: @lineHeight;
-  }
-  .serif(@size: @base-fontSize, @weight: normal, @lineHeight: @base-lineHeight) {
-    #font > #family > .serif;
-    #font > .shorthand(@size, @weight, @lineHeight);
-  }
-  .sans-serif(@size: @base-fontSize, @weight: normal, @lineHeight: @base-lineHeight) {
-    #font > #family > .sans-serif;
-    #font > .shorthand(@size, @weight, @lineHeight);
-  }
-  .monospace(@size: @base-fontSize, @weight: normal, @lineHeight: @base-lineHeight) {
-    #font > #family > .monospace;
-    #font > .shorthand(@size, @weight, @lineHeight);
+}
+
+.font-face( @family-name, @font-path, @font-weight:normal, @font-style:normal, @include-svg:false ) when (@include-svg) {
+  @font-face {
+      font-family: @family-name;
+      src: url('@{font-path}.eot');
+      src: url('@{font-path}.eot?#iefix') format('embedded-opentype'),
+           url('@{font-path}.woff') format('woff'),
+           url('@{font-path}.ttf') format('truetype'),
+           url('@{font-path}.svg#@{family-name}') format('svg');
+      font-weight: @font-weight;
+      font-style: @font-style;
   }
 }
 
 
-// Typography related mixins
-// ==========================================================================
-.px-to-rem(@property, @size, @base-size: 16) when not (isunit(@size, "px")){
-  @px-value: @size;
-  
-  ._px-to-rem(@px-value) when (@property = 'margin-top') {
-    margin-top: @size;
-  }
+// ============
+// Hyphens
+// ============
 
-  ._px-to-rem(@px-value) when (@property = 'margin-left') {
-    margin-left: @size;
-  }
-
-  ._px-to-rem(@px-value) when (@property = 'margin-bottom') {
-    margin-bottom: @size;
-  }
-
-  ._px-to-rem(@px-value) when (@property = 'margin-right') {
-    margin-right: @size;
-  }
-
-  ._px-to-rem(@px-value) when (@property = 'margin') {
-    margin: @size;
-  }
-
-  ._px-to-rem(@px-value) when (@property = 'padding-top') {
-    padding-top: @size;
-  }
-
-  ._px-to-rem(@px-value) when (@property = 'padding-left') {
-    padding-left: @size;
-  }
-
-  ._px-to-rem(@px-value) when (@property = 'padding-bottom') {
-    padding-bottom: @size;
-  }
-
-  ._px-to-rem(@px-value) when (@property = 'padding-right') {
-    padding-right: @size;
-  }
-
-  ._px-to-rem(@px-value) when (@property = 'padding') {
-    padding: @size;
-  }
-  ._px-to-rem(@px-value);
+// Optional hyphenation
+.hyphens(@mode: auto) {
+  word-wrap: break-word;
+  -webkit-hyphens: @mode;
+     -moz-hyphens: @mode;
+      -ms-hyphens: @mode; // IE10+
+       -o-hyphens: @mode;
+          hyphens: @mode;
 }
-.px-to-rem (@property, @size, @base-size: 16) when (isunit(@size, "px")){
-  @rem-value: unit(@size)/@base-size;
-
-  ._px-to-rem(@rem-value) when (@property = 'margin-top') {
-    margin-top: @size;
-    margin-top: ~"@{rem-value}rem"; 
-  }
-
-  ._px-to-rem(@rem-value) when (@property = 'margin-left') {
-    margin-left: @size;
-    margin-left: ~"@{rem-value}rem"; 
-  }
-
-  ._px-to-rem(@rem-value) when (@property = 'margin-bottom') {
-    margin-bottom: @size;
-    margin-bottom: ~"@{rem-value}rem"; 
-  }
-
-  ._px-to-rem(@rem-value) when (@property = 'margin-right') {
-    margin-right: @size;
-    margin-right: ~"@{rem-value}rem"; 
-  }
-
-  ._px-to-rem(@rem-value) when (@property = 'margin') {
-    margin: @size;
-    margin: ~"@{rem-value}rem"; 
-  }
-
-  ._px-to-rem(@rem-value) when (@property = 'padding-top') {
-    padding-top: @size;
-    padding-top: ~"@{rem-value}rem"; 
-  }
-
-  ._px-to-rem(@rem-value) when (@property = 'padding-left') {
-    padding-left: @size;
-    padding-left: ~"@{rem-value}rem"; 
-  }
-
-  ._px-to-rem(@rem-value) when (@property = 'padding-bottom') {
-    padding-bottom: @size;
-    padding-bottom: ~"@{rem-value}rem"; 
-  }
-
-  ._px-to-rem(@rem-value) when (@property = 'padding-right') {
-    padding-right: @size;
-    padding-right: ~"@{rem-value}rem"; 
-  }
-
-  ._px-to-rem(@rem-value) when (@property = 'padding') {
-    padding: @size;
-    padding: ~"@{rem-value}rem"; 
-  }
-  ._px-to-rem(@rem-value);
-}
-.unit (@property, @size, @base-size: 16) when not (isunit(@size, "rem")){
-  @px-value: @size;
-  
-  ._unit(@px-value) when (@property = 'height') {
-    height: @size;
-  }
-
-  ._unit(@px-value) when (@property = 'margin-top') {
-    margin-top: @size;
-  }
-
-  ._unit(@px-value) when (@property = 'margin-left') {
-    margin-left: @size;
-  }
-
-  ._unit(@px-value) when (@property = 'margin-bottom') {
-    margin-bottom: @size;
-  }
-
-  ._unit(@px-value) when (@property = 'margin-right') {
-    margin-right: @size;
-  }
-
-  ._unit(@px-value) when (@property = 'margin') {
-    margin: @size;
-  }
-
-  ._unit(@px-value) when (@property = 'padding-top') {
-    padding-top: @size;
-  }
-
-  ._unit(@px-value) when (@property = 'padding-left') {
-    padding-left: @size;
-  }
-
-  ._unit(@px-value) when (@property = 'padding-bottom') {
-    padding-bottom: @size;
-  }
-
-  ._unit(@px-value) when (@property = 'padding-right') {
-    padding-right: @size;
-  }
-
-  ._unit(@px-value) when (@property = 'padding') {
-    padding: @size;
-  }
-  ._unit(@px-value);
-}
-.unit (@property, @size, @base-size: 16) when (isunit(@size, "rem")){
-  @px-value: unit(@size)*@base-size;
-
-  ._unit(@px-value) when (@property = 'height') {
-    height: ~"@{px-value}px"; 
-    height: @size;
-  }
-  
-  ._unit(@px-value) when (@property = 'margin-top') {
-    margin-top: ~"@{px-value}px"; 
-    margin-top: @size;
-  }
-
-  ._unit(@px-value) when (@property = 'margin-left') {
-    margin-left: ~"@{px-value}px"; 
-    margin-left: @size;
-  }
-
-  ._unit(@px-value) when (@property = 'margin-bottom') {
-    margin-bottom: ~"@{px-value}px"; 
-    margin-bottom: @size;
-  }
-
-  ._unit(@px-value) when (@property = 'margin-right') {
-    margin-right: ~"@{px-value}px"; 
-    margin-right: @size;
-  }
-
-  ._unit(@px-value) when (@property = 'margin') {
-    margin: ~"@{px-value}px"; 
-    margin: @size;
-  }
-
-  ._unit(@px-value) when (@property = 'padding-top') {
-    padding-top: ~"@{px-value}px"; 
-    padding-top: @size;
-  }
-
-  ._unit(@px-value) when (@property = 'padding-left') {
-    padding-left: ~"@{px-value}px"; 
-    padding-left: @size;
-  }
-
-  ._unit(@px-value) when (@property = 'padding-bottom') {
-    padding-bottom: ~"@{px-value}px"; 
-    padding-bottom: @size;
-  }
-
-  ._unit(@px-value) when (@property = 'padding-right') {
-    padding-right: ~"@{px-value}px"; 
-    padding-right: @size;
-  }
-
-  ._unit(@px-value) when (@property = 'padding') {
-    padding: ~"@{px-value}px"; 
-    padding: @size;
-  }
-  ._unit(@px-value);
-}
-
-// Font Sizes (REMs with PX fallback for older browsers)
-.font-size (@size, @base-size: 16) when not (isunit(@size, "rem")){
-  font-size: @size;
-}
-.font-size (@size, @base-size: 16) when (isunit(@size, "rem")){
-  @px-value: unit(@size)*@base-size;
-  font-size: ~"@{px-value}px";
-  font-size: @size;
-}
-
-// Line Height Sizes (REMs with PX fallback for older browsers)
-.line-height (@size, @base-size: 16) when not (isunit(@size, "rem")){
-  line-height: @size;
-}
-.line-height (@size, @base-size: 16) when (isunit(@size, "rem")){
-  @px-value: unit(@size)*@base-size;
-  line-height: ~"@{px-value}px";
-  line-height: @size;
-}
-
-
-.font-size-ems(@target-px-value, @context-px-value:@base-font-size) {
-  font-size: (@target-px-value / @context-px-value) * 1em;
-}
-
 
 // Wrap words
+// force-wrap
 .wrap-words() {
   -ms-word-break: break-all;
   word-break: break-all;
@@ -280,20 +262,154 @@
   hyphens: auto;
 }
 
-// Requires inline-block or block for proper styling
-.text-overflow() {
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+
+// =============
+// Line height
+// =============
+// Examples:
+// .line-height(16px);
+// .line-height(1em, 16px, 20px);
+// .line-height(15px, 20px);
+// -----------------------------------------------
+
+// Line height
+// ----------------
+// values: px | em
+.line-height(@size, @default-font-size: @default-font-size, @context-px-size: @default-font-size) {
+    .inception(@size) when (ispixel(@size)) {
+        @px-size: unit(@size);
+        @default-size: unit(@default-font-size);
+        @rem-size: (@px-size / @default-size);
+        line-height: ~"@{px-size}px";
+        line-height: ~"@{rem-size}rem";
+    }
+    .inception(@size) when (isem(@size)) {
+        @em-size: unit(@size);
+        @context-size: unit(@context-px-size);
+        @default-size: unit(@default-font-size);
+        @rem-size: (@em-size * @context-size / @default-size);
+        line-height: ~"@{em-size}em";
+        line-height: ~"@{rem-size}rem";
+    }
+    .inception(@size);
 }
 
-// Optional hyphenation
-// Sets how to split words to improve the layout of paragraphs
-.hyphens(@mode: auto) {
-  word-wrap: break-word;
-  -webkit-hyphens: @mode;
-     -moz-hyphens: @mode;
-      -ms-hyphens: @mode;
-       -o-hyphens: @mode;
-          hyphens: @mode;
+// .line-height-em
+// -------------------
+// According to the context switching unit into em
+.line-height-em(@target-px-size, @context-px-size: @default-font-size) {
+    line-height: unit(unit(@target-px-size) / unit(@context-px-size), em);
+}
+
+
+// ===========
+// Rhythm
+// ===========
+// Examples:
+// 设置margin为 n*基础高度
+// .rhythm-margin();           // 上下margin都为 1*基础高度
+// .rhythm-margin(1);          // 上下margin都为 1*基础高度
+// .rhythm-margin-top();       // 上margin都为 1*基础高度
+// .rhythm-margin-top(2);      // 上margin都为 2*基础高度
+// .rhythm-margin-bottom();    // 下margin都为 1*基础高度
+// .rhythm-margin-bottom(2);   // 下margin都为 2*基础高度
+// 设置padding为 n*基础高度
+// .rhythm-padding();          // 上下padding都为 1*基础高度
+// .rhythm-padding(2);         // 上下padding都为 2*基础高度
+// .rhythm-padding-top();      // 上padding都为 1*基础高度
+// .rhythm-padding-top(2);     // 上padding都为 2*基础高度
+// .rhythm-padding-bottom();   // 下padding都为 1*基础高度
+// .rhythm-padding-bottom(2);  // 下padding都为 2*基础高度
+// -----------------------------------------------
+
+
+// Rhythm 
+// ------
+.rhythm-margin(@lines: 1) {
+    margin-top: (@rhythm-space * @lines);
+    margin-bottom: (@rhythm-space * @lines);
+}
+
+.rhythm-margin-top(@lines: 1) {
+    margin-top: (@rhythm-space * @lines);
+}
+
+.rhythm-margin-bottom(@lines: 1) {
+    margin-bottom: (@rhythm-space * @lines);
+}
+
+.rhythm-padding(@lines: 1) {
+    padding-top: (@rhythm-space * @lines);
+    padding-bottom: (@rhythm-space * @lines);
+}
+
+.rhythm-padding-top(@lines: 1) {
+    padding-top: (@rhythm-space * @lines);
+}
+
+.rhythm-padding-bottom(@lines: 1) {
+    padding-bottom: (@rhythm-space * @lines);
+}
+
+
+// ===============
+// Font smoothing
+// ===============
+// Example:
+// .font-smoothing(off);
+// -----------------------------------------------
+
+// Font-smoothing
+// ------------------
+// value: off | antialiased | subpixel-antialiased
+.font-smoothing(@var: subpixel-antialiased) {
+    .inseption(@var) when not (@var = subpixel-antialiased) {
+         -webkit-font-smoothing: @var;
+        -moz-osx-font-smoothing: grayscale;
+    }
+    .inseption(@var) when (@var = subpixel-antialiased) {
+         -webkit-font-smoothing: @var;
+        -moz-osx-font-smoothing: auto;
+    }
+    .inseption(@var);
+}
+
+
+// ============
+// Text hide
+// ============
+// Image Replacement
+//
+// Link: https://github.com/h5bp/html5-boilerplate/commit/aa0396eae757c9e03dda4e463fb0d4db5a5f82d7#commitcomment-1052728
+// Link: http://www.zeldman.com/2012/03/01/replacing-the-9999px-hack-new-image-replacement/
+// 
+// -----------------------------------------------
+
+
+// .text-hide
+// ------------------------
+.text-hide() {
+  font: ~"0/0" a;
+  color: transparent;
+  text-shadow: none;
+  background-color: transparent;
+  border: 0;
+}
+
+// .hide-text
+// ------------------------
+.hide-text() when not (@support-old-ie) {
+    white-space: nowrap;
+    text-indent: 100%;
+    overflow: hidden;
+}
+.hide-text() when (@support-old-ie) {
+    .ie-hide-text();
+}
+
+// ie6, ie7
+.ie-hide-text() {
+    text-indent: -9999px;
+    overflow: hidden;
+    text-align: left;
 }

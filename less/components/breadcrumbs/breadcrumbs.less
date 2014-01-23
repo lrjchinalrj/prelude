@@ -1,0 +1,38 @@
+.prelude-breadcrumbs (@use) when (@use = true) {
+	.breadcrumbs {
+		padding: 0;
+		list-style: none;
+		.hook-breadcrumbs;
+
+		> li,
+		> li > a,
+		> li > span {
+			display: inline-block;
+		}
+
+		.breadcrumb_active {
+			color: @breadcrumbs_disabled-color;
+		}
+
+		> li + li:before {
+			content: @breadcrumbs-divider;
+			.hook-breadcrumbs-divider;
+		}
+
+		> li + li[data-breadcrumb]:before {
+			content: attr(data-breadcrumb) @breadcrumbs-data-divider;
+			.hook-breadcrumbs-data-divider;
+		}
+	}
+	.breadcrumbs_path {
+		> li + li:before {
+			content: @breadcrumbs_path-divider;
+			.hook-breadcrumbs-path-divider;
+		}
+	}
+	// Hook
+	// ==========================================================================
+	.hook-breadcrumbs-misc;
+}
+
+.prelude-breadcrumbs (@use-breadcrumbs);

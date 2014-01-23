@@ -1,0 +1,73 @@
+.prelude-box(@use) when (@use = true) {
+	.box {
+		position: relative;
+		.padding-rem(@box-padding);
+		color: @box-color;
+		background-color: @box-bgColor;
+		border: 1px solid @box-borderColor;
+		.border-radius(@box-borderRadius, false);
+		.hook-box;
+		
+		&.box_square {
+			.border-radius(0, false);
+		}
+		&.box_round {
+			.border-radius(@box-round, false);
+		}
+
+		// box_warning
+		// ==========================================================================
+		&.box_warning {
+			color: @box_warning-color;
+			background-color: @box_warning-bgColor;
+			border-color: @box_warning-borderColor;
+			.hook-box-warning;
+
+			&:hover {
+				color: darken(@box_warning-color, 10%);
+			}
+		}
+		// box_error
+		// ==========================================================================
+		&.box_error {
+			color: @box_error-color; 
+			background-color: @box_error-bgColor;
+			border-color: @box_error-borderColor;
+			.hook-box-error;
+
+			&:hover {
+				color: darken(@box_error-color, 10%); 
+			}
+		}
+		// box_success
+		// ==========================================================================
+		&.box_success {
+			color: @box_success-color;
+			background-color: @box_success-bgColor;
+			border-color: @box_success-borderColor;
+			.hook-box-success;
+
+			&:hover {
+				color: darken(@box_success-color, 10%); 
+			}
+		}
+		// box_info
+		// ==========================================================================
+		&.box_info {
+			color: @box_info-color; 
+			background-color: @box_info-bgColor;
+			border-color: @box_info-borderColor;
+			.hook-box-info;
+			
+			&:hover {
+				color: darken(@box_info-color, 10%); 
+			}
+		}
+	}
+
+	// Hook
+	// ==========================================================================
+	.hook-box-misc;
+}
+
+.prelude-box(@use-box);

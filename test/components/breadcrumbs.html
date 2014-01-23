@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width">
+    <link rel="stylesheet" href="../../css/prelude.css">
+    <link rel="stylesheet" href="../css/highlighting//github.css">
+    <style>
+        body {
+            padding: 40px;
+        }
+    </style>
+</head>
+<body>
+    <section>
+        <h2>Alerts</h2>
+        <div class="row">
+            <div class="span-6">
+                <h4>HTML</h4>
+                <pre><code data-language="html">&lt;ul&nbsp;class=&quot;breadcrumbs&quot;&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;li&gt;&lt;a&nbsp;href=&quot;&quot;&gt;items&nbsp;1&lt;/a&gt;&lt;/li&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;li&gt;&lt;a&nbsp;href=&quot;&quot;&gt;items&nbsp;2&lt;/a&gt;&lt;/li&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;li&gt;&lt;span&gt;items&nbsp;3&lt;/span&gt;&lt;/li&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;li&nbsp;class=&quot;breadcrumb_active&quot;&gt;&lt;/span&gt;items&nbsp;4&lt;/span&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ul&nbsp;class=&quot;breadcrumbs&quot;&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;li&nbsp;data-breadcrumb=&quot;|&quot;&gt;&lt;a&nbsp;href=&quot;&quot;&gt;items&nbsp;1&lt;/a&gt;&lt;/li&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;li&nbsp;data-breadcrumb=&quot;|&quot;&gt;&lt;a&nbsp;href=&quot;&quot;&gt;items&nbsp;2&lt;/a&gt;&lt;/li&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;li&nbsp;data-breadcrumb=&quot;|&quot;&gt;&lt;span&gt;items&nbsp;3&lt;/span&gt;&lt;/li&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;li&nbsp;data-breadcrumb=&quot;|&quot;&nbsp;class=&quot;breadcrumb_active&quot;&gt;&lt;/span&gt;items&nbsp;4&lt;/span&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ul&nbsp;class=&quot;breadcrumbs&nbsp;breadcrumbs_path&quot;&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;li&gt;&lt;a&nbsp;href=&quot;&quot;&gt;items&nbsp;1&lt;/a&gt;&lt;/li&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;li&gt;&lt;a&nbsp;href=&quot;&quot;&gt;items&nbsp;2&lt;/a&gt;&lt;/li&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;li&gt;&lt;span&gt;items&nbsp;3&lt;/span&gt;&lt;/li&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;li&nbsp;class=&quot;breadcrumb_active&quot;&gt;&lt;/span&gt;items&nbsp;4&lt;/span&gt;&lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+            </div>
+            <div class="span-6">
+                <h4>RENDERED HTML</h4>
+                <ul class="breadcrumbs">
+                    <li><a href="">items 1</a></li>
+                    <li><a href="">items 2</a></li>
+                    <li><span>items 3</span></li>
+                    <li class="breadcrumb_active"></span>items 4</span></li>
+                </ul>
+                <ul class="breadcrumbs">
+                    <li data-breadcrumb="|"><a href="">items 1</a></li>
+                    <li data-breadcrumb="|"><a href="">items 2</a></li>
+                    <li data-breadcrumb="|"><span>items 3</span></li>
+                    <li data-breadcrumb="|" class="breadcrumb_active"></span>items 4</span></li>
+                </ul>
+                <ul class="breadcrumbs breadcrumbs_path">
+                    <li><a href="">items 1</a></li>
+                    <li><a href="">items 2</a></li>
+                    <li><span>items 3</span></li>
+                    <li class="breadcrumb_active"></span>items 4</span></li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <script type="text/javascript" src="../js/highlighting/rainbow.min.js"></script>
+    <script type="text/javascript" src="../js/highlighting/html.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+</body>
+</html>

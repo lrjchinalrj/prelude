@@ -2,13 +2,7 @@
 @import "default.less";
 
 // mixins
-@import "mixins/backgrounds.less";
-@import "mixins/helpers.less";
-@import "mixins/images.less";
-@import "mixins/lesshat.less";
-@import "mixins/shapes.less";
-@import "mixins/sprites.less";
-@import "mixins/typography.less";
+@import "mixins/prelude-mixins.less";
 
 
 // common
@@ -21,15 +15,18 @@
 @import "common/forms/forms.less";
 
 
-// functions
+// // functions
 @import "functions/grid/default.less";
-@import "functions/helpers/helpers.less";
+@import "functions/utility/utility.less";
 @import "functions/print/print.less";
 
 
-// components
-@import "components/alert/default.less";
-@import "components/alert/alert.less";
+// // components
+@import "components/box/default.less";
+@import "components/box/box.less";
+
+@import "components/breadcrumbs/default.less";
+@import "components/breadcrumbs/breadcrumbs.less";
 
 @import "components/buttons/default.less";
 @import "components/buttons/buttons.less";
@@ -43,8 +40,17 @@
 @import "components/lists/default.less";
 @import "components/lists/lists.less";
 
+@import "components/message/default.less";
+@import "components/message/message.less";
+
+@import "components/pager/default.less";
+@import "components/pager/pager.less";
+
 @import "components/panels/default.less";
 @import "components/panels/panels.less";
+
+@import "components/pagination/default.less";
+@import "components/pagination/pagination.less";
 
 @import "components/progress/default.less";
 @import "components/progress/progress.less";

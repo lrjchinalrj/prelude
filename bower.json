@@ -12,6 +12,6 @@
   "dependencies": {
     "adaptGrid": "git@github.com:amazingSurge/adaptGrid.git",
     "normalize-css": "git@github.com:necolas/normalize.css.git#~2.1.3",
-    "lesshat": "git@github.com:csshat/lesshat.git"
+    "prelude-mixins": "git@github.com:amazingSurge/prelude-mixins.git"
   }
 }

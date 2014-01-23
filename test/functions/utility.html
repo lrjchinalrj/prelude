@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width">
+    <link rel="stylesheet" href="../../css/prelude.css">
+    <link rel="stylesheet" href="../css/highlighting//github.css">
+    <style>
+        body {
+            padding: 40px;
+        }
+        .table.visibility th,
+        .table.visibility td {
+            padding: 6px 0;
+            text-align: center;
+        }
+        .table.visibility .is-visible {
+            color: #468847;
+            background-color: #dff0d8 !important;
+        }
+        .table.visibility .is-hidden {
+            color: #ccc;
+            background-color: #f9f9f9;
+        }
+        .table.visibility .is-undefine {
+            color: #999;
+            background-color: #ddd;
+        }
+        .column {
+            margin-bottom: 15px;
+        }
+    </style>
+</head>
+<body>
+    <section>
+        <h2>Utility</h2>
+        <section>
+            <h4>Float</h4>
+            <div class="row">
+                <div class="column half">
+                    <h4>HTML</h4>
+                    <pre><code data-language="html">&lt;div&nbsp;class=&quot;float-left&nbsp;box&nbsp;box_info&quot;&gt;Float&nbsp;left&nbsp;block&nbsp;element&lt;/div&gt;
+    &lt;div&nbsp;class=&quot;float-right&nbsp;box&nbsp;box_info&quot;&gt;Float&nbsp;right&nbsp;block&nbsp;element&lt;/div&gt;</code></pre>
+                </div>
+                <div class="column half">
+                    <h4>RENDERED HTML</h4>
+                    <div class="float-left box box_info">Float left block element</div>
+                    <div class="float-right box box_info">Float right block element</div>
+                </div>
+            </div>
+        </section>
+        <hr />
+        <section>
+            <h4>Text align</h4>
+            <div class="row">
+                <div class="column half">
+                    <h4>HTML</h4>
+                    <pre><code data-language="html">&lt;div&nbsp;class=&quot;text-left&nbsp;box&nbsp;box_info&quot;&gt;Text&nbsp;align&nbsp;is&nbsp;left&lt;/div&gt;
+&lt;div&nbsp;class=&quot;text-center&nbsp;box&nbsp;box_info&quot;&gt;Text&nbsp;align&nbsp;is&nbsp;center&lt;/div&gt;
+&lt;div&nbsp;class=&quot;text-right&nbsp;box&nbsp;box_info&quot;&gt;Text&nbsp;align&nbsp;is&nbsp;right&lt;/div&gt;
+&lt;div&nbsp;class=&quot;text-justify&nbsp;box&nbsp;box_info&quot;&gt;Text&nbsp;align&nbsp;is&nbsp;justify.&nbsp;Text&nbsp;align&nbsp;is&nbsp;justify.&nbsp;Text&nbsp;align&nbsp;is&nbsp;justify.&nbsp;Text&nbsp;align&nbsp;is &nbsp;justify.&nbsp;Text&nbsp;align&nbsp;is&nbsp;justify.&nbsp;Text&nbsp;align&nbsp;is&nbsp;justify.&nbsp;Text&nbsp;align&nbsp;is&nbsp;justify.&lt;/div&gt;</code></pre>
+                </div>
+                <div class="column half">
+                    <h4>RENDERED HTML</h4>
+                    <div class="text-left box box_info">Text align is left</div>
+                    <div class="text-center box box_info">Text align is center</div>
+                    <div class="text-right box box_info">Text align is right</div>
+                    <div class="text-justify box box_info">Text align is justify. Text align is justify. Text align is justify. Text align is justify. Text align is justify. Text align is justify. Text align is justify.</div>
+                </div>
+            </div>
+        </section>
+        <hr />
+        <section>
+            <h4>Visibility</h4>
+            <table class="table table_bordered table_striped text-center visibility">
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th>
+                            Extra small devices
+                            <small>Phones (&lt;640px)</small>
+                        </th>
+                        <th>
+                            Small devices
+                            <small>Tablets (&ge;640px)</small>
+                        </th>
+                        <th>
+                            Medium devices
+                            <small>Desktops (&ge;1024px)</small>
+                        </th>
+                        <th>
+                            Large devices
+                            <small>Desktops (&ge;1440)</small>
+                        </th>
+                        <th>
+                            Very Large devices
+                            <small>Desktops (&ge;1920px)</small>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th><code>.visible-small</code></th>
+                        <td class="is-visible">Visible</td>
+                        <td class="is-hidden">Hidden</td>
+                        <td class="is-hidden">Hidden</td>
+                        <td class="is-hidden">Hidden</td>
+                        <td class="is-hidden">Hidden</td>
+                    </tr>
+                    <tr>
+                        <th><code>.hidden-small-up</code></th>
+                        <td class="is-undefine">/</td>
+                        <td class="is-hidden">Hidden</td>
+                        <td class="is-hidden">Hidden</td>
+                        <td class="is-hidden">Hidden</td>
+                        <td class="is-hidden">Hidden</td>
+                    </tr>
+                    <tr>
+                        <th><code>.visible-medium</code></th>
+                        <td class="is-hidden">Hidden</td>
+                        <td class="is-visible">Visible</td>
+                        <td class="is-hidden">Hidden</td>
+                        <td class="is-hidden">Hidden</td>
+                        <td class="is-hidden">Hidden</td>
+                    </tr>
+                    <tr>
+                        <th><code>.hidden-medium-up</code></th>
+                        <td class="is-undefine">/</td>
+                        <td class="is-undefine">/</td>
+                        <td class="is-hidden">Hidden</td>
+                        <td class="is-hidden">Hidden</td>
+                        <td class="is-hidden">Hidden</td>
+                    </tr>
+                    <tr>
+                        <th><code>.visible-large</code></th>
+                        <td class="is-hidden">Hidden</td>
+                        <td class="is-hidden">Hidden</td>
+                        <td class="is-visible">Visible</td>
+                        <td class="is-hidden">Hidden</td>
+                        <td class="is-hidden">Hidden</td>
+                    </tr>
+                    <tr>
+                        <th><code>.hidden-large-up</code></th>
+                        <td class="is-undefine">/</td>
+                        <td class="is-undefine">/</td>
+                        <td class="is-undefine">/</td>
+                        <td class="is-hidden">Hidden</td>
+                        <td class="is-hidden">Hidden</td>
+                    </tr>
+                    <tr>
+                        <th><code>.visible-xlarge</code></th>
+                        <td class="is-hidden">Hidden</td>
+                        <td class="is-hidden">Hidden</td>
+                        <td class="is-hidden">Hidden</td>
+                        <td class="is-visible">Visible</td>
+                        <td class="is-hidden">Hidden</td>
+                    </tr>
+                    <tr>
+                        <th><code>.hidden-xlarge-up</code></th>
+                        <td class="is-undefine">/</td>
+                        <td class="is-undefine">/</td>
+                        <td class="is-undefine">/</td>
+                        <td class="is-undefine">/</td>
+                        <td class="is-hidden">Hidden</td>
+                    </tr>
+                    <tr>
+                        <th><code>.visible</code></th>
+                        <td class="is-visible">Visible</td>
+                        <td class="is-visible">Visible</td>
+                        <td class="is-visible">Visible</td>
+                        <td class="is-visible">Visible</td>
+                        <td class="is-visible">Visible</td>
+                    </tr>
+                    <tr>
+                        <th><code>.hidden-small</code></th>
+                        <td class="is-hidden">Hidden</td>
+                        <td class="is-visible">Visible</td>
+                        <td class="is-visible">Visible</td>
+                        <td class="is-visible">Visible</td>
+                        <td class="is-visible">Visible</td>
+                    </tr>
+                    <tr>
+                        <th><code>.visible-small-up</code></th>
+                        <td class="is-undefine">/</td>
+                        <td class="is-visible">Visible</td>
+                        <td class="is-visible">Visible</td>
+                        <td class="is-visible">Visible</td>
+                        <td class="is-visible">Visible</td>
+                    </tr>
+                    <tr>
+                        <th><code>.hidden-medium</code></th>
+                        <td class="is-visible">Visible</td>
+                        <td class="is-hidden">Hidden</td>
+                        <td class="is-visible">Visible</td>
+                        <td class="is-visible">Visible</td>
+                        <td class="is-visible">Visible</td>
+                    </tr>
+                    <tr>
+                        <th><code>.visible-medium-up</code></th>
+                        <td class="is-undefine">/</td>
+                        <td class="is-undefine">/</td>
+                        <td class="is-visible">Visible</td>
+                        <td class="is-visible">Visible</td>
+                        <td class="is-visible">Visible</td>
+                    </tr>
+                    <tr>
+                        <th><code>.hidden-large</code></th>
+                        <td class="is-visible">Visible</td>
+                        <td class="is-visible">Visible</td>
+                        <td class="is-hidden">Hidden</td>
+                        <td class="is-visible">Visible</td>
+                        <td class="is-visible">Visible</td>
+                    </tr>
+                    <tr>
+                        <th><code>.visible-large-up</code></th>
+                        <td class="is-undefine">/</td>
+                        <td class="is-undefine">/</td>
+                        <td class="is-undefine">/</td>
+                        <td class="is-visible">Visible</td>
+                        <td class="is-visible">Visible</td>
+                    </tr>
+                    <tr>
+                        <th><code>.hidden-xlarge</code></th>
+                        <td class="is-visible">Visible</td>
+                        <td class="is-visible">Visible</td>
+                        <td class="is-visible">Visible</td>
+                        <td class="is-hidden">Hidden</td>
+                        <td class="is-visible">Visible</td>
+                    </tr>
+                    <tr>
+                        <th><code>.visible-xlarge-up</code></th>
+                        <td class="is-undefine">/</td>
+                        <td class="is-undefine">/</td>
+                        <td class="is-undefine">/</td>
+                        <td class="is-undefine">/</td>
+                        <td class="is-visible">Visible</td>
+                    </tr>
+                    <tr>
+                        <th><code>.hidden</code></th>
+                        <td class="is-hidden">Hidden</td>
+                        <td class="is-hidden">Hidden</td>
+                        <td class="is-hidden">Hidden</td>
+                        <td class="is-hidden">Hidden</td>
+                        <td class="is-hidden">Hidden</td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="row">
+                <div class="column half">
+                    <h4>HTML</h4>
+                    <pre><code data-language="html">&lt;div&nbsp;class=&quot;visible-small&nbsp;visible-large-up&quot;&gt;visible-small&nbsp;&amp;amp;&nbsp;visible-large-up&lt;/div&gt;
+&lt;div&nbsp;class=&quot;visible-medium&nbsp;visible-xlarge-up&quot;&gt;visible-medium&nbsp;&amp;amp;&nbsp;visible-xlarge-up&lt;/div&gt;
+&lt;div&nbsp;class=&quot;visible-large&quot;&gt;visible-large&lt;/div&gt;
+&lt;div&nbsp;class=&quot;visible-xlarge&quot;&gt;visible-xlarge&lt;/div&gt;
+&lt;div&nbsp;class=&quot;hidden-small&nbsp;hidden-large&quot;&gt;hidden-small&nbsp;&amp;amp;&nbsp;hidden-large&lt;/div&gt;
+&lt;div&nbsp;class=&quot;hidden-medium&nbsp;hidden-large-up&quot;&gt;hidden-medium&nbsp;&amp;amp;&nbsp;hidden-large-up&lt;/div&gt;
+&lt;div&nbsp;class=&quot;hidden-large&quot;&gt;hidden-large&lt;/div&gt;
+&lt;div&nbsp;class=&quot;hidden-xlarge&quot;&gt;hidden-xlarge&lt;/div&gt;</code></pre>
+                </div>
+                <div class="column half">
+                    <h4>RENDERED HTML</h4>
+                    <div class="row has-2 tablet-has-1">
+                        <div class="column">
+                            <div class="visible-small visible-large-up box box_success">visible-small &amp; visible-large-up</div>
+                            <div class="hidden-small hidden-large-up box box_info">The initial element disappear, so I came out</div>
+                        </div>
+                        <div class="column">
+                            <div class="visible-medium visible-xlarge-up box box_success">visible-medium &amp; visible-xlarge-up</div>
+                            <div class="hidden-medium hidden-xlarge-up box box_info">The initial element disappear, so I came out</div>
+                        </div>
+                        <div class="column">
+                            <div class="visible-large box box_success">visible-large</div>
+                            <div class="hidden-large box box_info">The initial element disappear, so I came out</div>
+                        </div>
+                        <div class="column">
+                            <div class="visible-xlarge box box_success">visible-xlarge</div>
+                            <div class="hidden-xlarge box box_info">The initial element disappear, so I came out</div>
+                        </div>
+                        <div class="column">
+                            <div class="hidden-small hidden-large box box_success">hidden-small &amp; hidden-large</div>
+                            <div class="visible-small visible-large box box_info">The initial element disappear, so I came out</div>
+                        </div>
+                        <div class="column">
+                            <div class="hidden-medium hidden-large-up box box_success">hidden-medium &amp; hidden-large-up</div>
+                            <div class="visible-medium visible-large-up box box_info">The initial element disappear, so I came out</div>
+                        </div>
+                        <div class="column">
+                            <div class="hidden-large box box_success">hidden-large</div>
+                            <div class="visible-large box box_info">The initial element disappear, so I came out</div>
+                        </div>
+                        <div class="column">
+                            <div class="hidden-xlarge box box_success">hidden-xlarge</div>
+                            <div class="visible-xlarge box box_info">The initial element disappear, so I came out</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </section>
+
+    <script type="text/javascript" src="../js/highlighting/rainbow.min.js"></script>
+    <script type="text/javascript" src="../js/highlighting/html.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+</body>
+</html>

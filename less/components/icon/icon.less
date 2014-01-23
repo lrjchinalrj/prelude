@@ -12,28 +12,49 @@
     // size
     // ==========================================================================
     .icon_lg {
-        .font-size(@icon-lg-fontSize);
-        line-height: @icon-lg-lineHeight;
+        .font-size(@icon_lg-fontSize);
+        line-height: @icon_lg-lineHeight;
         vertical-align: -15%;
     }
     .icon_2x {
-        .font-size(@icon-2x-fontSize);
+        .font-size(@icon_2x-fontSize);
     }
     .icon_3x {
-        .font-size(@icon-3x-fontSize);
+        .font-size(@icon_3x-fontSize);
     }
     .icon_4x {
-        .font-size(@icon-4x-fontSize);
+        .font-size(@icon_4x-fontSize);
     }
     .icon_5x {
-        .font-size(@icon-5x-fontSize);
+        .font-size(@icon_5x-fontSize);
+    }
+
+    // circular
+    // ==========================================================================
+    .icon_circular {
+        width: 2em !important;
+        height: 2em !important;
+        padding: .5em .35em !important;
+        line-height: 1;
+        .border-radius(500px);
+        .box-shadow(0 0 0 .12em rgba(0,0,0,0.1) inset);
+    }
+    
+    // square
+    // ==========================================================================
+    .icon_square {
+        width: 2em;
+        height: 2em;
+        padding: .5em .35em !important;
+        vertical-align: baseline;
+        .box-shadow(0 0 0 .12em rgba(0,0,0,0.1) inset);
     }
 
     // list
     // ==========================================================================
     .icon-ul {
         padding-left: 0;
-        .unit('margin-left', @icon-ul-margin-left);
+        .margin-left-rem(@icon-ul-margin-left);
         list-style-type: none;
 
         > li {
@@ -58,7 +79,7 @@
 
     // spinning
     // ==========================================================================
-    .icon-spin {
+    .icon_spin {
         .animation(spin 2s infinite linear);
     }
     @-moz-keyframes spin {

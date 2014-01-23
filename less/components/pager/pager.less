@@ -1,0 +1,65 @@
+.prelude-pager (@use) when (@use = true) {
+	.pager {
+		padding-left: 0;
+		.margin-rem(@pager-margin 0);
+		list-style: none;
+		text-align: center;
+		&:before,
+		&:after {
+			content: ' ';
+			display: table;
+		}
+		&:after {
+			clear: both;
+		}
+		li {
+			display: inline;
+
+			> a,
+			> span {
+				display: inline-block;
+				padding: 5px 14px;
+				background-color: @pager-bgColor;
+				border: 1px solid @pager-borderColor;
+				.border-radius (@pager-borderRadius);
+				.hook-pager;
+			}
+
+			> a:hover,
+			> a:focus {
+				text-decoration: none;
+				background-color: @pager-hover-bgColor;
+			}
+		}
+
+		.pager_disabled {
+			> a,
+			> a:hover,
+			> a:focus,
+			> span {
+				color: @pager-disabled-color;
+				background-color: @pager-disabled-bgColor;
+				.hook-pager-disabled;
+			}
+		}
+	}
+	.pager-prev {
+		> a,
+		> span {
+			float: left;
+			.hook-pager-prev;
+		}
+	}
+	.pager-next {
+		> a,
+		> span {
+			float: right;
+			.hook-pager-next;
+		}
+	}
+	// Hook
+	// ==========================================================================
+	.hook-pager-misc;
+}
+
+.prelude-pager (@use-pager);

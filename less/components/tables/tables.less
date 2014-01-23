@@ -2,14 +2,14 @@
     .table {
         max-width: 100%;
         width: 100%;
-        .unit('margin-bottom', @table-margin-bottom);
+        .margin-bottom-rem(@table-margin-bottom);
         background-color: @table-bgColor;
 
         // Cells
         // ======================================================================
         th,
         td {
-            .unit('padding', @table-cell-padding);
+            .padding-rem(@table-cell-padding);
             text-align: left;
             vertical-align: top;
             line-height: @table-lineHeight;

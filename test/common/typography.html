@@ -15,6 +15,18 @@
         body {
             padding: 40px;
         }
+        a.normal {
+            color: #0069d6;
+        }
+        a.visited {
+            color: #808080;
+        }
+        a.hover {
+            color: #00438A;
+        }
+        a.active {
+            color: #E60000;
+        }
     </style>
 
 </head>
@@ -56,8 +68,24 @@
 <section>
     <h2>Hypertext</h2>
     <p>Links are pretty standard the <a href="#">color is preset</a> to the Foundation primary color.</p>
-    <h4>HTML</h4>
-    <pre><code data-language="html">&lt;p&gt;Links&nbsp;are&nbsp;pretty&nbsp;standard&nbsp;the&nbsp;&lt;a&nbsp;href=&quot;#&quot;&gt;color&nbsp;is&nbsp;preset&lt;/a&gt;&nbsp;to&nbsp;the&nbsp;Foundation&nbsp;primary&nbsp;color.&lt;/p&gt;</code></pre>
+    <div class="row">
+        <div class="column half">
+            <h4>HTML</h4>
+            <pre><code data-language="html">&lt;a&nbsp;href=&quot;#&quot;&gt;Normal&lt;/a&gt;
+&lt;a&nbsp;href=&quot;#&quot;&gt;Visited&lt;/a&gt;
+&lt;a&nbsp;href=&quot;#&quot;&gt;Hover&lt;/a&gt;
+&lt;a&nbsp;href=&quot;#&quot;&gt;Active&lt;/a&gt;</code></pre>
+        </div>
+        <div class="column half">
+            <h4>RENDERED HTML</h4>
+            <div class="type-demo">
+                <a href="#" class="normal">Normal</a><br />
+                <a href="#" class="visited">Visited</a><br />
+                <a href="#" class="hover">Hover</a><br />
+                <a href="#" class="active">Aative</a>
+            </div>
+        </div>
+    </div>
 </section>
 <hr>
 <section>
@@ -65,29 +93,27 @@
     <div class="row">
         <div class="column half">
             <h4>HTML</h4>
-            <pre><code data-language="html">&lt;em&gt;em&nbsp;element&lt;/em&gt;
-&lt;strong&gt;strong&nbsp;element&lt;/strong&gt;
-&lt;code&gt;code&nbsp;element&lt;/code&gt;
-&lt;del&gt;del&nbsp;element&lt;/del&gt;
-&lt;ins&gt;ins&nbsp;element&lt;/ins&gt;
-&lt;mark&gt;mark&nbsp;element&lt;/mark&gt;
-&lt;q&gt;q&nbsp;element&nbsp;&lt;q&gt;inside&lt;/q&gt;&nbsp;a&nbsp;q&nbsp;element&lt;/q&gt;
-&lt;abbr&nbsp;title=&quot;Abbreviation&nbsp;Element&quot;&gt;abbr&nbsp;element&lt;/abbr&gt;
-&lt;dfn&nbsp;title=&quot;Defines&nbsp;a&nbsp;definition&nbsp;term&quot;&gt;dfn&nbsp;element&lt;/dfn&gt;
-&lt;small&gt;small&nbsp;element&lt;/small&gt;</code></pre>
+            <pre><code data-language="html">&lt;i&gt;italics&lt;/i&gt;,&nbsp;&lt;em&gt;emphasize&lt;/em&gt;
+&lt;small&gt;small&lt;/small&gt;
+&lt;strong&gt;strong&lt;/strong&gt;
+&lt;abbr&nbsp;title=&quot;Abbreviation&quot;&gt;abbr&lt;/abbr&gt;
+&lt;q&gt;quote&lt;/q&gt;
+&lt;code&gt;code&lt;/code&gt;,&nbsp;&lt;dfn&gt;definition&lt;/dfn&gt;
+&lt;ins&gt;inserted&lt;/ins&gt;,&nbsp;&lt;del&gt;deleted&lt;/del&gt;
+&lt;mark&gt;mark&lt;/mark&gt;</code></pre>
         </div>
         <div class="column half">
             <h4>RENDERED HTML</h4>
-            <em>em element</em><br />
-            <strong>strong element</strong><br />
-            <code>code element</code><br />
-            <del>del element</del><br />
-            <ins>ins element</ins><br />
-            <mark>mark element</mark><br />
-            <q>q element <q>inside</q> a q element</q><br />
-            <abbr title="Abbreviation Element">abbr element</abbr><br />
-            <dfn title="Defines a definition term">dfn element</dfn><br />
-            <small>small element</small>
+            <ul>
+                <li>an <i>italics</i> and <em>emphasize</em> tag (<code>&lt;i&gt;, &lt;em&gt;</code> example</li>
+                <li>a <small>small</small> tag (<code>&lt;small&gt;</code>) example</li>
+                <li>a <strong>strong</strong> tag (<code>&lt;strong&gt;</code>) example</li>
+                <li>an <abbr title="Abbreviation">ABBREVIATION</abbr> tag (<code>&lt;abbr&gt;</code>) example</li>
+                <li>a <q>quote</q> tag (<code>&lt;q&gt;</code>) example</li>
+                <li>a <code>code</code> and <dfn>definition<dfn> tag (<code>&lt;code&gt;, &lt;dfn&gt;</code>) example</li>
+                <li>an <ins>inserted</ins> and <del>deleted</del> tag (<code>&lt;ins&gt;, &lt;del&gt;</code>) example</li>
+                <li>a <mark>mark</mark> tag (HTML5) (<code>&lt;mark&gt;</code>) example</li>
+            </ul>
         </div>
     </div>
 </section>

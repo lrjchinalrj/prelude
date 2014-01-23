@@ -1,0 +1,52 @@
+@message-padding-vertical:              @base-fontSize * .5;
+@message-padding-horizontal:            @base-fontSize;
+@message-margin-bottom:                 @base-fontSize * .5;
+@message-fontSize:                      @base-fontSize;
+@message-bgColor:                       #f0f0f0;
+@message-borderColor:                   #eee;
+
+@message-borderRadius:                  @base-borderRadius;
+@message-round:                         1000px;
+
+// close
+@message-padding-right:                 @base-fontSize * 3;
+@message-close-padding-vertical:        @message-padding-vertical;
+@message-close-padding-horizontal:      @message-padding-horizontal;
+@message-close-color:                   #333;
+
+// warning
+@message-warning-color:                 #c09853;
+@message-warning-bgColor:               #fcf8e3;
+@message-warning-borderColor:           darken(spin(@message-warning-bgColor, -10), 3%);
+
+// error
+@message-error-color:                   #b94a48;
+@message-error-bgColor:                 #f2dede;
+@message-error-borderColor:             darken(spin(@message-error-bgColor, -10), 3%);
+
+// success
+@message-success-color:                 #468847;
+@message-success-bgColor:               #dff0d8;
+@message-success-borderColor:           darken(spin(@message-success-bgColor, -10), 5%);
+
+// info
+@message-info-color:                    #3a87ad;
+@message-info-bgColor:                  #d9edf7;
+@message-info-borderColor:              darken(spin(@message-info-bgColor, -10), 7%);
+
+@message-block-bgColor:                 #fefefe;
+@message-block-h4-padding-vertical:     @message-padding-vertical;
+@message-block-h4-padding-horizontal:   @message-padding-horizontal;
+@message-block-h4-padding-right:        @message-padding-right;
+@message-block-p-padding:               0 @base-fontSize;
+@message-block-borderRadius:            @message-borderRadius;
+
+// Hooks
+// ==========================================================================
+.hook-message() {}
+.hook-message-close() {}
+.hook-message-warning() {}
+.hook-message-error() {}
+.hook-message-success() {}
+.hook-message-info() {}
+.hook-message-misc() {}

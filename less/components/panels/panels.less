@@ -15,11 +15,10 @@
     }
 
     .panel-header {
-        .unit('padding', @panel-header-padding);
+        .padding-em(@panel-header-padding);
         background-color: @panel-header-bgColor;
         border-bottom: 1px solid @panel-bdColor;
-        .border-top-right-radius (@panel-borderRadius);
-        .border-top-left-radius (@panel-borderRadius);
+        .border-top-radius (@panel-borderRadius);
         .hook-panel-header;
     }
 
@@ -31,18 +30,17 @@
     }
 
     .panel-body {
-        .unit('padding', @panel-body-padding);
+        .padding-em(@panel-body-padding);
         color: @panel-body-color;
         .hook-panel-body;
     }
 
     .panel-footer {
-        .unit('padding', @panel-footer-padding);
+        .padding-em(@panel-footer-padding);
         color: @panel-footer-color;
         background-color: @panel-header-bgColor;
         border-top: 1px solid @panel-bdColor;
-        .border-bottom-right-radius (@panel-borderRadius);
-        .border-bottom-left-radius (@panel-borderRadius);
+        .border-bottom-radius (@panel-borderRadius);
         .hook-panel-footer;
     }
 

@@ -1,0 +1,117 @@
+.prelude-message(@use) when (@use = true) {
+	.message,
+	.message-block {
+		position: relative;
+		.margin-bottom-rem(@message-margin-bottom);
+		font-size: @message-fontSize;
+		border: 1px solid @message-borderColor;
+		.hook-message;
+	}
+	.message {
+		.padding-rem(@message-padding-vertical @message-padding-horizontal);
+		background-color: @message-bgColor;
+	
+		&.message-close {
+			.padding-right-rem(@message-padding-right);
+		}
+
+		&.message_radius {
+			.border-radius(@message-borderRadius);
+		}
+		&.message_round {
+			.border-radius(@message-round);
+		}
+	}
+	.message-close {
+		cursor: pointer;
+		&:after {
+			position: absolute;
+			right: 0;
+			top: 0;
+			content: '\00D7';
+			.padding-rem(@message-close-padding-vertical @message-close-padding-horizontal);
+			color: @message-close-color;
+			color: fade(@message-close-color, 30%);
+			.hook-message-close;
+		}
+	}
+	// message_warning
+	// ==========================================================================
+	.message.message_warning,
+	.message-block.message_warning h4 {
+		color: @message-warning-color;
+		background-color: @message-warning-bgColor;
+		border-color: @message-warning-borderColor;
+		.hook-message-warning;
+
+		&:hover {
+			color: darken(@message-warning-color, 10%);
+		}
+	}
+	// message_error
+	// ==========================================================================
+	.message.message_error,
+	.message-block.message_error h4 {
+		color: @message-error-color; 
+		background-color: @message-error-bgColor;
+		border-color: @message-error-borderColor;
+		.hook-message-error;
+
+		&:hover {
+			color: darken(@message-error-color, 10%); 
+		}
+	}
+	// message_success
+	// ==========================================================================
+	.message.message_success,
+	.message-block.message_success h4 {
+		color: @message-success-color;
+		background-color: @message-success-bgColor;
+		border-color: @message-success-borderColor;
+		.hook-message-success;
+
+		&:hover {
+			color: darken(@message-success-color, 10%); 
+		}
+	}
+	// message_info
+	// ==========================================================================
+	.message.message_info,
+	.message-block.message_info h4 {
+		color: @message-info-color; 
+		background-color: @message-info-bgColor;
+		border-color: @message-info-borderColor;
+		.hook-message-info;
+		
+		&:hover {
+			color: darken(@message-info-color, 10%); 
+		}
+	}
+
+	// message-block
+	// ==========================================================================
+	.message-block {
+		background-color: @message-block-bgColor;
+		h4 {
+			.padding-rem(@message-block-h4-padding-vertical @message-block-h4-padding-horizontal);
+			.padding-right-rem(@message-block-h4-padding-right);
+		}
+		p {
+			.padding-rem(@message-block-p-padding);
+		}
+		&.message_radius {
+			.border-radius(@message-block-borderRadius);
+			h4 {
+				.border-top-radius(@message-block-borderRadius);
+			}
+			p {
+				.border-bottom-radius(@message-block-borderRadius);
+			}
+		}
+	}
+	// Hook
+	// ==========================================================================
+	.hook-message-misc;
+}
+
+.prelude-message(@use-message);

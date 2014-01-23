@@ -77,13 +77,13 @@ module.exports = function(grunt) {
             dest: 'test/css/highlighting/'
           }]
         },
-        lesshat: {
+        mixins: {
           files: [{
             expand: true,
             flatten: true,
-            cwd: 'bower_components/lesshat/build',
+            cwd: 'bower_components/prelude-mixins/dist',
             src: [
-                'lesshat.less'
+                '*.less'
             ],
             dest: 'less/mixins/'
           }]
