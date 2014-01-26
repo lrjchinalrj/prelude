@@ -1,0 +1,44 @@
+.prelude-rtl (@use) when (@use = true) {
+	@media all {
+
+		/**
+		* @section browser normalisation
+		* Changing direction of text flow, paddings & margins ...
+		*/
+
+		option { padding: 0 0.4em 0 0; }
+
+		body {
+			text-align: right;
+			direction: rtl;
+		}
+
+		ul, ol, dl { margin: 0 1em 1em 0; }
+		li {
+			margin-left: 0;
+			margin-right: 0.8em;
+		}
+
+		dd { margin: 0 0.8em 1em 0; }
+		blockquote, cite { margin: 0 0.8em 1em 0; }
+
+		/*------------------------------------------------------------------------------------------------------*/
+
+		.print { left: 32768px !important; }
+		/*------------------------------------------------------------------------------------------------------*/
+
+		/**
+		* @section miscellaneous
+		*
+		* (en) CSS-class for ltr-content (left to right) within a rtl website
+		* (de) Eine CSS-Klasse für ltr-Inhalte (left to right) innerhalb einer rtl-Seite
+		*/
+
+		.text-ltr {
+			direction: ltr;
+			text-align: left;
+		}
+	}
+}
+
+.prelude-rtl (@use-rtl);
