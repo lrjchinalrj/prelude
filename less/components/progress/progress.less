@@ -31,7 +31,6 @@
 		}
 	}
 
-
 	// size
 	// ======================================================================
 	.progress_small {
@@ -41,6 +40,25 @@
 		.rem(height, @progress-large-height);
 	}
 
+	// success
+	// ======================================================================
+	.progress_success {
+		.hook-progress-success;
+		.meter {
+			background-color: @progress_success-meter-size;
+			.hook-progress-meter-success;
+		}
+	}
+
+	// alert
+	// ======================================================================
+	.progress_alert {
+		.hook-progress-alert;
+		.meter {
+			background-color: @progress_alert-meter-size;
+			.hook-progress-meter-alert;
+		}
+	}
 	// striped
 	// ======================================================================
 	.progress_striped {

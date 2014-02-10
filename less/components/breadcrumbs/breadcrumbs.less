@@ -19,8 +19,10 @@
 			.hook-breadcrumbs-divider;
 		}
 
-		> li + li[data-breadcrumb]:before {
-			content: attr(data-breadcrumb) @breadcrumbs-data-divider;
+	}
+	.breadcrumbs_data {
+		> li + li:before {
+			content: @breadcrumbs_data-divider;
 			.hook-breadcrumbs-data-divider;
 		}
 	}
