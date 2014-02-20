@@ -3848,7 +3848,10 @@ button::-moz-focus-inner,
   font-size: 5rem;
 }
 .icon_circular {
-  padding: .5em !important;
+  width: 2em !important;
+  height: 2em !important;
+  line-height: 2em !important;
+  text-align: center !important;
   -webkit-background-clip: padding-box;
      -moz-background-clip: padding-box;
           background-clip: padding-box;
@@ -3859,7 +3862,10 @@ button::-moz-focus-inner,
   -webkit-border-radius: 500px;
 }
 .icon_square {
-  padding: .4em !important;
+  width: 1.8em !important;
+  height: 1.8em !important;
+  line-height: 1.8em !important;
+  text-align: center !important;
   vertical-align: baseline;
   -webkit-box-shadow: 0 0 0 .1em rgba(0, 0, 0, .1) inset;
           box-shadow: 0 0 0 .1em rgba(0, 0, 0, .1) inset;
@@ -4298,6 +4304,7 @@ dd {
 }
 .pagination li.pagination_disabled a {
   color: #999;
+  pointer-events: none;
   cursor: default;
 }
 .pagination li.pagination_disabled:hover a,
