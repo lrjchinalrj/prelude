@@ -3855,9 +3855,8 @@ button::-moz-focus-inner,
   -webkit-background-clip: padding-box;
      -moz-background-clip: padding-box;
           background-clip: padding-box;
+  border: 1px solid rgba(0, 0, 0, .1);
           border-radius: 500px;
-  -webkit-box-shadow: 0 0 0 .1em rgba(0, 0, 0, .1) inset;
-          box-shadow: 0 0 0 .1em rgba(0, 0, 0, .1) inset;
 
   -webkit-border-radius: 500px;
 }
@@ -3867,8 +3866,7 @@ button::-moz-focus-inner,
   line-height: 1.8em !important;
   text-align: center !important;
   vertical-align: baseline;
-  -webkit-box-shadow: 0 0 0 .1em rgba(0, 0, 0, .1) inset;
-          box-shadow: 0 0 0 .1em rgba(0, 0, 0, .1) inset;
+  border: 1px solid rgba(0, 0, 0, .1);
 }
 .icon-ul {
   padding-left: 0;
