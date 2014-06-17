@@ -8,59 +8,59 @@
 		.border-radius(@box-borderRadius, false);
 		.hook-box;
 		
-		&.box_square {
+		&.box--square {
 			.border-radius(0, false);
 		}
-		&.box_round {
+		&.box--round {
 			.border-radius(@box-round, false);
 		}
 
-		// box_warning
+		// box--warning
 		// ==========================================================================
-		&.box_warning {
-			color: @box_warning-color;
-			background-color: @box_warning-bgColor;
-			border-color: @box_warning-borderColor;
+		&.box--warning {
+			color: @box--warning-color;
+			background-color: @box--warning-bgColor;
+			border-color: @box--warning-borderColor;
 			.hook-box-warning;
 
 			&:hover {
-				color: darken(@box_warning-color, 10%);
+				color: darken(@box--warning-color, 10%);
 			}
 		}
-		// box_error
+		// box--error
 		// ==========================================================================
-		&.box_error {
-			color: @box_error-color; 
-			background-color: @box_error-bgColor;
-			border-color: @box_error-borderColor;
+		&.box--error {
+			color: @box--error-color; 
+			background-color: @box--error-bgColor;
+			border-color: @box--error-borderColor;
 			.hook-box-error;
 
 			&:hover {
-				color: darken(@box_error-color, 10%); 
+				color: darken(@box--error-color, 10%); 
 			}
 		}
-		// box_success
+		// box--success
 		// ==========================================================================
-		&.box_success {
-			color: @box_success-color;
-			background-color: @box_success-bgColor;
-			border-color: @box_success-borderColor;
+		&.box--success {
+			color: @box--success-color;
+			background-color: @box--success-bgColor;
+			border-color: @box--success-borderColor;
 			.hook-box-success;
 
 			&:hover {
-				color: darken(@box_success-color, 10%); 
+				color: darken(@box--success-color, 10%); 
 			}
 		}
-		// box_info
+		// box--info
 		// ==========================================================================
-		&.box_info {
-			color: @box_info-color; 
-			background-color: @box_info-bgColor;
-			border-color: @box_info-borderColor;
+		&.box--info {
+			color: @box--info-color; 
+			background-color: @box--info-bgColor;
+			border-color: @box--info-borderColor;
 			.hook-box-info;
 			
 			&:hover {
-				color: darken(@box_info-color, 10%); 
+				color: darken(@box--info-color, 10%); 
 			}
 		}
 	}

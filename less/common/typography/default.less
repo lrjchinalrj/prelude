@@ -1,39 +1,45 @@
-@fontFamily-sans:        "Helvetica Neue", Helvetica, Arial, sans-serif;
-@fontFamily-serif:       Georgia, "Times New Roman", Times, serif;
-@fontFamily-mono:        Monaco, Menlo, Consolas, "Courier New", monospace;
+// Headings
+@heading-scale          : @scale-majorThird;
+@header-fontFamily      : @fontFamily-sans;
+@h6-fontSize            : @base-fontSize;
+@h5-fontSize            : @base-fontSize;
+@h4-fontSize            : @h5-fontSize * @heading-scale;
+@h3-fontSize            : @h4-fontSize * @heading-scale;
+@h2-fontSize            : @h3-fontSize * @heading-scale;
+@h1-fontSize            : @h2-fontSize * @heading-scale;
 
-@base-fontFamily:        @fontFamily-sans;
-@header-fontFamily:      @fontFamily-sans;
-@alt-fontFamily:         @fontFamily-serif;
+// Links
+@link-color             : @color-primary;
+@link-visited-color     : @color-primary;
+@link-active-color      : darken(@link-color, 10%);
+@link-hover-color       : darken(@link-color, 15%);
+@link-focus-color       : @link-hover-color;
+@link-decoration        : none;
 
-@code-color:             #dd0055;
-@code-bgColor:           #f8f8f8;
-@code-borderColor:       #999;
-@kbd-bgColor:            #f8f8f8;
-@kbd-borderColor:        #999;
-@abbr-borderColor:       #999;
-@ins-bgColor:            #ffa;
-@ins-color:              #444;
-@mark-bgColor:           #ffa;
-@mark-color:             #444;
+// Lists
+@lists-margin-left      : @base-fontSize * 2;
+@lists-dl-margin-bottom : @base-fontSize * 1.5;
 
-@heading-scale:          @scale-majorThird;
-@h6-fontSize: 			 @base-fontSize;
-@h5-fontSize:  			 @base-fontSize;
-@h4-fontSize:  			 @h5-fontSize * @heading-scale;
-@h3-fontSize:  			 @h4-fontSize * @heading-scale;
-@h2-fontSize:   		 @h3-fontSize * @heading-scale;
-@h1-fontSize:  			 @h2-fontSize * @heading-scale;
+// Horizontal rules
+@hr-borderTopColor      : @color-border;
+@hr-borderBottomColor   : #fff;
 
-@hr-borderTopColor:          #eee;
-@hr-borderBottomColor:       #fff;
+// Blockquote
+@blockquote-borderColor : #eee;
+@blockquote-small-color : #999;
 
-@blockquote-borderColor:     #eee;
-@blockquote-small-color:     #999;
+// Text-level semantics
+@code-color             : #dd0055;
+@code-bgColor           : #f8f8f8;
+@code-borderColor       : @color-border;;
+@kbd-bgColor            : @color-background;
+@kbd-borderColor        : @color-border;
+@abbr-borderColor       : @color-border;;
+@ins-bgColor            : #ffa;
+@ins-color              : #444;
+@mark-bgColor           : #ffa;
+@mark-color             : #444;
 
-@link-color:              #0069d6;
-@link-textDecoration:     none;
-@link_visited-color:      #808080;
-@link_active-color:       darken(red, 5%);
-@link_hover-color:        darken(@link-color, 15%);
-@link_focus-color:        @link-color;
+// Text Selection
+@selection-color        : #fff;
+@selection-bgColor      : @color-primary;

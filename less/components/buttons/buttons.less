@@ -18,8 +18,8 @@
         // Hover state
         // ======================================================================
         &:hover {
-            color: @button_hover-color;
-            background-color: @button_hover-bgColor;
+            color: @button-hover-color;
+            background-color: @button-hover-bgColor;
 
             outline: none;
             text-decoration: none;
@@ -33,21 +33,21 @@
 
         // Active state
         // ======================================================================
-        &.button_active,
+        &.is-active,
         &:active {
-            background-color: @button_active-bgColor;
+            background-color: @button-active-bgColor;
             outline: none;
             .hook-button-active;
         }
 
         // Disabled state
         // ======================================================================
-        &.button_disabled,
+        &.is-disabled,
         &[disabled] {
             cursor: default;
-            background-color: @button_disable-bgColor;
-            color: @button_disable-color;
-            .opacity(@button_disable-opacity);
+            background-color: @button-disable-bgColor;
+            color: @button-disable-color;
+            .opacity(@button-disable-opacity);
             .hook-button-disabled;
         }
 
@@ -68,10 +68,10 @@
 
     // Button Label
     // ======================================================================
-    .button_label {
+    .button--label {
         position: relative;
-        .padding-right-rem(@button-label-padding-right);
-        .padding-left-rem(@button-label-padding-left);
+        .padding-right-rem(@button--label-padding-right);
+        .padding-left-rem(@button--label-padding-left);
         .hook-button-label;
 
         & > .icon {
@@ -87,45 +87,45 @@
 
     // button types
     // ======================================================================
-    .button_square {
+    .button--square {
         .border-radius(0, false);
     }
-    .button_radius {
+    .button--radius {
         .border-radius(@button-radius, false);
     }
-    .button_round {
+    .button--round {
         .border-radius(@button-rounded, false);
     }
-    .button_block {
+    .button--block {
         display: block;
         width: 100%;
     }
 
     // button size
     // ==========================================================================
-    .button_mini {
-        .font-size(@button_mini-fontSize);
+    .button--mini {
+        .font-size(@button--mini-fontSize);
     }
-    .button_tiny {
-        .font-size(@button_tiny-fontSize);
+    .button--tiny {
+        .font-size(@button--tiny-fontSize);
     }
-    .button_small {
-        .font-size(@button_small-fontSize);
+    .button--small {
+        .font-size(@button--small-fontSize);
     }
-    .button_medium {
-        .font-size(@button_medium-fontSize);
+    .button--medium {
+        .font-size(@button--medium-fontSize);
     }
-    .button_large {
-        .font-size(@button_large-fontSize);
+    .button--large {
+        .font-size(@button--large-fontSize);
     }
-    .button_big {
-        .font-size(@button_big-fontSize);
+    .button--big {
+        .font-size(@button--big-fontSize);
     }
-    .button_huge {
-        .font-size(@button_huge-fontSize);
+    .button--huge {
+        .font-size(@button--huge-fontSize);
     }
-    .button_massive {
-        .font-size(@button_massive-fontSize);
+    .button--massive {
+        .font-size(@button--massive-fontSize);
     }
 
     // Button groups
@@ -153,7 +153,7 @@
 
     // Buttons Or
     // ======================================================================
-    .buttons_or {
+    .buttons--or {
         .button:last-child {
             position: relative;
             margin-left: .4em;
@@ -169,9 +169,9 @@
                 font-size: .8em;
                 margin-top: -.8em;
                 margin-left: -1.15em;
-                color: @button_or-color;
+                color: @button--or-color;
                 text-align: center;
-                background-color: @button_or-bgColor;
+                background-color: @button--or-bgColor;
                 .border-radius(100%, false);
                 .hook-button-or;
             }

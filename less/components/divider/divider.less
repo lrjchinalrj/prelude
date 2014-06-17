@@ -15,8 +15,8 @@
 
 	// text && icon  common
 	// ==========================================================================
-	.divider_text,
-	.divider_icon {
+	.divider--text,
+	.divider--icon {
 		position: relative;
 		height: auto;
 		.margin-right-rem(@divider-margin-right);
@@ -49,9 +49,9 @@
 
 	// text
 	// ==========================================================================
-	.divider_text {
-		color: @divider_text-color;
-		color: fade(@divider_text-color, 80%);
+	.divider--text {
+		color: @divider--text-color;
+		color: fade(@divider--text-color, 80%);
 		font-weight: bold;
 		text-transform: uppercase;
 		.hook-divider-text;
@@ -59,13 +59,13 @@
 
 	// icon
 	// ==========================================================================
-	.divider_icon {
+	.divider--icon {
 		.hook-divider-icon;
 		
 		& > .icon {
 			position: relative;
-			color: @divider_icon-color;
-			color: fade(@divider_icon-color, 80%);
+			color: @divider--icon-color;
+			color: fade(@divider--icon-color, 80%);
 			&:after {
 				position: absolute;
 				left: 50%;

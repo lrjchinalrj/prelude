@@ -3,7 +3,7 @@
 @message-margin-bottom:                 @base-fontSize * .5;
 @message-fontSize:                      @base-fontSize;
 @message-bgColor:                       #f0f0f0;
-@message-borderColor:                   #eee;
+@message-borderColor:                   @color-border;
 
 @message-borderRadius:                  @base-borderRadius;
 @message-round:                         1000px;
@@ -15,24 +15,24 @@
 @message-close-color:                   #333;
 
 // warning
-@message_warning-color:                 #c09853;
-@message_warning-bgColor:               #fcf8e3;
-@message_warning-borderColor:           darken(spin(@message_warning-bgColor, -10), 3%);
+@message--warning-color:                 #c09853;
+@message--warning-bgColor:               #fcf8e3;
+@message--warning-borderColor:           darken(spin(@message--warning-bgColor, -10), 3%);
 
 // error
-@message_error-color:                   #b94a48;
-@message_error-bgColor:                 #f2dede;
-@message_error-borderColor:             darken(spin(@message_error-bgColor, -10), 3%);
+@message--error-color:                   #b94a48;
+@message--error-bgColor:                 #f2dede;
+@message--error-borderColor:             darken(spin(@message--error-bgColor, -10), 3%);
 
 // success
-@message_success-color:                 #468847;
-@message_success-bgColor:               #dff0d8;
-@message_success-borderColor:           darken(spin(@message_success-bgColor, -10), 5%);
+@message--success-color:                 #468847;
+@message--success-bgColor:               #dff0d8;
+@message--success-borderColor:           darken(spin(@message--success-bgColor, -10), 5%);
 
 // info
-@message_info-color:                    #3a87ad;
-@message_info-bgColor:                  #d9edf7;
-@message_info-borderColor:              darken(spin(@message_info-bgColor, -10), 7%);
+@message--info-color:                    #3a87ad;
+@message--info-bgColor:                  #d9edf7;
+@message--info-borderColor:              darken(spin(@message--info-bgColor, -10), 7%);
 
 @message-block-bgColor:                 #fefefe;
 @message-block-h4-padding-vertical:     @message-padding-vertical;

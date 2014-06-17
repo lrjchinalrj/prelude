@@ -18,14 +18,14 @@
 
 	// type
 	// ======================================================================
-	.progress_radius {
+	.progress--radius {
 		.border-radius(@progress-radius);
 	}
-	.progress_round {
+	.progress--round {
 		.border-radius(@progress-round);
 	}
-	.progress_radius,
-	.progress_round {
+	.progress--radius,
+	.progress--round {
 		.meter {
 			.border-radius(inherit);
 		}
@@ -33,39 +33,39 @@
 
 	// size
 	// ======================================================================
-	.progress_small {
+	.progress--small {
 		.rem(height, @progress-small-height);
 	}
-	.progress_large {
+	.progress--large {
 		.rem(height, @progress-large-height);
 	}
 
 	// success
 	// ======================================================================
-	.progress_success {
+	.progress--success {
 		.hook-progress-success;
 		.meter {
-			background-color: @progress_success-meter-size;
+			background-color: @progress--success-meter-size;
 			.hook-progress-meter-success;
 		}
 	}
 
 	// alert
 	// ======================================================================
-	.progress_alert {
+	.progress--alert {
 		.hook-progress-alert;
 		.meter {
-			background-color: @progress_alert-meter-size;
+			background-color: @progress--alert-meter-size;
 			.hook-progress-meter-alert;
 		}
 	}
 	// striped
 	// ======================================================================
-	.progress_striped {
+	.progress--striped {
 		.hook-progress-striped;
 		.meter {
 			.gradient-striped;
-			.background-size(@progress_striped-meter-size);
+			.background-size(@progress--striped-meter-size);
 			.hook-progress-meter-striped;
 		}
 	}

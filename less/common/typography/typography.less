@@ -1,4 +1,4 @@
-// Body reset
+// General 
 // ==========================================================================
 html {
 	font-size: 100%;
@@ -7,7 +7,7 @@ body {
 	font-family: @base-fontFamily;
 	.font-size(@base-fontSize);
 	line-height: @base-lineHeight;
-	color: @base-color;
+	color: @color-text;
 }
 
 // Paragraph
@@ -17,31 +17,135 @@ p {
 	font-family: inherit;
 }
 
+// Headings
+// ==========================================================================
+h1, h2, h3, h4, h5, h6 {
+	margin: 0;
+	font-family: @header-fontFamily;
+	font-weight: normal;
+	text-rendering: optimizelegibility; 
+	small {
+		font-weight: normal;
+		line-height: 1;
+	}
+}
+
+h1, .alpha {
+	.font-size(@h1-fontSize);
+	.margin-bottom-rem(@base-fontSize*.2);
+}
+h2, .beta { 
+	.font-size(@h2-fontSize);
+	.margin-bottom-rem(@base-fontSize*.33);
+}
+h3, .gamma { 
+	.font-size(@h3-fontSize);
+	.margin-bottom-rem(@base-fontSize*.5);
+}
+h4, .delta { 
+	.font-size(@h4-fontSize);
+	.margin-bottom-rem(@base-fontSize*.5);
+}
+h5, .epsilon { 
+	.font-size(@h5-fontSize);
+	.margin-bottom-rem(@base-fontSize*.5);
+}
+h6, .zeta { 
+	.font-size(@h6-fontSize);
+	.margin-bottom-rem(@base-fontSize*.5);
+}
+
 // Links
 // ==========================================================================
 a {
 	color: @link-color;
 	outline: none;
-	text-decoration: @link-textDecoration;
+	text-decoration: @link-decoration;
 
 	&:visited {
-		color: @link_visited-color;
+		color: @link-visited-color;
+		text-decoration: @link-decoration;
 	}
 	&:hover {
-		color: @link_hover-color;
+		color: @link-hover-color;
 		text-decoration: underline;
 	}
 	&:active {
-		color: @link_active-color;
+		color: @link-active-color;
 		outline: none;
 	}
 	&:focus {
-		color: @link_focus-color;
+		color: @link-focus-color;
 		outline: none;
 	}
 }
 
-// text-level semantics
+// Lists
+// ==========================================================================
+// Default list styles
+ul { list-style-type: disc }
+ol { list-style-type: decimal }
+
+ul, ol {
+	padding: 0;
+	margin: 0;
+	.margin-left-rem(@lists-margin-left);
+
+	& ul,
+	& ol {
+		margin-bottom: 0;
+	}
+}
+
+ol ol li {
+    list-style-type: lower-alpha;
+}
+
+ol ol ol li {
+    list-style-type: lower-roman;
+}
+
+// Description Lists
+// ======================================================================
+dl {
+	.margin-bottom-rem(@lists-dl-margin-bottom);
+}
+dt {
+	font-weight: bold;
+}
+dd {
+	margin-left: 0;
+}
+
+// Horizontal rules
+// ==========================================================================
+hr {
+	.margin-top-rem(@base-fontSize);
+	.margin-bottom-rem(@base-fontSize);
+	border: 0;
+	border-top: 1px solid @hr-borderTopColor;
+	border-bottom: 1px solid @hr-borderBottomColor;
+}
+
+// Blockquotes
+// ==========================================================================
+blockquote {
+	.padding-left-rem(@base-fontSize);
+	.margin-rem(0 0 0 @base-fontSize*1.5);
+	border-left: 5px solid @blockquote-borderColor;
+	p {
+		margin-bottom: 0;
+	}
+	small {
+		display: block;
+		color: @blockquote-small-color;
+		&:before {
+			content: '\2014 \00A0';
+		}
+	}
+}
+
+// Text-level semantics
 // ==========================================================================
 em, i {
 	font-style: italic;
@@ -95,75 +199,23 @@ address {
 	font-style: normal;
 }
 
-// Headings
+// Selection
 // ==========================================================================
-h1, h2, h3, h4, h5, h6 {
-	margin: 0;
-	font-family: @header-fontFamily;
-	font-weight: normal;
-	text-rendering: optimizelegibility; 
-	small {
-		font-weight: normal;
-		line-height: 1;
-	}
+::-moz-selection {
+	color: @selection-color;
+	background: @selection-bgColor;
 }
-
-h1, .alpha {
-	.font-size(@h1-fontSize);
-	.margin-bottom-rem(@base-fontSize*.2);
+::selection {
+	color: @selection-color;
+	background: @selection-bgColor;
 }
-h2, .beta { 
-	.font-size(@h2-fontSize);
-	.margin-bottom-rem(@base-fontSize*.33);
+* {
+	-webkit-tap-highlight-color: @color-primary !important;
 }
-h3, .gamma { 
-	.font-size(@h3-fontSize);
-	.margin-bottom-rem(@base-fontSize*.5);
-}
-h4, .delta { 
-	.font-size(@h4-fontSize);
-	.margin-bottom-rem(@base-fontSize*.5);
-}
-h5, .epsilon { 
-	.font-size(@h5-fontSize);
-	.margin-bottom-rem(@base-fontSize*.5);
-}
-h6, .zeta { 
-	.font-size(@h6-fontSize);
-	.margin-bottom-rem(@base-fontSize*.5);
-}
-
-// Horizontal rules
-// ==========================================================================
-hr {
-	.margin-top-rem(@base-fontSize);
-	.margin-bottom-rem(@base-fontSize);
-	border: 0;
-	border-top: 1px solid @hr-borderTopColor;
-	border-bottom: 1px solid @hr-borderBottomColor;
-}
-
-// Blockquotes
-// ==========================================================================
-blockquote {
-	.padding-left-rem(@base-fontSize);
-	.margin-rem(0 0 0 @base-fontSize*1.5);
-	border-left: 5px solid @blockquote-borderColor;
-	p {
-		margin-bottom: 0;
-	}
-	small {
-		display: block;
-		color: @blockquote-small-color;
-		&:before {
-			content: '\2014 \00A0';
-		}
-	}
-}
-
 // Remove `background` on images when selected
 // ==========================================================================
 img::-moz-selection,
 img::selection {
 	background: transparent;
 }
+

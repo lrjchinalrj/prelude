@@ -1,35 +1,51 @@
 #grid {
-	.phrase-device-generator (@variables){
+	.phrase-device-generator (@name, @variables){
 		@prefix: ;
 		@columns: extract(@variables, 1);
 		@withNoGutter: extract(@variables, 2);
 
-		#grid.phrase (@prefix, @columns, @withNoGutter);
+		.namespace (@name) when not (@name = null) {
+			@name-space: ~"@{name}-";
+		}
+		.namespace (@name) when (@name = null) {
+			@name-space: ;
+		}
+		.namespace (@name);
+
+		#grid.phrase (@name-space, @prefix, @columns, @withNoGutter);
 	}
 
-	.phrase-device-generator (@device, @breakpoint, @variables) {
+	.phrase-device-generator (@name, @device, @breakpoint, @variables) {
 		@prefix: ~"@{device}-";
 		@columns: extract(@variables, 1);
 		@withNoGutter: extract(@variables, 2);
 
+		.namespace (@name) when not (@name = null) {
+			@name-space: ~"@{name}-";
+		}
+		.namespace (@name) when (@name = null) {
+			@name-space: ;
+		}
+		.namespace (@name);
+
 		@media only screen and (max-width: @breakpoint) {
-			#grid.phrase (@prefix, @columns, @withNoGutter);
+			#grid.phrase (@name-space, @prefix, @columns, @withNoGutter);
 		}
 	}
 
-	.phrase-generator (@devices: @grid-devices, @breakpoints: @grid-devices-breakpoints, @count: @grid-devices-count) {
-		#grid.phrase-device-generator (@grid-phrase-default);
+	.phrase-generator (@name: @namespace, @devices: @grid-devices, @breakpoints: @grid-devices-breakpoints, @count: @grid-devices-count) {
+		#grid.phrase-device-generator (@name, @grid-phrase-default);
 
-		#grid.phrase-generator (@devices, @breakpoints, @count, 1);
+		#grid.phrase-generator (@name, @devices, @breakpoints, @count, 1);
 	}
 
-	.phrase-generator (@devices: @grid-devices, @breakpoints: @grid-devices-breakpoints, @count: @grid-devices-count, @index) when (@index < @count + 1){
+	.phrase-generator (@name: @namespace, @devices: @grid-devices, @breakpoints: @grid-devices-breakpoints, @count: @grid-devices-count, @index) when (@index < @count + 1){
 		@device: extract(@devices, @index);
 		@breakpoint: extract(@breakpoints, @index);
 		@variables-name: %("grid-phrase-%s", @device);
 
-		#grid.phrase-device-generator (@device, @breakpoint, @@variables-name);
+		#grid.phrase-device-generator (@name, @device, @breakpoint, @@variables-name);
 
-		#grid.phrase-generator (@devices, @breakpoints, @count, @index + 1);
+		#grid.phrase-generator (@name, @devices, @breakpoints, @count, @index + 1);
 	}
 }

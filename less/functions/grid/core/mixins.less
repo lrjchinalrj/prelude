@@ -1,6 +1,15 @@
 #grid {
-	.core (@gutter-width, @with-noGutter) {
-		.row {
+	.core (@name: @namespace, @gutter-width, @with-noGutter) {
+		.namespace (@name) when not (@name = null) {
+			@name-space: ~"@{name}-";
+		}
+		.namespace (@name) when (@name = null) {
+			@name-space: ;
+		}
+
+		.namespace (@name);
+
+		.@{name-space}row {
 			#grid.row (true, @grid-gutterWidth);
 
 			&.center {
@@ -8,22 +17,22 @@
 			}
 		}
 
-		.column, [class*="span-"] {
+		.@{name-space}column, [class*="@{name-space}span-"] {
 			#grid.column (true, @grid-gutterWidth, @grid-fontSize);
 		}
 
 		.withNoGutter (@with-noGutter) when (@with-noGutter = true){
-			.no-gutter {
+			.@{name-space}no-gutter {
 				margin-left: 0;
 				margin-right: 0;
 
-				.column, [class*="span-"] {
+				.@{name-space}column, [class*="@{name-space}span-"] {
 					margin-left: 0;
 					margin-right: 0;
 				}
 			}
 		}
-	
+		
 		.withNoGutter (@with-noGutter);
 	}
 }

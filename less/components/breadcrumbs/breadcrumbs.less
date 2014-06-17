@@ -10,8 +10,8 @@
 			display: inline-block;
 		}
 
-		.breadcrumb_active {
-			color: @breadcrumbs_disabled-color;
+		.is-active {
+			color: @breadcrumbs-active-color;
 		}
 
 		> li + li:before {
@@ -20,15 +20,15 @@
 		}
 
 	}
-	.breadcrumbs_data {
+	.breadcrumbs--data {
 		> li + li:before {
-			content: @breadcrumbs_data-divider;
+			content: @breadcrumbs--data-divider;
 			.hook-breadcrumbs-data-divider;
 		}
 	}
-	.breadcrumbs_path {
+	.breadcrumbs--path {
 		> li + li:before {
-			content: @breadcrumbs_path-divider;
+			content: @breadcrumbs--path-divider;
 			.hook-breadcrumbs-path-divider;
 		}
 	}

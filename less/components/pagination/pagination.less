@@ -31,41 +31,41 @@
 			}
 			&:hover a,
 			a:focus {
-				background-color: @pagination-link_hover-bgColor;
+				background-color: @pagination-link--hover-bgColor;
 			}
 
-			&.pagination_current {
+			&.is-current {
 				a {
-					color: @pagination_current-link-color;
+					color: @pagination-current-link-color;
 					font-weight: bold;
-					background-color: @pagination_current-link-bgColor;
+					background-color: @pagination-current-link-bgColor;
 					cursor: default;
 					.hook-pagination-current;
 				}
 				&:hover a,
 				a:focus {
-					background-color: @pagination_current-link_hover-bgColor;
+					background-color: @pagination-current-link--hover-bgColor;
 				}
 			}
 
-			&.pagination_disabled {
+			&.is-disabled {
 				a {
-					color: @pagination_disabled-link-color;
+					color: @pagination-disabled-link-color;
 					cursor: default;
 					pointer-events: none;
 					.hook-pagination-disabled;
 				}
 				&:hover a,
 				a:focus {
-					background-color: @pagination_disabled-link_hover-bgColor;
+					background-color: @pagination-disabled-link--hover-bgColor;
 				}
 			}
 		}
 
-		&.pagination_left {
+		&.pagination--left {
 			text-align: left;
 		}
-		&.pagination_right {
+		&.pagination--right {
 			text-align: right;
 		}
 	}

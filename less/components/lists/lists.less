@@ -1,71 +1,41 @@
 .prelude-lists (@use) when (@use = true) {
 	// Unordered and Ordered lists
 	ul, ol {
-		padding: 0;
-		margin: 0;
-		.margin-left-rem(@lists-margin-left);
-
 		// disc
 		// ======================================================================
-		&.list_disc {
+		&.list--disc {
 			list-style-type: disc;
 			.hook-lists-disc;
 		}
 
 		// circle
 		// ======================================================================
-		&.list_circle {
+		&.list--circle {
 			list-style-type: circle;
 			.hook-lists-circle;
 		}
 
 		// square
 		// ======================================================================
-		&.list_square {
+		&.list--square {
 			list-style-type: square;
 			.hook-lists-square;
 		}
 
 		// unstyled
 		// ======================================================================
-		&.list_unstyled {
+		&.list--unstyled {
 			list-style: none;
 			.hook-lists-unstyled;
 		}
-		&.list_disc,
-		&.list_circle,
-		&.list_square,
-		&.list_unstyled {
+		&.list--disc,
+		&.list--circle,
+		&.list--square,
+		&.list--unstyled {
 			ul, ol {
 				list-style: inherit;
 			}
 		}
-	}
-	ul ul,
-	ul ol,
-	ol ol,
-	ol ul {
-		margin-bottom: 0;
-	}
-
-	ol ol li {
-	    list-style-type: lower-alpha;
-	}
-
-	ol ol ol li {
-	    list-style-type: lower-roman;
-	}
-
-	// Description Lists
-	// ======================================================================
-	dl {
-		.margin-bottom-rem(@lists-dl-margin-bottom);
-	}
-	dt {
-		font-weight: bold;
-	}
-	dd {
-		margin-left: 0;
 	}
 
     // Hook

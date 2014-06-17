@@ -1,8 +1,8 @@
 #grid {
-	.basic (@namespace, @grid-columns, @with-prefix, @with-suffix, @with-noGutter, @has-gutter: true) {
+	.basic (@namespace, @device, @grid-columns, @with-prefix, @with-suffix, @with-noGutter, @has-gutter: true) {
 		// define
 		.spanX (@index) when (@index < @grid-columns + 1) {
-			.@{namespace}span-@{index} {
+			.@{namespace}@{device}span-@{index} {
 				.span (@index);
 			}
 			.span (@columns) {
@@ -13,7 +13,7 @@
 
 		.withPrefix (@with-prefix) when (@with-prefix = true) {
 			.prefixX (@index) when (@index < @grid-columns) {
-				.@{namespace}prefix-@{index} {
+				.@{namespace}@{device}prefix-@{index} {
 					.prefix (@index);
 				}
 				.prefixX (@index + 1);
@@ -26,7 +26,7 @@
 
 		.withSuffix (@with-suffix) when (@with-suffix = true) {
 			.suffixX (@index) when (@index < @grid-columns) {
-				.@{namespace}suffix-@{index} {
+				.@{namespace}@{device}suffix-@{index} {
 					.suffix (@index);
 				}
 				.suffixX (@index + 1);
@@ -38,8 +38,8 @@
 		}
 
 		.withNoGutter (@with-noGutter) when (@with-noGutter = true){
-			.no-gutter {
-				#grid.basic (@namespace, @grid-columns, @with-prefix, @with-suffix, false, false);
+			.@{namespace}no-gutter {
+				#grid.basic (@namespace, @device, @grid-columns, @with-prefix, @with-suffix, false, false);
 			}
 		}
 

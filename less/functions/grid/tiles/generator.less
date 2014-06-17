@@ -1,35 +1,51 @@
 #grid {
-	.tiles-device-generator (@variables){
+	.tiles-device-generator (@name, @variables){
 		@prefix: ;
 		@columns: extract(@variables, 1);
 		@withNoGutter: extract(@variables, 2);
 
-		#grid.tiles (@prefix, @columns, @withNoGutter);
+		.namespace (@name) when not (@name = null) {
+			@name-space: ~"@{name}-";
+		}
+		.namespace (@name) when (@name = null) {
+			@name-space: ;
+		}
+		.namespace (@name);
+
+		#grid.tiles (@name-space, @prefix, @columns, @withNoGutter);
 	}
 
-	.tiles-device-generator (@device, @breakpoint, @variables) {
+	.tiles-device-generator (@name, @device, @breakpoint, @variables) {
 		@prefix: ~"@{device}-";
 		@columns: extract(@variables, 1);
 		@withNoGutter: extract(@variables, 2);
 
+		.namespace (@name) when not (@name = null) {
+			@name-space: ~"@{name}-";
+		}
+		.namespace (@name) when (@name = null) {
+			@name-space: ;
+		}
+		.namespace (@name);
+
 		@media only screen and (max-width: @breakpoint) {
-			#grid.tiles (@prefix, @columns, @withNoGutter);
+			#grid.tiles (@name-space, @prefix, @columns, @withNoGutter);
 		}
 	}
 
-	.tiles-generator (@devices: @grid-devices, @breakpoints: @grid-devices-breakpoints, @count: @grid-devices-count) {
-		#grid.tiles-device-generator (@grid-tiles-default);
+	.tiles-generator (@name: @namespace, @devices: @grid-devices, @breakpoints: @grid-devices-breakpoints, @count: @grid-devices-count) {
+		#grid.tiles-device-generator (@name, @grid-tiles-default);
 
-		#grid.tiles-generator (@devices, @breakpoints, @count, 1);
+		#grid.tiles-generator (@name, @devices, @breakpoints, @count, 1);
 	}
 
-	.tiles-generator (@devices: @grid-devices, @breakpoints: @grid-devices-breakpoints, @count: @grid-devices-count, @index) when (@index < @count + 1){
+	.tiles-generator (@name: @namespace, @devices: @grid-devices, @breakpoints: @grid-devices-breakpoints, @count: @grid-devices-count, @index) when (@index < @count + 1){
 		@device: extract(@devices, @index);
 		@breakpoint: extract(@breakpoints, @index);
 		@variables-name: %("grid-tiles-%s", @device);
 
-		#grid.tiles-device-generator (@device, @breakpoint, @@variables-name);
+		#grid.tiles-device-generator (@name, @device, @breakpoint, @@variables-name);
 
-		#grid.tiles-generator (@devices, @breakpoints, @count, @index + 1);
+		#grid.tiles-generator (@name, @devices, @breakpoints, @count, @index + 1);
 	}
 }
