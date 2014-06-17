@@ -4245,10 +4245,10 @@ ol.list--unstyled ol {
   text-decoration: none;
   background-color: #eee;
   }
-.pager .pager--disabled > a,
-.pager .pager--disabled > a:hover,
-.pager .pager--disabled > a:focus,
-.pager .pager--disabled > span {
+.pager .is-disabled > a,
+.pager .is-disabled > a:hover,
+.pager .is-disabled > a:focus,
+.pager .is-disabled > span {
   color: #999;
   background-color: #fff;
   }
