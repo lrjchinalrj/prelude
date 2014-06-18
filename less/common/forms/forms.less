@@ -22,8 +22,8 @@ input[type="color"],
 textarea,
 select {
 	max-width: 100%;
-	.padding-rem(@form-spacing/2);
-	.font-size (@base-fontSize *.78);
+	.padding-rem(@form-padding);
+	.font-size (@form-fontSize);
 	border: 1px solid @form-borderColor;
 	color: @form-color;
 	background: @form-bgColor;
@@ -31,17 +31,16 @@ select {
 	.hook-form;
 
     &:focus {
-    	border-color: @form_focus-borderColor;
-		color: @form_focus-color;
-		background: @form_focus-bgColor;
+    	border-color: @form-focus-borderColor;
+		color: @form-focus-color;
 		outline: none;
 		.hook-form-focus;
     }
 
     &[disabled] {
-        border-color: @form_disabled-borderColor;
-        background-color: @form_disabled-bgColor;
-        color: @form_disabled-color;
+        border-color: @form-disabled-borderColor;
+        background-color: @form-disabled-bgColor;
+        color: @form-disabled-color;
         .hook-form-disabled;
     }
 }
@@ -52,9 +51,9 @@ select {
 ::-moz-placeholder { color: @form-placeholder-color; }
 ::-webkit-input-placeholder { color: @form-placeholder-color; }
 
-:disabled:-ms-input-placeholder { color: @form_disabled-color !important; } /* 1. */
-:disabled::-moz-placeholder { color: @form_disabled-color; }
-:disabled::-webkit-input-placeholder { color: @form_disabled-color; }
+:disabled:-ms-input-placeholder { color: @form-disabled-color !important; } /* 1. */
+:disabled::-moz-placeholder { color: @form-disabled-color; }
+:disabled::-webkit-input-placeholder { color: @form-disabled-color; }
 
 
 // Fieldset

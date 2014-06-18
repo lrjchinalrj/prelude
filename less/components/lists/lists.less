@@ -1,43 +1,43 @@
 .prelude-lists (@use) when (@use = true) {
 	// Unordered and Ordered lists
-	ul, ol {
+	.list {
+
 		// disc
 		// ======================================================================
-		&.list--disc {
+		&--disc {
 			list-style-type: disc;
 			.hook-lists-disc;
 		}
 
 		// circle
 		// ======================================================================
-		&.list--circle {
+		&--circle {
 			list-style-type: circle;
 			.hook-lists-circle;
 		}
 
 		// square
 		// ======================================================================
-		&.list--square {
+		&--square {
 			list-style-type: square;
 			.hook-lists-square;
 		}
 
 		// unstyled
 		// ======================================================================
-		&.list--unstyled {
+		&--unstyled {
 			list-style: none;
 			.hook-lists-unstyled;
 		}
-		&.list--disc,
-		&.list--circle,
-		&.list--square,
-		&.list--unstyled {
+		&--disc,
+		&--circle,
+		&--square,
+		&--unstyled {
 			ul, ol {
 				list-style: inherit;
 			}
 		}
 	}
-
     // Hook
     // ==========================================================================
     .hook-lists-misc;

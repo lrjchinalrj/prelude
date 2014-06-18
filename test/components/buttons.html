@@ -29,22 +29,21 @@
             <div class="row">
                 <div class="column half">
                     <h4>HTML</h4>
-                    <pre><code data-language="html">&lt;button&nbsp;class=&quot;button&nbsp;button--mini&quot;&gt;mini&lt;/button&gt;
-&lt;button&nbsp;class=&quot;button&nbsp;button--tiny&quot;&gt;tiny&lt;/button&gt;
-&lt;button&nbsp;class=&quot;button&nbsp;button--small&quot;&gt;small&lt;/button&gt;
-&lt;button&nbsp;class=&quot;button&nbsp;button--medium&quot;&gt;medium&lt;/button&gt;
-&lt;button&nbsp;class=&quot;button&nbsp;button--large&quot;&gt;large&lt;/button&gt;
-&lt;button&nbsp;class=&quot;button&nbsp;button--big&quot;&gt;big&lt;/button&gt;
-&lt;button&nbsp;class=&quot;button&nbsp;button--huge&quot;&gt;huge&lt;/button&gt;
-&lt;button&nbsp;class=&quot;button&nbsp;button--massive&quot;&gt;massive&lt;/button&gt;</code></pre>
+                    <pre><code data-language="html">&lt;a href=&quot;#&quot; class=&quot;button&quot;&gt;link&lt;/a&gt;
+&lt;button class=&quot;button&quot;&gt;tiny&lt;/button&gt;
+&lt;input type=&quot;button&quot; class=&quot;button&quot; value=&quot;button&quot; /&gt;
+&lt;input type=&quot;submit&quot; class=&quot;button&quot; value=&quot;submit&quot; /&gt;
+&lt;input type=&quot;submit&quot; value=&quot;Disabled&quot; class=&quot;button&quot; disabled /&gt;
+&lt;input type=&quot;reset&quot; class=&quot;button&quot; value=&quot;reset&quot; /&gt;</code></pre>
                 </div>
                 <div class="column half">
                     <h4>RENDERED HTML</h4>
-                    <a class="button">link</a>
-                    <button>tiny</button>
+                    <a href="#" class="button">link</a>
+                    <button class="button">tiny</button>
                     <input type="button" class="button" value="button" />
+                    <input type="submit" class="button" value="submit" />
+                    <input type="submit" value="Disabled" class="button" disabled />
                     <input type="reset" class="button" value="reset" />
-                    <input type="submit" class="button" value="reset" />
                 </div>
             </div>
         </section>
@@ -167,6 +166,6 @@
 
     <script type="text/javascript" src="../js/highlighting/rainbow.min.js"></script>
     <script type="text/javascript" src="../js/highlighting/html.js"></script>
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script type="text/javascript" src="../js/libs/jquery/jquery.min.js"></script>
 </body>
 </html>

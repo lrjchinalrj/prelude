@@ -1,5 +1,5 @@
 @button-padding              : .5em 1.2em;
-@button-bgColor              : #428BCA;
+@button-bgColor              : @color-primary;
 @button-color                : #fff;
 @button-borderRadius         : @base-borderRadius;
 @button-borderWidth          : 1px;
@@ -10,8 +10,8 @@
 
 // state
 @button-hover-color          : #fff;
-@button-hover-bgColor        : #3276B1;
-@button-active-bgColor       : #3276B1;
+@button-hover-bgColor        : lighten(@button-bgColor, 10%);
+@button-active-bgColor       : darken(@button-bgColor, 10%);
 @button-disable-bgColor      : #ddd;
 @button-disable-color        : #999;
 @button-disable-opacity      : .6;
@@ -20,9 +20,6 @@
 @button-icon-color           : #eee;
 @button-icon-bgColor         : #000;
 
-// buttons
-@buttons-margin-right        : @base-fontSize * .33;
-
 // label
 @button--label-padding-right : @base-fontSize * 1.5;
 @button--label-padding-left  : @base-fontSize * 4;
@@ -30,7 +27,7 @@
 // or
 @button--or-mragin-top       : @base-fontSize * .5;
 @button--or-color            : #aaa;
-@button--or-bgColor          : #fdfdfd;
+@button--or-bgColor          : @color-background;
 
 // size
 @button--mini-fontSize       : @base-fontSize * .625;

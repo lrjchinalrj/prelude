@@ -2,6 +2,7 @@
 	.breadcrumbs {
 		padding: 0;
 		list-style: none;
+
 		.hook-breadcrumbs;
 
 		> li,
@@ -10,8 +11,8 @@
 			display: inline-block;
 		}
 
-		.is-active {
-			color: @breadcrumbs-active-color;
+		.is-current {
+			color: @breadcrumbs-current-color;
 		}
 
 		> li + li:before {
@@ -19,19 +20,27 @@
 			.hook-breadcrumbs-divider;
 		}
 
-	}
-	.breadcrumbs--data {
-		> li + li:before {
-			content: @breadcrumbs--data-divider;
-			.hook-breadcrumbs-data-divider;
+
+		// breadcrumbs--data
+		// ==========================================================================
+		&--data {
+			> li + li:before {
+				content: @breadcrumbs--data-divider;
+				.hook-breadcrumbs-data-divider;
+			}
 		}
-	}
-	.breadcrumbs--path {
-		> li + li:before {
-			content: @breadcrumbs--path-divider;
-			.hook-breadcrumbs-path-divider;
+
+		// breadcrumbs--path
+		// ==========================================================================
+		&--path {
+			> li + li:before {
+				content: @breadcrumbs--path-divider;
+				.hook-breadcrumbs-path-divider;
+			}
 		}
+
 	}
+	
 	// Hook
 	// ==========================================================================
 	.hook-breadcrumbs-misc;

@@ -26,87 +26,87 @@ module.exports = function(grunt) {
 		},
 		// -- copy config ----------------------------------------------------------
 		copy: {
-				fontAwesome: {
-						files: [{
-										expand: true,
-										cwd: 'bower_components/Font-Awesome/fonts/',
-										src:	'**',
-										dest: 'fonts/fontawesome/'
-								},
-								{
-									flatten: true,
-									src: 'bower_components/Font-Awesome/less/icons.less', 
-									dest: 'fonts/fontawesome/icons.less'
-								},
-								{
-									flatten: true,
-									src: 'bower_components/Font-Awesome/less/variables.less', 
-									dest: 'fonts/fontawesome/variables.less'
-								}
-						]
-				},
-				adaptGrid: {
-						files: [{
-										expand: true,
-										cwd: 'bower_components/adaptGrid/less/',
-										src:	'**',
-										dest: 'less/functions/grid/'
-								}
-						]
-				},
-				normalize: {
-					files: [{
-						src: 'bower_components/normalize-css/normalize.css', 
-						dest: 'less/common/reset/reset.less'
-					}]
-				},
-				rainbow: {
-					files: [{
+			fontAwesome: {
+				files: [{
 						expand: true,
-						flatten: true,
-						cwd: 'bower_components/rainbow/js',
-						src: [
-								'rainbow.min.js',
-						],
-						dest: 'test/js/highlighting/'
+						cwd: 'bower_components/Font-Awesome/fonts/',
+						src:	'**',
+						dest: 'fonts/fontawesome/'
 					},
 					{
-						expand: true,
 						flatten: true,
-						cwd: 'bower_components/rainbow/js/language',
-						src: [
-								'html.js'
-						],
-						dest: 'test/js/highlighting/'
+						src: 'bower_components/Font-Awesome/less/icons.less', 
+						dest: 'fonts/fontawesome/icons.less'
 					},
 					{
-						expand: true,
 						flatten: true,
-						cwd: 'bower_components/rainbow/themes',
-						src: [
-								'github.css'
-						],
-						dest: 'test/css/highlighting/'
-					}]
-				},
-				mixins: {
+						src: 'bower_components/Font-Awesome/less/variables.less', 
+						dest: 'fonts/fontawesome/variables.less'
+					}
+				]
+			},
+			adaptGrid: {
 					files: [{
-						expand: true,
-						flatten: true,
-						cwd: 'bower_components/prelude-mixins/dist',
-						src: [
-								'*.less'
-						],
-						dest: 'less/mixins/'
-					}]
-				}
+							expand: true,
+							cwd: 'bower_components/adaptGrid/less/',
+							src:	'**',
+							dest: 'less/functions/grid/'
+						}
+					]
+			},
+			normalize: {
+				files: [{
+					src: 'bower_components/normalize-css/normalize.css', 
+					dest: 'less/common/reset/reset.less'
+				}]
+			},
+			rainbow: {
+				files: [{
+					expand: true,
+					flatten: true,
+					cwd: 'bower_components/rainbow/js',
+					src: [
+							'rainbow.min.js',
+					],
+					dest: 'test/js/highlighting/'
+				},
+				{
+					expand: true,
+					flatten: true,
+					cwd: 'bower_components/rainbow/js/language',
+					src: [
+							'html.js'
+					],
+					dest: 'test/js/highlighting/'
+				},
+				{
+					expand: true,
+					flatten: true,
+					cwd: 'bower_components/rainbow/themes',
+					src: [
+							'github.css'
+					],
+					dest: 'test/css/highlighting/'
+				}]
+			},
+			mixins: {
+				files: [{
+					expand: true,
+					flatten: true,
+					cwd: 'bower_components/prelude-mixins/dist',
+					src: [
+							'*.less'
+					],
+					dest: 'less/mixins/'
+				}]
+			}
 		},
 		
 		// -- Clean Config ---------------------------------------------------------
 
 		clean: {
-				css		: ['css/'],
-				release	: ['release/']
+			css		: ['css/'],
+			release	: ['release/']
 		},
 
 		// -- Less Config ----------------------------------------------------------
@@ -119,32 +119,38 @@ module.exports = function(grunt) {
 			}
 		},
 
+		// -- LessLint Config -------------------------------------------------------
+
+		lesslint: {
+			src: ['less/*.less']
+		},
+
 		// -- CSSLint Config -------------------------------------------------------
 
 		csslint: {
-				options: {
-						csslintrc: '.csslintrc'
-				},
+			options: {
+				csslintrc: '.csslintrc'
+			},
 
-				src: {
-						src: [
-								'css/**/*.css'
-						]
-				}
+			src: {
+				src: [
+					'css/**/*.css'
+				]
+			}
 		},
 
 		// -- CSSMin Config --------------------------------------------------------
 
 		cssmin: {
-				options: {
-						// report: 'gzip'
-				},
+			options: {
+					// report: 'gzip'
+			},
 
-				files: {
-						expand: true,
-						src	 : ['css/*.css','!css/*-min.css'],
-						ext	 : '-min.css'
-				}
+			files: {
+				expand: true,
+				src	 : ['css/*.css','!css/*-min.css'],
+				ext	 : '-min.css'
+			}
 		},
 
 		// -- CSSMin Config --------------------------------------------------------
@@ -167,6 +173,19 @@ module.exports = function(grunt) {
 			}
 		},
 
+		// -- jQuery builder Config -------------------------------------------------
+		jquery: {
+			build: {
+				options: {
+					prefix: "jquery-",
+					minify: true
+				},
+				output: "test/js/libs/jquery",
+				versions: {
+					"2.1.1": [ "deprecated"]
+				}
+			}
+		}
 	});
 
 	// Load npm plugins to provide necessary tasks.

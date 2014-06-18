@@ -1,0 +1,18 @@
+// Fluid width video
+// Usage:
+// <div class="video-container"><iframe src="..."/></div>
+.video-container {
+	position: relative;
+	padding-bottom: @video-ratio;
+	height: 0;
+
+	.hook-video;
+	
+	iframe {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+	}
+}

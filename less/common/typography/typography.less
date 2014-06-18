@@ -159,13 +159,6 @@ strong, b {
 cite {
 	font-style: italic;
 }
-code {
-	padding: 2px 3px;
-	color: @code-color;
-	.font-size(@base-fontSize*0.9);
-	background: @code-bgColor;
-	border: 1px solid @code-borderColor;
-}
 ins {
     background: @ins-bgColor;
     color: @ins-color;
@@ -199,6 +192,48 @@ address {
 	font-style: normal;
 }
 
+// Code
+// ==========================================================================
+// Inline and block code styles
+code,
+pre {
+	font-family: @code-fontFamily;
+	.font-size(@code-fontSize);
+	tab-size: 3;
+}
+
+// Inline code
+code {
+	padding: 2px 3px;
+	color: @code-color;
+	background: @code-bgColor;
+	border: 1px solid @code-borderColor;
+}
+
+// Blocks of code
+pre {
+	display: block;
+	.padding-rem(@pre-padding);
+	line-height: @pre-lineHight;
+	color: @pre-color;
+	background-color: @pre-bgColor;
+	border: 1px solid @pre-borderColor;
+
+	.border-radius(@pre-borderRadius);
+	white-space: pre;
+	white-space: pre-wrap;
+	word-break: break-all;
+	word-wrap: break-word;
+
+	// Account for some code outputs that place code tags in pre tags
+	& code {
+		padding: 0;
+		color: @pre-color;
+		background-color: @pre-bgColor;
+		border: 0;
+	}
+}
+
 // Selection
 // ==========================================================================
 ::-moz-selection {
@@ -218,4 +253,3 @@ img::-moz-selection,
 img::selection {
 	background: transparent;
 }
-

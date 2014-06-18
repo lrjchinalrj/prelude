@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width">
+    <link rel="stylesheet" href="../../css/prelude.css">
+    <link rel="stylesheet" href="../css/highlighting//github.css">
+    <style type="text/css">
+    body {
+        padding: 40px;
+    }
+    </style>
+</head>
+
+<body>
+    <section>
+        <h2>Forms</h2>
+        <section>
+            <h3>Form with labels above inputs</h3>
+            <div class="row">
+                <div class="column half">
+                    <h4>HTML</h4>
+                    <pre><code data-language="html">&lt;form class=&quot;form box&quot; action=&quot;#&quot;&gt;
+    &lt;fieldset&gt;
+        &lt;legend&gt;Your form&lt;/legend&gt;
+        &lt;ul&gt;
+            &lt;li class=&quot;form-group&quot;&gt;
+                &lt;label for=&quot;name&quot; class=&quot;form-group-label&quot;&gt;Name&lt;/label&gt;
+                &lt;div class=&quot;form-group-control&quot;&gt;
+                    &lt;input type=&quot;text&quot; id=&quot;name&quot; placeholder=&quot;Zander Martineau&quot; /&gt;
+                &lt;/div&gt;
+            &lt;/li&gt;
+            &lt;li class=&quot;form-group&quot;&gt;
+                &lt;label for=&quot;email&quot; class=&quot;form-group-label&quot;&gt;Email&lt;/label&gt;
+                &lt;div class=&quot;form-group-control&quot;&gt;
+                    &lt;input type=&quot;email&quot; id=&quot;email&quot; placeholder=&quot;steve@apple.com&quot; /&gt;
+                &lt;/div&gt;
+            &lt;/li&gt;
+            &lt;li class=&quot;form-group&quot;&gt;
+                &lt;label for=&quot;phone&quot; class=&quot;form-group-label&quot;&gt;Phone&lt;/label&gt;
+                &lt;div class=&quot;form-group-control&quot;&gt;
+                    &lt;input type=&quot;number&quot; id=&quot;phone&quot; placeholder=&quot;020 123 4567&quot; /&gt;
+                &lt;/div&gt;
+            &lt;/li&gt;
+            &lt;li class=&quot;form-group&quot;&gt;
+                &lt;label for=&quot;comments&quot; class=&quot;form-group-label&quot;&gt;Textarea
+                    &lt;br&gt;
+                    &lt;small&gt;This is a description&lt;/small&gt;
+                &lt;/label&gt;
+
+                &lt;div class=&quot;form-group-control&quot;&gt;
+                    &lt;textarea id=&quot;comments&quot; rows=&quot;3&quot; cols=&quot;50&quot;&gt;&lt;/textarea&gt;
+                &lt;/div&gt;
+            &lt;/li&gt;
+            &lt;li class=&quot;form-group&quot;&gt;
+                &lt;label for=&quot;comments&quot; class=&quot;form-group-label&quot;&gt;Checkboxes &amp;amp; Radio buttons&lt;/label&gt;
+                &lt;div class=&quot;form-group-control&quot;&gt;
+                    &lt;label class=&quot;form-checkbox&quot;&gt;
+                        &lt;input type=&quot;checkbox&quot; value=&quot;&quot;&gt;Option one is this and that&mdash;be sure to include why it&#039;s great
+                    &lt;/label&gt;
+
+                    &lt;label class=&quot;form-radio&quot;&gt;
+                        &lt;input type=&quot;radio&quot; name=&quot;optionsRadios&quot; id=&quot;optionsRadios1&quot; value=&quot;option1&quot; checked&gt;Option one is this and that&mdash;be sure to include why it&#039;s great
+                    &lt;/label&gt;
+                    &lt;label class=&quot;form-radio&quot;&gt;
+                        &lt;input type=&quot;radio&quot; name=&quot;optionsRadios&quot; id=&quot;optionsRadios2&quot; value=&quot;option2&quot;&gt;Option two can be something else and selecting it will deselect option one
+                    &lt;/label&gt;
+                &lt;/div&gt;
+            &lt;/li&gt;
+        &lt;/ul&gt;
+
+    &lt;/fieldset&gt;
+    &lt;div class=&quot;form-actions text-center&quot;&gt;
+        &lt;input type=&quot;submit&quot; value=&quot;Submit&quot; class=&quot;button button--primary&quot; /&gt;
+        &lt;button type=&quot;reset&quot; class=&quot;button&quot;&gt;Cancel&lt;/button&gt;
+    &lt;/div&gt;
+&lt;/form&gt;</code></pre>
+                </div>
+                <div class="column half">
+                    <h4>RENDERED HTML</h4>
+                    <form class="form box" action="#">
+                        <fieldset>
+                            <legend>Your form</legend>
+                            <ul>
+                                <li class="form-group">
+                                    <label for="name" class="form-group-label">Name</label>
+                                    <div class="form-group-control">
+                                        <input type="text" id="name" placeholder="Zander Martineau" />
+                                    </div>
+                                </li>
+                                <li class="form-group">
+                                    <label for="email" class="form-group-label">Email</label>
+                                    <div class="form-group-control">
+                                        <input type="email" id="email" placeholder="steve@apple.com" />
+                                    </div>
+                                </li>
+                                <li class="form-group">
+                                    <label for="phone" class="form-group-label">Phone</label>
+                                    <div class="form-group-control">
+                                        <input type="number" id="phone" placeholder="020 123 4567" />
+                                    </div>
+                                </li>
+                                <li class="form-group">
+                                    <label for="comments" class="form-group-label">Textarea
+                                        <br>
+                                        <small>This is a description</small>
+                                    </label>
+
+                                    <div class="form-group-control">
+                                        <textarea id="comments" rows="3" cols="50"></textarea>
+                                    </div>
+                                </li>
+                                <li class="form-group">
+                                    <label for="comments" class="form-group-label">Checkboxes &amp; Radio buttons</label>
+                                    <div class="form-group-control">
+                                        <label class="form-checkbox">
+                                            <input type="checkbox" value="">Option one is this and that—be sure to include why it's great
+                                        </label>
+
+                                        <label class="form-radio">
+                                            <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>Option one is this and that—be sure to include why it's great
+                                        </label>
+                                        <label class="form-radio">
+                                            <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">Option two can be something else and selecting it will deselect option one
+                                        </label>
+                                    </div>
+                                </li>
+                            </ul>
+
+                        </fieldset>
+                        <div class="form-actions text-center">
+                            <input type="submit" value="Submit" class="button button--primary" />
+                            <button type="reset" class="button">Cancel</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+        <hr>
+        <section>
+            <h3>Forms with inline labels</h3>
+            <div class="row">
+                <div class="column half">
+                    <h4>HTML</h4>
+                    <pre><code data-language="html">&lt;form class=&quot;form form--horizontal box&quot; action=&quot;#&quot;&gt;
+    &lt;fieldset&gt;
+        &lt;legend&gt;Your form&lt;/legend&gt;
+        &lt;ul&gt;
+            &lt;li class=&quot;form-group&quot;&gt;
+                &lt;label for=&quot;name&quot; class=&quot;form-group-label&quot;&gt;Name&lt;/label&gt;
+                &lt;div class=&quot;form-group-control&quot;&gt;
+                    &lt;input type=&quot;text&quot; id=&quot;name&quot; placeholder=&quot;Zander Martineau&quot; /&gt;
+                &lt;/div&gt;
+            &lt;/li&gt;
+            &lt;li class=&quot;form-group&quot;&gt;
+                &lt;label for=&quot;email&quot; class=&quot;form-group-label&quot;&gt;Email&lt;/label&gt;
+                &lt;div class=&quot;form-group-control&quot;&gt;
+                    &lt;input type=&quot;email&quot; id=&quot;email&quot; placeholder=&quot;steve@apple.com&quot; /&gt;
+                &lt;/div&gt;
+            &lt;/li&gt;
+            &lt;li class=&quot;form-group&quot;&gt;
+                &lt;label for=&quot;phone&quot; class=&quot;form-group-label&quot;&gt;Phone&lt;/label&gt;
+                &lt;div class=&quot;form-group-control&quot;&gt;
+                    &lt;input type=&quot;number&quot; id=&quot;phone&quot; placeholder=&quot;020 123 4567&quot; /&gt;
+                &lt;/div&gt;
+            &lt;/li&gt;
+            &lt;li class=&quot;form-group&quot;&gt;
+                &lt;label for=&quot;comments&quot; class=&quot;form-group-label&quot;&gt;Textarea
+                    &lt;br&gt;
+                    &lt;small&gt;This is a description&lt;/small&gt;
+                &lt;/label&gt;
+                &lt;div class=&quot;form-group-control&quot;&gt;
+                    &lt;textarea id=&quot;comments&quot; rows=&quot;3&quot; cols=&quot;50&quot;&gt;&lt;/textarea&gt;
+                &lt;/div&gt;
+            &lt;/li&gt;
+            &lt;li class=&quot;form-group&quot;&gt;
+                &lt;label for=&quot;comments&quot; class=&quot;form-group-label&quot;&gt;Checkboxes &amp;amp; Radio buttons&lt;/label&gt;
+                &lt;div class=&quot;form-group-control&quot;&gt;
+                    &lt;label class=&quot;form-checkbox&quot;&gt;
+                        &lt;input type=&quot;checkbox&quot; value=&quot;&quot;&gt;Option one is this and that&mdash;be sure to include why it&#039;s great
+                    &lt;/label&gt;
+
+                    &lt;label class=&quot;form-radio&quot;&gt;
+                        &lt;input type=&quot;radio&quot; name=&quot;optionsRadios&quot; id=&quot;optionsRadios1&quot; value=&quot;option1&quot; checked&gt;Option one is this and that&mdash;be sure to include why it&#039;s great
+                    &lt;/label&gt;
+                    &lt;label class=&quot;form-radio&quot;&gt;
+                        &lt;input type=&quot;radio&quot; name=&quot;optionsRadios&quot; id=&quot;optionsRadios2&quot; value=&quot;option2&quot;&gt;Option two can be something else and selecting it will deselect option one
+                    &lt;/label&gt;
+                &lt;/div&gt;
+            &lt;/li&gt;
+        &lt;/ul&gt;
+    &lt;/fieldset&gt;
+    &lt;div class=&quot;form-actions text-center&quot;&gt;
+        &lt;input type=&quot;submit&quot; value=&quot;Submit&quot; class=&quot;button button--primary&quot; /&gt;
+        &lt;button type=&quot;reset&quot; class=&quot;button&quot;&gt;Cancel&lt;/button&gt;
+    &lt;/div&gt;
+&lt;/form&gt;</code></pre>
+                </div>
+                <div class="column half">
+                    <h4>RENDERED HTML</h4>
+                    <form class="form form--horizontal box" action="#">
+                        <fieldset>
+                            <legend>Your form</legend>
+                            <ul>
+                                <li class="form-group">
+                                    <label for="name" class="form-group-label">Name</label>
+                                    <div class="form-group-control">
+                                        <input type="text" id="name" placeholder="Zander Martineau" />
+                                    </div>
+                                </li>
+                                <li class="form-group">
+                                    <label for="email" class="form-group-label">Email</label>
+                                    <div class="form-group-control">
+                                        <input type="email" id="email" placeholder="steve@apple.com" />
+                                    </div>
+                                </li>
+                                <li class="form-group">
+                                    <label for="phone" class="form-group-label">Phone</label>
+                                    <div class="form-group-control">
+                                        <input type="number" id="phone" placeholder="020 123 4567" />
+                                    </div>
+                                </li>
+                                <li class="form-group">
+                                    <label for="comments" class="form-group-label">Textarea
+                                        <br>
+                                        <small>This is a description</small>
+                                    </label>
+                                    <div class="form-group-control">
+                                        <textarea id="comments" rows="3" cols="50"></textarea>
+                                    </div>
+                                </li>
+                                <li class="form-group">
+                                    <label for="comments" class="form-group-label">Checkboxes &amp; Radio buttons</label>
+                                    <div class="form-group-control">
+                                        <label class="form-checkbox">
+                                            <input type="checkbox" value="">Option one is this and that—be sure to include why it's great
+                                        </label>
+
+                                        <label class="form-radio">
+                                            <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>Option one is this and that—be sure to include why it's great
+                                        </label>
+                                        <label class="form-radio">
+                                            <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">Option two can be something else and selecting it will deselect option one
+                                        </label>
+                                    </div>
+                                </li>
+                            </ul>
+                        </fieldset>
+                        <div class="form-actions text-center">
+                            <input type="submit" value="Submit" class="button button--primary" />
+                            <button type="reset" class="button">Cancel</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+        <hr>
+        <section>
+            <h3>Inline Form</h3>
+            <div class="row">
+                <div class="column half">
+                    <h4>HTML</h4>
+                    <pre><code data-language="html">&lt;form class=&quot;form form--inline box&quot;&gt;
+    &lt;input type=&quot;email&quot; class=&quot;input--medium&quot; placeholder=&quot;Email&quot;&gt;
+    &lt;input type=&quot;text&quot; class=&quot;input--medium&quot; placeholder=&quot;Username&quot;&gt;
+    &lt;label class=&quot;form-checkbox&quot;&gt;
+        &lt;input type=&quot;checkbox&quot;&gt;Remember me
+    &lt;/label&gt;
+    &lt;input type=&quot;submit&quot; class=&quot;button button--primary&quot; value=&quot;Sign in&quot; /&gt;
+&lt;/form&gt;</code></pre>
+                </div>
+                <div class="column half">
+                    <h4>RENDERED HTML</h4>
+                    <form class="form form--inline box">
+                        <input type="email" class="input--medium" placeholder="Email">
+                        <input type="text" class="input--medium" placeholder="Username">
+                        <label class="form-checkbox">
+                            <input type="checkbox">Remember me
+                        </label>
+                        <input type="submit" class="button button--primary" value="Sign in" />
+                    </form>
+                </div>
+            </div>
+        </section>
+        <hr>
+        <section>
+            <h3>Search Form</h3>
+            <div class="row">
+                <div class="column half">
+                    <h4>HTML</h4>
+                    <pre><code data-language="html">&lt;form class=&quot;form form--inline box&quot;&gt;
+    &lt;input type=&quot;search&quot; class=&quot;form--search-input input--large&quot; placeholder=&quot;Search&quot;&gt;
+    &lt;input type=&quot;submit&quot; class=&quot;button button--primary&quot; value=&quot;Search&quot; /&gt;
+&lt;/form&gt;</code></pre>
+                </div>
+                <div class="column half">
+                    <h4>RENDERED HTML</h4>
+                    <form class="form form--inline box">
+                        <input type="search" class="form--search-input input--large" placeholder="Search">
+                        <input type="submit" class="button button--primary" value="Search" />
+                    </form>
+                </div>
+            </div>
+        </section>
+        <hr>
+        <section>
+            <h3>orm Elements</h3>
+            <div class="row">
+                <div class="column half">
+                    <h4>HTML</h4>
+                    <pre><code data-language="html">&lt;form class=&quot;form form--horizontal box&quot; action=&quot;#&quot;&gt;
+    &lt;fieldset&gt;
+        &lt;legend&gt;Your form&lt;/legend&gt;
+        &lt;ul&gt;
+            &lt;li class=&quot;form-group&quot;&gt;
+                &lt;label for=&quot;text&quot; class=&quot;form-group-label&quot;&gt;Text&lt;/label&gt;
+                &lt;div class=&quot;form-group-control&quot;&gt;
+                    &lt;input type=&quot;text&quot; id=&quot;text&quot; placeholder=&quot;Zander Martineau&quot; /&gt;
+                &lt;/div&gt;
+            &lt;/li&gt;
+            &lt;li class=&quot;form-group&quot;&gt;
+                &lt;label for=&quot;email&quot; class=&quot;form-group-label&quot;&gt;Email&lt;/label&gt;
+                &lt;div class=&quot;form-group-control&quot;&gt;
+                    &lt;input type=&quot;email&quot; id=&quot;email&quot; placeholder=&quot;zander@martineau.tv&quot; /&gt;
+                &lt;/div&gt;
+            &lt;/li&gt;
+            &lt;li class=&quot;form-group&quot;&gt;
+                &lt;label for=&quot;number&quot; class=&quot;form-group-label&quot;&gt;Number&lt;/label&gt;
+                &lt;div class=&quot;form-group-control&quot;&gt;
+                    &lt;input type=&quot;number&quot; id=&quot;number&quot; placeholder=&quot;020 123 4567&quot; /&gt;
+                &lt;/div&gt;
+            &lt;/li&gt;
+            &lt;li class=&quot;form-group&quot;&gt;
+                &lt;label for=&quot;file&quot; class=&quot;form-group-label&quot;&gt;File upload
+                    &lt;br&gt;
+                    &lt;small&gt;Firefox uses the
+                        &lt;code&gt;size&lt;/code&gt;attribute to determine width.&lt;/small&gt;
+                &lt;/label&gt;
+
+                &lt;div class=&quot;form-group-control&quot;&gt;
+                    &lt;div class=&quot;fileWrapper&quot;&gt;
+                        &lt;input type=&quot;file&quot; id=&quot;file&quot; accept=&quot;image/*&quot; size=&quot;14&quot; /&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+            &lt;/li&gt;
+            &lt;li class=&quot;form-group&quot;&gt;
+                &lt;label for=&quot;comments&quot; class=&quot;form-group-label&quot;&gt;Textarea&lt;/label&gt;
+                &lt;div class=&quot;form-group-control&quot;&gt;
+                    &lt;textarea id=&quot;comments&quot; rows=&quot;3&quot; cols=&quot;50&quot;&gt;&lt;/textarea&gt;
+                &lt;/div&gt;
+            &lt;/li&gt;
+            &lt;li class=&quot;form-group&quot;&gt;
+                &lt;label for=&quot;comments&quot; class=&quot;form-group-label&quot;&gt;Checkboxes &amp;amp; Radio buttons&lt;/label&gt;
+                &lt;div class=&quot;form-group-control&quot;&gt;
+                    &lt;label class=&quot;form-checkbox&quot;&gt;
+                        &lt;input type=&quot;checkbox&quot; value=&quot;&quot;&gt;This is a checkbox
+                    &lt;/label&gt;
+                    &lt;label class=&quot;form-radio&quot;&gt;
+                        &lt;input type=&quot;radio&quot; name=&quot;optionsRadios&quot; id=&quot;optionsRadios1&quot; value=&quot;option1&quot; checked&gt;This is a radio
+                    &lt;/label&gt;
+                    &lt;label class=&quot;form-radio&quot;&gt;
+                        &lt;input type=&quot;radio&quot; name=&quot;optionsRadios&quot; id=&quot;optionsRadios2&quot; value=&quot;option2&quot;&gt;This is another radio
+                    &lt;/label&gt;
+                &lt;/div&gt;
+            &lt;/li&gt;
+            &lt;li class=&quot;form-group&quot;&gt;
+                &lt;label for=&quot;comments&quot; class=&quot;form-group-label&quot;&gt;Comments&lt;/label&gt;
+                &lt;div class=&quot;form-group-control&quot;&gt;
+                    &lt;select&gt;
+                        &lt;option&gt;1&lt;/option&gt;
+                        &lt;option&gt;2&lt;/option&gt;
+                        &lt;option&gt;3&lt;/option&gt;
+                        &lt;option&gt;4&lt;/option&gt;
+                        &lt;option&gt;5&lt;/option&gt;
+                    &lt;/select&gt;
+                &lt;/div&gt;
+            &lt;/li&gt;
+            &lt;li class=&quot;form-group&quot;&gt;
+                &lt;label for=&quot;comments&quot; class=&quot;form-group-label&quot;&gt;Comments&lt;/label&gt;
+                &lt;div class=&quot;form-group-control&quot;&gt;
+                    &lt;select multiple=&quot;multiple&quot;&gt;
+                        &lt;option&gt;1&lt;/option&gt;
+                        &lt;option&gt;2&lt;/option&gt;
+                        &lt;option&gt;3&lt;/option&gt;
+                        &lt;option&gt;4&lt;/option&gt;
+                        &lt;option&gt;5&lt;/option&gt;
+                    &lt;/select&gt;
+                &lt;/div&gt;
+            &lt;/li&gt;
+        &lt;/ul&gt;
+
+    &lt;/fieldset&gt;
+    &lt;div class=&quot;form-actions text-center&quot;&gt;
+        &lt;input type=&quot;submit&quot; value=&quot;Submit&quot; class=&quot;button button--primary&quot; /&gt;
+        &lt;input type=&quot;reset&quot; class=&quot;button&quot; value=&quot;Cancel&quot; /&gt;
+    &lt;/div&gt;
+&lt;/form&gt;</code></pre>
+                </div>
+                <div class="column half">
+                    <h4>RENDERED HTML</h4>
+                    <form class="form form--horizontal box" action="#">
+                        <fieldset>
+                            <legend>Your form</legend>
+                            <ul>
+                                <li class="form-group">
+                                    <label for="text" class="form-group-label">Text</label>
+                                    <div class="form-group-control">
+                                        <input type="text" id="text" placeholder="Zander Martineau" />
+                                    </div>
+                                </li>
+                                <li class="form-group">
+                                    <label for="email" class="form-group-label">Email</label>
+                                    <div class="form-group-control">
+                                        <input type="email" id="email" placeholder="zander@martineau.tv" />
+                                    </div>
+                                </li>
+                                <li class="form-group">
+                                    <label for="number" class="form-group-label">Number</label>
+                                    <div class="form-group-control">
+                                        <input type="number" id="number" placeholder="020 123 4567" />
+                                    </div>
+                                </li>
+                                <li class="form-group">
+                                    <label for="file" class="form-group-label">File upload
+                                        <br>
+                                        <small>Firefox uses the
+                                            <code>size</code>attribute to determine width.</small>
+                                    </label>
+
+                                    <div class="form-group-control">
+                                        <div class="fileWrapper">
+                                            <input type="file" id="file" accept="image/*" size="14" />
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="form-group">
+                                    <label for="comments" class="form-group-label">Textarea</label>
+                                    <div class="form-group-control">
+                                        <textarea id="comments" rows="3" cols="50"></textarea>
+                                    </div>
+                                </li>
+                                <li class="form-group">
+                                    <label for="comments" class="form-group-label">Checkboxes &amp; Radio buttons</label>
+                                    <div class="form-group-control">
+                                        <label class="form-checkbox">
+                                            <input type="checkbox" value="">This is a checkbox
+                                        </label>
+                                        <label class="form-radio">
+                                            <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>This is a radio
+                                        </label>
+                                        <label class="form-radio">
+                                            <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">This is another radio
+                                        </label>
+                                    </div>
+                                </li>
+                                <li class="form-group">
+                                    <label for="comments" class="form-group-label">Comments</label>
+                                    <div class="form-group-control">
+                                        <select>
+                                            <option>1</option>
+                                            <option>2</option>
+                                            <option>3</option>
+                                            <option>4</option>
+                                            <option>5</option>
+                                        </select>
+                                    </div>
+                                </li>
+                                <li class="form-group">
+                                    <label for="comments" class="form-group-label">Comments</label>
+                                    <div class="form-group-control">
+                                        <select multiple="multiple">
+                                            <option>1</option>
+                                            <option>2</option>
+                                            <option>3</option>
+                                            <option>4</option>
+                                            <option>5</option>
+                                        </select>
+                                    </div>
+                                </li>
+                            </ul>
+
+                        </fieldset>
+                        <div class="form-actions text-center">
+                            <input type="submit" value="Submit" class="button button--primary" />
+                            <input type="reset" class="button" value="Cancel" />
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </section>
+
+    <script type="text/javascript" src="../js/highlighting/rainbow.min.js"></script>
+    <script type="text/javascript" src="../js/highlighting/html.js"></script>
+    <script type="text/javascript" src="../js/libs/jquery/jquery.min.js"></script>
+</body>
+
+</html>

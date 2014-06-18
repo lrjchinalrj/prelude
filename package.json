@@ -35,8 +35,12 @@
     "grunt-contrib-watch": "*",
     "grunt-contrib-copy": "*",
     "grunt-contrib-less": "*",
+    "grunt-lesslint": "*",
     "grunt-lessimportfile": "*",
     "grunt-csscomb": "*",
     "load-grunt-tasks": "*"
+  },
+  "dependencies": {
+    "grunt-jquery-builder": "~0.1.1"
   }
 }

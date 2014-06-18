@@ -42,21 +42,23 @@
 				.hook-pager-disabled;
 			}
 		}
-	}
-	.pager-prev {
-		> a,
-		> span {
-			float: left;
-			.hook-pager-prev;
+
+		&-prev {
+			> a,
+			> span {
+				float: left;
+				.hook-pager-prev;
+			}
+		}
+		&-next {
+			> a,
+			> span {
+				float: right;
+				.hook-pager-next;
+			}
 		}
 	}
-	.pager-next {
-		> a,
-		> span {
-			float: right;
-			.hook-pager-next;
-		}
-	}
+	
 	// Hook
 	// ==========================================================================
 	.hook-pager-misc;

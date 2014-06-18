@@ -1,19 +1,35 @@
 .prelude-buttons (@use) when (@use = true) {
-    button,
     .button {
-        .inline-block();
+        .inline-block(); // Allow us to better style box model properties
+        vertical-align: middle;
+        white-space:nowrap;  // Stop buttons wrapping and looking broken
         padding: @button-padding;
         line-height: 1;
         color: @button-color;
         text-align: center;
-        vertical-align: middle;
+        
         background-color: @button-bgColor;
         border: @button-borderWidth solid @button-borderColor;
         cursor: pointer;
+        overflow:visible; // Fixes odd inner spacing in IE7
         outline: none;
         .border-radius(@button-borderRadius, false);
         .user-select (none);
-        .hook-button;
+
+        // Prevents from inheriting default anchor styles.
+        &, &:hover, &:active, &:focus, &:visited {
+            text-decoration: none;
+        }
+
+        &:active,
+        &:focus{
+            outline:none;
+        }
+
+        // buttons spacing
+        & + & {
+            margin-left: 5px;
+        }
 
         // Hover state
         // ======================================================================
@@ -36,7 +52,6 @@
         &.is-active,
         &:active {
             background-color: @button-active-bgColor;
-            outline: none;
             .hook-button-active;
         }
 
@@ -64,76 +79,79 @@
             padding: 0;
             outline: 0;
         }
-    }
 
-    // Button Label
-    // ======================================================================
-    .button--label {
-        position: relative;
-        .padding-right-rem(@button--label-padding-right);
-        .padding-left-rem(@button--label-padding-left);
-        .hook-button-label;
+        .hook-button;
 
-        & > .icon {
-            position: absolute;
-            top: 0;
-            left: 0;
-            height: 100%;
-            width: 2.5em;
-            line-height: 2;
-            background-color: fade(@button-icon-bgColor, 10%);
+        // button modifiers
+        // ======================================================================
+        &--square {
+            .border-radius(0, false);
+        }
+        &--radius {
+            .border-radius(@button-radius, false);
+        }
+        &--round {
+            .border-radius(@button-rounded, false);
+        }
+        &--block {
+            display: block;
+            width: 100%;
+        }
+
+         // button size
+        // ==========================================================================
+        &--mini {
+            .font-size(@button--mini-fontSize);
+        }
+        &--tiny {
+            .font-size(@button--tiny-fontSize);
+        }
+        &--small {
+            .font-size(@button--small-fontSize);
+        }
+        &--medium {
+            .font-size(@button--medium-fontSize);
+        }
+        &--large {
+            .font-size(@button--large-fontSize);
+        }
+        &--big {
+            .font-size(@button--big-fontSize);
+        }
+        &--huge {
+            .font-size(@button--huge-fontSize);
+        }
+        &--massive {
+            .font-size(@button--massive-fontSize);
+        }
+
+        // Button Label
+        // ======================================================================
+        &--label {
+            position: relative;
+            .padding-right-rem(@button--label-padding-right);
+            .padding-left-rem(@button--label-padding-left);
+            .hook-button-label;
+
+            & > .icon {
+                position: absolute;
+                top: 0;
+                left: 0;
+                height: 100%;
+                width: 2.5em;
+                line-height: 2;
+                background-color: fade(@button-icon-bgColor, 10%);
+            }
         }
     }
 
-    // button types
-    // ======================================================================
-    .button--square {
-        .border-radius(0, false);
-    }
-    .button--radius {
-        .border-radius(@button-radius, false);
-    }
-    .button--round {
-        .border-radius(@button-rounded, false);
-    }
-    .button--block {
-        display: block;
-        width: 100%;
-    }
-
-    // button size
-    // ==========================================================================
-    .button--mini {
-        .font-size(@button--mini-fontSize);
-    }
-    .button--tiny {
-        .font-size(@button--tiny-fontSize);
-    }
-    .button--small {
-        .font-size(@button--small-fontSize);
-    }
-    .button--medium {
-        .font-size(@button--medium-fontSize);
-    }
-    .button--large {
-        .font-size(@button--large-fontSize);
-    }
-    .button--big {
-        .font-size(@button--big-fontSize);
-    }
-    .button--huge {
-        .font-size(@button--huge-fontSize);
-    }
-    .button--massive {
-        .font-size(@button--massive-fontSize);
-    }
+    
 
     // Button groups
     // ==========================================================================
     .buttons {
         position: relative;
         .inline-block();
-        .margin-right-rem(@buttons-margin-right);
         vertical-align: bottom;
         .clearfix();
         .hook-buttons;

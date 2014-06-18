@@ -14,61 +14,61 @@
 			background: @progress-meter-bgColor;
 			.hook-progress-meter;
 		}
-	}
 
-	// type
-	// ======================================================================
-	.progress--radius {
-		.border-radius(@progress-radius);
-	}
-	.progress--round {
-		.border-radius(@progress-round);
-	}
-	.progress--radius,
-	.progress--round {
-		.meter {
-			.border-radius(inherit);
+		// type
+		// ======================================================================
+		&--radius {
+			.border-radius(@progress-radius);
 		}
-	}
+		&--round {
+			.border-radius(@progress-round);
+		}
+		&--radius,
+		&--round {
+			.meter {
+				.border-radius(inherit);
+			}
+		}
 
-	// size
-	// ======================================================================
-	.progress--small {
-		.rem(height, @progress-small-height);
-	}
-	.progress--large {
-		.rem(height, @progress-large-height);
-	}
+		// size
+		// ======================================================================
+		&--small {
+			.rem(height, @progress-small-height);
+		}
+		&--large {
+			.rem(height, @progress-large-height);
+		}
 
-	// success
-	// ======================================================================
-	.progress--success {
-		.hook-progress-success;
-		.meter {
-			background-color: @progress--success-meter-size;
-			.hook-progress-meter-success;
+		// success
+		// ======================================================================
+		&--success {
+			.hook-progress-success;
+			.meter {
+				background-color: @progress--success-meter-size;
+				.hook-progress-meter-success;
+			}
 		}
-	}
 
-	// alert
-	// ======================================================================
-	.progress--alert {
-		.hook-progress-alert;
-		.meter {
-			background-color: @progress--alert-meter-size;
-			.hook-progress-meter-alert;
+		// alert
+		// ======================================================================
+		&--alert {
+			.hook-progress-alert;
+			.meter {
+				background-color: @progress--alert-meter-size;
+				.hook-progress-meter-alert;
+			}
 		}
-	}
-	// striped
-	// ======================================================================
-	.progress--striped {
-		.hook-progress-striped;
-		.meter {
-			.gradient-striped;
-			.background-size(@progress--striped-meter-size);
-			.hook-progress-meter-striped;
+		// striped
+		// ======================================================================
+		&--striped {
+			.hook-progress-striped;
+			.meter {
+				.gradient-striped;
+				.background-size(@progress--striped-meter-size);
+				.hook-progress-meter-striped;
+			}
 		}
-	}
+	}	
 
 	// Hook
 	// ==========================================================================

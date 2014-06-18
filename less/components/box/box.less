@@ -8,16 +8,18 @@
 		.border-radius(@box-borderRadius, false);
 		.hook-box;
 		
-		&.box--square {
+		// modifiers
+		// ==========================================================================
+		&--square {
 			.border-radius(0, false);
 		}
-		&.box--round {
+		&--round {
 			.border-radius(@box-round, false);
 		}
 
 		// box--warning
 		// ==========================================================================
-		&.box--warning {
+		&--warning {
 			color: @box--warning-color;
 			background-color: @box--warning-bgColor;
 			border-color: @box--warning-borderColor;
@@ -29,7 +31,7 @@
 		}
 		// box--error
 		// ==========================================================================
-		&.box--error {
+		&--error {
 			color: @box--error-color; 
 			background-color: @box--error-bgColor;
 			border-color: @box--error-borderColor;
@@ -41,7 +43,7 @@
 		}
 		// box--success
 		// ==========================================================================
-		&.box--success {
+		&--success {
 			color: @box--success-color;
 			background-color: @box--success-bgColor;
 			border-color: @box--success-borderColor;
@@ -53,7 +55,7 @@
 		}
 		// box--info
 		// ==========================================================================
-		&.box--info {
+		&--info {
 			color: @box--info-color; 
 			background-color: @box--info-bgColor;
 			border-color: @box--info-borderColor;

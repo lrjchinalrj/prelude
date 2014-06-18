@@ -9,7 +9,7 @@
         // ======================================================================
         th,
         td {
-            .padding-rem(@table-cell-padding);
+            padding: @table-cell-padding;
             text-align: left;
             vertical-align: top;
             line-height: @table-lineHeight;
@@ -42,52 +42,60 @@
         tbody + tbody {
             border-top: 2px solid @table-borderColor;
         }
-    }
 
-
-    // Zebra-stripe
-    // ==========================================================================
-    .table--striped {
-        tbody {
-            tr:nth-child(odd) td,
-            tr:nth-child(odd) th {
-                background-color: @table--striped-bgColor;
+        // Table zebra-stripe
+        // ==========================================================================
+        &--striped {
+            tbody {
+                tr:nth-child(odd) td,
+                tr:nth-child(odd) th {
+                    background-color: @table--striped-bgColor;
+                }
             }
         }
-    }
 
-    // BORDERED VERSION
-    // ==========================================================================
-    .table--bordered {
-        border: 1px solid @table-borderColor;
-        border-collapse: separate; // Done so we can round those corners!
-        *border-collapse: collapse; // IE7 can't round corners anyway
-        border-left: 0;
-        th,
-        td {
-            border-left: 1px solid @table-borderColor;
+        // Table Bordered
+        // ==========================================================================
+        &--bordered {
+            border: 1px solid @table-borderColor;
+            border-collapse: separate; // Done so we can round those corners!
+            *border-collapse: collapse; // IE7 can't round corners anyway
+            border-left: 0;
+            th,
+            td {
+                border-left: 1px solid @table-borderColor;
+            }
+            // Prevent a double border
+            caption + thead tr:first-child th,
+            caption + tbody tr:first-child th,
+            caption + tbody tr:first-child td,
+            colgroup + thead tr:first-child th,
+            colgroup + tbody tr:first-child th,
+            colgroup + tbody tr:first-child td,
+            thead:first-child tr:first-child th,
+            tbody:first-child tr:first-child th,
+            tbody:first-child tr:first-child td {
+                border-top: 0;
+            }
         }
-        // Prevent a double border
-        caption + thead tr:first-child th,
-        caption + tbody tr:first-child th,
-        caption + tbody tr:first-child td,
-        colgroup + thead tr:first-child th,
-        colgroup + tbody tr:first-child th,
-        colgroup + tbody tr:first-child td,
-        thead:first-child tr:first-child th,
-        tbody:first-child tr:first-child th,
-        tbody:first-child tr:first-child td {
-            border-top: 0;
-        }
-    }
 
-    // Hover effect
-    // ==========================================================================
-    .table--hover {
-        tbody {
-            tr:hover td,
-            tr:hover th {
-                background-color: @table--hover-bgColor;
+        // Table Hover effect
+        // ==========================================================================
+        &--hover {
+            tbody {
+                tr:hover td,
+                tr:hover th {
+                    background-color: @table--hover-bgColor;
+                }
+            }
+        }
+
+        // CONDENSED TABLE W/ HALF PADDING
+        // ==========================================================================
+        &--condensed {
+            & th,
+            & td {
+                padding: @table-cell-padding/2;
             }
         }
     }
