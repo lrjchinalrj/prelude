@@ -31,105 +31,71 @@
     .visible {
     	display: block !important;
     }
-    .hidden-small {
-    	display: none !important;
+    .visibility-loop(@i) when ( @i <= length(@screens) ){
+        @screen: extract(@screens, @i);
+        .hidden-@{screen} {
+            display: block !important;
+        }
+        .visible-@{screen} {
+            display: none !important;
+        }
+
+        .visibility-loop(@i + 1);
     }
-    .hidden-medium {
-        display: block !important;
-    }
-    .hidden-large {
-        display: block !important;
-    }
-    .hidden-xlarge {
-        display: block !important;
-    }
-    .visible-small {
-    	display: block !important;
-    }
-    .visible-medium {
-        display: none !important;
-    }
-    .visible-large {
-        display: none !important;
-    }
-    .visible-xlarge {
-        display: none !important;
+    .visibility-loop(1);
+
+    .media-visibility-loop(@i) when ( @i <= length(@screens) ){      
+        @screen: extract(@screens, @i);  
+        @breakpoint-name: %("screen-%s-breakpoint", @screen);
+        @breakpoint: @@breakpoint-name;
+
+        & when (@i = 1){
+            @max-name: %("screen-%s-max", @screen);
+            @max: @@max-name;
+            @media(max-width: @max) {
+                .hidden-@{screen} {
+                    display: none !important;
+                }
+                .visible-@{screen} {
+                    display: block !important;
+                }
+            }
+        }
+
+        & when  (@i > 1) {
+            & when  (@i < length(@screens)) {
+                @min-name: %("screen-%s-min", @screen);
+                @min: @@min-name;
+                @max-name: %("screen-%s-max", @screen);
+                @max: @@max-name;
+                @media(min-width: @min) and (max-width: @max) {
+                    .hidden-@{screen} {
+                        display: none !important;
+                    }
+                    .visible-@{screen} {
+                        display: block !important;
+                    }
+                }
+            }
+
+            & when (@i = length(@screens)) {
+                @min-name: %("screen-%s-min", @screen);
+                @min: @@min-name;
+                @media(min-width: @min) {
+                    .hidden-@{screen} {
+                        display: none !important;
+                    }
+                    .visible-@{screen} {
+                        display: block !important;
+                    }
+                }
+            }
+        }
+        
+        .media-visibility-loop(@i + 1);
     }
 
-    @media(min-width: @screen-small) {
-        .hidden-small {
-            display: block !important;
-        }
-    	.hidden-small-up {
-    		display: none !important;
-    	}
-        .hidden-medium {
-            display: none !important;
-        }
-        .visible-small {
-            display: none !important;
-        }
-    	.visible-small-up {
-    		display: block !important;
-    	}
-        .visible-medium {
-            display: block !important;
-        }
-    }
-    @media(min-width: @screen-medium) {
-        .hidden-medium {
-            display: block !important;
-        }
-    	.hidden-medium-up {
-    		display: none !important;
-    	}
-        .hidden-large {
-            display: none !important;
-        }
-        .visible-medium {
-            display: none !important;
-        }
-    	.visible-medium-up {
-            display: block !important;
-        }
-        .visible-large {
-            display: block !important;
-        }
-    }
-    @media(min-width: @screen-large) {
-        .hidden-large {
-            display: block !important;
-        }
-        .hidden-large-up {
-            display: none !important;
-        }
-        .hidden-xlarge {
-            display: none !important;
-        }
-        .visible-large {
-            display: none !important;
-        }
-        .visible-large-up {
-            display: block !important;
-        }
-        .visible-xlarge {
-            display: block !important;
-        }
-    }
-    @media(min-width: @screen-xlarge) {
-        .hidden-xlarge {
-            display: block !important;
-        }
-        .hidden-xlarge-up {
-            display: none !important;
-        }
-        .visible-xlarge {
-            display: none !important;
-        }
-        .visible-xlarge-up {
-            display: block !important;
-        }
-    }
+    .media-visibility-loop(1);
 
     // Responsive Utilities
     // ===========================================================================

@@ -48,7 +48,7 @@ module.exports = function(grunt) {
 			adaptGrid: {
 					files: [{
 							expand: true,
-							cwd: 'bower_components/adaptGrid/less/',
+							cwd: 'bower_components/adaptGrid/dist/',
 							src:	'**',
 							dest: 'less/functions/grid/'
 						}

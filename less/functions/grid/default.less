@@ -1,37 +1,49 @@
-@import "variables.less";
-@import "core/generator.less";
-@import "core/mixins.less";
-@import "basic/generator.less";
-@import "basic/mixins.less";
-@import "phrase/generator.less";
-@import "phrase/mixins.less";
-@import "tiles/generator.less";
-@import "tiles/mixins.less";
-
-
-// core
-// ----------------------------------------------------
-#grid.core (@namespace, @grid-gutterWidth, @grid-withNoGutter);
+// class names
+// --------------------------------------------------
+@grid-class-row            : row;
+@grid-class-span           : span;
+@grid-class-column         : column;
 
 // basic
-// ----------------------------------------------------
-.init-grid-basic(@enable) when (@enable = true) {
-	#grid.basic-generator ();
-};
-.init-grid-basic(@enable-grid-basic);
+@grid-class-push           : push;
+@grid-class-pull           : pull;
+@grid-class-offset         : offset;
+
+// Core Variables
+// --------------------------------------------------
+@grid-gutterWidth          : 20px;
+@grid-ie8-gutterWidth      : 2%; // for ie8, safari, android which don't support calc
+@grid-withNoSpacing        : false;
+@grid-fontSize             : @base-fontSize; // You can use px value also
+@grid-withModifiers        : true;
 
 
-// phrase
-// ----------------------------------------------------
-.init-grid-phrase(@enable) when (@enable = true) {
-	#grid.phrase-generator ();
-};
-.init-grid-phrase(@enable-grid-phrase);
+// Semantic
+// --------------------------------------------------
+@grid-semantic-columns     : 12;
+@gird-semantic-hasGutter   : true;
+@grid-semantic-gutterWidth : 20px;
+@grid-semantic-fontSize    : @base-fontSize;
+
+// Grid Basic/Phrase Default
+// --------------------------------------------------
+//columns withOffset withPush withPull withNoSpacing
+@grid-basic                : 12 true true true false;
+//columns withNoSpacing
+@grid-phrase               : 8 false;
+
+// Screen Laptop
+// --------------------------------------------------
+@screen-laptop-grid-basic  : 12 true true true false;
+@screen-laptop-grid-phrase : 8 false;
+
+// Screen Tablet
+// --------------------------------------------------
+@screen-tablet-grid-basic  : 10 true true true false;
+@screen-tablet-grid-phrase : 6 false;
 
 
-// tiles
-// ----------------------------------------------------
-.init-grid-tiles(@enable) when (@enable = true) {
-	#grid.tiles-generator ();
-};
-.init-grid-tiles(@enable-grid-tiles);
+// Screen Mobile
+// --------------------------------------------------
+@screen-mobile-grid-basic  : 6 true true true false;
+@screen-mobile-grid-phrase : 4 false;
