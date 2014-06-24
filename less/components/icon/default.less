@@ -1,5 +1,4 @@
 @icon-fontFamily      : FontAwesome;
-@icon-fontPath        : "../fonts/fontawesome/";
 
 // size
 @icon--lg-fontSize    : @base-fontSize * 1.333;
@@ -21,11 +20,3 @@
 .hook-icon() {}
 .hook-icon-ul() {}
 .hook-icon-misc() {}
-
-// Import
-// ==========================================================================
-.prelude-icon-fontface (@use) when (@use = true) {
-    @import "@{icon-fontPath}fontface.less";
-}
-
-.prelude-icon-fontface(@use-icon);
