@@ -39,10 +39,23 @@
         .visible-@{screen} {
             display: none !important;
         }
+        .hidden-@{screen}-up {
+            display: block !important;
+        }
+        .visible-@{screen}-up {
+            display: none !important;
+        }
 
         .visibility-loop(@i + 1);
     }
     .visibility-loop(1);
+
+    .hidden-destop {
+        display: block !important;
+    }
+    .visible-destop {
+        display: none !important;
+    }
 
     .media-visibility-loop(@i) when ( @i <= length(@screens) ){      
         @screen: extract(@screens, @i);  
@@ -63,31 +76,30 @@
         }
 
         & when  (@i > 1) {
-            & when  (@i < length(@screens)) {
-                @min-name: %("screen-%s-min", @screen);
-                @min: @@min-name;
-                @max-name: %("screen-%s-max", @screen);
-                @max: @@max-name;
-                @media(min-width: @min) and (max-width: @max) {
-                    .hidden-@{screen} {
-                        display: none !important;
-                    }
-                    .visible-@{screen} {
-                        display: block !important;
-                    }
+            @min-name: %("screen-%s-min", @screen);
+            @min: @@min-name;
+
+
+            @max-name: %("screen-%s-max", @screen);
+            @max: @@max-name;
+            @media(min-width: @min) and (max-width: @max) {
+                .hidden-@{screen} {
+                    display: none !important;
+                }
+                .visible-@{screen} {
+                    display: block !important;
                 }
             }
 
-            & when (@i = length(@screens)) {
-                @min-name: %("screen-%s-min", @screen);
-                @min: @@min-name;
-                @media(min-width: @min) {
-                    .hidden-@{screen} {
-                        display: none !important;
-                    }
-                    .visible-@{screen} {
-                        display: block !important;
-                    }
+
+            
+
+            @media(min-width: @min) {
+                .hidden-@{screen}-up {
+                    display: none !important;
+                }
+                .visible-@{screen}-up {
+                    display: block !important;
                 }
             }
         }
@@ -96,6 +108,17 @@
     }
 
     .media-visibility-loop(1);
+
+
+    @media(min-width: @screen-destop-min) {
+        .hidden-destop {
+            display: none !important;
+        }
+        .visible-destop {
+            display: block !important;
+        }
+    }
+
 
     // Responsive Utilities
     // ===========================================================================
