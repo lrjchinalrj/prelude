@@ -1,9 +1,9 @@
-/* Adapt Grid System - v0.2.0 - 2014-06-23
+/* Adapt Grid System - v0.3.0 - 2014-06-25
 * https://github.com/amazingSurge/adaptGrid
 * Copyright (c) 2014 amazingSurge; Licensed MIT */
 #grid {
 	// row
-	.row (@has-gutter: @gird-semantic-hasGutter, @gutter-width: @grid-semantic-gutterWidth) {
+	.row (@has-gutter: @gird-hasGutter, @gutter-width: @grid-gutterWidth) {
 		.no-flexbox() {
 			font-size: 0;
 			list-style: none;
@@ -45,7 +45,7 @@
 		}
 	}
 	
-	.row (@has-gutter: @gird-semantic-hasGutter, @gutter-width: @grid-semantic-gutterWidth) when (@has-gutter = true){
+	.row (@has-gutter: @gird-hasGutter, @gutter-width: @grid-gutterWidth) when (@has-gutter = true){
 		@half-gutter-width: @gutter-width/2;
 
 		margin-left: -@grid-ie8-gutterWidth/2;
@@ -58,7 +58,7 @@
 	}
 
 	// column
-	.column (@has-gutter: @gird-semantic-hasGutter, @gutter-width: @grid-semantic-gutterWidth, @font-size: @grid-semantic-fontSize) {
+	.column (@has-gutter: @gird-hasGutter, @gutter-width: @grid-gutterWidth, @font-size: @grid-fontSize) {
 		-webkit-box-sizing: border-box;
 		-moz-box-sizing: border-box;
 		box-sizing: border-box;
@@ -112,7 +112,7 @@
 		}
 	}
 
-	.column (@has-gutter: @gird-semantic-hasGutter, @gutter-width: @grid-semantic-gutterWidth, @font-size: @grid-semantic-fontSize) when (@has-gutter = true){
+	.column (@has-gutter: @gird-hasGutter, @gutter-width: @grid-gutterWidth, @font-size: @grid-fontSize) when (@has-gutter = true){
 		@half-gutter-width: @gutter-width/2;
 
 		margin-left: @grid-ie8-gutterWidth/2;
@@ -125,21 +125,21 @@
 	}
 
 	// span
-	.span (@x:1, @columns:@grid-semantic-columns, @has-gutter: @gird-semantic-hasGutter, @gutter-width: @grid-semantic-gutterWidth) {
+	.span (@x:1, @columns: @grid-columns, @has-gutter: @gird-hasGutter, @gutter-width: @grid-gutterWidth) {
 		#grid.span-width (@x, @columns, @has-gutter, @gutter-width);
 		.column (@has-gutter, @gutter-width);
 	}
 
 	// offset will make moves to the right
-	.offset (@x:1, @columns:@grid-semantic-columns, @has-gutter: @gird-semantic-hasGutter, @gutter-width: @grid-semantic-gutterWidth) {
+	.offset (@x:1, @columns: @grid-columns, @has-gutter: @gird-hasGutter, @gutter-width: @grid-gutterWidth) {
 		#grid.offsets-width (margin-left, @x, @columns, @has-gutter, @gutter-width);
 	}
 
-	.push (@x:1, @columns:@grid-semantic-columns, @has-gutter: @gird-semantic-hasGutter, @gutter-width: @grid-semantic-gutterWidth) {
+	.push (@x:1, @columns: @grid-columns, @has-gutter: @gird-hasGutter, @gutter-width: @grid-gutterWidth) {
 		#grid.calc-width (left, @x, @columns, false, @gutter-width);
 	}
 
-	.pull (@x:1, @columns:@grid-semantic-columns, @has-gutter: @gird-semantic-hasGutter, @gutter-width: @grid-semantic-gutterWidth) {
+	.pull (@x:1, @columns: @grid-columns, @has-gutter: @gird-hasGutter, @gutter-width: @grid-gutterWidth) {
 		#grid.calc-width (right, @x, @columns, false, @gutter-width);
 	}
 
@@ -234,7 +234,7 @@
 
 
 #grid {
-	.make-core (@gutter-width, @with-noSpacing) {
+	.make-core () {
 		.@{grid-class-row} {
 			#grid.row (true, @grid-gutterWidth);
 
@@ -426,7 +426,7 @@
 			#grid.column (true, @grid-gutterWidth, @grid-fontSize);
 		}
 
-		& when (@with-noSpacing = true){
+		& when (@grid-withNoSpacing = true){
 			.@{grid-class-row}--no-spacing {
 				margin-left: 0;
 				margin-right: 0;
@@ -533,41 +533,30 @@
 #grid {
 	.make-basic (@screens: @screens, @i: 1) {
 		& when ( @i = 1 ){
-			#grid.make-basic-default (@grid-basic);
+			#grid.make-basic-default ();
 		}
 
 		& when ( @i <= length(@screens) ){
 			@screen: extract(@screens, @i);
-			@variables-name: %("screen-%s-grid-basic", @screen);
-
-			#grid.make-basic-screen (@screen, @@variables-name);
+			
+			#grid.make-basic-screen (@screen);
 			#grid.make-basic (@screens, @i + 1);
 		}
 	}
 
-	.make-basic-default (@variables){
+	.make-basic-default (){
 		@screen: ;
-		@columns: extract(@variables, 1);
-		@with-offset: extract(@variables, 2);
-		@with-push: extract(@variables, 3);
-		@with-pull: extract(@variables, 4);
-		@with-noSpacing: extract(@variables, 5);
+		@columns: @grid-basic-columns;
 
-		#grid.basic (@screen, @columns, @with-offset, @with-push, @with-pull, @with-noSpacing);
+		#grid.basic (@screen, @columns, @grid-basic-with-offset, @grid-basic-with-push, @grid-basic-with-pull, @grid-basic-with-noSpacing);
 	}
 
-	.make-basic-screen (@screen, @variables) {
-		@columns: extract(@variables, 1);
-		@with-offset: extract(@variables, 2);
-		@with-push: extract(@variables, 3);
-		@with-pull: extract(@variables, 4);
-		@with-noSpacing: extract(@variables, 5);
+	.make-basic-screen (@screen) {
+		@_columns: %("screen-%s-grid-basic-columns", @screen);
+		@_breakpoint: %("screen-%s-breakpoint", @screen);
 
-		@breakpoint-name: %("screen-%s-breakpoint", @screen);
-		@breakpoint: @@breakpoint-name;
-
-		@media only screen and (max-width: @breakpoint) {
-			#grid.basic(@screen, @columns, @with-offset, @with-push, @with-pull, @with-noSpacing);
+		@media only screen and (max-width: @@_breakpoint) {
+			#grid.basic (@screen, @@_columns, @grid-basic-with-offset, @grid-basic-with-push, @grid-basic-with-pull, @grid-basic-with-noSpacing);
 		}
 	}
 }
@@ -622,34 +611,29 @@
 #grid {
 	.make-phrase (@screens: @screens, @i: 1) {
 		& when ( @i = 1 ){
-			#grid.make-phrase-default (@grid-phrase);
+			#grid.make-phrase-default ();
 		}
 
 		& when ( @i <= length(@screens) ){
 			@screen: extract(@screens, @i);
-			@variables-name: %("screen-%s-grid-phrase", @screen);
 
-			#grid.make-phrase-screen (@screen, @@variables-name);
+			#grid.make-phrase-screen (@screen);
 			#grid.make-phrase (@screens, @i + 1);
 		}
 	}
 
-	.make-phrase-default (@variables){
+	.make-phrase-default (){
 		@screen: ;
-		@columns: extract(@variables, 1);
-		@with-noSpacing: extract(@variables, 2);
+		@columns: @grid-phrase-columns;
 
-		#grid.phrase (@screen, @columns, @with-noSpacing);
+		#grid.phrase (@screen, @columns, @grid-phrase-with-noSpacing);
 	}
 
-	.make-phrase-screen (@screen, @variables) {
-		@columns: extract(@variables, 1);
-		@with-noSpacing: extract(@variables, 2);
-
-		@breakpoint-name: %("screen-%s-breakpoint", @screen);
-		@breakpoint: @@breakpoint-name;
-		@media only screen and (max-width: @breakpoint) {
-			#grid.phrase (@screen, @columns, @with-noSpacing);
+	.make-phrase-screen (@screen) {
+		@_columns: %("screen-%s-grid-phrase-columns", @screen);
+		@_breakpoint: %("screen-%s-breakpoint", @screen);
+		@media only screen and (max-width: @@_breakpoint) {
+			#grid.phrase (@screen, @@_columns, @grid-phrase-with-noSpacing);
 		}
 	}
 }
@@ -691,35 +675,29 @@
 #grid {
 	.make-tiles (@screens: @screens, @i: 1) {
 		& when ( @i = 1 ){
-			#grid.make-tiles-default (@grid-tiles);
+			#grid.make-tiles-default ();
 		}
 		
 		& when ( @i <= length(@screens) ){
 			@screen: extract(@screens, @i);
-			@variables-name: %("screen-%s-grid-tiles", @screen);
-			
-			#grid.make-tiles-screen(@screen, @@variables-name);
 
+			#grid.make-tiles-screen (@screen);
 			#grid.make-tiles (@screens, @i + 1);
 		}
 	}
 	
-	.make-tiles-default (@variables){
+	.make-tiles-default (){
 		@screen: ;
-		@columns: extract(@variables, 1);
-		@with-noSpacing: extract(@variables, 2);
+		@columns: @grid-tiles-columns;
 
-		#grid.tiles (@screen, @columns, @with-noSpacing);
+		#grid.tiles (@screen, @columns, @grid-tiles-with-noSpacing);
 	}
 
-	.make-tiles-screen(@screen, @variables) {
-		@columns: extract(@variables, 1);
-		@with-noSpacing: extract(@variables, 2);
-
-		@breakpoint-name: %("screen-%s-breakpoint", @screen);
-		@breakpoint: @@breakpoint-name;
-		@media only screen and (max-width: @breakpoint) {
-			#grid.tiles (@screen, @columns, @with-noSpacing);
+	.make-tiles-screen(@screen) {
+		@_columns: %("screen-%s-grid-tiles-columns", @screen);
+		@_breakpoint: %("screen-%s-breakpoint", @screen);
+		@media only screen and (max-width: @@_breakpoint) {
+			#grid.tiles (@screen, @@_columns, @grid-tiles-with-noSpacing);
 		}
 	}
 }

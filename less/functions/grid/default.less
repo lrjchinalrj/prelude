@@ -1,49 +1,55 @@
 // class names
 // --------------------------------------------------
-@grid-class-row            : row;
-@grid-class-span           : span;
-@grid-class-column         : column;
+@grid-class-row                    : row;
+@grid-class-span                   : span;
+@grid-class-column                 : column;
 
 // basic
-@grid-class-push           : push;
-@grid-class-pull           : pull;
-@grid-class-offset         : offset;
+@grid-class-push                   : push;
+@grid-class-pull                   : pull;
+@grid-class-offset                 : offset;
 
-// Core Variables
+// titles
+@grid-class-tiles                  : has;
+
+
+// Variables
 // --------------------------------------------------
-@grid-gutterWidth          : 20px;
-@grid-ie8-gutterWidth      : 2%; // for ie8, safari, android which don't support calc
-@grid-withNoSpacing        : false;
-@grid-fontSize             : @base-fontSize; // You can use px value also
-@grid-withModifiers        : true;
+// core
+@grid-columns                      : 12;
+@gird-hasGutter                    : true;
+@grid-gutterWidth                  : 20px;
+@grid-ie8-gutterWidth              : 2%; // for ie8, safari, android which don't support calc
+@grid-withNoSpacing                : false;
+@grid-fontSize                     : @base-fontSize; // You can use px value also
+@grid-withModifiers                : true;
 
+// basic
+@grid-basic-with-offset            : true;
+@grid-basic-with-push              : true;
+@grid-basic-with-pull              : true;
+@grid-basic-with-noSpacing         : false;
+@grid-basic-columns                : @grid-columns;
 
-// Semantic
-// --------------------------------------------------
-@grid-semantic-columns     : 12;
-@gird-semantic-hasGutter   : true;
-@grid-semantic-gutterWidth : 20px;
-@grid-semantic-fontSize    : @base-fontSize;
+// tiles
+@grid-tiles-columns                : 10;
+@grid-tiles-with-noSpacing         : false;
 
-// Grid Basic/Phrase Default
-// --------------------------------------------------
-//columns withOffset withPush withPull withNoSpacing
-@grid-basic                : 12 true true true false;
-//columns withNoSpacing
-@grid-phrase               : 8 false;
+// phrase
+@grid-phrase-columns               : 8;
+@grid-phrase-with-noSpacing        : false;
 
 // Screen Laptop
 // --------------------------------------------------
-@screen-laptop-grid-basic  : 12 true true true false;
-@screen-laptop-grid-phrase : 8 false;
+@screen-laptop-grid-basic-columns  : 10;
+@screen-laptop-grid-phrase-columns : 8;
 
 // Screen Tablet
 // --------------------------------------------------
-@screen-tablet-grid-basic  : 10 true true true false;
-@screen-tablet-grid-phrase : 6 false;
-
+@screen-tablet-grid-basic-columns  : 10;
+@screen-tablet-grid-phrase-columns : 8;
 
 // Screen Mobile
 // --------------------------------------------------
-@screen-mobile-grid-basic  : 6 true true true false;
-@screen-mobile-grid-phrase : 4 false;
+@screen-mobile-grid-basic-columns  : 6;
+@screen-mobile-grid-phrase-columns : 4;
