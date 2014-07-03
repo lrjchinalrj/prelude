@@ -1,55 +1,65 @@
 // class names
 // --------------------------------------------------
-@grid-class-row                    : row;
-@grid-class-span                   : span;
-@grid-class-column                 : column;
+@grid-class-row                     : row;
+@grid-class-span                    : span;
+@grid-class-column                  : column;
 
 // basic
-@grid-class-push                   : push;
-@grid-class-pull                   : pull;
-@grid-class-offset                 : offset;
+@grid-class-push                    : push;
+@grid-class-pull                    : pull;
+@grid-class-offset                  : offset;
 
 // titles
-@grid-class-tiles                  : has;
+@grid-class-tiles                   : has;
 
 
 // Variables
 // --------------------------------------------------
 // core
-@grid-columns                      : 12;
-@gird-hasGutter                    : true;
-@grid-gutterWidth                  : 20px;
-@grid-ie8-gutterWidth              : 2%; // for ie8, safari, android which don't support calc
-@grid-withNoSpacing                : false;
-@grid-fontSize                     : @base-fontSize; // You can use px value also
-@grid-withModifiers                : true;
+@grid-columns                       : 12;
+@gird-hasGutter                     : true;
+@grid-gutterWidth                   : 20px; // you can use rem/percentage value also
+@grid-ie8-gutterWidth               : 2%; // for ie8, safari, android which don't support calc
+@grid-withNoSpacing                 : false;
+@grid-fontSize                      : @base-fontSize; // You can use px value also
+@grid-withModifiers                 : true;
 
 // basic
-@grid-basic-with-offset            : true;
-@grid-basic-with-push              : true;
-@grid-basic-with-pull              : true;
-@grid-basic-with-noSpacing         : false;
-@grid-basic-columns                : @grid-columns;
+@grid-basic-with-offset             : true;
+@grid-basic-with-push               : true;
+@grid-basic-with-pull               : true;
+@grid-basic-with-noSpacing          : true;
+@grid-basic-columns                 : 4;
 
 // tiles
-@grid-tiles-columns                : 10;
-@grid-tiles-with-noSpacing         : false;
+@grid-tiles-columns                 : 4;
+@grid-tiles-with-noSpacing          : true;
 
 // phrase
-@grid-phrase-columns               : 8;
-@grid-phrase-with-noSpacing        : false;
+@grid-phrase-columns                : 4;
+@grid-phrase-with-noSpacing         : true;
+
+
+// Screen Desktop
+// --------------------------------------------------
+@screen-desktop-grid-basic-columns  : 12;
+@screen-desktop-grid-tiles-columns  : 12;
+@screen-desktop-grid-phrase-columns : 8;
 
 // Screen Laptop
 // --------------------------------------------------
-@screen-laptop-grid-basic-columns  : 10;
-@screen-laptop-grid-phrase-columns : 8;
+@screen-laptop-grid-basic-columns   : 10;
+@screen-laptop-grid-tiles-columns   : 10;
+@screen-laptop-grid-phrase-columns  : 8;
 
 // Screen Tablet
 // --------------------------------------------------
-@screen-tablet-grid-basic-columns  : 10;
-@screen-tablet-grid-phrase-columns : 8;
+@screen-tablet-grid-basic-columns   : 8;
+@screen-tablet-grid-tiles-columns   : 8;
+@screen-tablet-grid-phrase-columns  : 6;
 
 // Screen Mobile
 // --------------------------------------------------
-@screen-mobile-grid-basic-columns  : 6;
-@screen-mobile-grid-phrase-columns : 4;
+@screen-phone-grid-basic-columns    : 4;
+@screen-phone-grid-tiles-columns    : 4;
+@screen-phone-grid-phrase-columns   : 4;

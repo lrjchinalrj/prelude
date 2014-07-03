@@ -1,4 +1,4 @@
-/* Adapt Grid System - v0.3.0 - 2014-06-25
+/* Adapt Grid System - v0.3.0 - 2014-06-30
 * https://github.com/amazingSurge/adaptGrid
 * Copyright (c) 2014 amazingSurge; Licensed MIT */
 #grid {
@@ -48,13 +48,20 @@
 	.row (@has-gutter: @gird-hasGutter, @gutter-width: @grid-gutterWidth) when (@has-gutter = true){
 		@half-gutter-width: @gutter-width/2;
 
-		margin-left: -@grid-ie8-gutterWidth/2;
-		margin-left: ~"-webkit-calc(-@{half-gutter-width})";
-		margin-left:         ~"calc(-@{half-gutter-width})";
+		& when (ispercentage(@gutter-width)) {
+			margin-left:  -@half-gutter-width;
+			margin-right: -@half-gutter-width;
+		}
 
-		margin-right: -@grid-ie8-gutterWidth/2;
-		margin-right: ~"-webkit-calc(-@{half-gutter-width})";
-		margin-right:         ~"calc(-@{half-gutter-width})";
+		& when not (ispercentage(@gutter-width)) {
+			margin-left: -@grid-ie8-gutterWidth/2;
+			margin-left: ~"-webkit-calc(-@{half-gutter-width})";
+			margin-left:         ~"calc(-@{half-gutter-width})";
+
+			margin-right: -@grid-ie8-gutterWidth/2;
+			margin-right: ~"-webkit-calc(-@{half-gutter-width})";
+			margin-right:         ~"calc(-@{half-gutter-width})";
+		}
 	}
 
 	// column
@@ -115,13 +122,20 @@
 	.column (@has-gutter: @gird-hasGutter, @gutter-width: @grid-gutterWidth, @font-size: @grid-fontSize) when (@has-gutter = true){
 		@half-gutter-width: @gutter-width/2;
 
-		margin-left: @grid-ie8-gutterWidth/2;
-		margin-left: ~"-webkit-calc(@{half-gutter-width})";
-		margin-left:         ~"calc(@{half-gutter-width})";
-		
-		margin-right: @grid-ie8-gutterWidth/2;
-		margin-right: ~"-webkit-calc(@{half-gutter-width})";
-		margin-right:         ~"calc(@{half-gutter-width})";
+		& when (ispercentage(@gutter-width)) {
+			margin-left:  @half-gutter-width;
+			margin-right: @half-gutter-width;
+		}
+
+		& when not (ispercentage(@gutter-width)) {
+			margin-left: @grid-ie8-gutterWidth/2;
+			margin-left: ~"-webkit-calc(@{half-gutter-width})";
+			margin-left:         ~"calc(@{half-gutter-width})";
+
+			margin-right: @grid-ie8-gutterWidth/2;
+			margin-right: ~"-webkit-calc(@{half-gutter-width})";
+			margin-right:         ~"calc(@{half-gutter-width})";
+		}
 	}
 
 	// span
@@ -132,7 +146,7 @@
 
 	// offset will make moves to the right
 	.offset (@x:1, @columns: @grid-columns, @has-gutter: @gird-hasGutter, @gutter-width: @grid-gutterWidth) {
-		#grid.offsets-width (margin-left, @x, @columns, @has-gutter, @gutter-width);
+		#grid.offsets-width (@x, @columns, @has-gutter, @gutter-width);
 	}
 
 	.push (@x:1, @columns: @grid-columns, @has-gutter: @gird-hasGutter, @gutter-width: @grid-gutterWidth) {
@@ -144,26 +158,33 @@
 	}
 
 	// span width
-	.span-width (@x, @columns, @has-gutter, @gutter-width: @grid-gutterWidth) {
+	.span-width (@x, @columns, @has-gutter: @gird-hasGutter, @gutter-width: @grid-gutterWidth) {
 		@width: round((100% / @columns) * @x, 3);
 
 		#grid.columns-width(@width, @has-gutter, @gutter-width);
 	}
 
 	// calc width
-	.calc-width (@prop, @x, @columns, @has-gutter, @gutter-width: @grid-gutterWidth) when (@has-gutter = false){
+	.calc-width (@prop, @x, @columns, @has-gutter: @gird-hasGutter, @gutter-width: @grid-gutterWidth) when (@has-gutter = false){
 		@width: (100% / @columns) * @x;
 		@{prop}: round(@width, 3);
 	}
-	.calc-width (@prop, @x, @columns, @has-gutter, @gutter-width: @grid-gutterWidth) when (@has-gutter = true){
+	.calc-width (@prop, @x, @columns, @has-gutter: @gird-hasGutter, @gutter-width: @grid-gutterWidth) when (@has-gutter = true){
 		@width: round((100% / @columns) * @x, 3);
-		@{prop}: round(@width - @grid-ie8-gutterWidth, 3);
-		@{prop}: ~"-webkit-calc(@{width} - @{gutter-width})";
-		@{prop}:         ~"calc(@{width} - @{gutter-width})";
+
+		& when (ispercentage(@gutter-width)) {
+			@{prop}: @width - @gutter-width;
+		}
+
+		& when not (ispercentage(@gutter-width)) {
+			@{prop}: round(@width - @grid-ie8-gutterWidth, 3);
+			@{prop}: ~"-webkit-calc(@{width} - @{gutter-width})";
+			@{prop}:         ~"calc(@{width} - @{gutter-width})";
+		}
 	}
 
 	// columns width
-	.columns-width(@width, @has-gutter, @gutter-width: @grid-gutterWidth) when (@has-gutter = false){
+	.columns-width(@width, @has-gutter: @gird-hasGutter, @gutter-width: @grid-gutterWidth) when (@has-gutter = false){
 		.no-flexbox() {
 			width: round(@width, 3);
 		}
@@ -184,19 +205,33 @@
 		}
 	}
 
-	.columns-width(@width, @has-gutter, @gutter-width: @grid-gutterWidth) when (@has-gutter = true){
+	.columns-width(@width, @has-gutter: @gird-hasGutter, @gutter-width: @grid-gutterWidth) when (@has-gutter = true){
 		.no-flexbox() {
-			width: round(@width - @grid-ie8-gutterWidth, 3);
-			width: ~"-webkit-calc(@{width} - @{gutter-width})";
-			width:         ~"calc(@{width} - @{gutter-width})";
+			& when (ispercentage(@gutter-width)) {
+				width: @width - @gutter-width;
+			}
+
+			& when not (ispercentage(@gutter-width)) {
+				width: round(@width - @grid-ie8-gutterWidth, 3);
+				width: ~"-webkit-calc(@{width} - @{gutter-width})";
+				width:         ~"calc(@{width} - @{gutter-width})";
+			}
 		}
 
 		& when (@using-modernizr = true) {
 			.flexbox & {
-				-webkit-flex-basis: ~"-webkit-calc(@{width} - @{gutter-width})";
-				//-ms-flex-preferred-size: ~"calc(@{width} - @{gutter-width})"; 
-				width: ~"calc(@{width} - @{gutter-width})"; // ie 10
-			    flex-basis: ~"calc(@{width} - @{gutter-width})";
+				& when (ispercentage(@gutter-width)) {
+					-webkit-flex-basis: @width - @gutter-width;
+					-ms-flex-preferred-size: @width - @gutter-width;
+				    flex-basis: @width - @gutter-width;
+				}
+
+				& when not (ispercentage(@gutter-width)) {
+					-webkit-flex-basis: ~"-webkit-calc(@{width} - @{gutter-width})";
+					//-ms-flex-preferred-size: ~"calc(@{width} - @{gutter-width})"; 
+					width: ~"calc(@{width} - @{gutter-width})"; // ie 10
+				    flex-basis: ~"calc(@{width} - @{gutter-width})";
+				}
 			}
 			.no-flexbox & {
 				.no-flexbox();
@@ -209,16 +244,23 @@
 	}
 
 	// offsets width
-	.offsets-width (@prop, @x, @columns, @has-gutter, @gutter-width: @grid-gutterWidth) when (@has-gutter = false){
+	.offsets-width (@x, @columns, @has-gutter: @gird-hasGutter, @gutter-width: @grid-gutterWidth) when (@has-gutter = false){
 		@width: (100% / @columns) * @x;
-		@{prop}: round(@width, 3);
+		margin-left: round(@width, 3);
 	}
-	.offsets-width (@prop, @x, @columns, @has-gutter, @gutter-width: @grid-gutterWidth) when (@has-gutter = true){
+	.offsets-width (@x, @columns, @has-gutter: @gird-hasGutter, @gutter-width: @grid-gutterWidth) when (@has-gutter = true){
 		@half-gutter-width: @gutter-width/2;
 		@width: round((100% / @columns) * @x, 3);
-		@{prop}: round(@width + @grid-ie8-gutterWidth/2, 3);
-		@{prop}: ~"-webkit-calc(@{width} + @{half-gutter-width})";
-		@{prop}:         ~"calc(@{width} + @{half-gutter-width})";
+
+		& when (ispercentage(@gutter-width)) {
+			margin-left: @width + @half-gutter-width;
+		}
+
+		& when not (ispercentage(@gutter-width)) {
+			margin-left: round(@width + @grid-ie8-gutterWidth/2, 3);
+			margin-left: ~"-webkit-calc(@{width} + @{half-gutter-width})";
+			margin-left:         ~"calc(@{width} + @{half-gutter-width})";
+		}
 	}
 
 	// font size
@@ -424,6 +466,7 @@
 
 		.@{grid-class-column}, [class*="@{grid-class-span}-"] {
 			#grid.column (true, @grid-gutterWidth, @grid-fontSize);
+			#grid.span-width (1, 1);
 		}
 
 		& when (@grid-withNoSpacing = true){
@@ -531,33 +574,23 @@
 
 
 #grid {
-	.make-basic (@screens: @screens, @i: 1) {
-		& when ( @i = 1 ){
-			#grid.make-basic-default ();
-		}
-
-		& when ( @i <= length(@screens) ){
-			@screen: extract(@screens, @i);
-			
-			#grid.make-basic-screen (@screen);
-			#grid.make-basic (@screens, @i + 1);
-		}
-	}
-
-	.make-basic-default (){
-		@screen: ;
-		@columns: @grid-basic-columns;
-
-		#grid.basic (@screen, @columns, @grid-basic-with-offset, @grid-basic-with-push, @grid-basic-with-pull, @grid-basic-with-noSpacing);
-	}
-
-	.make-basic-screen (@screen) {
+	.make-basic (@screens: @screens, @i: 1) when ( @i <= length(@screens) ) {
+		@screen: extract(@screens, @i);
 		@_columns: %("screen-%s-grid-basic-columns", @screen);
-		@_breakpoint: %("screen-%s-breakpoint", @screen);
 
-		@media only screen and (max-width: @@_breakpoint) {
+		& when ( @i = 1 ){
 			#grid.basic (@screen, @@_columns, @grid-basic-with-offset, @grid-basic-with-push, @grid-basic-with-pull, @grid-basic-with-noSpacing);
 		}
+
+		& when not ( @i = 1 ){
+			@_min: %("screen-%s-min", @screen);
+		
+			@media only screen and (min-width: @@_min) {
+				#grid.basic (@screen, @@_columns, @grid-basic-with-offset, @grid-basic-with-push, @grid-basic-with-pull, @grid-basic-with-noSpacing);
+			}
+		}
+
+		#grid.make-basic (@screens, @i + 1);
 	}
 }
 
@@ -573,7 +606,7 @@
 			@column: replace(@column-class, "word", @denominator-word);
 
 			@{column} {
-				#grid.columns-width (100% / @denominator, @has-gutter);
+				#grid.columns-width (round(100% / @denominator, 3), @has-gutter);
 			}
 			
 			.numeratorX (@numerator) when (@numerator < @denominator) {
@@ -582,7 +615,7 @@
 				@numerator-column: replace(@column-class, "word", ~"@{numerator-word}-@{denominator-word}");
 
 				@{numerator-column} {
-					#grid.columns-width ((100% / @denominator) * @numerator, @has-gutter);
+					#grid.columns-width (round((100% / @denominator) * @numerator, 3), @has-gutter);
 				}
 				.numeratorX (@numerator + 1);
 			}
@@ -609,32 +642,23 @@
 
 
 #grid {
-	.make-phrase (@screens: @screens, @i: 1) {
-		& when ( @i = 1 ){
-			#grid.make-phrase-default ();
-		}
-
-		& when ( @i <= length(@screens) ){
-			@screen: extract(@screens, @i);
-
-			#grid.make-phrase-screen (@screen);
-			#grid.make-phrase (@screens, @i + 1);
-		}
-	}
-
-	.make-phrase-default (){
-		@screen: ;
-		@columns: @grid-phrase-columns;
-
-		#grid.phrase (@screen, @columns, @grid-phrase-with-noSpacing);
-	}
-
-	.make-phrase-screen (@screen) {
+	.make-phrase (@screens: @screens, @i: 1) when ( @i <= length(@screens) ) {
+		@screen: extract(@screens, @i);
 		@_columns: %("screen-%s-grid-phrase-columns", @screen);
-		@_breakpoint: %("screen-%s-breakpoint", @screen);
-		@media only screen and (max-width: @@_breakpoint) {
+
+		& when ( @i = 1 ){
 			#grid.phrase (@screen, @@_columns, @grid-phrase-with-noSpacing);
 		}
+
+		& when not ( @i = 1 ){
+			@_min: %("screen-%s-min", @screen);
+		
+			@media only screen and (min-width: @@_min) {
+				#grid.phrase (@screen, @@_columns, @grid-phrase-with-noSpacing);
+			}
+		}
+
+		#grid.make-phrase (@screens, @i + 1);
 	}
 }
 
@@ -646,7 +670,7 @@
 			@column: replace(@column-class, "index", @index);
 			@{column} {
 				.@{grid-class-column} {
-					#grid.columns-width (100%/@index, @has-gutter);
+					#grid.columns-width (round(100%/@index, 3), @has-gutter);
 				}
 			}
 
@@ -673,31 +697,22 @@
 
 
 #grid {
-	.make-tiles (@screens: @screens, @i: 1) {
-		& when ( @i = 1 ){
-			#grid.make-tiles-default ();
-		}
-		
-		& when ( @i <= length(@screens) ){
-			@screen: extract(@screens, @i);
-
-			#grid.make-tiles-screen (@screen);
-			#grid.make-tiles (@screens, @i + 1);
-		}
-	}
-	
-	.make-tiles-default (){
-		@screen: ;
-		@columns: @grid-tiles-columns;
-
-		#grid.tiles (@screen, @columns, @grid-tiles-with-noSpacing);
-	}
-
-	.make-tiles-screen(@screen) {
+	.make-tiles (@screens: @screens, @i: 1) when ( @i <= length(@screens) ) {
+		@screen: extract(@screens, @i);
 		@_columns: %("screen-%s-grid-tiles-columns", @screen);
-		@_breakpoint: %("screen-%s-breakpoint", @screen);
-		@media only screen and (max-width: @@_breakpoint) {
+
+		& when ( @i = 1 ){
 			#grid.tiles (@screen, @@_columns, @grid-tiles-with-noSpacing);
 		}
+
+		& when not ( @i = 1 ){
+			@_min: %("screen-%s-min", @screen);
+		
+			@media only screen and (min-width: @@_min) {
+				#grid.tiles (@screen, @@_columns, @grid-tiles-with-noSpacing);
+			}
+		}
+
+		#grid.make-tiles (@screens, @i + 1);
 	}
 }

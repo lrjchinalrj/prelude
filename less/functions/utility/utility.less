@@ -59,8 +59,6 @@
 
     .media-visibility-loop(@i) when ( @i <= length(@screens) ){      
         @screen: extract(@screens, @i);  
-        @breakpoint-name: %("screen-%s-breakpoint", @screen);
-        @breakpoint: @@breakpoint-name;
 
         & when (@i = 1){
             @max-name: %("screen-%s-max", @screen);
@@ -108,7 +106,7 @@
     .media-visibility-loop(1);
 
 
-    @media(min-width: @screen-destop-min) {
+    @media(min-width: @screen-desktop-min) {
         .hidden-destop {
             display: none !important;
         }

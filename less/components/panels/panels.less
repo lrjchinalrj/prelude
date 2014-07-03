@@ -4,7 +4,9 @@
 
 .prelude-panels (@use) when (@use = true) {
     .panel {
-        border: 1px solid @panel-bdColor;
+        border: 1px solid @panel-borderColor;
+        .rhythm-margin-bottom(1);
+        
         .background-color(@panel-bgColor);
         .border-radius (@panel-borderRadius);
 
@@ -17,7 +19,7 @@
         &-header {
             .padding-em(@panel-header-padding);
             background-color: @panel-header-bgColor;
-            border-bottom: 1px solid @panel-bdColor;
+            border-bottom: 1px solid @panel-borderColor;
             .border-top-radius (@panel-borderRadius);
             .hook-panel-header;
         }
@@ -39,7 +41,7 @@
             .padding-em(@panel-footer-padding);
             color: @panel-footer-color;
             background-color: @panel-header-bgColor;
-            border-top: 1px solid @panel-bdColor;
+            border-top: 1px solid @panel-borderColor;
             .border-bottom-radius (@panel-borderRadius);
             .hook-panel-footer;
         }

@@ -13,7 +13,8 @@ body {
 // Paragraph
 // ==========================================================================
 p {
-	.margin-rem(0 0 @base-fontSize);
+	margin-top: 0;
+	.rhythm-margin-bottom();
 	font-family: inherit;
 }
 
@@ -32,27 +33,27 @@ h1, h2, h3, h4, h5, h6 {
 
 h1, .alpha {
 	.font-size(@h1-fontSize);
-	.margin-bottom-rem(@base-fontSize*.2);
+	.rhythm-margin-bottom(0.2);
 }
 h2, .beta { 
 	.font-size(@h2-fontSize);
-	.margin-bottom-rem(@base-fontSize*.33);
+	.rhythm-margin-bottom(0.33);
 }
 h3, .gamma { 
 	.font-size(@h3-fontSize);
-	.margin-bottom-rem(@base-fontSize*.5);
+	.rhythm-margin-bottom(0.5);
 }
 h4, .delta { 
 	.font-size(@h4-fontSize);
-	.margin-bottom-rem(@base-fontSize*.5);
+	.rhythm-margin-bottom(0.5);
 }
 h5, .epsilon { 
 	.font-size(@h5-fontSize);
-	.margin-bottom-rem(@base-fontSize*.5);
+	.rhythm-margin-bottom(0.5);
 }
 h6, .zeta { 
 	.font-size(@h6-fontSize);
-	.margin-bottom-rem(@base-fontSize*.5);
+	.rhythm-margin-bottom(0.5);
 }
 
 // Links
@@ -120,8 +121,7 @@ dd {
 // Horizontal rules
 // ==========================================================================
 hr {
-	.margin-top-rem(@base-fontSize);
-	.margin-bottom-rem(@base-fontSize);
+	.rhythm-margin(1);
 	border: 0;
 	border-top: 1px solid @hr-borderTopColor;
 	border-bottom: 1px solid @hr-borderBottomColor;

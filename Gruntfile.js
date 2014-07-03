@@ -95,7 +95,7 @@ module.exports = function(grunt) {
 					flatten: true,
 					cwd: 'bower_components/prelude-mixins/dist',
 					src: [
-							'*.less'
+							'*.less', '!variables.less'
 					],
 					dest: 'less/mixins/'
 				}]

@@ -21,7 +21,7 @@
     <section>
         <h2>Messages</h2>
         <div class="row">
-            <div class="column half">
+            <div class="column half-desktop">
                 <h4>HTML</h4>
                 <pre><code data-language="html">&lt;div&nbsp;class=&quot;message&nbsp;message--warning&quot;&gt;
 &nbsp;&nbsp;&nbsp;&nbsp;&lt;strong&gt;Warning!&lt;/strong&gt;&nbsp;Best&nbsp;check&nbsp;yo&nbsp;self,&nbsp;you're&nbsp;not&nbsp;looking&nbsp;too&nbsp;good.
@@ -48,7 +48,7 @@
 &nbsp;&nbsp;&nbsp;&nbsp;&lt;strong&gt;Information!&lt;/strong&gt;&nbsp;Best&nbsp;check&nbsp;yo&nbsp;self,&nbsp;you&nbsp;have&nbsp;new&nbsp;informations.
 &lt;/div&gt;</code></pre>
             </div>
-            <div class="column half">
+            <div class="column half-desktop">
                 <h4>RENDERED HTML</h4>
                 <div class="message message--warning">
                     <strong>Warning!</strong> Best check yo self, you're not looking too good.
@@ -77,74 +77,106 @@
             </div>
         </div>
         <div class="row">
-            <div class="column half">
+            <div class="column half-desktop">
                 <h4>HTML</h4>
-                <pre><code data-language="html">&lt;div&nbsp;class=&quot;message-block&nbsp;message--warning&quot;&gt;
-&nbsp;&nbsp;&nbsp;&nbsp;&lt;h4&gt;Warning!&lt;/h4&gt;
-&nbsp;&nbsp;&nbsp;&nbsp;&lt;p&gt;Best&nbsp;check&nbsp;yo&nbsp;self,&nbsp;you're&nbsp;not&nbsp;looking&nbsp;too&nbsp;good.&lt;/p&gt;
+                <pre><code data-language="html"> &lt;div class=&quot;message message--warning&quot;&gt;
+    &lt;h4 class=&quot;message-title&quot;&gt;Warning!&lt;/h4&gt;
+    &lt;div class=&quot;message-content&quot;&gt;
+        &lt;p&gt;Best check yo self, you&#039;re not looking too good.&lt;/p&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
-&lt;div&nbsp;class=&quot;message-block&nbsp;message--warning&nbsp;message-close&quot;&gt;
-&nbsp;&nbsp;&nbsp;&nbsp;&lt;h4&gt;Warning!&lt;/h4&gt;
-&nbsp;&nbsp;&nbsp;&nbsp;&lt;p&gt;Best&nbsp;check&nbsp;yo&nbsp;self,&nbsp;you're&nbsp;not&nbsp;looking&nbsp;too&nbsp;good.&lt;/p&gt;
+&lt;div class=&quot;message message--warning message-close&quot;&gt;
+    &lt;h4 class=&quot;message-title&quot;&gt;Warning!&lt;/h4&gt;
+    &lt;div class=&quot;message-content&quot;&gt;
+        &lt;p&gt;Best check yo self, you&#039;re not looking too good.&lt;/p&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
-&lt;div&nbsp;class=&quot;message-block&nbsp;message--error&nbsp;message--radius&quot;&gt;
-&nbsp;&nbsp;&nbsp;&nbsp;&lt;h4&gt;Error!&lt;/h4&gt;
-&nbsp;&nbsp;&nbsp;&nbsp;&lt;p&gt;This&nbsp;is&nbsp;a&nbsp;warning&nbsp;message&nbsp;that&nbsp;is&nbsp;radius.&lt;/p&gt;
+&lt;div class=&quot;message message--error message--radius&quot;&gt;
+    &lt;h4 class=&quot;message-title&quot;&gt;Error!&lt;/h4&gt;
+    &lt;div class=&quot;message-content&quot;&gt;
+        &lt;p&gt;This is a warning message that is radius.&lt;/p&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
-&lt;div&nbsp;class=&quot;message-block&nbsp;message--error&nbsp;message--radius&nbsp;message-close&quot;&gt;
-&nbsp;&nbsp;&nbsp;&nbsp;&lt;h4&gt;Error!&lt;/h4&gt;
-&nbsp;&nbsp;&nbsp;&nbsp;&lt;p&gt;This&nbsp;is&nbsp;a&nbsp;warning&nbsp;message&nbsp;that&nbsp;is&nbsp;radius.&lt;/p&gt;
+&lt;div class=&quot;message message--error message--radius message-close&quot;&gt;
+    &lt;h4 class=&quot;message-title&quot;&gt;Error!&lt;/h4&gt;
+    &lt;div class=&quot;message-content&quot;&gt;
+        &lt;p&gt;This is a warning message that is radius.&lt;/p&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
-&lt;div&nbsp;class=&quot;message-block&nbsp;message--success&nbsp;message--round&quot;&gt;
-&nbsp;&nbsp;&nbsp;&nbsp;&lt;h4&gt;Success!&lt;/h4&gt;
-&nbsp;&nbsp;&nbsp;&nbsp;&lt;p&gt;This&nbsp;is&nbsp;a&nbsp;success&nbsp;message&nbsp;with&nbsp;a&nbsp;round.&lt;/p&gt;
+&lt;div class=&quot;message message--success message--round&quot;&gt;
+    &lt;h4 class=&quot;message-title&quot;&gt;Success!&lt;/h4&gt;
+    &lt;div class=&quot;message-content&quot;&gt;
+        &lt;p&gt;This is a success message with a round.&lt;/p&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
-&lt;div&nbsp;class=&quot;message-block&nbsp;message--success&nbsp;message--round&nbsp;message-close&quot;&gt;
-&nbsp;&nbsp;&nbsp;&nbsp;&lt;h4&gt;Success!&lt;/h4&gt;
-&nbsp;&nbsp;&nbsp;&nbsp;&lt;p&gt;This&nbsp;is&nbsp;a&nbsp;success&nbsp;message&nbsp;with&nbsp;a&nbsp;round.&lt;/p&gt;
+&lt;div class=&quot;message message--success message--round message-close&quot;&gt;
+    &lt;h4 class=&quot;message-title&quot;&gt;Success!&lt;/h4&gt;
+    &lt;div class=&quot;message-content&quot;&gt;
+        &lt;p&gt;This is a success message with a round.&lt;/p&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
-&lt;div&nbsp;class=&quot;message-block&nbsp;message--info&quot;&gt;
-&nbsp;&nbsp;&nbsp;&nbsp;&lt;h4&gt;Information!&lt;/h4&gt;
-&nbsp;&nbsp;&nbsp;&nbsp;&lt;p&gt;Best&nbsp;check&nbsp;yo&nbsp;self,&nbsp;you&nbsp;have&nbsp;new&nbsp;informations.&lt;/p&gt;
+&lt;div class=&quot;message message--info&quot;&gt;
+    &lt;h4 class=&quot;message-title&quot;&gt;Information!&lt;/h4&gt;
+    &lt;div class=&quot;message-content&quot;&gt;
+        &lt;p&gt;Best check yo self, you have new informations.&lt;/p&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
-&lt;div&nbsp;class=&quot;message-block&nbsp;message--info&nbsp;message-close&quot;&gt;
-&nbsp;&nbsp;&nbsp;&nbsp;&lt;h4&gt;Information!&lt;/h4&gt;
-&nbsp;&nbsp;&nbsp;&nbsp;&lt;p&gt;Best&nbsp;check&nbsp;yo&nbsp;self,&nbsp;you&nbsp;have&nbsp;new&nbsp;informations.&lt;/p&gt;
+&lt;div class=&quot;message message--info message-close&quot;&gt;
+    &lt;h4 class=&quot;message-title&quot;&gt;Information!&lt;/h4&gt;
+    &lt;div class=&quot;message-content&quot;&gt;
+        &lt;p&gt;Best check yo self, you have new informations.&lt;/p&gt;
+    &lt;/div&gt;
 &lt;/div&gt;</code></pre>
             </div>
-            <div class="column half">
+            <div class="column half-desktop">
                 <h4>RENDERED HTML</h4>
-                <div class="message-block message--warning">
-                    <h4>Warning!</h4>
-                    <p>Best check yo self, you're not looking too good.</p>
+                <div class="message message--warning">
+                    <h4 class="message-title">Warning!</h4>
+                    <div class="message-content">
+                        <p>Best check yo self, you're not looking too good.</p>
+                    </div>
                 </div>
-                <div class="message-block message--warning message-close">
-                    <h4>Warning!</h4>
-                    <p>Best check yo self, you're not looking too good.</p>
+                <div class="message message--warning message-close">
+                    <h4 class="message-title">Warning!</h4>
+                    <div class="message-content">
+                        <p>Best check yo self, you're not looking too good.</p>
+                    </div>
                 </div>
-                <div class="message-block message--error message--radius">
-                    <h4>Error!</h4>
-                    <p>This is a warning message that is radius.</p>
+                <div class="message message--error message--radius">
+                    <h4 class="message-title">Error!</h4>
+                    <div class="message-content">
+                        <p>This is a warning message that is radius.</p>
+                    </div>
                 </div>
-                <div class="message-block message--error message--radius message-close">
-                    <h4>Error!</h4>
-                    <p>This is a warning message that is radius.</p>
+                <div class="message message--error message--radius message-close">
+                    <h4 class="message-title">Error!</h4>
+                    <div class="message-content">
+                        <p>This is a warning message that is radius.</p>
+                    </div>
                 </div>
-                <div class="message-block message--success message--round">
-                    <h4>Success!</h4>
-                    <p>This is a success message with a round.</p>
+                <div class="message message--success message--round">
+                    <h4 class="message-title">Success!</h4>
+                    <div class="message-content">
+                        <p>This is a success message with a round.</p>
+                    </div>
                 </div>
-                <div class="message-block message--success message--round message-close">
-                    <h4>Success!</h4>
-                    <p>This is a success message with a round.</p>
+                <div class="message message--success message--round message-close">
+                    <h4 class="message-title">Success!</h4>
+                    <div class="message-content">
+                        <p>This is a success message with a round.</p>
+                    </div>
                 </div>
-                <div class="message-block message--info">
-                    <h4>Information!</h4>
-                    <p>Best check yo self, you have new informations.</p>
+                <div class="message message--info">
+                    <h4 class="message-title">Information!</h4>
+                    <div class="message-content">
+                        <p>Best check yo self, you have new informations.</p>
+                    </div>
                 </div>
-                <div class="message-block message--info message-close">
-                    <h4>Information!</h4>
-                    <p>Best check yo self, you have new informations.</p>
+                <div class="message message--info message-close">
+                    <h4 class="message-title">Information!</h4>
+                    <div class="message-content">
+                        <p>Best check yo self, you have new informations.</p>
+                    </div>
                 </div>
             </div>
         </div>
