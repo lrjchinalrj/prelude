@@ -1,0 +1,114 @@
+// ==========================================================================
+// Variables
+// ==========================================================================
+@progress-margin-bottom       : @base-fontSize * .625;
+@progress-padding             : 1px;
+@progress-bgColor             : #f7f7f7;
+@progress-borderColor         : @color-border;
+@progress-meter-bgColor       : #5bc0de;
+
+@progress-radius              : @base-borderRadius;
+@progress-round               : 1000px;
+
+@progress-height              : 1.2rem;
+@progress-small-height        : 0.8rem;
+@progress-large-height        : 1.5rem;
+
+@progress--success-meter-size : #43ac6a;
+@progress--alert-meter-size   : #f04124;
+@progress--striped-meter-size : 40px 40px;
+
+// ==========================================================================
+// Progress
+// ==========================================================================
+.prelude-progress (@use) when (@use = true) {
+	.progress {
+		.rem(height, @progress-height);
+		.margin-bottom-rem(@progress-margin-bottom);
+		.padding-rem(@progress-padding);
+		background-color: @progress-bgColor;
+		border: 1px solid @progress-borderColor;
+		overflow: hidden;
+		.hook-progress;
+
+		.meter {
+			display: block;
+			height: 100%;
+			background: @progress-meter-bgColor;
+			.hook-progress-meter;
+		}
+
+		// type
+		// ======================================================================
+		&--radius {
+			.border-radius(@progress-radius);
+		}
+		&--round {
+			.border-radius(@progress-round);
+		}
+		&--radius,
+		&--round {
+			.meter {
+				.border-radius(inherit);
+			}
+		}
+
+		// size
+		// ======================================================================
+		&--small {
+			.rem(height, @progress-small-height);
+		}
+		&--large {
+			.rem(height, @progress-large-height);
+		}
+
+		// success
+		// ======================================================================
+		&--success {
+			.hook-progress-success;
+			.meter {
+				background-color: @progress--success-meter-size;
+				.hook-progress-meter-success;
+			}
+		}
+
+		// alert
+		// ======================================================================
+		&--alert {
+			.hook-progress-alert;
+			.meter {
+				background-color: @progress--alert-meter-size;
+				.hook-progress-meter-alert;
+			}
+		}
+		// striped
+		// ======================================================================
+		&--striped {
+			.hook-progress-striped;
+			.meter {
+				.gradient-striped;
+				.background-size(@progress--striped-meter-size);
+				.hook-progress-meter-striped;
+			}
+		}
+	}	
+
+	// Hook
+	// ==========================================================================
+	.hook-progress-misc;
+}
+
+.prelude-progress (@use-progress);
+
+// ==========================================================================
+//  Hooks
+// ==========================================================================
+.hook-progress() {}
+.hook-progress-meter() {}
+.hook-progress-success() {}
+.hook-progress-meter-success() {}
+.hook-progress-alert() {}
+.hook-progress-meter-alert() {}
+.hook-progress-striped() {}
+.hook-progress-meter-striped() {}
+.hook-progress-misc() {}

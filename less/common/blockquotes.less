@@ -1,0 +1,39 @@
+// ==========================================================================
+// Variables
+// ==========================================================================
+@blockquote-borderColor : #eee;
+@blockquote-small-color : #999;
+
+// ==========================================================================
+// Blockquotes
+// ==========================================================================
+.prelude-blockquotes (@use) when (@use = true) {
+	blockquote {
+		.padding-left-rem(@base-fontSize);
+		.margin-rem(0 0 0 @base-fontSize*1.5);
+		border-left: 5px solid @blockquote-borderColor;
+		p {
+			margin-bottom: 0;
+		}
+		small {
+			display: block;
+			color: @blockquote-small-color;
+			&:before {
+				content: '\2014 \00A0';
+			}
+		}
+
+		.hook-blockquotes;
+	}
+	
+	// Hook
+	// ==========================================================================
+	.hook-blockquotes-misc;
+}
+.prelude-blockquotes (@use-blockquotes);
+
+// ==========================================================================
+// Hook
+// ==========================================================================
+.hook-blockquotes() {}
+.hook-blockquotes-misc() {}

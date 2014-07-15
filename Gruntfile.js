@@ -19,11 +19,26 @@ module.exports = function(grunt) {
 		config : {
 			less : {
 				// <%=config.less.distDir%>
-				distDir	: 'css/',
+				distDir	: 'dist/',
 				// <%=config.less.srcDir%>
 				srcDir  : 'less/'
 			}
 		},
+
+		// -- concat config ----------------------------------------------------------
+        concat: {
+            options: {
+                banner: '<%= banner %>',
+                stripBanners: true
+            },
+            dist: {
+            	expand: true,
+            	cwd: 'dist/',
+                src: ['*.css'],
+                dest: 'dist/'
+            }
+        },
+
 		// -- copy config ----------------------------------------------------------
 		copy: {
 			fontAwesome: {
@@ -57,7 +72,7 @@ module.exports = function(grunt) {
 			normalize: {
 				files: [{
 					src: 'bower_components/normalize-css/normalize.css', 
-					dest: 'less/common/reset/reset.less'
+					dest: 'less/common/normalize.less'
 				}]
 			},
 			rainbow: {
@@ -105,7 +120,7 @@ module.exports = function(grunt) {
 		// -- Clean Config ---------------------------------------------------------
 
 		clean: {
-			css		: ['css/'],
+			css		: ['dist/'],
 			release	: ['release/']
 		},
 
@@ -114,7 +129,7 @@ module.exports = function(grunt) {
 		less: {
 			dist: {
 				files: {
-					"css/prelude.css": "less/prelude.less"
+					"dist/prelude.css": "less/prelude.less"
 				}
 			}
 		},
@@ -134,7 +149,7 @@ module.exports = function(grunt) {
 
 			src: {
 				src: [
-					'css/**/*.css'
+					'dist/**/*.css'
 				]
 			}
 		},
@@ -148,7 +163,7 @@ module.exports = function(grunt) {
 
 			files: {
 				expand: true,
-				src	 : ['css/*.css','!css/*-min.css'],
+				src	 : ['dist/*.css','!dist/*-min.css'],
 				ext	 : '-min.css'
 			}
 		},
@@ -173,6 +188,34 @@ module.exports = function(grunt) {
 			}
 		},
 
+		// -- replace config ----------------------------------------------------------
+        replace: {
+            bower: {
+                src: ['bower.json'],
+                overwrite: true, // overwrite matched source files
+                replacements: [{
+                    from: /("version": ")([0-9\.]+)(")/g,
+                    to: "$1<%= pkg.version %>$3"
+                }]
+            },
+            jquery: {
+                src: ['asTabs.jquery.json'],
+                overwrite: true, // overwrite matched source files
+                replacements: [{
+                    from: /("version": ")([0-9\.]+)(")/g,
+                    to: "$1<%= pkg.version %>$3"
+                }]
+            },
+            normalize: {
+            	src: ['less/common/normalize.less'],
+                overwrite: true, // overwrite matched source files
+            	replacements: [{
+                    from: /\/\*! normalize\.css .* \*\//g,
+                    to: ''
+                }]
+            }
+        },
+
 		// -- jQuery builder Config -------------------------------------------------
 		jquery: {
 			build: {
@@ -194,6 +237,11 @@ module.exports = function(grunt) {
 	});
 
 	// Default task.
-	grunt.registerTask('default', ['clean', 'css']);
+	grunt.registerTask('default', ['clean', 'css', 'concat']);
 	grunt.registerTask('css', ['less','csscomb','cssmin']);
+	grunt.registerTask('update', ['copy','replace:normalize']);
+	grunt.registerTask('version', [
+        'replace:bower',
+        'replace:jquery'
+    ]);
 };

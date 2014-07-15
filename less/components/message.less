@@ -1,0 +1,151 @@
+// ==========================================================================
+// Variables
+// ==========================================================================
+@message-padding-vertical         : @base-fontSize * .5;
+@message-padding-horizontal       : @base-fontSize;
+@message-margin-bottom            : @base-fontSize * .5;
+@message-fontSize                 : @base-fontSize;
+@message-bgColor                  : #f0f0f0;
+@message-borderColor              : @color-border;
+
+@message--radius                  : @base-borderRadius;
+
+// close
+@message-padding-right            : @base-fontSize * 3;
+@message-close-padding-vertical   : @message-padding-vertical;
+@message-close-padding-horizontal : @message-padding-horizontal;
+@message-close-color              : #333;
+
+// warning
+@message--warning-color           : #c09853;
+@message--warning-bgColor         : #fcf8e3;
+@message--warning-borderColor     : darken(spin(@message--warning-bgColor, -10), 3%);
+
+// error
+@message--error-color             : #b94a48;
+@message--error-bgColor           : #f2dede;
+@message--error-borderColor       : darken(spin(@message--error-bgColor, -10), 3%);
+
+// success
+@message--success-color           : #468847;
+@message--success-bgColor         : #dff0d8;
+@message--success-borderColor     : darken(spin(@message--success-bgColor, -10), 5%);
+
+// info
+@message--info-color              : #3a87ad;
+@message--info-bgColor            : #d9edf7;
+@message--info-borderColor        : darken(spin(@message--info-bgColor, -10), 7%);
+
+// ==========================================================================
+// Message
+// ==========================================================================
+.prelude-message(@use) when (@use = true) {
+	.message {
+		position: relative;
+		.rhythm-margin-bottom(1);
+		.padding-rem(@message-padding-vertical @message-padding-horizontal);
+		border: 1px solid @message-borderColor;
+		background-color: @message-bgColor;
+		font-size: @message-fontSize;
+
+		.hook-message;
+
+		&-close {
+			.padding-right-rem(@message-padding-right);
+			cursor: pointer;
+			&:after {
+				position: absolute;
+				right: 0;
+				top: 0;
+				content: '\00D7';
+				.padding-rem(@message-close-padding-vertical @message-close-padding-horizontal);
+				color: @message-close-color;
+				color: fade(@message-close-color, 30%);
+				.hook-message-close;
+			}
+		}
+
+		&-title {
+			.padding-bottom-rem(@message-padding-vertical);
+			margin: 0;
+		}
+
+		> *:last-child,
+		> *:last-child > *:last-child,
+		> *:last-child > *:last-child > *:last-child {
+			margin-bottom: 0;
+		}
+
+		// modifiers
+		// ==========================================================================
+		&--radius {
+			.border-radius(@message--radius);
+		}
+
+		// message--warning
+		// ==========================================================================
+		&--warning {
+			color: @message--warning-color;
+			background-color: @message--warning-bgColor;
+			border-color: @message--warning-borderColor;
+			.hook-message-warning;
+
+			&:hover {
+				color: darken(@message--warning-color, 10%);
+			}
+		}
+		// message--error
+		// ==========================================================================
+		&--error {
+			color: @message--error-color; 
+			background-color: @message--error-bgColor;
+			border-color: @message--error-borderColor;
+			.hook-message-error;
+
+			&:hover {
+				color: darken(@message--error-color, 10%); 
+			}
+		}
+		// message--success
+		// ==========================================================================
+		&--success {
+			color: @message--success-color;
+			background-color: @message--success-bgColor;
+			border-color: @message--success-borderColor;
+			.hook-message-success;
+
+			&:hover {
+				color: darken(@message--success-color, 10%); 
+			}
+		}
+		// message--info
+		// ==========================================================================
+		&--info {
+			color: @message--info-color; 
+			background-color: @message--info-bgColor;
+			border-color: @message--info-borderColor;
+			.hook-message-info;
+			
+			&:hover {
+				color: darken(@message--info-color, 10%); 
+			}
+		}
+	}
+	
+	// Hook
+	// ==========================================================================
+	.hook-message-misc;
+}
+
+.prelude-message(@use-message);
+
+// ==========================================================================
+//  Hooks
+// ==========================================================================
+.hook-message() {}
+.hook-message-close() {}
+.hook-message-warning() {}
+.hook-message-error() {}
+.hook-message-success() {}
+.hook-message-info() {}
+.hook-message-misc() {}

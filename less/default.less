@@ -1,114 +1,158 @@
 // ========= General =========
 // ===========================
-@using-ieclasses             : true;		// whether or not the markup has html5-boilerplate style IE classes in it or not
+@using-ieclasses               : true;		// whether or not the markup has html5-boilerplate style IE classes in it or not
 
-@using-modernizr             : false; 	// whether or not modernizer feature-detection classes are being used
-@support-old-ie              : true;
-@disable-filters             : false; 	// whether or not to disable MS-specific 'filter' properties (can make IE slow!)
-@sprite-grid                 : 50px;
+@using-modernizr               : false; 	// whether or not modernizer feature-detection classes are being used
+@support-old-ie                : true;
+@disable-filters               : false; 	// whether or not to disable MS-specific 'filter' properties (can make IE slow!)
+@sprite-grid                   : 50px;
 
-// Screens
-// --------------------------------------------------
-@screens                     : phone tablet laptop desktop;
+// ========= Screens =========
+// ===========================
+@screens                       : phone tablet laptop desktop;
 
 // Screen Desktop
-@screen-desktop-min          : 1200px;
-@screen-desktop-max          : INFINITY;
-
+@screen-desktop-min            : 1200px;
+@screen-desktop-max            : INFINITY;
 
 // Screen Laptop
-@screen-laptop-min           : 992px;
-@screen-laptop-max           : @screen-desktop-min - 1px;
+@screen-laptop-min             : 992px;
+@screen-laptop-max             : @screen-desktop-min - 1px;
 
 // Screen Tablet
-@screen-tablet-min           : 768px;
-@screen-tablet-max           : @screen-laptop-min - 1px;
+@screen-tablet-min             : 768px;
+@screen-tablet-max             : @screen-laptop-min - 1px;
 
 // Screen Mobile
-@screen-phone-min          	 : 0;
-@screen-phone-max            : @screen-tablet-min -1px;
+@screen-phone-min          	   : 0;
+@screen-phone-max              : @screen-tablet-min -1px;
 
-@screen-small                : 640px;
-@screen-medium               : 1024px;
-@screen-large                : 1440px;
-@screen-xlarge               : 1920px;
-
+// ======= Media Query =======
+// ===========================
+//
+// By passing in one of the pre-defined media queries that 
+// are packaged with Concise by default, you can easily 
+// create styles that are built from the ground-up to be 
+// mobile friendly.
+// 
+//    `@media @phone { styles here }`
+// 
+@phone                         : ~"(max-width: @{screen-phone-max})";
+@tablet                        : ~"(min-width: @{screen-tablet-min}) and (max-width: @{screen-tablet-max})";
+@tablet-up                     : ~"(min-width: @{screen-tablet-min})";
+@laptop                        : ~"(min-width: @{screen-laptop-min}) and (max-width: @{screen-laptop-max})";
+@laptop-up                     : ~"(min-width: @{screen-laptop-min})";
+@desktop                       : ~"(min-width: @{screen-desktop-min})";
+@high-density                  : ~"(-webkit-min-device-pixel-ratio: 1.5)",
+                                 ~"(min--moz-device-pixel-ratio : 1.5)",
+                                 ~"(-o-min-device-pixel-ratio   : 3/2)",
+                                 ~"(min-device-pixel-ratio      : 1.5)";
 // ========= Includes ========
 // ===========================
+// common
+@use-normalize                 : true;
+@use-main                      : true;
+@use-selection                 : true;
+@use-typography                : true;
+@use-headings                  : true;
+@use-blockquotes               : true;
+@use-list                      : true;
+@use-code                      : true;
+@use-form                      : true;
+@use-media                     : true;
+
 // functions
-@use-grids                   : true;
-@use-print                   : true;
-@use-rtl                     : false;
-@use-utility                 : true;
+@use-grids                     : true;
+@use-print                     : true;
+@use-rtl                       : false;
+@use-utility                   : true;
+@use-conditional               : true;
 
 // components
-@use-box                     : true;
-@use-breadcrumbs             : true;
-@use-buttons                 : true;
-@use-divider                 : true;
-@use-icon                    : true;
-@use-lists                   : true;
-@use-message                 : true;
-@use-pager                   : true;
-@use-panels                  : true;
-@use-pagination              : true;
-@use-progress                : true;
-@use-tables                  : true;
+@use-box                       : true;
+@use-breadcrumbs               : true;
+@use-buttons                   : true;
+@use-divider                   : true;
+@use-forms                     : true;
+@use-icon                      : true;
+@use-lists                     : true;
+@use-message                   : true;
+@use-pager                     : true;
+@use-pagination                : true;
+@use-panels                    : true;
+@use-progress                  : true;
+@use-table                     : true;
+@use-video                     : true;
 
 // ======= Typography ========
 // ===========================
 // Font scale
-@scale-augmentedFourth       : 1.414;
-@scale-goldenRatio           : 1.618;
-@scale-majorSecond           : 1.125;
-@scale-majorThird            : 1.250;
-@scale-majorSixth            : 1.667;
-@scale-majorSeventh          : 1.875;
-@scale-majorTenth            : 2.500;
-@scale-minorSecond           : 1.067;
-@scale-minorThird            : 1.200;
-@scale-minorSixth            : 1.600;
-@scale-minorSeventh          : 1.778;
-@scale-octave                : 2.000;
-@scale-perfectFourth         : 1.333;
-@scale-perfectFifth          : 1.500;
+@scale-augmentedFourth         : 1.414;
+@scale-goldenRatio             : 1.618;
+@scale-majorSecond             : 1.125;
+@scale-majorThird              : 1.250;
+@scale-majorSixth              : 1.667;
+@scale-majorSeventh            : 1.875;
+@scale-majorTenth              : 2.500;
+@scale-minorSecond             : 1.067;
+@scale-minorThird              : 1.200;
+@scale-minorSixth              : 1.600;
+@scale-minorSeventh            : 1.778;
+@scale-octave                  : 2.000;
+@scale-perfectFourth           : 1.333;
+@scale-perfectFifth            : 1.500;
+
 // Font stacks
-@fontFamily-sans             : "Helvetica Neue", Helvetica, Arial, sans-serif;
-@fontFamily-serif            : Georgia, "Times New Roman", Times, serif;
-@fontFamily-mono             : Monaco, Menlo, Consolas, "Courier New", monospace;
-
-@base-fontSize               : 16px;
-@base-fontFamily             : @fontFamily-sans;
-@base-lineHeight             : 1.5;
-@base-borderRadius           : 3px;
-
-@rhythm-space                : 1rem;
+@fontFamily-sans               : "Helvetica Neue", Helvetica, Arial, sans-serif;
+@fontFamily-serif              : Georgia, "Times New Roman", Times, serif;
+@fontFamily-mono               : Monaco, Menlo, Consolas, "Courier New", monospace;
 
 // ======= Color Palette =====
 // ===========================
 // Generic colours
-@blue                        : #3498db;
-@blueDark                    : darken(@blue, 20%);
-@green                       : #1abc9c;
-@red                         : #c0392b;
-@yellow                      : #f1c40f;
-@orange                      : #e67e22;
-@pink                        : #c3325f;
-@purple                      : #8e44ad;
-@gray                        : #7f8c8d;
+@blue                          : #3498db;
+@blueDark                      : darken(@blue, 20%);
+@green                         : #1abc9c;
+@red                           : #c0392b;
+@yellow                        : #f1c40f;
+@orange                        : #e67e22;
+@pink                          : #c3325f;
+@purple                        : #8e44ad;
+@gray                          : #7f8c8d;
 
 // Colour Scheme
-@color-primary               : @blue;
-@color-secondary             : @red;
-@color-highlight             : @yellow;
+@color-primary                 : @blue;
+@color-secondary               : @red;
+@color-highlight               : @yellow;
 
 // Common colours
-@color-text                  : #444;
-@color-background            : #f1f1f1;
-@color-border                : #ddd;
+@color-text                    : #444;
+@color-background              : #f1f1f1;
+@color-border                  : #ddd;
 
 // Links
-@color-link-default          : @color-primary;
-@color-link-visited          : @color-primary;
-@color-link-hover            : darken(@color-primary, 20%);
-@color-link-active           : darken(@color-primary, 20%);
+@color-link-default            : @color-primary;
+@color-link-visited            : @color-primary;
+@color-link-hover              : darken(@color-primary, 20%);
+@color-link-active             : darken(@color-primary, 20%);
+
+// ======== Font Sizes =======
+// ===========================
+@fontSize-scale                : @scale-majorThird;
+@h6-fontSize                   : @base-fontSize;
+@h5-fontSize                   : @base-fontSize;
+@h4-fontSize                   : @h5-fontSize * @fontSize-scale;
+@h3-fontSize                   : @h4-fontSize * @fontSize-scale;
+@h2-fontSize                   : @h3-fontSize * @fontSize-scale;
+@h1-fontSize                   : @h2-fontSize * @fontSize-scale;
+
+@small-fontSize                : 12px;
+@micro-fontSize                : 10px;
+
+// ========== Base ===========
+// ===========================
+@base-fontSize                 : 16px;
+@base-fontFamily               : @fontFamily-sans;
+@base-lineHeight               : 1.5;
+@base-borderRadius             : 3px;
+@rhythm-space                  : 1rem;

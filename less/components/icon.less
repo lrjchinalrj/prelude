@@ -1,0 +1,167 @@
+// ==========================================================================
+// Variables
+// ==========================================================================
+@icon-fontFamily      : FontAwesome;
+
+// size
+@icon--lg-fontSize    : @base-fontSize * 1.333;
+@icon--lg-lineHeight  : @base-fontSize * .5;
+@icon--2x-fontSize    : @base-fontSize * 2;
+@icon--3x-fontSize    : @base-fontSize * 3;
+@icon--4x-fontSize    : @base-fontSize * 4;
+@icon--5x-fontSize    : @base-fontSize * 5;
+
+// icon--circular
+@icon--circular-width : 2em;
+
+// icon-list
+@icon-ul-margin-left  : @base-fontSize * 1.875;
+
+// ==========================================================================
+// Blockquotes
+// ==========================================================================
+.prelude-icon (@use) when (@use = true) {
+
+    .icon {
+        .inline-block();
+        font-family: @icon-fontFamily;
+        font-style: normal;
+        font-weight: normal;
+        line-height: 1;
+        speak: none;
+        .hook-icon;
+
+        // size
+        // ==========================================================================
+        &--lg {
+            .font-size(@icon--lg-fontSize);
+            line-height: @icon--lg-lineHeight;
+            vertical-align: -15%;
+        }
+        &--2x {
+            .font-size(@icon--2x-fontSize);
+        }
+        &--3x {
+            .font-size(@icon--3x-fontSize);
+        }
+        &--4x {
+            .font-size(@icon--4x-fontSize);
+        }
+        &--5x {
+            .font-size(@icon--5x-fontSize);
+        }
+
+        // circular
+        // ==========================================================================
+        &--circular {
+            width: 2em !important;
+            height: 2em !important;
+            line-height: 2em !important;
+            text-align: center !important;
+            .border-radius(500px);
+            border: 1px solid rgba(0,0,0,0.1);
+        }
+        
+        // square
+        // ==========================================================================
+        &--square {
+            width: 1.8em !important;
+            height: 1.8em !important;
+            line-height: 1.8em !important;
+            text-align: center !important;
+            vertical-align: baseline;
+            border: 1px solid rgba(0,0,0,0.1);
+        }
+
+        // list
+        // ==========================================================================
+        &-ul {
+            padding-left: 0;
+            .margin-left-rem(@icon-ul-margin-left);
+            list-style-type: none;
+
+            > li {
+                position: relative;
+            }
+        }
+        &-li {
+            position: absolute;
+            top: 5px;
+            top: .3125rem;
+            left: 30px;
+            left: -1.875rem;
+            width: 30px;
+            width: 1.875rem;
+            text-align: center;
+
+            .hook-icon-ul;
+        }
+        &-li&--lg {
+            left: -26px;
+            left: -1.625rem;
+        }
+
+        // spinning
+        // ==========================================================================
+        &--spin {
+            .animation(spin 2s infinite linear);
+        }
+
+        // rotate
+        // ==========================================================================
+        &--rotate-90 {
+            .rotate(90deg);
+        }
+        &--rotate-180 {
+            .rotate(180deg);
+        }
+        &--rotate-270 {
+            .rotate(270deg);
+        }
+        &--flip-horizontal {
+            .scale3d(-1, 1, 0);
+        }
+        &--flip-vertical {
+            .scale3d(1, -1, 0);
+        }
+    }
+
+    
+    @-moz-keyframes spin {
+        0% {
+            -moz-transform: rotate(0deg);
+        }
+        100% {
+            -moz-transform: rotate(359deg);
+        }
+    }
+    @-webkit-keyframes spin {
+        0% {
+            -webkit-transform: rotate(0deg);
+        }
+        100% {
+            -webkit-transform: rotate(359deg);
+        }
+    }
+    @keyframes spin {
+        0% {
+            transform: rotate(0deg);
+        }
+        100% {
+            transform: rotate(359deg);
+        }
+    }
+
+    // Hook
+    // ==========================================================================
+    .hook-icon-misc;
+}
+
+.prelude-icon (@use-icon);
+
+// ==========================================================================
+//  Hooks
+// ==========================================================================
+.hook-icon() {}
+.hook-icon-ul() {}
+.hook-icon-misc() {}

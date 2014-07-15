@@ -1,0 +1,92 @@
+// ==========================================================================
+// Variables
+// ==========================================================================
+@pager-bgColor              : #fff;
+@pager-borderColor          : @color-border;
+@pager-borderRadius         : 20px;
+
+@pager--hover-bgColor       : darken(@pager-bgColor, 10%);
+
+@pager-disabled-color       : #999;
+@pager-disabled-bgColor     : #fff;
+@message-padding-vertical   : @base-fontSize * .2;
+@message-padding-horizontal : @base-fontSize * 1;
+
+// ==========================================================================
+// Pager
+// ==========================================================================
+.prelude-pager (@use) when (@use = true) {
+	.pager {
+		padding-left: 0;
+		list-style: none;
+		text-align: center;
+		&:before,
+		&:after {
+			content: ' ';
+			display: table;
+		}
+		&:after {
+			clear: both;
+		}
+		li {
+			display: inline;
+
+			> a,
+			> span {
+				display: inline-block;
+				.padding-rem(@message-padding-vertical @message-padding-horizontal);
+				background-color: @pager-bgColor;
+				border: 1px solid @pager-borderColor;
+				.border-radius (@pager-borderRadius);
+				.hook-pager;
+			}
+
+			> a:hover,
+			> a:focus {
+				text-decoration: none;
+				background-color: @pager--hover-bgColor;
+			}
+		}
+
+		.is-disabled {
+			> a,
+			> a:hover,
+			> a:focus,
+			> span {
+				color: @pager-disabled-color;
+				background-color: @pager-disabled-bgColor;
+				.hook-pager-disabled;
+			}
+		}
+
+		&-prev {
+			> a,
+			> span {
+				float: left;
+				.hook-pager-prev;
+			}
+		}
+		&-next {
+			> a,
+			> span {
+				float: right;
+				.hook-pager-next;
+			}
+		}
+	}
+	
+	// Hook
+	// ==========================================================================
+	.hook-pager-misc;
+}
+
+.prelude-pager (@use-pager);
+
+// ==========================================================================
+//  Hooks
+// ==========================================================================
+.hook-pager() {}
+.hook-pager-disabled() {}
+.hook-pager-prev() {}
+.hook-pager-next() {}
+.hook-pager-misc() {}

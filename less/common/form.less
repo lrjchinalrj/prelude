@@ -1,0 +1,117 @@
+// ==========================================================================
+// Variables
+// ==========================================================================
+@form-padding              : 5px;
+@form-fontSize             : @base-fontSize;
+@form-color                : @color-text;
+@form-bgColor              : #fff;
+@form-borderColor          : #aaa;
+
+// focus
+@form-focus-color          : #444;
+@form-focus-borderColor    : #5cf;
+
+// disabled
+@form-disabled-color       : #999;
+@form-disabled-bgColor     : #eee;
+@form-disabled-borderColor : #ccc;
+
+// placeholder
+@form-placeholder-color    : lighten(@form-color,20%);
+
+// fieldset
+@fieldset-borderStyle      : solid;
+@fieldset-borderWidth      : 1px;
+@fieldset-borderColor      : #ddd;
+@fieldset-padding          : 16px;
+@fieldset-margin-vertical  : 16px;
+
+// legend
+@legend-padding            : 3px;
+
+// ==========================================================================
+// Form
+// ==========================================================================
+.prelude-form (@use) when (@use = true) {
+	form {
+		margin: 0;
+	}
+
+	// Form element
+	// ==========================================================================
+	input[type="text"],
+	input[type="password"],
+	input[type="email"],
+	input[type="file"],
+	input[type="datetime"],
+	input[type="datetime-local"],
+	input[type="date"],
+	input[type="month"],
+	input[type="time"],
+	input[type="week"],
+	input[type="number"],
+	input[type="url"],
+	input[type="search"],
+	input[type="tel"],
+	input[type="color"],
+	textarea,
+	select {
+		max-width: 100%;
+		.padding-rem(@form-padding);
+		.font-size (@form-fontSize);
+		border: 1px solid @form-borderColor;
+		color: @form-color;
+		background: @form-bgColor;
+		.box-sizing(border-box);
+		.hook-form;
+
+	    &:focus {
+	    	border-color: @form-focus-borderColor;
+			color: @form-focus-color;
+			outline: none;
+			.hook-form-focus;
+	    }
+
+	    &[disabled] {
+	        border-color: @form-disabled-borderColor;
+	        background-color: @form-disabled-bgColor;
+	        color: @form-disabled-color;
+	        .hook-form-disabled;
+	    }
+	}
+
+	// Placeholder
+	// ==========================================================================
+	:-ms-input-placeholder { color: @form-placeholder-color !important; } /* 1. */
+	::-moz-placeholder { color: @form-placeholder-color; }
+	::-webkit-input-placeholder { color: @form-placeholder-color; }
+
+	:disabled:-ms-input-placeholder { color: @form-disabled-color !important; } /* 1. */
+	:disabled::-moz-placeholder { color: @form-disabled-color; }
+	:disabled::-webkit-input-placeholder { color: @form-disabled-color; }
+
+
+	// Fieldset
+	// ==========================================================================
+	fieldset {
+		.margin-rem(@fieldset-margin-vertical 0);
+		border: @fieldset-borderWidth @fieldset-borderStyle @fieldset-borderColor;
+		.padding-rem(@fieldset-padding);
+		legend {
+			.padding-rem(@legend-padding);
+			font-weight: bold;
+		}
+	}
+
+	.hook-form-misc;
+}
+
+.prelude-form (@use-form);
+
+// ==========================================================================
+// Hook
+// ==========================================================================
+.hook-form() {}
+.hook-form-focus() {}
+.hook-form-disabled() {}
+.hook-form-misc() {}

@@ -1,0 +1,51 @@
+// ==========================================================================
+// Variables
+// ==========================================================================
+@header-fontFamily      : @fontFamily-sans;
+
+// ==========================================================================
+// Headings
+// ==========================================================================
+.prelude-headings (@use) when (@use = true) {
+	h1, h2, h3, h4, h5, h6 {
+		margin: 0;
+		font-family: @header-fontFamily;
+		font-weight: normal;
+		text-rendering: optimizelegibility; 
+		small {
+			font-weight: normal;
+			line-height: 1;
+			font-size: 65% !important;
+		}
+
+		a {
+			font-weight: inherit;
+		}
+	}
+
+	h1, .alpha {
+		.font-size(@h1-fontSize);
+		.rhythm-margin-bottom(0.2);
+	}
+	h2, .beta { 
+		.font-size(@h2-fontSize);
+		.rhythm-margin-bottom(0.33);
+	}
+	h3, .gamma { 
+		.font-size(@h3-fontSize);
+		.rhythm-margin-bottom(0.5);
+	}
+	h4, .delta { 
+		.font-size(@h4-fontSize);
+		.rhythm-margin-bottom(0.5);
+	}
+	h5, .epsilon { 
+		.font-size(@h5-fontSize);
+		.rhythm-margin-bottom(0.5);
+	}
+	h6, .zeta { 
+		.font-size(@h6-fontSize);
+		.rhythm-margin-bottom(0.5);
+	}
+}
+.prelude-headings (@use-headings);

@@ -1,0 +1,119 @@
+// ==========================================================================
+// Variables
+// ==========================================================================
+@divider-margin-top        : @base-fontSize;
+@divider-margin-bottom     : @base-fontSize;
+
+@divider-borderTopColor    : #000;
+@divider-borderBottomColor : #fff;
+
+@divider--text-color       : #999;
+
+@divider--icon-color       : #999;
+
+// text && icon
+@divider-margin-right      : @base-fontSize * 1.5;
+@divider-margin-left       : @base-fontSize * 1.5;
+@divider-fontSize          : @base-fontSize * .875;
+
+// ==========================================================================
+// Divider
+// ==========================================================================
+.prelude-divider (@use) when (@use = true) {
+	.divider {
+		height: 0;
+		.margin-top-rem(@divider-margin-top);
+		.margin-bottom-rem(@divider-margin-bottom);
+		line-height: 1;
+		border-top: 1px solid @divider-borderTopColor;
+		border-top: 1px solid fade(@divider-borderTopColor, 10%);
+		border-bottom: 1px solid @divider-borderBottomColor;
+		border-bottom: 1px solid fade(@divider-borderBottomColor, 80%);
+		.user-select(none);
+		.box-sizing(border-box);
+		.hook-divider;
+	}
+
+	// text && icon  common
+	// ==========================================================================
+	.divider--text,
+	.divider--icon {
+		position: relative;
+		height: auto;
+		.margin-right-rem(@divider-margin-right);
+		.margin-left-rem(@divider-margin-left);
+		.font-size(@divider-fontSize);
+		text-align: center;
+		border: none;
+		&:before,
+		&:after {
+			position: absolute;
+			top: 50%;
+			z-index: 3;
+			content: '';
+			width: 50%;
+			height: 0;
+			border-top: 1px solid @divider-borderTopColor;
+			border-top: 1px solid fade(@divider-borderTopColor, 10%);
+			border-bottom: 1px solid @divider-borderBottomColor;
+			border-bottom: 1px solid fade(@divider-borderBottomColor, 80%);
+		}
+		&:before {
+			left: 0;
+			.margin-left-rem(-@divider-margin-left);
+		}
+		&:after {
+			right: 0;
+			.margin-right-rem(-@divider-margin-right);
+		}
+	}
+
+	// text
+	// ==========================================================================
+	.divider--text {
+		color: @divider--text-color;
+		color: fade(@divider--text-color, 80%);
+		font-weight: bold;
+		text-transform: uppercase;
+		.hook-divider-text;
+	}
+
+	// icon
+	// ==========================================================================
+	.divider--icon {
+		.hook-divider-icon;
+		
+		& > .icon {
+			position: relative;
+			color: @divider--icon-color;
+			color: fade(@divider--icon-color, 80%);
+			&:after {
+				position: absolute;
+				left: 50%;
+				top: 50%;
+				content: '';
+				width: 2em;
+				height: 2em;
+				margin-top: -1em;
+				margin-left: -1em;
+				background-color: transparent;
+				.box-shadow(0 0 0 1px rgba(0,0,0,0.1) inset);
+				.border-radius(100px);
+			}
+		}
+	}
+
+    // Hook
+    // ==========================================================================
+    .hook-divider-misc;
+}
+
+.prelude-divider (@use-divider);
+
+// ==========================================================================
+//  Hooks
+// ==========================================================================
+.hook-divider() {}
+.hook-divider-text() {}
+.hook-divider-icon() {}
+.hook-divider-misc() {}

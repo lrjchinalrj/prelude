@@ -1,0 +1,96 @@
+.prelude-conditional (@use) when (@use = true) {
+    
+    // visibility
+    // ===========================================================================
+    .hidden {
+    	display: none !important;
+    }
+    .visible {
+    	display: block !important;
+    }
+    .visibility-loop(@i) when ( @i <= length(@screens) ){
+        @screen: extract(@screens, @i);
+        .hidden-@{screen} {
+            display: block !important;
+        }
+        .visible-@{screen} {
+            display: none !important;
+        }
+        .hidden-@{screen}-up {
+            display: block !important;
+        }
+        .visible-@{screen}-up {
+            display: none !important;
+        }
+
+        .visibility-loop(@i + 1);
+    }
+    .visibility-loop(1);
+
+    .hidden-destop {
+        display: block !important;
+    }
+    .visible-destop {
+        display: none !important;
+    }
+
+    .media-visibility-loop(@i) when ( @i <= length(@screens) ){      
+        @screen: extract(@screens, @i);  
+
+        & when (@i = 1){
+            @max-name: %("screen-%s-max", @screen);
+            @max: @@max-name;
+            @media(max-width: @max) {
+                .hidden-@{screen} {
+                    display: none !important;
+                }
+                .visible-@{screen} {
+                    display: block !important;
+                }
+            }
+        }
+
+        & when  (@i > 1) {
+            @min-name: %("screen-%s-min", @screen);
+            @min: @@min-name;
+
+
+            @max-name: %("screen-%s-max", @screen);
+            @max: @@max-name;
+            @media(min-width: @min) and (max-width: @max) {
+                .hidden-@{screen} {
+                    display: none !important;
+                }
+                .visible-@{screen} {
+                    display: block !important;
+                }
+            }
+            
+
+            @media(min-width: @min) {
+                .hidden-@{screen}-up {
+                    display: none !important;
+                }
+                .visible-@{screen}-up {
+                    display: block !important;
+                }
+            }
+        }
+        
+        .media-visibility-loop(@i + 1);
+    }
+
+    .media-visibility-loop(1);
+
+
+    @media(min-width: @screen-desktop-min) {
+        .hidden-destop {
+            display: none !important;
+        }
+        .visible-destop {
+            display: block !important;
+        }
+    }
+}
+
+.prelude-conditional (@use-conditional);

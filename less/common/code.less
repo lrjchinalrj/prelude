@@ -1,0 +1,63 @@
+// ==========================================================================
+// Variables
+// ==========================================================================
+// Code
+@code-fontFamily        : @fontFamily-mono;
+@code-fontSize          : @base-fontSize * 0.8;
+@code-color             : #dd0055;
+@code-bgColor           : #f8f8f8;
+@code-borderColor       : @color-border;;
+
+// Pre
+@pre-padding            : @base-fontSize * .65;
+@pre-lineHight          : @base-lineHeight * 0.9;
+@pre-color              : #333333;
+@pre-bgColor            : #F8F8F8;
+@pre-borderColor        : @color-border;
+@pre-borderRadius       : @base-borderRadius;
+
+// ==========================================================================
+// Code
+// ==========================================================================
+.prelude-code (@use) when (@use = true) {
+	// Inline and block code styles
+	code,
+	pre {
+		font-family: @code-fontFamily;
+		.font-size(@code-fontSize);
+		tab-size: 3;
+	}
+
+	// Inline code
+	code {
+		padding: 2px 3px;
+		color: @code-color;
+		background: @code-bgColor;
+		border: 1px solid @code-borderColor;
+	}
+
+	// Blocks of code
+	pre {
+		display: block;
+		.padding-rem(@pre-padding);
+		line-height: @pre-lineHight;
+		color: @pre-color;
+		background-color: @pre-bgColor;
+		border: 1px solid @pre-borderColor;
+
+		.border-radius(@pre-borderRadius);
+		white-space: pre;
+		white-space: pre-wrap;
+		word-break: break-all;
+		word-wrap: break-word;
+
+		// Account for some code outputs that place code tags in pre tags
+		& code {
+			padding: 0;
+			color: @pre-color;
+			background-color: @pre-bgColor;
+			border: 0;
+		}
+	}
+}
+.prelude-code (@use-code);

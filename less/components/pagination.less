@@ -1,0 +1,107 @@
+// ==========================================================================
+// Variables
+// ==========================================================================
+@pagination-li-color                     : #222;
+@pagination-li-fontSize                  : @base-fontSize*.875;
+@pagination-li-margin-left               : 5px;
+
+@pagination-link-padding                 : 3px 9px;
+@pagination-link-color                   : #999;
+@pagination-link-borderRadius            : @base-borderRadius;
+@pagination-link--hover-bgColor          : #e6e6e6;
+
+@pagination-current-link-color           : #fff;
+@pagination-current-link-bgColor         : @color-link-default;
+@pagination-current-link--hover-bgColor  : @pagination-current-link-bgColor;
+
+@pagination-disabled-link-color          : #999;
+@pagination-disabled-link--hover-bgColor : rgba(0,0,0,0);
+
+// ==========================================================================
+// Pagination
+// ==========================================================================
+.prelude-pagination (@use) when (@use = true) {
+	.pagination {
+		display: block;
+		margin: 0;
+		padding: 0;
+		text-align: center;
+		letter-spacing: -.31em;
+		&:before,
+		&:after {
+			content: '';
+			display: table;
+		}
+		&:after {
+			clear: both;
+		}
+		li {
+			display: inline-block;
+			color: @pagination-li-color;
+			.font-size(@pagination-li-fontSize);
+			.margin-left-rem(@pagination-li-margin-left);
+			letter-spacing: normal;
+			a {
+				display: block;
+				.padding-rem(@pagination-link-padding);
+				color: @pagination-link-color;
+				.border-radius(@pagination-link-borderRadius);
+				.hook-pagination-disc;
+				&:hover {
+					text-decoration: none;
+				}
+			}
+			&:hover a,
+			a:focus {
+				background-color: @pagination-link--hover-bgColor;
+			}
+
+			&.is-current {
+				a {
+					color: @pagination-current-link-color;
+					font-weight: bold;
+					background-color: @pagination-current-link-bgColor;
+					cursor: default;
+					.hook-pagination-current;
+				}
+				&:hover a,
+				a:focus {
+					background-color: @pagination-current-link--hover-bgColor;
+				}
+			}
+
+			&.is-disabled {
+				a {
+					color: @pagination-disabled-link-color;
+					cursor: default;
+					pointer-events: none;
+					.hook-pagination-disabled;
+				}
+				&:hover a,
+				a:focus {
+					background-color: @pagination-disabled-link--hover-bgColor;
+				}
+			}
+		}
+
+		&--left {
+			text-align: left;
+		}
+		&--right {
+			text-align: right;
+		}
+	}
+	// Hook
+	// ==========================================================================
+	.hook-pagination-misc;
+}
+
+.prelude-pagination (@use-pagination);
+
+// ==========================================================================
+//  Hooks
+// ==========================================================================
+.hook-pagination-disc() {}
+.hook-pagination-current() {}
+.hook-pagination-disabled() {}
+.hook-pagination-misc() {}

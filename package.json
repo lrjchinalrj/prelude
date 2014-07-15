@@ -2,7 +2,7 @@
   "name": "prelude",
   "title": "Prelude",
   "description": "Prelude is a flexable front-end development framework.",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "homepage": "https://github.com/amazingSurge/prelude",
   "author": {
     "name": "amazingSurge",
@@ -38,7 +38,8 @@
     "grunt-lesslint": "*",
     "grunt-lessimportfile": "*",
     "grunt-csscomb": "*",
-    "load-grunt-tasks": "*"
+    "load-grunt-tasks": "*",
+    "grunt-text-replace": "~0.3.12"
   },
   "dependencies": {
     "grunt-jquery-builder": "~0.1.1"

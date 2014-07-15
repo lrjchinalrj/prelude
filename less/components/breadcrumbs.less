@@ -1,0 +1,70 @@
+// ==========================================================================
+// Variables
+// ==========================================================================
+@breadcrumbs-divider           : "\00BB" "\00A0";
+@breadcrumbs--sections-divider : "|" "\00A0";
+@breadcrumbs--path-divider     : "\002F" "\00A0";
+
+@breadcrumbs-current-color     : #444;
+
+// ==========================================================================
+// Breadcrumbs
+// ==========================================================================
+.prelude-breadcrumbs (@use) when (@use = true) {
+	.breadcrumbs {
+		padding: 0;
+		list-style: none;
+
+		.hook-breadcrumbs;
+
+		> li,
+		> li > a,
+		> li > span {
+			display: inline-block;
+		}
+
+		.is-current {
+			color: @breadcrumbs-current-color;
+		}
+
+		> li + li:before {
+			content: @breadcrumbs-divider;
+			.hook-breadcrumbs-divider;
+		}
+
+
+		// breadcrumbs--sections
+		// ==========================================================================
+		&--sections {
+			> li + li:before {
+				content: @breadcrumbs--sections-divider;
+				.hook-breadcrumbs-sections-divider;
+			}
+		}
+
+		// breadcrumbs--path
+		// ==========================================================================
+		&--path {
+			> li + li:before {
+				content: @breadcrumbs--path-divider;
+				.hook-breadcrumbs-path-divider;
+			}
+		}
+
+	}
+	
+	// Hook
+	// ==========================================================================
+	.hook-breadcrumbs-misc;
+}
+
+.prelude-breadcrumbs (@use-breadcrumbs);
+
+// ==========================================================================
+// Hooks
+// ==========================================================================
+.hook-breadcrumbs() {}
+.hook-breadcrumbs-divider() {}
+.hook-breadcrumbs-sections-divider() {}
+.hook-breadcrumbs-path-divider() {}
+.hook-breadcrumbs-misc() {}

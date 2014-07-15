@@ -1,0 +1,30 @@
+// ==========================================================================
+// Variables
+// ==========================================================================
+@selection-color        : #fff;
+@selection-bgColor      : @color-primary;
+
+// ==========================================================================
+// Selection
+// ==========================================================================
+.prelude-selection (@use) when (@use = true) {
+	::-moz-selection {
+		color: @selection-color;
+		background: @selection-bgColor;
+	}
+	::selection {
+		color: @selection-color;
+		background: @selection-bgColor;
+	}
+	* {
+		-webkit-tap-highlight-color: @color-primary !important;
+	}
+	// Remove `background` on images when selected
+	// ==========================================================================
+	img::-moz-selection,
+	img::selection {
+		background: transparent;
+	}
+}
+
+.prelude-selection (@use-selection);

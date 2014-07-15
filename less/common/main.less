@@ -1,0 +1,32 @@
+// ==========================================================================
+// Main
+// ==========================================================================
+.prelude-main (@use) when (@use = true) {
+	html {
+		font-size: 100%;
+	}
+	body {
+		font-family: @base-fontFamily;
+		.font-size(@base-fontSize);
+		line-height: @base-lineHeight;
+		color: @color-text;
+
+		text-rendering: optimizeLegibility;
+        font-smooth: always;
+        
+        -webkit-font-smoothing: antialiased;
+        -moz-font-smoothing: antialiased;
+	}
+
+	html[dir="rtl"] { direction: rtl; }
+
+	// Hook
+	// ==========================================================================
+	.hook-main-misc;
+}
+.prelude-main (@use-main);
+
+// ==========================================================================
+// Hook
+// ==========================================================================
+.hook-main-misc() {}

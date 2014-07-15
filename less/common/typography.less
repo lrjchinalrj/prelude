@@ -1,0 +1,119 @@
+// ==========================================================================
+// Variables
+// ==========================================================================
+// Links
+@link-color             : @color-primary;
+@link-visited-color     : @color-primary;
+@link-active-color      : darken(@link-color, 10%);
+@link-hover-color       : darken(@link-color, 15%);
+@link-focus-color       : @link-hover-color;
+@link-decoration        : none;
+
+// Horizontal rules
+@hr-borderTopColor      : @color-border;
+@hr-borderBottomColor   : #fff;
+
+// Text-level semantics
+@kbd-bgColor            : @color-background;
+@kbd-borderColor        : @color-border;
+@abbr-borderColor       : @color-border;;
+@ins-bgColor            : #ffa;
+@ins-color              : #444;
+@mark-bgColor           : #ffa;
+@mark-color             : #444;
+
+// ==========================================================================
+// Typography
+// ==========================================================================
+.prelude-typography (@use) when (@use = true) {
+	// Paragraph
+	// ==========================================================================
+	p {
+		margin-top: 0;
+		.rhythm-margin-bottom();
+		font-family: inherit;
+	}
+
+	// Links
+	// ==========================================================================
+	a {
+		color: @link-color;
+		outline: none;
+		text-decoration: @link-decoration;
+
+		&:visited {
+			color: @link-visited-color;
+			text-decoration: @link-decoration;
+		}
+		&:hover {
+			color: @link-hover-color;
+			text-decoration: underline;
+		}
+		&:active {
+			color: @link-active-color;
+			outline: none;
+		}
+		&:focus {
+			color: @link-focus-color;
+			outline: none;
+		}
+	}
+
+	// Horizontal rules
+	// ==========================================================================
+	hr {
+		.rhythm-margin(1);
+		border: 0;
+		border-top: 1px solid @hr-borderTopColor;
+		border-bottom: 1px solid @hr-borderBottomColor;
+	}
+
+	// Text-level semantics
+	// ==========================================================================
+	em, i {
+		font-style: italic;
+	}
+	small {
+		.font-size(@base-fontSize*0.85);
+	}
+	strong, b {
+		font-weight: bold;
+	}
+	cite {
+		font-style: italic;
+	}
+	ins {
+	    background: @ins-bgColor;
+	    color: @ins-color;
+	    text-decoration: none;
+	}
+	mark {
+	    background: @mark-bgColor;
+	    color: @mark-color;
+	}
+	kbd {
+		background: @kbd-bgColor;
+		border: 1px solid @kbd-borderColor;
+		.border-radius(@base-borderRadius);
+		font-weight: normal;
+		.padding-rem(0 @base-fontSize*.5);
+		white-space: nowrap;
+	}
+	abbr[title],
+	dfn[title] {
+		cursor: help;
+		border-bottom: 1px dotted @abbr-borderColor;
+	}
+	dfn[title] {
+		font-style: normal;
+	}
+
+	// Addresses
+	address {
+		display: block;
+		.margin-bottom-rem(@base-fontSize*1.5);
+		font-style: normal;
+	}
+}
+
+.prelude-typography (@use-typography);

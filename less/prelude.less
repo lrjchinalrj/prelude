@@ -5,66 +5,39 @@
 @import "mixins/prelude-mixins.less";
 
 // common
-@import "common/reset/reset.less";
-
-@import "common/typography/default.less";
-@import "common/typography/typography.less";
-
-@import "common/media/media.less";
-
-@import "common/forms/default.less";
-@import "common/forms/forms.less";
+& when (@use-normalize = true) {
+	@import "common/normalize.less";
+}
+@import "common/main.less";
+@import "common/selection.less";
+@import "common/typography.less";
+@import "common/headings.less";
+@import "common/typography.less";
+@import "common/blockquotes.less";
+@import "common/list.less";
+@import "common/code.less";
+@import "common/form.less";
+@import "common/media.less";
 
 // functions
-@import "functions/grid/default.less";
-@import "functions/grid/grid.less";
-@import "functions/grid/mixins.less";
-
-@import "functions/utility/utility.less";
-@import "functions/print/print.less";
+@import "functions/grid.less";
+@import "functions/utility.less";
+@import "functions/conditional.less";
+@import "functions/print.less";
+@import "functions/rtl.less";
 
 // components
-@import "components/box/default.less";
-@import "components/box/box.less";
-
-@import "components/breadcrumbs/default.less";
-@import "components/breadcrumbs/breadcrumbs.less";
-
-@import "components/buttons/default.less";
-@import "components/buttons/buttons.less";
-
-@import "components/divider/default.less";
-@import "components/divider/divider.less";
-
-@import "components/forms/default.less";
-@import "components/forms/forms.less";
-
-@import "components/icon/default.less";
-@import "components/icon/icon.less";
-
-@import "components/lists/default.less";
-@import "components/lists/lists.less";
-
-@import "components/message/default.less";
-@import "components/message/message.less";
-
-@import "components/pager/default.less";
-@import "components/pager/pager.less";
-
-@import "components/panels/default.less";
-@import "components/panels/panels.less";
-
-@import "components/pagination/default.less";
-@import "components/pagination/pagination.less";
-
-@import "components/progress/default.less";
-@import "components/progress/progress.less";
-
-@import "components/tables/default.less";
-@import "components/tables/tables.less";
-
-@import "components/video/default.less";
-@import "components/video/video.less";
-
-// rtl support
-@import "functions/rtl-support/base-rtl.less";
+@import "components/box.less";
+@import "components/breadcrumbs.less";
+@import "components/buttons.less";
+@import "components/divider.less";
+@import "components/forms.less";
+@import "components/icon.less";
+@import "components/lists.less";
+@import "components/message.less";
+@import "components/pager.less";
+@import "components/pagination.less";
+@import "components/panels.less";
+@import "components/progress.less";
+@import "components/table.less";
+@import "components/video.less";
