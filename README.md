@@ -1,6 +1,6 @@
 # Prelude
 
-Prelude is a flexable front-end css framework. It's written in [Less](lesscss.org).
+Prelude is a flexable front-end css framework. It's written in [Less](http://lesscss.org) css pre-processor.
 
 Getting Started
 ---------------
@@ -40,6 +40,8 @@ Credits
 -------
 We built Prelude using popular open source projects.
 
+* ([adaptGrid](https://github.com/amazingSurge/adaptGrid)) ([MIT License](http://opensource.org/licenses/MIT))
+* ([prelude-mixins](https://github.com/amazingSurge/prelude-mixins)) ([MIT License](http://opensource.org/licenses/MIT))
 * jQuery ([MIT License](http://opensource.org/licenses/MIT))
 * normalize.css ([MIT License](http://opensource.org/licenses/MIT))
 * uikit ([MIT License](http://opensource.org/licenses/MIT))
