@@ -65,14 +65,14 @@ module.exports = function(grunt) {
 							expand: true,
 							cwd: 'bower_components/adaptGrid/dist/',
 							src:	'**',
-							dest: 'less/functions/grid/'
+							dest: '<%=config.less.srcDir%>/functions/grid/'
 						}
 					]
 			},
 			normalize: {
 				files: [{
 					src: 'bower_components/normalize-css/normalize.css', 
-					dest: 'less/common/normalize.less'
+					dest: '<%=config.less.srcDir%>/common/normalize.less'
 				}]
 			},
 			rainbow: {
@@ -112,7 +112,7 @@ module.exports = function(grunt) {
 					src: [
 							'*.less', '!variables.less'
 					],
-					dest: 'less/mixins/'
+					dest: '<%=config.less.srcDir%>/mixins/'
 				}]
 			}
 		},
@@ -129,7 +129,7 @@ module.exports = function(grunt) {
 		less: {
 			dist: {
 				files: {
-					"dist/prelude.css": "less/prelude.less"
+					"dist/prelude.css": "<%=config.less.srcDir%>/prelude.less"
 				}
 			}
 		},
@@ -137,7 +137,7 @@ module.exports = function(grunt) {
 		// -- LessLint Config -------------------------------------------------------
 
 		lesslint: {
-			src: ['less/*.less']
+			src: ['<%=config.less.srcDir%>/*.less']
 		},
 
 		// -- CSSLint Config -------------------------------------------------------
@@ -161,10 +161,19 @@ module.exports = function(grunt) {
 					// report: 'gzip'
 			},
 
-			files: {
+			dist: {
 				expand: true,
 				src	 : ['dist/*.css','!dist/*-min.css'],
 				ext	 : '-min.css'
+			},
+
+			normalize: {
+				options: {
+					keepSpecialComments: 0
+				},
+				files: {
+					'<%=config.less.srcDir%>/common/normalize.less': ['<%=config.less.srcDir%>/common/normalize.less']
+				}
 			}
 		},
 
@@ -175,7 +184,7 @@ module.exports = function(grunt) {
 					sortOrder: '.csscomb.json'
 				},
 				files: {
-					'css/prelude.css': ['css/prelude.css'],
+					'dist/prelude.css': ['dist/prelude.css'],
 				}
 			}
 		},
@@ -185,6 +194,48 @@ module.exports = function(grunt) {
 			gruntfile: {
 				files: '<%= jshint.gruntfile.src %>',
 				tasks: ['jshint:gruntfile']
+			}
+		},
+
+		// -- csspretty Config --------------------------------------------------------
+		csspretty: {
+			options: {
+				decl: {
+					before: '\n\t',
+					between: ': ',
+				},
+				rule: {
+					before: '\n',
+					between: ' ',
+					after: '\n',
+				},
+				atRule: {
+					before: '\n',
+					between: ' ',
+					indent: '\t',
+					after: '\n',
+				},
+				selectors: 'same',
+			},
+			dist: {
+				src: '<%=config.less.distDir%>/prelude.css',
+			},
+			normalize: {
+				options: {
+					rule: {
+						before: '\n\n',
+						between: ' ',
+						after: '\n',
+					},
+					atRule: {
+						before: '\n\n',
+						between: ' ',
+						indent: '\t',
+						after: '\n',
+					},
+					selectors: 'separateline',
+				},
+				src: '<%=config.less.srcDir%>/common/normalize.less',
 			}
 		},
 
@@ -204,14 +255,6 @@ module.exports = function(grunt) {
                 replacements: [{
                     from: /("version": ")([0-9\.]+)(")/g,
                     to: "$1<%= pkg.version %>$3"
-                }]
-            },
-            normalize: {
-            	src: ['less/common/normalize.less'],
-                overwrite: true, // overwrite matched source files
-            	replacements: [{
-                    from: /\/\*! normalize\.css .* \*\//g,
-                    to: ''
                 }]
             }
         },
@@ -238,8 +281,8 @@ module.exports = function(grunt) {
 
 	// Default task.
 	grunt.registerTask('default', ['clean', 'css', 'concat']);
-	grunt.registerTask('css', ['less','csscomb','cssmin']);
-	grunt.registerTask('update', ['copy','replace:normalize']);
+	grunt.registerTask('css', ['less','csscomb','cssmin:dist','csspretty:dist']);
+	grunt.registerTask('normalize', ['copy:normalize','cssmin:normalize','csspretty:normalize']);
 	grunt.registerTask('version', [
         'replace:bower',
         'replace:jquery'

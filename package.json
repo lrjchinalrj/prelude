@@ -39,7 +39,8 @@
     "grunt-lessimportfile": "*",
     "grunt-csscomb": "*",
     "load-grunt-tasks": "*",
-    "grunt-text-replace": "~0.3.12"
+    "grunt-text-replace": "*",
+    "grunt-csspretty": "*"
   },
   "dependencies": {
     "grunt-jquery-builder": "~0.1.1"
