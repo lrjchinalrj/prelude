@@ -8,36 +8,92 @@
 & when (@use-normalize = true) {
 	@import "common/normalize.less";
 }
-@import "common/main.less";
-@import "common/selection.less";
-@import "common/typography.less";
-@import "common/headings.less";
-@import "common/typography.less";
-@import "common/blockquotes.less";
-@import "common/list.less";
-@import "common/code.less";
-@import "common/form.less";
-@import "common/media.less";
+& when (@use-main = true) {
+	@import "common/main.less";
+}
+& when (@use-selection = true) {
+	@import "common/selection.less";
+}
+& when (@use-headings = true) {
+	@import "common/headings.less";
+}
+& when (@use-typography = true) {
+	@import "common/typography.less";
+}
+& when (@use-blockquotes = true) {
+	@import "common/blockquotes.less";
+}
+& when (@use-list = true) {
+	@import "common/list.less";
+}
+& when (@use-code = true) {
+	@import "common/code.less";
+}
+& when (@use-form = true) {
+	@import "common/form.less";
+}
+& when (@use-media = true) {
+	@import "common/media.less";
+}
+
 
 // functions
-@import "functions/grid.less";
+& when (@use-grids = true) {
+	@import "functions/grids.less";
+}
+& when (@use-utility = true) {
 @import "functions/utility.less";
-@import "functions/conditional.less";
-@import "functions/print.less";
-@import "functions/rtl.less";
+}
+& when (@use-conditional = true) {
+	@import "functions/conditional.less";
+}
+& when (@use-print = true) {
+	@import "functions/print.less";
+}
+& when (@use-rtl = true) {
+	@import "functions/rtl.less";
+}
 
 // components
-@import "components/box.less";
-@import "components/breadcrumbs.less";
-@import "components/buttons.less";
-@import "components/divider.less";
-@import "components/forms.less";
-@import "components/icon.less";
-@import "components/lists.less";
-@import "components/message.less";
-@import "components/pager.less";
-@import "components/pagination.less";
-@import "components/panels.less";
-@import "components/progress.less";
-@import "components/table.less";
-@import "components/video.less";
+& when (@use-box = true) {
+	@import "components/box.less";
+}
+& when (@use-breadcrumbs = true) {
+	@import "components/breadcrumbs.less";
+}
+& when (@use-buttons = true) {
+	@import "components/buttons.less";
+}
+& when (@use-divider = true) {
+	@import "components/divider.less";
+}
+& when (@use-forms = true) {
+	@import "components/forms.less";
+}
+& when (@use-icon = true) {
+	@import "components/icon.less";
+}
+& when (@use-lists = true) {
+	@import "components/lists.less";
+}
+& when (@use-message = true) {
+	@import "components/message.less";
+}
+& when (@use-pager = true) {
+	@import "components/pager.less";
+}
+& when (@use-pagination = true) {
+	@import "components/pagination.less";
+}
+& when (@use-panels = true) {
+	@import "components/panels.less";
+}
+& when (@use-progress = true) {
+	@import "components/progress.less";
+}
+& when (@use-table = true) {
+	@import "components/table.less";
+}
+& when (@use-video = true) {
+	@import "components/video.less";
+}

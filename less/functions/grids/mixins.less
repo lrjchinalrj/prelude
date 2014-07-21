@@ -1,0 +1,718 @@
+/* Adapt Grid System - v0.3.0 - 2014-06-30
+* https://github.com/amazingSurge/adaptGrid
+* Copyright (c) 2014 amazingSurge; Licensed MIT */
+#grid {
+	// row
+	.row (@has-gutter: @gird-hasGutter, @gutter-width: @grid-gutterWidth) {
+		.no-flexbox() {
+			font-size: 0;
+			list-style: none;
+		}
+
+		& when (@using-modernizr = true) {
+			.flexbox & {
+				display: -webkit-box;
+				display: -webkit-flex;
+				display: -ms-flexbox;
+				display: flex;
+				-webkit-box-orient: horizontal;
+				-webkit-box-direction: normal;
+				-webkit-flex-direction: row;
+				-ms-flex-direction: row;
+				flex-direction: row;
+				-webkit-flex-wrap: wrap;
+				-ms-flex-wrap: wrap;
+				flex-wrap: wrap;
+			}
+
+			.no-flexbox & {
+				.no-flexbox();
+			}
+		}
+
+		& when (@using-modernizr = false) {
+			.no-flexbox();
+
+			// safari 5 dont support font-size: 0, and android screen don't work properly
+			@webkit-hack: ~"::made-up-pseudo-element,";
+			@{webkit-hack} & {
+				@media screen and (-webkit-min-screen-pixel-ratio:0) {
+					font-size: inherit;
+					letter-spacing: -.31em; // for safari 5
+					word-spacing: -.41em; // for android
+				}
+			}
+		}
+	}
+	
+	.row (@has-gutter: @gird-hasGutter, @gutter-width: @grid-gutterWidth) when (@has-gutter = true){
+		@half-gutter-width: @gutter-width/2;
+
+		& when (ispercentage(@gutter-width)) {
+			margin-left:  -@half-gutter-width;
+			margin-right: -@half-gutter-width;
+		}
+
+		& when not (ispercentage(@gutter-width)) {
+			margin-left: -@grid-ie8-gutterWidth/2;
+			margin-left: ~"-webkit-calc(-@{half-gutter-width})";
+			margin-left:         ~"calc(-@{half-gutter-width})";
+
+			margin-right: -@grid-ie8-gutterWidth/2;
+			margin-right: ~"-webkit-calc(-@{half-gutter-width})";
+			margin-right:         ~"calc(-@{half-gutter-width})";
+		}
+	}
+
+	// column
+	.column (@has-gutter: @gird-hasGutter, @gutter-width: @grid-gutterWidth, @font-size: @grid-fontSize) {
+		-webkit-box-sizing: border-box;
+		-moz-box-sizing: border-box;
+		box-sizing: border-box;
+
+		.no-flexbox() {
+			position: relative;
+			display: inline-block;
+			min-height: 1px; // prevent collapsing columns
+			vertical-align: top;
+			#grid.font-size (@font-size);
+			*display: inline; // For IE6/IE7
+			*zoom: 1; // For IE6/IE7
+		}
+
+		& when (@using-modernizr = true) {
+			.flexbox & {
+				display: -webkit-box;
+				display: -webkit-flex;
+				display: -ms-flexbox;
+				display: flex;
+				-webkit-box-orient: vertical;
+				-webkit-box-direction: normal;
+				-webkit-flex-direction: column;
+				-ms-flex-direction: column;
+				flex-direction: column;
+				-webkit-box-flex: 0;
+				-webkit-flex-grow: 0;
+				-ms-flex-positive: 0;
+				flex-grow: 0;
+				-webkit-flex-shrink: 0;
+				-ms-flex-negative: 0;
+				flex-shrink: 0;
+			}
+
+			.no-flexbox & {
+				.no-flexbox();
+			}
+		}
+
+		& when (@using-modernizr = false) {
+			.no-flexbox();
+
+			// safari 5 dont support font-size: 0, and android screen don't work properly
+			@webkit-hack: ~"::made-up-pseudo-element,";
+			@{webkit-hack} & {
+				@media screen and (-webkit-min-screen-pixel-ratio:0) { 
+					letter-spacing: normal;
+					word-spacing: normal;
+				}
+			}
+		}
+	}
+
+	.column (@has-gutter: @gird-hasGutter, @gutter-width: @grid-gutterWidth, @font-size: @grid-fontSize) when (@has-gutter = true){
+		@half-gutter-width: @gutter-width/2;
+
+		& when (ispercentage(@gutter-width)) {
+			margin-left:  @half-gutter-width;
+			margin-right: @half-gutter-width;
+		}
+
+		& when not (ispercentage(@gutter-width)) {
+			margin-left: @grid-ie8-gutterWidth/2;
+			margin-left: ~"-webkit-calc(@{half-gutter-width})";
+			margin-left:         ~"calc(@{half-gutter-width})";
+
+			margin-right: @grid-ie8-gutterWidth/2;
+			margin-right: ~"-webkit-calc(@{half-gutter-width})";
+			margin-right:         ~"calc(@{half-gutter-width})";
+		}
+	}
+
+	// span
+	.span (@x:1, @columns: @grid-columns, @has-gutter: @gird-hasGutter, @gutter-width: @grid-gutterWidth) {
+		#grid.span-width (@x, @columns, @has-gutter, @gutter-width);
+		.column (@has-gutter, @gutter-width);
+	}
+
+	// offset will make moves to the right
+	.offset (@x:1, @columns: @grid-columns, @has-gutter: @gird-hasGutter, @gutter-width: @grid-gutterWidth) {
+		#grid.offsets-width (@x, @columns, @has-gutter, @gutter-width);
+	}
+
+	.push (@x:1, @columns: @grid-columns, @has-gutter: @gird-hasGutter, @gutter-width: @grid-gutterWidth) {
+		#grid.calc-width (left, @x, @columns, false, @gutter-width);
+	}
+
+	.pull (@x:1, @columns: @grid-columns, @has-gutter: @gird-hasGutter, @gutter-width: @grid-gutterWidth) {
+		#grid.calc-width (right, @x, @columns, false, @gutter-width);
+	}
+
+	// span width
+	.span-width (@x, @columns, @has-gutter: @gird-hasGutter, @gutter-width: @grid-gutterWidth) {
+		@width: round((100% / @columns) * @x, 3);
+
+		#grid.columns-width(@width, @has-gutter, @gutter-width);
+	}
+
+	// calc width
+	.calc-width (@prop, @x, @columns, @has-gutter: @gird-hasGutter, @gutter-width: @grid-gutterWidth) when (@has-gutter = false){
+		@width: (100% / @columns) * @x;
+		@{prop}: round(@width, 3);
+	}
+	.calc-width (@prop, @x, @columns, @has-gutter: @gird-hasGutter, @gutter-width: @grid-gutterWidth) when (@has-gutter = true){
+		@width: round((100% / @columns) * @x, 3);
+
+		& when (ispercentage(@gutter-width)) {
+			@{prop}: @width - @gutter-width;
+		}
+
+		& when not (ispercentage(@gutter-width)) {
+			@{prop}: round(@width - @grid-ie8-gutterWidth, 3);
+			@{prop}: ~"-webkit-calc(@{width} - @{gutter-width})";
+			@{prop}:         ~"calc(@{width} - @{gutter-width})";
+		}
+	}
+
+	// columns width
+	.columns-width(@width, @has-gutter: @gird-hasGutter, @gutter-width: @grid-gutterWidth) when (@has-gutter = false){
+		.no-flexbox() {
+			width: round(@width, 3);
+		}
+
+		& when (@using-modernizr = true) {
+			.flexbox & {
+				-webkit-flex-basis: round(@width, 3);
+				-ms-flex-preferred-size: round(@width, 3);
+			    flex-basis: round(@width, 3);
+			}
+			.no-flexbox & {
+				.no-flexbox();
+			}
+		}
+
+		& when (@using-modernizr = false) {
+			.no-flexbox();
+		}
+	}
+
+	.columns-width(@width, @has-gutter: @gird-hasGutter, @gutter-width: @grid-gutterWidth) when (@has-gutter = true){
+		.no-flexbox() {
+			& when (ispercentage(@gutter-width)) {
+				width: @width - @gutter-width;
+			}
+
+			& when not (ispercentage(@gutter-width)) {
+				width: round(@width - @grid-ie8-gutterWidth, 3);
+				width: ~"-webkit-calc(@{width} - @{gutter-width})";
+				width:         ~"calc(@{width} - @{gutter-width})";
+			}
+		}
+
+		& when (@using-modernizr = true) {
+			.flexbox & {
+				& when (ispercentage(@gutter-width)) {
+					-webkit-flex-basis: @width - @gutter-width;
+					-ms-flex-preferred-size: @width - @gutter-width;
+				    flex-basis: @width - @gutter-width;
+				}
+
+				& when not (ispercentage(@gutter-width)) {
+					-webkit-flex-basis: ~"-webkit-calc(@{width} - @{gutter-width})";
+					//-ms-flex-preferred-size: ~"calc(@{width} - @{gutter-width})"; 
+					width: ~"calc(@{width} - @{gutter-width})"; // ie 10
+				    flex-basis: ~"calc(@{width} - @{gutter-width})";
+				}
+			}
+			.no-flexbox & {
+				.no-flexbox();
+			}
+		}
+
+		& when (@using-modernizr = false) {
+			.no-flexbox();
+		}
+	}
+
+	// offsets width
+	.offsets-width (@x, @columns, @has-gutter: @gird-hasGutter, @gutter-width: @grid-gutterWidth) when (@has-gutter = false){
+		@width: (100% / @columns) * @x;
+		margin-left: round(@width, 3);
+	}
+	.offsets-width (@x, @columns, @has-gutter: @gird-hasGutter, @gutter-width: @grid-gutterWidth) when (@has-gutter = true){
+		@half-gutter-width: @gutter-width/2;
+		@width: round((100% / @columns) * @x, 3);
+
+		& when (ispercentage(@gutter-width)) {
+			margin-left: @width + @half-gutter-width;
+		}
+
+		& when not (ispercentage(@gutter-width)) {
+			margin-left: round(@width + @grid-ie8-gutterWidth/2, 3);
+			margin-left: ~"-webkit-calc(@{width} + @{half-gutter-width})";
+			margin-left:         ~"calc(@{width} + @{half-gutter-width})";
+		}
+	}
+
+	// font size
+	.font-size (@size, @base-size: @grid-fontSize) when not (isunit(@size, "rem")){
+		font-size: @size;
+	}
+	.font-size (@size, @base-size: @grid-fontSize) when (isunit(@size, "rem")){
+		@px-value: unit(@size) * unit(@base-size);
+		font-size: ~"@{px-value}px";
+		font-size: @size;
+	}
+}
+
+
+#grid {
+	.make-core () {
+		.@{grid-class-row} {
+			#grid.row (true, @grid-gutterWidth);
+
+			& when (@grid-withModifiers = true) {
+				// Center
+				&--center {
+					.no-flexbox() {
+						text-align: center;
+					}
+
+					& when (@using-modernizr = true) {
+						.flexbox & {
+							-webkit-box-pack: center;
+							-webkit-justify-content: center;
+							-ms-flex-pack: center;
+							justify-content: center;
+							text-align: center;
+						}
+
+						.no-flexbox & {
+							.no-flexbox();
+						}
+					}
+
+					& when (@using-modernizr = false) {
+						.no-flexbox();
+					}
+				}
+
+				// Left
+				&--left {
+					.no-flexbox() {
+						text-align: left;
+					}
+
+					& when (@using-modernizr = true) {
+						.flexbox & {
+							-webkit-box-pack: start;
+							-webkit-justify-content: flex-start;
+							-ms-flex-pack: start;
+							justify-content: flex-start;
+							text-align: start;
+						}
+
+						.no-flexbox & {
+							.no-flexbox();
+						}
+					}
+
+					& when (@using-modernizr = false) {
+						.no-flexbox();
+					}
+				}
+
+				// Right
+				&--right {
+					.no-flexbox() {
+						text-align: right;
+					}
+
+					& when (@using-modernizr = true) {
+						.flexbox & {
+							-webkit-box-pack: end;
+							-webkit-justify-content: flex-end;
+							-ms-flex-pack: end;
+							justify-content: flex-end;
+							text-align: end;
+						}
+
+						.no-flexbox & {
+							.no-flexbox();
+						}
+					}
+
+					& when (@using-modernizr = false) {
+						.no-flexbox();
+					}
+				}
+
+				// Top
+				&--top {
+					.no-flexbox() {
+						> .@{grid-class-column}, > [class*="@{grid-class-span}-"] {
+							vertical-align: top;
+						}
+					}
+
+					& when (@using-modernizr = true) {
+						.flexbox & {
+							-webkit-box-align: start;
+						    -webkit-align-items: flex-start;
+						    -ms-flex-align: start;
+						    align-items: flex-start;
+						}
+
+						.no-flexbox & {
+							.no-flexbox();
+						}
+					}
+
+					& when (@using-modernizr = false) {
+						.no-flexbox();
+					}
+				}
+
+				// Middle
+				&--middle {
+					.no-flexbox() {
+						> .@{grid-class-column}, > [class*="@{grid-class-span}-"] {
+							vertical-align: middle;
+						}
+					}
+
+					& when (@using-modernizr = true) {
+						.flexbox & {
+							-webkit-box-align: center;
+						    -webkit-align-items: center;
+						    -ms-flex-align: center;
+						    align-items: center;
+						}
+
+						.no-flexbox & {
+							.no-flexbox();
+						}
+					}
+					
+					& when (@using-modernizr = false) {
+						.no-flexbox();
+					}
+				}
+
+				// Bottom
+				&--bottom {
+					.no-flexbox() {
+						> .@{grid-class-column}, > [class*="@{grid-class-span}-"] {
+							vertical-align: bottom;
+						}
+					}
+
+					& when (@using-modernizr = true) {
+						.flexbox & {
+							-webkit-box-align: end;
+						    -webkit-align-items: flex-end;
+						    -ms-flex-align: end;
+						    align-items: flex-end;
+						}
+
+						.no-flexbox & {
+							.no-flexbox();
+						}
+					}
+					
+					& when (@using-modernizr = false) {
+						.no-flexbox();
+					}
+				}
+
+				// Reverse
+				&--reverse {
+					.no-flexbox() {
+						direction: rtl;
+					}
+
+					& when (@using-modernizr = true) {
+						.flexbox & {
+							-webkit-box-orient: horizontal;
+							-webkit-box-direction: reverse;
+							-webkit-flex-direction: row-reverse;
+							-ms-flex-direction: row-reverse;
+							flex-direction: row-reverse;
+							-webkit-flex-wrap: row-reverse;
+							-ms-flex-wrap: row-reverse;
+							flex-wrap: row-reverse;
+						}
+
+						.no-flexbox & {
+							.no-flexbox();
+						}
+					}
+					
+					& when (@using-modernizr = false) {
+						.no-flexbox();
+					}
+				}
+			}
+		}
+
+		.@{grid-class-column}, [class*="@{grid-class-span}-"] {
+			#grid.column (true, @grid-gutterWidth, @grid-fontSize);
+			#grid.span-width (1, 1);
+		}
+
+		& when (@grid-withNoSpacing = true){
+			.@{grid-class-row}--no-spacing {
+				margin-left: 0;
+				margin-right: 0;
+
+				.@{grid-class-column}, [class*="span-"] {
+					margin-left: 0;
+					margin-right: 0;
+				}
+			}
+		}
+	}
+}
+
+
+
+#grid {
+	.basic (@screen, @columns, @with-offset, @with-push, @with-pull, @with-noSpacing, @has-gutter: true) {
+		// define
+		.spanX (@index, @span-class) when (@index <= @columns) {
+			@span: replace(@span-class, "index", @index);
+			@{span} {
+				#grid.span-width (@index, @columns, @has-gutter, @grid-gutterWidth);
+			}
+			.spanX (@index + 1, @span-class);
+		}
+		
+		// generate
+		& when (iskeyword(@screen)){
+			.spanX (1, ~".@{grid-class-span}-index-@{screen}");
+		}
+		& when not (iskeyword(@screen)){
+			.spanX (1, ~".@{grid-class-span}-index");
+		}
+
+		// offset
+		& when (@with-offset = true) {
+			// define
+			.offsetX (@index, @offset-class) when (@index < @columns) {
+				@offset: replace(@offset-class, "index", @index);
+				@{offset} {
+					#grid.offset (@index, @columns, @has-gutter, @grid-gutterWidth);
+				}
+				.offsetX (@index + 1, @offset-class);
+			}
+			
+			// generate
+			& when (iskeyword(@screen)){
+				.offsetX (0, ~".@{grid-class-offset}-index-@{screen}");
+			}
+			& when not (iskeyword(@screen)){
+				.offsetX (0, ~".@{grid-class-offset}-index");
+			}
+		}
+
+		// push
+		& when (@with-push = true) {
+			// define
+			.pushX (@index, @push-class) when (@index <= @columns) {
+				@push: replace(@push-class, "index", @index);
+				@{push} {
+					#grid.push (@index, @columns, @has-gutter, @grid-gutterWidth);
+				}
+				.pushX (@index + 1, @push-class);
+			}
+			
+			// generate
+			& when (iskeyword(@screen)){
+				.pushX (0, ~".@{grid-class-push}-index-@{screen}");
+			}
+			& when not (iskeyword(@screen)){
+				.pushX (0, ~".@{grid-class-push}-index");
+			}
+		}
+
+		// pull
+		& when (@with-pull = true) {
+			// define
+			.pullX (@index, @pull-class) when (@index <= @columns) {
+				@pull: replace(@pull-class, "index", @index);
+				@{pull} {
+					#grid.pull (@index, @columns, @has-gutter, @grid-gutterWidth);
+				}
+				.pullX (@index + 1, @pull-class);
+			}
+			
+			// generate
+			& when (iskeyword(@screen)){
+				.pullX (0, ~".@{grid-class-pull}-index-@{screen}");
+			}
+			& when not (iskeyword(@screen)){
+				.pullX (0, ~".@{grid-class-pull}-index");
+			}
+		}
+
+		& when (@with-noSpacing = true){
+			.@{grid-class-row}--no-spacing {
+				#grid.basic (@screen, @columns, @with-offset, @with-push, @with-pull, false, false);
+			}
+		}
+	}
+}
+
+
+#grid {
+	.make-basic (@screens: @screens, @i: 1) when ( @i <= length(@screens) ) {
+		@screen: extract(@screens, @i);
+		@_columns: %("screen-%s-grid-basic-columns", @screen);
+
+		& when ( @i = 1 ){
+			#grid.basic (@screen, @@_columns, @grid-basic-with-offset, @grid-basic-with-push, @grid-basic-with-pull, @grid-basic-with-noSpacing);
+		}
+
+		& when not ( @i = 1 ){
+			@_min: %("screen-%s-min", @screen);
+		
+			@media only screen and (min-width: @@_min) {
+				#grid.basic (@screen, @@_columns, @grid-basic-with-offset, @grid-basic-with-push, @grid-basic-with-pull, @grid-basic-with-noSpacing);
+			}
+		}
+
+		#grid.make-basic (@screens, @i + 1);
+	}
+}
+
+
+@grid-phrase-numerators:  one two three four five six seven eight nine ten eleven twelve;
+@grid-phrase-denominators: full half third fourth fifth sixth seventh eighth ninth;
+
+#grid {
+	.phrase (@screen, @grid-columns, @with-noSpacing, @has-gutter: true) {
+		// define
+		.columnX (@denominator, @column-class) when (@denominator < @grid-columns + 1) {
+			@denominator-word: extract(@grid-phrase-denominators, @denominator);
+			@column: replace(@column-class, "word", @denominator-word);
+
+			@{column} {
+				#grid.columns-width (round(100% / @denominator, 3), @has-gutter);
+			}
+			
+			.numeratorX (@numerator) when (@numerator < @denominator) {
+
+				@numerator-word: extract(@grid-phrase-numerators, @numerator);
+				@numerator-column: replace(@column-class, "word", ~"@{numerator-word}-@{denominator-word}");
+
+				@{numerator-column} {
+					#grid.columns-width (round((100% / @denominator) * @numerator, 3), @has-gutter);
+				}
+				.numeratorX (@numerator + 1);
+			}
+
+			.numeratorX (2);
+			.columnX (@denominator + 1, @column-class);
+		}
+
+		// generate
+		& when (iskeyword(@screen)){
+			.columnX (1, ~".@{grid-class-column}.word-@{screen}");
+		}
+		& when not (iskeyword(@screen)){
+			.columnX (1, ~".@{grid-class-column}.word");
+		}
+
+		& when(@with-noSpacing = true){
+			.@{grid-class-row}--no-spacing {
+				#grid.phrase (@screen, @grid-columns, false, false);
+			}
+		}
+	}
+}
+
+
+#grid {
+	.make-phrase (@screens: @screens, @i: 1) when ( @i <= length(@screens) ) {
+		@screen: extract(@screens, @i);
+		@_columns: %("screen-%s-grid-phrase-columns", @screen);
+
+		& when ( @i = 1 ){
+			#grid.phrase (@screen, @@_columns, @grid-phrase-with-noSpacing);
+		}
+
+		& when not ( @i = 1 ){
+			@_min: %("screen-%s-min", @screen);
+		
+			@media only screen and (min-width: @@_min) {
+				#grid.phrase (@screen, @@_columns, @grid-phrase-with-noSpacing);
+			}
+		}
+
+		#grid.make-phrase (@screens, @i + 1);
+	}
+}
+
+
+#grid {
+	.tiles (@screen, @grid-columns, @with-noSpacing, @has-gutter: true) {
+		// define
+		.columnX (@index, @column-class, @has-gutter: true) when (@index < @grid-columns + 1) {
+			@column: replace(@column-class, "index", @index);
+			@{column} {
+				.@{grid-class-column} {
+					#grid.columns-width (round(100%/@index, 3), @has-gutter);
+				}
+			}
+
+			.columnX (@index + 1, @column-class, @has-gutter);
+		}
+		
+		// generate
+		& when (iskeyword(@screen)){
+			.columnX (1, ~".@{grid-class-tiles}-index-@{screen}", @has-gutter);
+		}
+		& when not (iskeyword(@screen)){
+			.columnX (1, ~".@{grid-class-tiles}-index", @has-gutter);
+		}
+
+		// generate
+		& when (iskeyword(@screen)){
+			.columnX (1, ~".@{grid-class-row}--no-spacing.@{grid-class-tiles}-index-@{screen}", false);
+		}
+		& when not (iskeyword(@screen)){
+			.columnX (1, ~".@{grid-class-row}--no-spacing.@{grid-class-tiles}-index", false);
+		}
+	}
+}
+
+
+#grid {
+	.make-tiles (@screens: @screens, @i: 1) when ( @i <= length(@screens) ) {
+		@screen: extract(@screens, @i);
+		@_columns: %("screen-%s-grid-tiles-columns", @screen);
+
+		& when ( @i = 1 ){
+			#grid.tiles (@screen, @@_columns, @grid-tiles-with-noSpacing);
+		}
+
+		& when not ( @i = 1 ){
+			@_min: %("screen-%s-min", @screen);
+		
+			@media only screen and (min-width: @@_min) {
+				#grid.tiles (@screen, @@_columns, @grid-tiles-with-noSpacing);
+			}
+		}
+
+		#grid.make-tiles (@screens, @i + 1);
+	}
+}
